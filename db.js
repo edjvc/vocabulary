@@ -13,8 +13,30 @@ export function openDB() {
   return cachedOpen;
 }
 export async function getAll(){const db=await openDB();return new Promise((resolve,reject)=>{const req=db.transaction(STORE,'readonly').objectStore(STORE).getAll();req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
-export async function saveRecord(record){const db=await openDB();return new Promise((resolve,reject)=>{const req=db.transaction(STORE,'readwrite').objectStore(STORE).put(record);req.onsuccess=()=>resolve();req.onerror=()=>reject(req.error);});}
-export async function deleteRecord(key){const db=await openDB();return new Promise((resolve,reject)=>{const req=db.transaction(STORE,'readwrite').objectStore(STORE).delete(key);req.onsuccess=()=>resolve();req.onerror=()=>reject(req.error);});}
+export async function saveRecord(defaults, changes){
+  const db = await openDB();
+  return new Promise((resolve,reject) => {
+    const tx = db.transaction(STORE,'readwrite');
+    const store = tx.objectStore(STORE);
+    const req = store.get(defaults.key);
+    let record;
+    req.onsuccess = () => {
+      record = {...defaults,...req.result,...changes};
+      store.put(record);
+    };
+    tx.oncomplete = () => resolve(record);
+    tx.onabort = () => reject(tx.error || new Error('資料儲存失敗'));
+  });
+}
+export async function deleteRecord(key){
+  const db = await openDB();
+  return new Promise((resolve,reject) => {
+    const tx = db.transaction(STORE,'readwrite');
+    tx.objectStore(STORE).delete(key);
+    tx.oncomplete = () => resolve();
+    tx.onabort = () => reject(tx.error || new Error('資料刪除失敗'));
+  });
+}
 export async function replaceRecords(records){
   const db=await openDB();
   return new Promise((resolve,reject)=>{

@@ -7,8 +7,6 @@ import argparse
 import csv
 import io
 import json
-import re
-import sys
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -36,21 +34,19 @@ def extract(tsv, expected=COUNT):
     seen = set()
     for i, raw in enumerate(reader, 1):
         row = {k: (v or '').strip() for k, v in raw.items() if k}
-        word = get_field(row, ('word', 'headword', 'lemma', 'term', 'entry', 'vocabulary', 'word_form', 'word_forms'))
-        # When a source includes a list of inflected forms, use the first headword.
-        if word and any(c in word for c in ',;|/'):
-            word = re.split(r'[,;|/]', word, 1)[0].strip()
+        word = get_field(row, ('headword', 'word'))
         if not word:
             raise ValueError(f'No headword at row {i}; columns: {list(row.keys())}')
-        key = word.casefold()
-        if key in seen:
+        if word in seen:
             raise ValueError(f'Duplicate headword {word!r} at row {i}; snapshot will not be silently changed')
-        seen.add(key)
+        seen.add(word)
         records.append({
             'id': f'core-{i:04d}',
             'word': word,
             # Retain the publisher's original stage/order as metadata; the UI does not filter by it.
             'level': get_field(row, ('level', 'stage', 'band')),
+            'level_name_ko': get_field(row, ('level_name_ko',)),
+            'level_name_en': get_field(row, ('level_name_en',)),
             'order_in_level': get_field(row, ('order_in_level', 'order', 'rank')),
             'source_list': get_field(row, ('source_list', 'source')),
             'source_rank': get_field(row, ('source_rank',)),

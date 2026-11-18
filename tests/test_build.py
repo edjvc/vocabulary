@@ -16,6 +16,10 @@ class TestBuild(unittest.TestCase):
             extract('word\na\n',expected=4027)
     def test_duplicate_refused(self):
         with self.assertRaisesRegex(ValueError,'Duplicate'):
-            extract('word\nword\nWORD\n',expected=2)
+            extract('word\nword\nword\n',expected=2)
+
+    def test_capitalized_headwords_keep_their_identity(self):
+        snapshot = extract('headword\nMarch\nmarch\n', expected=2)
+        self.assertEqual([row['word'] for row in snapshot['words']], ['March', 'march'])
 
 if __name__=='__main__':unittest.main()

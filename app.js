@@ -5,8 +5,8 @@ const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[]
 const now = () => new Date().toISOString();
 const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const keyFor = (type,word) => `${type}:${canonical(word)}`;
-const cambridge = word => `https://dictionary.cambridge.org/dictionary/english/${encodeURIComponent(canonical(word)).replace(/%20/g,'-')}`;
+const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
+const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
 const records = () => Array.from(state.records.values());
 const recordFor = item => state.records.get(item.key) || {key:item.key, word:item.word, grade:0, note:'', added_at:null, updated_at:null};
 const isCore = item => item.key.startsWith('core:');
@@ -16,11 +16,25 @@ const getWords = () => [
 ];
 const showToast = (message) => {const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove('show'),2600);};
 const setSaving = text => $('saving').textContent=text;
-async function write(record){
-  const safe = {...record,updated_at:now()};
+let pendingWrites = 0;
+async function write(item, changes){
+  pendingWrites++;
+  $('export-btn').disabled = true;
   setSaving('儲存中…');
-  try {await saveRecord(safe); state.records.set(safe.key,safe);setSaving('已自動儲存');return true;}
-  catch(err){console.error(err);setSaving('儲存失敗');showToast('儲存失敗，請立即建立備份或檢查 Safari 空間');return false;}
+  try {
+    const saved = await saveRecord(recordFor(item), {...changes, updated_at:now()});
+    state.records.set(saved.key,saved);
+    if (pendingWrites === 1) setSaving('已自動儲存');
+    return true;
+  } catch(err){
+    console.error(err);
+    setSaving('儲存失敗');
+    showToast('儲存失敗，請檢查瀏覽器儲存空間後重試');
+    return false;
+  } finally {
+    pendingWrites--;
+    $('export-btn').disabled = pendingWrites > 0;
+  }
 }
 function gradeOf(item){return Number(recordFor(item).grade||0);}
 function matches(item){return state.filter==='all'||Number(state.filter)===gradeOf(item);}
@@ -69,7 +83,7 @@ function renderCard(){
     btn.classList.toggle('selected',item!=null && gradeOf(item)===grade);
   }
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
-  $('review-note').textContent=item?'同一輪抽背不會重複，全部抽完才重新洗牌。':'你可以到「單字庫」新增自己的單字，或等待核心字庫初始化。';
+  $('review-note').textContent=item?'同一輪抽背不會重複，全部抽完才重新洗牌。':'可以更改抽背篩選，或到「單字庫」新增單字。';
 }
 function reveal(){
   if(!state.current)return;
@@ -77,10 +91,12 @@ function reveal(){
   else{$('card-back').hidden=true;$('card-placeholder').hidden=false;$('reveal-btn').textContent='顯示答案';}
 }
 async function setGrade(grade){
-  if(!state.current)return;
-  const r=recordFor(state.current);
-  if(await write({...r,grade})){
-    document.querySelectorAll('[data-grade]').forEach(btn=>btn.classList.toggle('selected',Number(btn.dataset.grade)===grade));
+  const item = state.current;
+  if(!item)return;
+  if(await write(item,{grade})){
+    if (state.current?.key === item.key) {
+      document.querySelectorAll('[data-grade]').forEach(btn=>btn.classList.toggle('selected',Number(btn.dataset.grade)===gradeOf(item)));
+    }
     showToast('熟練度已儲存');
     // Keep the undrawn queue intact, preventing repeats within the round.
     state.queue=state.queue.filter(matches);
@@ -132,14 +148,21 @@ async function addWord(ev){
   ev.preventDefault();
   const word=$('new-word').value.trim().replace(/\s+/g,' ');
   if(!word || word.length>100 || !/^[a-zA-Z][a-zA-Z\s'’-]*$/.test(word)){showToast('請輸入有效的英文單字');return;}
-  const existing=getWords().find(w=>canonical(w.word)===canonical(word));
+  if ($('add-form').dataset.saving) return;
+  const words = getWords();
+  const existing = words.find(w=>w.word===word) || words.find(w=>canonical(w.word)===canonical(word));
   if(existing){showToast('這個單字已在字庫中');openDetail(existing);return;}
   const item={key:keyFor('custom',word),word,type:'custom'};
-  const good=await write({...recordFor(item),added_at:now(),grade:0});
+  $('add-form').dataset.saving = 'true';
+  const good=await write(item,{added_at:now()});
+  delete $('add-form').dataset.saving;
   if(!good)return;
   $('new-word').value='';
   state.searchLimit=70;
-  refreshQueue();renderList();renderStats();
+  if (matches(item)) state.queue.unshift(item);
+  if (!state.current) drawNext();
+  else $('count-pill').textContent = `${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
+  renderList();renderStats();
   showToast('已新增並儲存在本機');openDetail(item);
 }
 function exportData(){
@@ -151,17 +174,26 @@ function exportData(){
   document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);
   $('backup-state').textContent='已產生備份檔（請確認已存到 iPhone 檔案 App）';
 }
+function normalizeStoredRecord(record){
+  // The starter build lowercased core keys. Restore their original spelling.
+  if (record.key === `core:${canonical(record.word)}`) {
+    return {...record, key: keyFor('core',record.word)};
+  }
+  return record;
+}
 function validateBackup(obj){
   if(!obj || obj.format!=='vocabulary-personal-backup'||obj.schema_version!==1||!Array.isArray(obj.records))throw Error('這不是支援的備份格式');
   if(obj.records.length>100000)throw Error('備份紀錄數過多');
   const keys=new Set();
-  for(const r of obj.records){
-    if(!r||typeof r.key!=='string'||typeof r.word!=='string'||!r.word.trim()||r.word.length>100||typeof r.note!=='string'||![0,1,2,3].includes(Number(r.grade)))throw Error('備份內容有不合法的紀錄');
+  const validated = obj.records.map(record => {
+    if(!record||typeof record.key!=='string'||typeof record.word!=='string'||!record.word.trim()||record.word.length>100||typeof record.note!=='string'||![0,1,2,3].includes(record.grade))throw Error('備份內容有不合法的紀錄');
+    const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');
     keys.add(r.key);
-  }
-  return obj.records;
+    return r;
+  });
+  return validated;
 }
 async function restoreFile(file){
   if(!file)return;
@@ -201,14 +233,26 @@ function wire(){
     const key=state.detailKey;
     const item=getWords().find(w=>w.key===key);
     if(!item)return;
-    const good=await write({...recordFor(item),note:ev.target.value});
-    if(good && key===state.detailKey)$('note-saved').textContent='已自動儲存';
+    const note = ev.target.value;
+    $('note-saved').textContent='儲存中…';
+    const good=await write(item,{note});
+    if(key===state.detailKey && $('detail-note').value===note) {
+      $('note-saved').textContent = good ? '已自動儲存' : '儲存失敗，請再試一次';
+    }
   });
   $('detail-delete').addEventListener('click',async()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if(!item||isCore(item))return;
     if(!confirm(`確定刪除自訂單字「${item.word}」及其學習紀錄？`))return;
-    try{await deleteRecord(item.key);state.records.delete(item.key);$('detail-dialog').close();refreshQueue();drawNext();renderList();renderStats();showToast('已刪除自訂單字');}
+    try{
+      await deleteRecord(item.key);
+      state.records.delete(item.key);
+      $('detail-dialog').close();
+      state.queue = state.queue.filter(entry => entry.key !== item.key);
+      if (state.current?.key === item.key) drawNext();
+      else renderCard();
+      renderList();renderStats();showToast('已刪除自訂單字');
+    }
     catch{showToast('刪除失敗')}
   });
   $('export-btn').addEventListener('click',exportData);
@@ -216,24 +260,27 @@ function wire(){
   $('import-file').addEventListener('change',ev=>restoreFile(ev.target.files?.[0]));
 }
 async function main(){
-  wire();
   let error=null;
   try{
     const response=await fetch('./data/core.json',{cache:'no-cache'});
     if(!response.ok)throw Error(`核心字庫 HTTP ${response.status}`);
     const json=await response.json();
     if(json.word_count!==4027||json.words?.length!==4027){
-      throw Error('核心 4,027 字尚未初始化；請完成 GitHub Actions 首次部署');
+      throw Error('核心字庫檔案不完整，請重新上傳完整專案中的 data/core.json');
     }
-    if(new Set(json.words.map(w=>canonical(w.word))).size!==4027)throw Error('核心字庫有重複詞條，已停止載入');
+    if(new Set(json.words.map(w=>w.word)).size!==4027)throw Error('核心字庫有重複詞條，已停止載入');
     state.core=json.words;state.coreMeta=json;
     $('core-status').textContent=`已鎖定 ${json.word_count.toLocaleString()} 字`;
   }catch(err){error=err;$('core-status').textContent='尚未載入核心字庫';console.warn(err);}
   try{
-    state.records=new Map((await getAll()).map(r=>[r.key,r]));
+    const stored = await getAll();
+    const normalized = stored.map(normalizeStoredRecord);
+    if (normalized.some((r,i) => r.key !== stored[i].key)) await replaceRecords(normalized);
+    state.records=new Map(normalized.map(r=>[r.key,r]));
     setSaving('本機儲存已啟用');
   }catch(err){console.error(err);setSaving('本機儲存不可用');showToast('無法使用 IndexedDB，請檢查瀏覽器設定');}
   refreshQueue();drawNext();renderList();renderStats();
+  wire();
   if(error){showToast(error.message);$('review-note').textContent=error.message;}
   if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(console.warn);
 }
