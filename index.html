@@ -22,7 +22,7 @@
        <div class="flash-card" id="flash-card">
           <div class="flash-top"><span id="card-counter">—</span><span id="card-tag">WORD CARD</span></div>
           <h2 id="card-word">正在載入單字…</h2>
-          <div id="card-back" class="card-back" hidden><div class="card-label">詞義與詞源</div><div id="card-details" class="card-details"></div><button class="link-button" id="card-full">開啟詳細資料 →</button></div>
+          <div id="card-back" class="card-back" hidden><div id="card-details" class="card-details"></div><button class="link-button" id="card-full">開啟詳細資料 →</button></div>
           <div id="card-placeholder" class="card-placeholder">先想想這個字的意思，再揭曉答案。</div>
           <div class="card-actions"><button id="reveal-btn" class="secondary-btn">顯示答案</button><button id="cambridge-btn" class="text-btn">Cambridge 查發音 ↗</button><button id="copy-btn" class="text-btn">複製單字</button></div>
        </div>
@@ -32,7 +32,7 @@
      </section>
      <section id="view-library" class="view">
        <div class="page-header"><div><div class="eyebrow">MY WORDS</div><h1>單字庫</h1><p>核心清單鎖定；可自由新增自己的單字。</p></div></div>
-       <form id="add-form" class="add-form"><label for="new-word">新增英文單字</label><div class="input-row"><input id="new-word" required maxlength="100" autocomplete="off" placeholder="例如：contemplate" /><button class="primary-btn" type="submit">新增</button></div><div class="hint">第一版先保存英文詞條；自動補齊字源將在下一階段加入。</div></form>
+       <form id="add-form" class="add-form"><label for="new-word">新增英文單字</label><div class="input-row"><input id="new-word" required maxlength="100" autocomplete="off" placeholder="例如：acquiesce" /><button class="primary-btn" type="submit">新增</button></div><div class="hint">單字會先存入本機，連網時自動查詢字典。</div></form>
        <div class="search-row"><input id="search-word" type="search" placeholder="搜尋全部單字…" aria-label="搜尋單字"/><span id="search-count"></span></div>
        <div id="word-list" class="word-list"></div><button id="load-more" class="secondary-btn wide" hidden>顯示更多</button>
      </section>
@@ -50,7 +50,38 @@
    </main>
    <nav class="bottom-nav" aria-label="主要導覽"><button class="nav-item active" data-view="review"><span>◈</span>抽背</button><button class="nav-item" data-view="library"><span>▤</span>單字庫</button><button class="nav-item" data-view="stats"><span>▥</span>統計</button><button class="nav-item" data-view="settings"><span>⚙</span>設定</button></nav>
  </div>
- <dialog id="detail-dialog" class="detail-dialog"><div class="dialog-head"><span>WORD DETAIL</span><button id="close-dialog" aria-label="關閉">✕</button></div><h2 id="detail-word"></h2><p id="detail-category" class="muted"></p><div class="detail-body"><h3>中文解釋</h3><div id="detail-meaning" class="detail-text muted">尚未補齊</div><h3>字根與歷史詞源</h3><div id="detail-etymology" class="detail-text muted">尚未補齊</div><h3>例句</h3><div id="detail-examples" class="detail-text muted">尚未補齊</div><h3>個人筆記</h3><textarea id="detail-note" rows="5" placeholder="記下自己的理解、用法與重點…"></textarea><p id="note-saved" class="muted">輸入後自動儲存</p></div><div class="dialog-footer"><button id="detail-cambridge" class="secondary-btn">Cambridge 查發音 ↗</button><button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button></div></dialog>
+ <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-word">
+   <div class="dialog-head"><span></span><button id="close-dialog" aria-label="關閉">✕</button></div>
+   <h2 id="detail-word"></h2>
+   <p id="detail-category" class="muted"></p>
+   <div class="detail-body">
+     <h3>中文解釋</h3>
+     <div id="detail-meaning" class="detail-text"></div>
+     <p id="detail-meaning-source" class="muted"></p>
+     <h3>英文釋義</h3>
+     <div id="detail-definitions" class="detail-text"></div>
+     <h3>構詞拆解</h3>
+     <div id="detail-roots" class="detail-text"></div>
+     <h3>歷史詞源</h3>
+     <div id="detail-etymology" class="detail-text"></div>
+     <h3>英文例句</h3>
+     <div id="detail-examples" class="detail-text"></div>
+     <div id="detail-collocation-section" hidden>
+       <h3>搭配詞</h3>
+       <div id="detail-collocations" class="detail-text"></div>
+     </div>
+     <p id="detail-source" class="muted"></p>
+     <p id="detail-lookup-status" class="muted" role="status"></p>
+     <h3><label for="detail-note">個人筆記</label></h3>
+     <textarea id="detail-note" rows="4" placeholder="記下自己的理解、用法與重點…"></textarea>
+     <p id="note-saved" class="muted">輸入後自動儲存</p>
+   </div>
+   <div class="dialog-footer">
+     <button id="detail-cambridge" class="secondary-btn">Cambridge 查發音 ↗</button>
+     <button id="detail-lookup" class="secondary-btn">查詢字典</button>
+     <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
+   </div>
+ </dialog>
  <div id="toast" class="toast" role="status" aria-live="polite"></div>
  <script type="module" src="./app.js"></script>
 </body>

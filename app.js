@@ -1,7 +1,13 @@
 import {getAll,saveRecord,deleteRecord,replaceRecords} from './db.js';
+import {lookupDictionary,dictionarySourceURL} from './dictionary.js';
 
 const $ = id => document.getElementById(id);
 const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', lastDrawn:null, searchLimit:70, detailKey:null, totalDrawn:0};
+const lookups = new Map();
+const lookupErrors = new Set();
+let glosses = {};
+let glossesReady;
+let pendingCustomLookup;
 const now = () => new Date().toISOString();
 const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -17,12 +23,13 @@ const getWords = () => [
 const showToast = (message) => {const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove('show'),2600);};
 const setSaving = text => $('saving').textContent=text;
 let pendingWrites = 0;
-async function write(item, changes){
+async function write(item, changes, existingOnly = false){
   pendingWrites++;
   $('export-btn').disabled = true;
   setSaving('儲存中…');
   try {
-    const saved = await saveRecord(recordFor(item), {...changes, updated_at:now()});
+    const saved = await saveRecord(recordFor(item), {...changes, updated_at:now()}, existingOnly);
+    if (!saved) return false;
     state.records.set(saved.key,saved);
     if (pendingWrites === 1) setSaving('已自動儲存');
     return true;
@@ -35,6 +42,113 @@ async function write(item, changes){
     pendingWrites--;
     $('export-btn').disabled = pendingWrites > 0;
   }
+}
+function offlineGloss(item){
+  if (Object.hasOwn(glosses,item.word)) return glosses[item.word];
+  const lower = canonical(item.word);
+  return !isCore(item) && Object.hasOwn(glosses,lower) ? glosses[lower] : '';
+}
+function dictionarySections(item){
+  const record = recordFor(item);
+  const dictionary = record.dictionary;
+  const local = offlineGloss(item);
+  const translated = dictionary?.translations?.join('、') || '';
+  return {
+    meaning: local || record.meaning || translated,
+    definitions: dictionary?.definitions?.join('\n\n') || '',
+    roots: dictionary?.roots?.join('\n') || '',
+    etymology: dictionary?.etymologies?.join('\n\n') || record.etymology || '',
+    examples: dictionary?.examples?.join('\n\n') || record.examples || '',
+    collocations: dictionary?.collocations?.join('\n') || '',
+    meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
+  };
+}
+function renderDictionary(item){
+  const data = dictionarySections(item);
+  for (const field of ['meaning','definitions','roots','etymology','examples']) {
+    $('detail-' + field).textContent = data[field] || '查無資料';
+  }
+  $('detail-collocations').textContent = data.collocations;
+  $('detail-collocation-section').hidden = !data.collocations;
+  $('detail-meaning-source').textContent = data.meaningSource;
+  const record = recordFor(item);
+  const dictionary = record.dictionary;
+  const source = $('detail-source');
+  source.replaceChildren();
+  if (dictionary?.found) {
+    const editions = [['en',dictionary.englishRevision,'英語維基詞典'], ['zh',dictionary.chineseRevision,'中文維基詞典']];
+    for (const [language,revision,label] of editions) {
+      if (!revision) continue;
+      const link = document.createElement('a');
+      link.href = dictionarySourceURL(language,revision,item.word);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = label;
+      if (source.childElementCount) source.append(' · ');
+      source.append(link);
+    }
+    const license = document.createElement('a');
+    license.href = 'https://creativecommons.org/licenses/by-sa/4.0/';
+    license.target = '_blank';
+    license.rel = 'noopener noreferrer';
+    license.textContent = 'CC BY-SA 4.0';
+    if (source.childElementCount) source.append(' · ');
+    source.append(license);
+  }
+  const busy = lookups.has(item.key);
+  $('detail-lookup').disabled = busy || navigator.onLine === false;
+  $('detail-lookup').textContent = dictionary ? '重新查詢' : '查詢字典';
+  $('detail-lookup-status').textContent = busy ? '正在查詢維基詞典…'
+    : lookupErrors.has(item.key) ? '連線或儲存失敗，可以重新查詢。'
+    : navigator.onLine === false ? '離線中，顯示已儲存的內容。'
+    : dictionary?.partial ? '已儲存可取得的內容，部分來源可重新查詢。'
+    : dictionary ? (dictionary.found ? '已儲存字典資料。' : '維基詞典暫無可用資料。')
+    : '等待查詢字典。';
+}
+function refreshDictionary(item){
+  if (state.detailKey === item.key && $('detail-dialog').open) renderDictionary(item);
+  if (state.current?.key === item.key && !$('card-back').hidden) setCardDetails(item);
+}
+function lookupWord(item, retry = false){
+  if (lookups.has(item.key)) return lookups.get(item.key).promise;
+  if (navigator.onLine === false || (!retry && (recordFor(item).dictionary || lookupErrors.has(item.key)))) return;
+  const controller = new AbortController();
+  const job = {controller};
+  const startingRecord = recordFor(item);
+  lookups.set(item.key,job);
+  lookupErrors.delete(item.key);
+  refreshDictionary(item);
+  job.promise = (async () => {
+    try {
+      await glossesReady;
+      const dictionary = await lookupDictionary(item.word,Boolean(offlineGloss(item)),controller.signal);
+      if (controller.signal.aborted) return false;
+      if (!isCore(item) && state.records.get(item.key)?.added_at !== startingRecord.added_at) return false;
+      const saved = await write(item,{dictionary,dictionaryPending:dictionary.partial},!isCore(item));
+      if (!saved && !controller.signal.aborted) lookupErrors.add(item.key);
+      return saved && !dictionary.partial;
+    } catch(error) {
+      if (!controller.signal.aborted) lookupErrors.add(item.key);
+      return false;
+    } finally {
+      if (lookups.get(item.key) === job) {
+        lookups.delete(item.key);
+        refreshDictionary(item);
+      }
+    }
+  })();
+  return job.promise;
+}
+function resumeCustomLookups(){
+  if (pendingCustomLookup || navigator.onLine === false) return;
+  pendingCustomLookup = (async () => {
+    for (const record of records()) {
+      if (!isCore(record) && record.dictionaryPending && state.records.has(record.key)) {
+        const done = await lookupWord(record,true);
+        if (!done) break;
+      }
+    }
+  })().finally(() => { pendingCustomLookup = null; });
 }
 function gradeOf(item){return Number(recordFor(item).grade||0);}
 function matches(item){return state.filter==='all'||Number(state.filter)===gradeOf(item);}
@@ -55,12 +169,12 @@ function drawNext(){
 }
 function setCardDetails(item){
   const r=recordFor(item);
+  const dictionary = dictionarySections(item);
   const chunks=[];
-  if(r.meaning)chunks.push(`<div><b>中文意思</b><p>${esc(r.meaning)}</p></div>`);
-  if(r.etymology)chunks.push(`<div><b>詞源</b><p>${esc(r.etymology)}</p></div>`);
-  if(r.examples)chunks.push(`<div><b>例句</b><p>${esc(r.examples)}</p></div>`);
+  if(dictionary.meaning)chunks.push(`<div><b>中文意思</b><p>${esc(dictionary.meaning)}</p></div>`);
+  else if(dictionary.definitions)chunks.push(`<div><b>英文釋義</b><p>${esc(dictionary.definitions.split('\n\n')[0])}</p></div>`);
   if(r.note)chunks.push(`<div><b>筆記</b><p>${esc(r.note)}</p></div>`);
-  if(!chunks.length)chunks.push('<p class="muted">詳細詞義、字根與例句將於下一階段自動補齊。你可以先新增個人筆記。</p>');
+  if(!chunks.length)chunks.push(`<p class="muted">${lookups.has(item.key) ? '正在查詢字典…' : '目前沒有釋義。可開啟詳細資料查看或重新查詢。'}</p>`);
   $('card-details').innerHTML=chunks.join('');
 }
 function renderCard(){
@@ -87,7 +201,10 @@ function renderCard(){
 }
 function reveal(){
   if(!state.current)return;
-  if($('card-back').hidden){$('card-back').hidden=false;$('card-placeholder').hidden=true;setCardDetails(state.current);$('reveal-btn').textContent='隱藏答案';}
+  if($('card-back').hidden){
+    $('card-back').hidden=false;$('card-placeholder').hidden=true;setCardDetails(state.current);$('reveal-btn').textContent='隱藏答案';
+    if (!offlineGloss(state.current)) lookupWord(state.current);
+  }
   else{$('card-back').hidden=true;$('card-placeholder').hidden=false;$('reveal-btn').textContent='顯示答案';}
 }
 async function setGrade(grade){
@@ -136,25 +253,24 @@ function openDetail(item){
   const r=recordFor(item);
   $('detail-word').textContent=item.word;
   $('detail-category').textContent=isCore(item)?'Lexifold 核心詞條 · 原始資料已鎖定':'自訂單字 · 可刪除';
-  $('detail-meaning').textContent=r.meaning||'尚未補齊。第一版已提供個人筆記，字典自動補齊將於下一階段加入。';
-  $('detail-etymology').textContent=r.etymology||'尚未補齊';
-  $('detail-examples').textContent=r.examples||'尚未補齊';
   $('detail-note').value=r.note||'';
   $('note-saved').textContent='輸入後自動儲存';
   $('detail-delete').hidden=isCore(item);
   $('detail-dialog').showModal();
+  renderDictionary(item);
+  lookupWord(item);
 }
 async function addWord(ev){
   ev.preventDefault();
   const word=$('new-word').value.trim().replace(/\s+/g,' ');
-  if(!word || word.length>100 || !/^[a-zA-Z][a-zA-Z\s'’-]*$/.test(word)){showToast('請輸入有效的英文單字');return;}
+  if(!word || word.length>100 || !/^\p{Script=Latin}[\p{Script=Latin}\p{Mark}\s'’-]*$/u.test(word)){showToast('請輸入有效的英文單字');return;}
   if ($('add-form').dataset.saving) return;
   const words = getWords();
   const existing = words.find(w=>w.word===word) || words.find(w=>canonical(w.word)===canonical(word));
   if(existing){showToast('這個單字已在字庫中');openDetail(existing);return;}
   const item={key:keyFor('custom',word),word,type:'custom'};
   $('add-form').dataset.saving = 'true';
-  const good=await write(item,{added_at:now()});
+  const good=await write(item,{added_at:now(),dictionaryPending:true});
   delete $('add-form').dataset.saving;
   if(!good)return;
   $('new-word').value='';
@@ -190,6 +306,11 @@ function validateBackup(obj){
     const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');
+    if (r.dictionary != null && (!['definitions','translations','roots','etymologies','examples'].every(
+      field => Array.isArray(r.dictionary[field]) && r.dictionary[field].every(value => typeof value === 'string')
+    ))) throw Error('備份的字典資料格式有誤');
+    if (r.dictionary?.collocations != null && (!Array.isArray(r.dictionary.collocations) ||
+        !r.dictionary.collocations.every(value => typeof value === 'string'))) throw Error('備份的搭配詞格式有誤');
     keys.add(r.key);
     return r;
   });
@@ -205,11 +326,15 @@ async function restoreFile(file){
       if(!confirm(`此備份來自 ${backup.core_count} 字版本；目前核心字庫是 ${state.core.length} 字。是否仍繼續？`))return;
     }
     if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟練度、筆記和自訂單字。建議先建立現有資料的備份。`))return;
+    for (const job of lookups.values()) job.controller.abort();
+    lookups.clear();
+    lookupErrors.clear();
     // A single IDB transaction makes restoration atomic; original core snapshot is never touched.
     await replaceRecords(recs);
     state.records=new Map(recs.map(r=>[r.key,r]));
     state.searchLimit=70;refreshQueue();drawNext();renderList();renderStats();
     setSaving('已還原');showToast('備份已載入');
+    resumeCustomLookups();
   }catch(err){console.error(err);showToast(`載入失敗：${err.message}`)}
   finally{$('import-file').value='';}
 }
@@ -229,6 +354,23 @@ function wire(){
   $('close-dialog').addEventListener('click',()=>$('detail-dialog').close());
   $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))$('detail-dialog').close();});
   $('detail-cambridge').addEventListener('click',()=>{const item=getWords().find(w=>w.key===state.detailKey);openCambridge(item);});
+  $('detail-lookup').addEventListener('click',()=>{
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (item) lookupWord(item,true);
+  });
+  window.addEventListener('online',()=>{
+    lookupErrors.clear();
+    resumeCustomLookups();
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (item && $('detail-dialog').open) {
+      refreshDictionary(item);
+      lookupWord(item);
+    }
+  });
+  window.addEventListener('offline',()=>{
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (item) refreshDictionary(item);
+  });
   $('detail-note').addEventListener('input',async ev=>{
     const key=state.detailKey;
     const item=getWords().find(w=>w.key===key);
@@ -244,6 +386,9 @@ function wire(){
     const item=getWords().find(w=>w.key===state.detailKey);
     if(!item||isCore(item))return;
     if(!confirm(`確定刪除自訂單字「${item.word}」及其學習紀錄？`))return;
+    lookups.get(item.key)?.controller.abort();
+    lookups.delete(item.key);
+    lookupErrors.delete(item.key);
     try{
       await deleteRecord(item.key);
       state.records.delete(item.key);
@@ -260,6 +405,13 @@ function wire(){
   $('import-file').addEventListener('change',ev=>restoreFile(ev.target.files?.[0]));
 }
 async function main(){
+  glossesReady = fetch('./data/glosses-zh.json')
+    .then(response => {
+      if (!response.ok) throw Error(`中文釋義 HTTP ${response.status}`);
+      return response.json();
+    })
+    .then(data => { glosses = data; })
+    .catch(error => console.warn(error));
   let error=null;
   try{
     const response=await fetch('./data/core.json',{cache:'no-cache'});
@@ -280,7 +432,9 @@ async function main(){
     setSaving('本機儲存已啟用');
   }catch(err){console.error(err);setSaving('本機儲存不可用');showToast('無法使用 IndexedDB，請檢查瀏覽器設定');}
   refreshQueue();drawNext();renderList();renderStats();
+  await glossesReady;
   wire();
+  resumeCustomLookups();
   if(error){showToast(error.message);$('review-note').textContent=error.message;}
   if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(console.warn);
 }

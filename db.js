@@ -13,7 +13,7 @@ export function openDB() {
   return cachedOpen;
 }
 export async function getAll(){const db=await openDB();return new Promise((resolve,reject)=>{const req=db.transaction(STORE,'readonly').objectStore(STORE).getAll();req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
-export async function saveRecord(defaults, changes){
+export async function saveRecord(defaults, changes, existingOnly = false){
   const db = await openDB();
   return new Promise((resolve,reject) => {
     const tx = db.transaction(STORE,'readwrite');
@@ -21,6 +21,7 @@ export async function saveRecord(defaults, changes){
     const req = store.get(defaults.key);
     let record;
     req.onsuccess = () => {
+      if (existingOnly && (!req.result || req.result.added_at !== defaults.added_at)) return;
       record = {...defaults,...req.result,...changes};
       store.put(record);
     };
