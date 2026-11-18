@@ -1,9 +1,10 @@
 const scope = self.registration.scope;
 const cachePrefix = `vocabulary:${scope}:`;
-const cacheName = `${cachePrefix}v3`;
+const cacheName = `${cachePrefix}v4`;
 const paths = [
   './', './index.html', './style.css', './app.js', './db.js',
-  './dictionary.js', './data/core.json', './data/glosses-zh.json', './manifest.webmanifest',
+  './dictionary.js', './vendor/opencc-cn2t.js', './data/core.json',
+  './data/glosses-zh.json', './manifest.webmanifest',
   './assets/icon-192.png', './assets/icon-512.png'
 ];
 const assetURLs = new Set(paths.map(path => new URL(path, scope).href));

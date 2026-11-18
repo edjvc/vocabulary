@@ -30,3 +30,8 @@ Wiktionary contributors, under applicable terms including
 Results extract and reformat senses, etymologies, explicit word-formation
 combinations and dictionary usage examples. Page revision links in the app
 credit and identify the source. Cambridge Dictionary is linked externally.
+
+The app converts Chinese etymologies to Taiwan Traditional Chinese with
+[opencc-js 1.4.2](https://github.com/nk2028/opencc-js). See the license files
+in `vendor/`. The Chinese fallback summarizes specific details extracted
+from the linked English Wiktionary text.
