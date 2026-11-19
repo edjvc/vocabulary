@@ -24,7 +24,12 @@
           <h2 id="card-word">正在載入單字…</h2>
           <div id="card-back" class="card-back" hidden><div id="card-details" class="card-details"></div><button class="link-button" id="card-full">開啟詳細資料 →</button></div>
           <div id="card-placeholder" class="card-placeholder">先想想這個字的意思，再揭曉答案。</div>
-          <div class="card-actions"><button id="reveal-btn" class="secondary-btn">顯示答案</button><button id="cambridge-btn" class="text-btn">Cambridge 查發音 ↗</button><button id="copy-btn" class="text-btn">複製單字</button></div>
+          <div class="card-actions">
+            <button id="reveal-btn" class="secondary-btn">顯示答案</button>
+            <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
+            <a id="etymonline-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
+            <button id="copy-btn" class="text-btn">複製單字</button>
+          </div>
        </div>
        <div class="mastery-group"><span>熟練度</span><div class="mastery-buttons"><button data-grade="1">不熟練</button><button data-grade="2">普通</button><button data-grade="3">熟練</button></div></div>
        <button id="next-btn" class="primary-btn wide">下一個單字 <span>→</span></button>
@@ -60,15 +65,6 @@
      <p id="detail-meaning-source" class="muted"></p>
      <h3>構詞拆解</h3>
      <div id="detail-roots" class="detail-text"></div>
-     <div class="etymology-heading">
-       <h3>歷史詞源</h3>
-       <div class="etymology-language" role="group" aria-label="詞源顯示語言">
-         <button type="button" data-etymology-lang="zh" aria-pressed="true">中文</button>
-         <button type="button" data-etymology-lang="en" aria-pressed="false" lang="en">English</button>
-       </div>
-     </div>
-     <div id="detail-etymology" class="detail-text" aria-live="polite"></div>
-     <p id="detail-etymology-source" class="muted"></p>
      <h3>英文例句</h3>
      <div id="detail-examples" class="detail-text"></div>
      <div id="detail-collocation-section" hidden>
@@ -82,7 +78,8 @@
      <p id="note-saved" class="muted">輸入後自動儲存</p>
    </div>
    <div class="dialog-footer">
-     <button id="detail-cambridge" class="secondary-btn">Cambridge 查發音 ↗</button>
+     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
+     <a id="detail-etymonline" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>

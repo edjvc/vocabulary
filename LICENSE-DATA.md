@@ -27,11 +27,7 @@ headwords to the study list.
 On-demand text comes from the English and Chinese editions of Wiktionary, by
 Wiktionary contributors, under applicable terms including
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-Results extract and reformat senses, etymologies, explicit word-formation
+Results extract and reformat Chinese senses, explicit word-formation
 combinations and dictionary usage examples. Page revision links in the app
-credit and identify the source. Cambridge Dictionary is linked externally.
-
-The app converts Chinese etymologies to Taiwan Traditional Chinese with
-[opencc-js 1.4.2](https://github.com/nk2028/opencc-js). See the license files
-in `vendor/`. The Chinese fallback summarizes specific details extracted
-from the linked English Wiktionary text.
+credit and identify the source. Cambridge Dictionary and Etymonline are linked
+externally.

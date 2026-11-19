@@ -1,11 +1,10 @@
 import {getAll,saveRecord,deleteRecord,replaceRecords} from './db.js';
-import {lookupDictionary,lookupChineseEtymology,dictionarySourceURL,summarizeEtymologies} from './dictionary.js';
+import {lookupDictionary,dictionarySourceURL} from './dictionary.js';
 
 const $ = id => document.getElementById(id);
 const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', lastDrawn:null, searchLimit:70, detailKey:null, totalDrawn:0};
 const lookups = new Map();
 const lookupErrors = new Set();
-let etymologyLanguage = 'zh';
 let glosses = {};
 let glossesReady;
 let pendingCustomLookup;
@@ -14,6 +13,7 @@ const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en'
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
 const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
+const etymonline = word => `https://www.etymonline.com/search?q=${encodeURIComponent(word)}`;
 const records = () => Array.from(state.records.values());
 const recordFor = item => state.records.get(item.key) || {key:item.key, word:item.word, grade:0, note:'', added_at:null, updated_at:null};
 const isCore = item => item.key.startsWith('core:');
@@ -62,35 +62,11 @@ function dictionarySections(item){
     meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
   };
 }
-function renderEtymology(item){
-  const record = recordFor(item);
-  const dictionary = record.dictionary;
-  const english = dictionary?.etymologies?.length
-    ? dictionary.etymologies : record.etymology ? [String(record.etymology)] : [];
-  const sourceChinese = dictionary?.etymologiesZh || [];
-  const chinese = sourceChinese.length ? sourceChinese : summarizeEtymologies(english,dictionary?.roots);
-  const useEnglish = etymologyLanguage === 'en';
-  const lines = useEnglish ? english : chinese;
-  const target = $('detail-etymology');
-  target.textContent = lines.join('\n\n') || (lookups.has(item.key)
-    ? '正在查詢詞源…'
-    : useEnglish ? '目前沒有英文詞源。'
-    : english.length ? '目前沒有可用的中文詞源。可切換至 English 閱讀原文。' : '目前沒有中文詞源。');
-  target.lang = lines.length && useEnglish ? 'en' : 'zh-Hant';
-  $('detail-etymology-source').textContent = !lines.length ? ''
-    : useEnglish ? '英語維基詞典原文'
-    : sourceChinese.length ? '中文維基詞典 · 臺灣繁體轉換'
-    : '中文摘要 · 依英語維基詞典的詞源資料整理';
-  for (const button of document.querySelectorAll('[data-etymology-lang]')) {
-    button.setAttribute('aria-pressed', String(button.dataset.etymologyLang === etymologyLanguage));
-  }
-}
 function renderDictionary(item){
   const data = dictionarySections(item);
   for (const field of ['meaning','roots','examples']) {
     $('detail-' + field).textContent = data[field] || '查無資料';
   }
-  renderEtymology(item);
   $('detail-collocations').textContent = data.collocations;
   $('detail-collocation-section').hidden = !data.collocations;
   $('detail-meaning-source').textContent = data.meaningSource;
@@ -135,8 +111,7 @@ function refreshDictionary(item){
 function lookupWord(item, retry = false){
   if (lookups.has(item.key)) return lookups.get(item.key).promise;
   const startingRecord = recordFor(item);
-  const existing = startingRecord.dictionary;
-  if (navigator.onLine === false || (!retry && (existing?.chineseEtymologyChecked || lookupErrors.has(item.key)))) return;
+  if (navigator.onLine === false || (!retry && (startingRecord.dictionary || lookupErrors.has(item.key)))) return;
   const controller = new AbortController();
   const job = {controller};
   lookups.set(item.key,job);
@@ -145,22 +120,7 @@ function lookupWord(item, retry = false){
   job.promise = (async () => {
     try {
       await glossesReady;
-      let dictionary;
-      if (existing && !retry && !existing.chineseEtymologyChecked) {
-        const supplementary = await lookupChineseEtymology(item.word,controller.signal);
-        const translations = existing.translations.length || offlineGloss(item)
-          ? existing.translations : supplementary.translations;
-        dictionary = {
-          ...existing,
-          ...supplementary,
-          translations,
-          found: Boolean(existing.found || supplementary.etymologiesZh.length || translations.length),
-          partial:false,
-          chineseEtymologyChecked:true
-        };
-      } else {
-        dictionary = await lookupDictionary(item.word,Boolean(offlineGloss(item)),controller.signal);
-      }
+      const dictionary = await lookupDictionary(item.word,Boolean(offlineGloss(item)),controller.signal);
       if (controller.signal.aborted) return false;
       if (!isCore(item) && state.records.get(item.key)?.added_at !== startingRecord.added_at) return false;
       const saved = await write(item,{dictionary,dictionaryPending:dictionary.partial},!isCore(item));
@@ -215,6 +175,59 @@ function setCardDetails(item){
   if(!chunks.length)chunks.push(`<p class="muted">${lookups.has(item.key) ? '正在查詢字典…' : '目前沒有釋義。可開啟詳細資料查看或重新查詢。'}</p>`);
   $('card-details').innerHTML=chunks.join('');
 }
+function externalLookupTarget(){
+  const useSameContext = navigator.standalone === true ||
+    window.matchMedia('(pointer: coarse), (display-mode: standalone)').matches;
+  return useSameContext ? '_self' : '_blank';
+}
+function setLookupLink(id,item,buildURL){
+  const link = $(id);
+  link.hidden = !item;
+  if (item) link.href = buildURL(item.word);
+  else link.removeAttribute('href');
+  link.target = externalLookupTarget();
+}
+function rememberLookupReturn(){
+  try {
+    window.history.replaceState({...window.history.state,vocabularyLookup:{
+      view:document.querySelector('.nav-item.active')?.dataset.view || 'review',
+      filter:state.filter,
+      current:state.current?.key,
+      queue:state.queue.map(item=>item.key),
+      totalDrawn:state.totalDrawn,
+      revealed:!$('card-back').hidden,
+      search:$('search-word').value,
+      detail:$('detail-dialog').open ? state.detailKey : null
+    }},'');
+  } catch(error) {
+    console.warn('無法記住查詢前的畫面',error);
+  }
+}
+function takeLookupReturn(){
+  const {vocabularyLookup,...rest} = window.history.state || {};
+  if (vocabularyLookup) {
+    try { window.history.replaceState(rest,''); }
+    catch(error) { console.warn(error); }
+  }
+  return vocabularyLookup;
+}
+function restoreLookupReturn(saved){
+  if (!saved) return;
+  const words = new Map(getWords().map(item=>[item.key,item]));
+  state.filter = saved.filter;
+  $('filter-select').value = state.filter;
+  $('search-word').value = saved.search;
+  state.current = words.get(saved.current) || null;
+  state.lastDrawn = state.current?.key || null;
+  state.queue = saved.queue.map(key=>words.get(key)).filter(item=>item && matches(item));
+  state.totalDrawn = saved.totalDrawn;
+  if (!state.current && state.queue.length) drawNext();
+  view(saved.view);
+  if (saved.view !== 'review') renderCard();
+  if (saved.revealed && state.current && $('card-back').hidden) reveal();
+  const detail = words.get(saved.detail);
+  if (detail) openDetail(detail);
+}
 function renderCard(){
   const item=state.current;
   $('card-word').textContent=item?.word||'這個範圍目前沒有單字';
@@ -226,7 +239,8 @@ function renderCard(){
   $('reveal-btn').textContent='顯示答案';
   $('reveal-btn').disabled=!item;
   $('next-btn').disabled=!item && getWords().length===0;
-  $('cambridge-btn').disabled=!item;
+  setLookupLink('cambridge-btn',item,cambridge);
+  setLookupLink('etymonline-btn',item,etymonline);
   $('copy-btn').disabled=!item;
   $('card-full').disabled=!item;
   for(const btn of document.querySelectorAll('[data-grade]')){
@@ -259,7 +273,6 @@ async function setGrade(grade){
     renderStats();
   }
 }
-function openCambridge(item){if(!item)return;window.open(cambridge(item.word),'_blank','noopener,noreferrer');}
 function renderStats(){
   const all=getWords();const counts=[0,0,0,0];
   all.forEach(w=>counts[gradeOf(w)]++);
@@ -288,13 +301,14 @@ function view(name){
 }
 function openDetail(item){
   state.detailKey=item.key;
-  etymologyLanguage = 'zh';
   const r=recordFor(item);
   $('detail-word').textContent=item.word;
   $('detail-category').textContent=isCore(item)?'Lexifold 核心詞條 · 原始資料已鎖定':'自訂單字 · 可刪除';
   $('detail-note').value=r.note||'';
   $('note-saved').textContent='輸入後自動儲存';
   $('detail-delete').hidden=isCore(item);
+  setLookupLink('detail-cambridge',item,cambridge);
+  setLookupLink('detail-etymonline',item,etymonline);
   $('detail-dialog').showModal();
   renderDictionary(item);
   lookupWord(item);
@@ -345,14 +359,13 @@ function validateBackup(obj){
     const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');
-    if (r.dictionary != null && (!['translations','roots','etymologies','examples'].every(
+    if (r.dictionary != null && (!['translations','roots','examples'].every(
       field => Array.isArray(r.dictionary[field]) && r.dictionary[field].every(value => typeof value === 'string')
     ))) throw Error('備份的字典資料格式有誤');
-    for (const field of ['collocations','etymologiesZh']) {
-      const values = r.dictionary?.[field];
-      if (values != null && (!Array.isArray(values) || !values.every(value => typeof value === 'string'))) {
-        throw Error('備份的字典資料格式有誤');
-      }
+    const collocations = r.dictionary?.collocations;
+    if (collocations != null && (!Array.isArray(collocations) ||
+        !collocations.every(value => typeof value === 'string'))) {
+      throw Error('備份的字典資料格式有誤');
     }
     keys.add(r.key);
     return r;
@@ -382,11 +395,25 @@ async function restoreFile(file){
   finally{$('import-file').value='';}
 }
 function wire(){
-  document.querySelectorAll('.nav-item').forEach(el=>el.addEventListener('click',()=>view(el.dataset.view)));
+  document.querySelectorAll('.nav-item').forEach(el=>el.addEventListener('click',()=>{
+    takeLookupReturn();
+    view(el.dataset.view);
+  }));
   $('filter-select').addEventListener('change',ev=>{state.filter=ev.target.value;state.totalDrawn=0;refreshQueue();drawNext();});
-  $('next-btn').addEventListener('click',drawNext);
+  $('next-btn').addEventListener('click',()=>{
+    takeLookupReturn();
+    drawNext();
+  });
   $('reveal-btn').addEventListener('click',reveal);
-  $('cambridge-btn').addEventListener('click',()=>openCambridge(state.current));
+  for (const link of document.querySelectorAll('.external-lookup')) {
+    link.addEventListener('click',ev=>{
+      link.target = externalLookupTarget();
+      if (link.target === '_self' && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey) {
+        rememberLookupReturn();
+      }
+    });
+  }
+  window.addEventListener('pageshow',ev=>{if (ev.persisted) takeLookupReturn();});
   $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
   $('card-full').addEventListener('click',()=>{if(state.current)openDetail(state.current)});
   document.querySelectorAll('[data-grade]').forEach(btn=>btn.addEventListener('click',()=>setGrade(Number(btn.dataset.grade))));
@@ -396,15 +423,6 @@ function wire(){
   $('word-list').addEventListener('click',ev=>{const row=ev.target.closest('[data-key]');if(!row)return;const item=getWords().find(w=>w.key===row.dataset.key);if(item)openDetail(item);});
   $('close-dialog').addEventListener('click',()=>$('detail-dialog').close());
   $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))$('detail-dialog').close();});
-  $('detail-cambridge').addEventListener('click',()=>{const item=getWords().find(w=>w.key===state.detailKey);openCambridge(item);});
-  for (const button of document.querySelectorAll('[data-etymology-lang]')) {
-    button.addEventListener('click',()=>{
-      const item = getWords().find(word=>word.key===state.detailKey);
-      if (!item) return;
-      etymologyLanguage = button.dataset.etymologyLang;
-      renderEtymology(item);
-    });
-  }
   $('detail-lookup').addEventListener('click',()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) lookupWord(item,true);
@@ -485,6 +503,7 @@ async function main(){
   refreshQueue();drawNext();renderList();renderStats();
   await glossesReady;
   wire();
+  restoreLookupReturn(takeLookupReturn());
   resumeCustomLookups();
   if(error){showToast(error.message);$('review-note').textContent=error.message;}
   if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(console.warn);
