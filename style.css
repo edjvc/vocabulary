@@ -101,15 +101,34 @@
   white-space: nowrap;
   background: white;
 }
+.page-header.review-header {
+  margin: 20px 0 12px;
+}
+.review-header h1 {
+  margin-bottom: 0;
+}
+#review-mastery {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+#review-mastery button {
+  padding-inline: 2px;
+  white-space: normal;
+}
 .search-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
 }
 .search-row input {
   font-size: 16px;
 }
-.search-row #add-word-btn {
+#search-count {
+  width: calc(2em + 9ch);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+#add-word-btn {
+  margin-bottom: 9px;
   padding-inline: 12px;
   min-height: 44px;
   white-space: nowrap;

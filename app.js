@@ -16,13 +16,15 @@ let addingWord = false;
 const masteryLevels = [
   {grade:3,label:'熟悉'},
   {grade:4,label:'僅發音不熟'},
-  {grade:2,label:'不太熟'},
+  {grade:2,label:'不熟'},
   {grade:1,label:'陌生'},
 ];
 const validGrades = [0,...masteryLevels.map(({grade})=>grade)];
 const now = () => new Date().toISOString();
-const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
+const normalizeSpaces = word => word.trim().replace(/\s+/g,' ');
+const canonical = word => normalizeSpaces(word).toLocaleLowerCase('en');
 const duplicateKey = word => canonical(word).normalize('NFC').replace(/[‘’]/g,"'");
+const validNewWord = word => word.length <= 100 && /^\p{Script=Latin}[\p{Script=Latin}\p{Mark}\s'’-]*$/u.test(word);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
 const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
@@ -327,9 +329,11 @@ function renderStats(){
   $('progress-text').textContent=`已標記 ${marked}% · 核心 ${state.core.length.toLocaleString()} 字 · 自訂 ${all.length-state.core.length} 字`;
 }
 function renderList(){
-  const q=canonical($('search-word').value);
-  const result=getWords().filter(w=>canonical(w.word).includes(q));
-  $('search-count').textContent=`共 ${result.length.toLocaleString()} 筆`;
+  const word = normalizeSpaces($('search-word').value.normalize('NFC'));
+  const q = duplicateKey(word);
+  const result = getWords().filter(item=>duplicateKey(item.word).includes(q));
+  const count = result.length > 99999 ? '99,999+' : result.length.toLocaleString('en-US');
+  $('search-count').textContent=`共 ${count} 筆`;
   const subset=result.slice(0,state.searchLimit);
   $('word-list').innerHTML=subset.map(item=>`
     <article class="word-row">
@@ -340,7 +344,9 @@ function renderList(){
         data-key="${esc(item.key)}" aria-label="${esc(item.word)}的熟練度">${masteryButtons(item)}</div>
     </article>`).join('') || '<div class="empty-list">沒有符合的單字。</div>';
   $('load-more').hidden=result.length<=state.searchLimit;
-  $('add-word-btn').disabled=addingWord || !q;
+  const addButton = $('add-word-btn');
+  addButton.hidden = !validNewWord(word) || result.some(item=>duplicateKey(item.word)===q);
+  addButton.disabled = addingWord;
 }
 function view(name){
   document.querySelectorAll('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+name));
@@ -370,8 +376,8 @@ async function addWord(){
   if (addingWord) return;
   const search=$('search-word');
   const input=search.value;
-  const word=input.normalize('NFC').trim().replace(/\s+/g,' ');
-  if(!word || word.length>100 || !/^\p{Script=Latin}[\p{Script=Latin}\p{Mark}\s'’-]*$/u.test(word)){showToast('請輸入有效的英文單字');return;}
+  const word=normalizeSpaces(input.normalize('NFC'));
+  if(!validNewWord(word)){showToast('請輸入有效的英文單字');return;}
   const duplicateMessage = '此單字已在資料庫，無法重複新增。';
   const spelling = duplicateKey(word);
   if (getWords().some(item=>duplicateKey(item.word)===spelling)) {
@@ -383,9 +389,8 @@ async function addWord(){
   $('add-word-btn').disabled=true;
   const good=await write(item,{added_at:now(),dictionaryPending:true},{createOnly:true});
   addingWord=false;
-  $('add-word-btn').disabled=!search.value.trim();
   if (good === null) window.alert(duplicateMessage);
-  if(!good)return;
+  if(!good){renderList();return;}
   if (search.value===input) search.value='';
   state.searchLimit=70;
   if (matches(item)) state.queue.unshift(item);

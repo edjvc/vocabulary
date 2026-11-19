@@ -17,6 +17,12 @@
    <header class="topbar"><div class="brand"><span class="brand-icon">v.</span><span>Vocabulary<small>PERSONAL WORD LIBRARY</small></span></div><div id="saving" class="saving" aria-live="polite">載入中…</div></header>
    <main>
      <section id="view-review" class="view active">
+       <div class="page-header review-header">
+         <div>
+           <div class="eyebrow">DAILY PRACTICE</div>
+           <h1>隨機抽背</h1>
+         </div>
+       </div>
        <div class="review-toolbar">
          <div class="review-filter">
            <label for="filter-select">抽背範圍</label>
@@ -24,7 +30,7 @@
              <option value="all">全部</option>
              <option value="3">熟悉</option>
              <option value="4">僅發音不熟</option>
-             <option value="2">不太熟</option>
+             <option value="2">不熟</option>
              <option value="1">陌生</option>
              <option value="0">未標記</option>
            </select>
@@ -48,10 +54,10 @@
        <div class="page-header"><div><div class="eyebrow">MY WORDS</div><h1>單字庫</h1><p>核心清單鎖定；可自由新增自己的單字。</p></div></div>
        <div class="search-row">
          <input id="search-word" type="search" maxlength="100" autocapitalize="none" autocomplete="off"
-           spellcheck="false" placeholder="搜尋或輸入單字…" aria-label="搜尋或輸入要新增的英文單字" />
+           spellcheck="false" placeholder="搜尋或新增" aria-label="搜尋或輸入要新增的英文單字" />
          <span id="search-count"></span>
-         <button id="add-word-btn" class="primary-btn" type="button" disabled>新增</button>
        </div>
+       <button id="add-word-btn" class="primary-btn" type="button" hidden>新增</button>
        <div id="word-list" class="word-list"></div><button id="load-more" class="secondary-btn wide" hidden>顯示更多</button>
      </section>
      <section id="view-stats" class="view">
@@ -61,7 +67,7 @@
          <div class="stat"><span>已標記</span><strong id="stat-marked">—</strong></div>
          <div class="stat"><span>熟悉</span><strong id="stat-3">—</strong></div>
          <div class="stat"><span>僅發音不熟</span><strong id="stat-4">—</strong></div>
-         <div class="stat"><span>不太熟</span><strong id="stat-2">—</strong></div>
+         <div class="stat"><span>不熟</span><strong id="stat-2">—</strong></div>
          <div class="stat"><span>陌生</span><strong id="stat-1">—</strong></div>
          <div class="stat"><span>未標記</span><strong id="stat-0">—</strong></div>
        </div>
