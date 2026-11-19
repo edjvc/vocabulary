@@ -1,0 +1,944 @@
+{
+  "format": "vocabulary-root-notes",
+  "schema_version": 1,
+  "core_source": "Lexifold TOEIC",
+  "core_word_count": 4027,
+  "entry_count": 50,
+  "wiktionary_license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "entries": [
+    {
+      "id": "core-0165",
+      "word": "business",
+      "group": "容易拆錯",
+      "method": "構詞",
+      "split": "busy（忙）＋ -ness（形成名詞）；拼寫 y 變 i",
+      "key_origin": "可追到古英語 bisiġnes，早期與忙碌、操心的事相關。",
+      "mnemonic": "忙著處理的事往往是正事；do business with someone＝和某人做生意。",
+      "sources": [
+        {
+          "title": "維基詞典 · business",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585962"
+        }
+      ]
+    },
+    {
+      "id": "core-0172",
+      "word": "issue",
+      "group": "多義與同形近形",
+      "method": "借詞聯想",
+      "split": "源頭可追到 ex-（出去）＋ eō（走）；英文整字記",
+      "key_origin": "古法語 issue 原指出口、出路，源於拉丁語 exīre「走出去」。",
+      "mnemonic": "文件送出去是 issue a report；事情冒出來成了「問題」，想成 an issue to resolve。",
+      "sources": [
+        {
+          "title": "維基詞典 · issue",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94559773"
+        },
+        {
+          "title": "維基詞典 · eo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586394"
+        }
+      ]
+    },
+    {
+      "id": "core-0196",
+      "word": "understand",
+      "group": "容易拆錯",
+      "method": "詞源有不確定性",
+      "split": "古英語已有 understandan；under- 的古義與構詞動機宜保留",
+      "key_origin": "一種解釋把 under- 連到「在……之間」，搭配 stand，不必硬套現在熟悉的「在下方」。",
+      "mnemonic": "想像站到對方的情境裡，就看懂他要表達什麼。I understand the point＝我理解重點了。",
+      "sources": [
+        {
+          "title": "維基詞典 · understand",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95611325"
+        },
+        {
+          "title": "Etymonline · understand",
+          "url": "https://www.etymonline.com/word/understand"
+        }
+      ]
+    },
+    {
+      "id": "core-0227",
+      "word": "present",
+      "group": "多義與同形近形",
+      "method": "歷史構詞",
+      "split": "拉丁語 prae-（在前）＋ esse（存在）是「在場」用法的來源",
+      "key_origin": "praesens 指在場；「展示、呈交」來自相關的 praesentāre。",
+      "mnemonic": "人出現在眼前是 be present，拿到別人眼前給他看是 present a report，送給對方的東西也叫 a present。",
+      "sources": [
+        {
+          "title": "維基詞典 · present",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95706674"
+        },
+        {
+          "title": "維基詞典 · praesens",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92021586"
+        }
+      ]
+    },
+    {
+      "id": "core-0296",
+      "word": "record",
+      "group": "多義與同形近形",
+      "method": "歷史構詞",
+      "split": "拉丁語 re-（回、再）＋ cor（心、心思）",
+      "key_origin": "動詞可追到拉丁語 recordārī「想起、回憶」，經古法語傳入。",
+      "mnemonic": "想成把事情留在心裡，日後找得回來：record the result＝記錄結果；a record＝一筆紀錄。",
+      "sources": [
+        {
+          "title": "維基詞典 · record",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94569328"
+        }
+      ]
+    },
+    {
+      "id": "core-0510",
+      "word": "address",
+      "group": "多義與同形近形",
+      "method": "借詞聯想",
+      "split": "可從 ad-（朝向）和 direct「導向」相關的來源理解",
+      "key_origin": "經古法語 adrecier 傳入，早期包含弄直、朝向或導向的概念。",
+      "mnemonic": "地址指明信往哪裡去；address a complaint 則是把注意力轉向投訴並處理它。",
+      "sources": [
+        {
+          "title": "維基詞典 · address",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95667836"
+        },
+        {
+          "title": "維基詞典 · directus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95476617"
+        }
+      ]
+    },
+    {
+      "id": "core-0633",
+      "word": "respect",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "re-（回頭）＋ spect-（看）",
+      "key_origin": "拉丁語 respiciō 可指回頭看，也有顧及、關照的意思。",
+      "mnemonic": "願意多看一眼、把對方的立場考慮進來，就容易想起「尊重」。",
+      "sources": [
+        {
+          "title": "維基詞典 · respect",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93719127"
+        },
+        {
+          "title": "維基詞典 · specio",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95454386"
+        }
+      ]
+    },
+    {
+      "id": "core-0666",
+      "word": "contract",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "con-（一起）＋ -tract（拉）",
+      "key_origin": "名詞與動詞都可追到拉丁語 contrahere，有拉攏、締結交易之意。",
+      "mnemonic": "肌肉往內拉會收縮；雙方被同一份約定拉在一起，那份約定叫合約。",
+      "sources": [
+        {
+          "title": "維基詞典 · contract",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586121"
+        },
+        {
+          "title": "維基詞典 · traho",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95680838"
+        }
+      ]
+    },
+    {
+      "id": "core-0737",
+      "word": "agreement",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "agree（同意）＋ -ment（形成名詞）",
+      "key_origin": "源自古法語 agrement 一系，和現代英語 agree 是同一詞族。",
+      "mnemonic": "兩邊都同意就是達成協議：reach an agreement。",
+      "sources": [
+        {
+          "title": "維基詞典 · agreement",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585648"
+        },
+        {
+          "title": "維基詞典 · agree",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95409968"
+        }
+      ]
+    },
+    {
+      "id": "core-0894",
+      "word": "maintain",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "歷史構詞為 manū（用手）＋ tenēre（握住）",
+      "key_origin": "經古法語 maintenir 傳入；-tain 對應拉丁語 tenēre。",
+      "mnemonic": "用手撐著讓它保持原狀；maintain equipment 就是維護設備。",
+      "sources": [
+        {
+          "title": "維基詞典 · maintain",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95670864"
+        },
+        {
+          "title": "維基詞典 · teneo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95487886"
+        }
+      ]
+    },
+    {
+      "id": "core-0961",
+      "word": "March",
+      "group": "多義與同形近形",
+      "method": "專名",
+      "split": "大寫月份名，整字記「三月」",
+      "key_origin": "源自拉丁語 mensis Mārtius，也就是羅馬戰神 Mars 的月份。",
+      "mnemonic": "看見大寫 M，聯想到 Mars 和三月。on March 5＝在 3 月 5 日。",
+      "sources": [
+        {
+          "title": "維基詞典 · March",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94541481"
+        },
+        {
+          "title": "維基詞典 · Mars",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95516548"
+        }
+      ]
+    },
+    {
+      "id": "core-0996",
+      "word": "prevent",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "pre-（在前）＋ -vent（來）",
+      "key_origin": "拉丁語 praeveniō 由 prae- 和 veniō「來」組成，原有先到、預先應對的意味。",
+      "mnemonic": "趕在缺陷出現前先做一件事，就是 prevent defects。",
+      "sources": [
+        {
+          "title": "維基詞典 · prevent",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93529362"
+        },
+        {
+          "title": "維基詞典 · venio",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95454082"
+        }
+      ]
+    },
+    {
+      "id": "core-1176",
+      "word": "confirm",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "con-（一起）＋ firm（穩固的）",
+      "key_origin": "拉丁語 cōnfirmāre 有使穩固、確立之意，詞根與 firmus「牢固」相關。",
+      "mnemonic": "把原本未定的事敲定，就是 confirm the schedule。",
+      "sources": [
+        {
+          "title": "維基詞典 · confirm",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93686125"
+        },
+        {
+          "title": "維基詞典 · firmo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93895078"
+        }
+      ]
+    },
+    {
+      "id": "core-1180",
+      "word": "transport",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "trans-（跨越）＋ port-（搬運）",
+      "key_origin": "拉丁語 trānsportāre 就有「搬運到另一邊」的意思。",
+      "mnemonic": "把貨從工廠搬到倉庫，中間這段就是運輸。",
+      "sources": [
+        {
+          "title": "維基詞典 · transport",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95572939"
+        },
+        {
+          "title": "維基詞典 · portare",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93486139"
+        }
+      ]
+    },
+    {
+      "id": "core-1238",
+      "word": "payment",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "pay（付款）＋ -ment（形成名詞）",
+      "key_origin": "與古法語 paiement 有關，英文可以用 pay ＋ -ment 理解。",
+      "mnemonic": "make a payment 是付一筆款；payment 也可以指那筆錢。",
+      "sources": [
+        {
+          "title": "維基詞典 · payment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95455395"
+        },
+        {
+          "title": "維基詞典 · pay",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644929"
+        }
+      ]
+    },
+    {
+      "id": "core-1268",
+      "word": "attract",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "at-（朝向，ad- 的變形）＋ -tract（拉）",
+      "key_origin": "源自拉丁語 attrahere「往自己這邊拉」，trahere 是「拉」。",
+      "mnemonic": "磁鐵把鐵吸過來，就像一件事把你的注意力拉過去。",
+      "sources": [
+        {
+          "title": "維基詞典 · attract",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95610237"
+        },
+        {
+          "title": "維基詞典 · traho",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95680838"
+        }
+      ]
+    },
+    {
+      "id": "core-1337",
+      "word": "proceed",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "pro-（往前）＋ -ceed（行進）",
+      "key_origin": "來自拉丁語 prōcēdō；-ceed 和 precede 的 -cede 同出一個「走」的詞根。",
+      "mnemonic": "Please proceed＝請繼續往下一步走。和 precede 的「走在前面」一起對照。",
+      "sources": [
+        {
+          "title": "維基詞典 · proceed",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93716473"
+        },
+        {
+          "title": "維基詞典 · cedo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95633479"
+        }
+      ]
+    },
+    {
+      "id": "core-1362",
+      "word": "manufacture",
+      "group": "容易拆錯",
+      "method": "歷史構詞",
+      "split": "manū（用手）＋ factus（做成的）",
+      "key_origin": "中世紀拉丁語 manūfactūra 原指用手製作，與 manual 的「手」同根。",
+      "mnemonic": "從「手工做出來」想到「製造」；manufacture parts＝製造零件。",
+      "sources": [
+        {
+          "title": "維基詞典 · manufacture",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94561675"
+        },
+        {
+          "title": "維基詞典 · manus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93654727"
+        },
+        {
+          "title": "維基詞典 · factum",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95423226"
+        }
+      ]
+    },
+    {
+      "id": "core-1513",
+      "word": "export",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "ex-（向外）＋ port-（搬運）",
+      "key_origin": "拉丁語 exportāre 源於 ex- 和 portāre「搬運」。",
+      "mnemonic": "貨品往外送就是出口；電腦把檔案送出去也叫 export。",
+      "sources": [
+        {
+          "title": "維基詞典 · export",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93076293"
+        },
+        {
+          "title": "維基詞典 · exporto",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=90484984"
+        }
+      ]
+    },
+    {
+      "id": "core-1531",
+      "word": "predict",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "pre-（事先）＋ dict-（說）",
+      "key_origin": "拉丁語 praedicō 結合 prae-「事先」與 dīcō「說」。",
+      "mnemonic": "事情還沒發生，你先說出結果，這就是預測。",
+      "sources": [
+        {
+          "title": "維基詞典 · predict",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93715976"
+        },
+        {
+          "title": "維基詞典 · dico",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93571430"
+        }
+      ]
+    },
+    {
+      "id": "core-1559",
+      "word": "permit",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "per-（通過）＋ -mit（送）",
+      "key_origin": "動詞源自拉丁語 permittō，組合的是「通過」與「送」。",
+      "mnemonic": "想像有人在門口放行：動詞 permit 是允許，名詞 a permit 是許可證。",
+      "sources": [
+        {
+          "title": "維基詞典 · permit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94566619"
+        },
+        {
+          "title": "維基詞典 · mitto",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92143833"
+        }
+      ]
+    },
+    {
+      "id": "core-1583",
+      "word": "import",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "im-（向內）＋ port-（搬運）",
+      "key_origin": "拉丁語 importō 的 im- 來自 in-，在 p 前變成 im-，此處是「進入」。",
+      "mnemonic": "同一個 port-，出口朝外，進口朝內；資料匯入也用 import。",
+      "sources": [
+        {
+          "title": "維基詞典 · import",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95540183"
+        },
+        {
+          "title": "維基詞典 · portare",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93486139"
+        }
+      ]
+    },
+    {
+      "id": "core-1594",
+      "word": "debt",
+      "group": "容易拆錯",
+      "method": "整字記",
+      "split": "和 debit 同源；現代 debt 的 b 不發音",
+      "key_origin": "經古法語 dete 傳入，現代拼寫補入 b，呼應拉丁語 dēbitum「所欠之物」。",
+      "mnemonic": "先用 pay off a debt 記「還清債務」，看到 b 時提醒自己略過它。",
+      "sources": [
+        {
+          "title": "維基詞典 · debt",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95608505"
+        },
+        {
+          "title": "維基詞典 · debitum",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92127901"
+        }
+      ]
+    },
+    {
+      "id": "core-1596",
+      "word": "outcome",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "out（出來）＋ come（來）",
+      "key_origin": "英語由 out 和 come 組成，記作一件事最後產生的結果。",
+      "mnemonic": "先做測試，再看跑出什麼結果：the outcome of the test。",
+      "sources": [
+        {
+          "title": "維基詞典 · outcome",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93517328"
+        }
+      ]
+    },
+    {
+      "id": "core-1786",
+      "word": "salary",
+      "group": "容易拆錯",
+      "method": "整字記",
+      "split": "整字記「薪資」；可用 sal「鹽」幫自己記字源",
+      "key_origin": "經法語追到拉丁語 salārium「津貼、薪資」，與 sal「鹽」有關；細部演變有不同說法。",
+      "mnemonic": "用「靠薪水買菜買鹽」當助記；annual salary＝年薪。",
+      "sources": [
+        {
+          "title": "維基詞典 · salary",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93516509"
+        },
+        {
+          "title": "維基詞典 · salarium",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95566162"
+        },
+        {
+          "title": "Etymonline · salary",
+          "url": "https://www.etymonline.com/word/salary"
+        }
+      ]
+    },
+    {
+      "id": "core-1929",
+      "word": "retain",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "re-（往回）＋ -tain（握住）",
+      "key_origin": "可追到拉丁語 retinēre「留住」，其中 tenēre 是「握住」。",
+      "mnemonic": "東西握在手裡不放，就是保留：retain the records＝保留紀錄。",
+      "sources": [
+        {
+          "title": "維基詞典 · retain",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92429726"
+        },
+        {
+          "title": "維基詞典 · teneo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95487886"
+        }
+      ]
+    },
+    {
+      "id": "core-2009",
+      "word": "unlikely",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "un-（不）＋ likely（有可能的）",
+      "key_origin": "中古英語已有 unlykely，沿用否定前綴 un- 加在 likely 前的構法。",
+      "mnemonic": "It’s unlikely to happen＝這件事不太可能發生。",
+      "sources": [
+        {
+          "title": "維基詞典 · unlikely",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94576445"
+        },
+        {
+          "title": "維基詞典 · likely",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94560885"
+        }
+      ]
+    },
+    {
+      "id": "core-2024",
+      "word": "uniform",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "uni-（一）＋ form（形式）",
+      "key_origin": "拉丁語 ūnifōrmis 指具有同一種形式，和「統一」的意思相連。",
+      "mnemonic": "大家穿同一款是 a uniform；尺寸一致也可說 uniform dimensions。",
+      "sources": [
+        {
+          "title": "維基詞典 · uniform",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588652"
+        },
+        {
+          "title": "維基詞典 · uniformis",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=90487421"
+        }
+      ]
+    },
+    {
+      "id": "core-2039",
+      "word": "submit",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "sub-（在下）＋ -mit（送）",
+      "key_origin": "拉丁語 submittere 也有置於其下、屈從的用法；mittō 是「送」。",
+      "mnemonic": "把報告交給上級審查叫 submit a report，向權威屈服也能用 submit。",
+      "sources": [
+        {
+          "title": "維基詞典 · submit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94573377"
+        },
+        {
+          "title": "維基詞典 · mitto",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92143833"
+        }
+      ]
+    },
+    {
+      "id": "core-2143",
+      "word": "transform",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "trans-（跨越）＋ form（形態）",
+      "key_origin": "源於拉丁語 transformāre，由 trans 和 forma「形態」構成。",
+      "mnemonic": "從一種形態跨到另一種，就是 transform A into B。",
+      "sources": [
+        {
+          "title": "維基詞典 · transform",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=91797490"
+        },
+        {
+          "title": "維基詞典 · forma",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95434323"
+        }
+      ]
+    },
+    {
+      "id": "core-2412",
+      "word": "mortgage",
+      "group": "容易拆錯",
+      "method": "歷史構詞",
+      "split": "古法語 mort（死的）＋ gage（抵押、擔保）",
+      "key_origin": "經法語傳入，早期可指一種被稱作「死抵押」的土地抵押契約。",
+      "mnemonic": "先抓 gage 是抵押，想到「拿房子作擔保的貸款」；take out a mortgage＝辦房貸。",
+      "sources": [
+        {
+          "title": "維基詞典 · mortgage",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93738875"
+        },
+        {
+          "title": "Etymonline · mortgage",
+          "url": "https://www.etymonline.com/word/mortgage"
+        }
+      ]
+    },
+    {
+      "id": "core-2422",
+      "word": "march",
+      "group": "多義與同形近形",
+      "method": "借詞聯想",
+      "split": "小寫動詞「行進、遊行」，整字記",
+      "key_origin": "經法語 marcher「行走」傳入，更早的法語詞形也有踏步的意思。",
+      "mnemonic": "想像大家踩著同一個節拍往前走：march down the street＝沿街行進。",
+      "sources": [
+        {
+          "title": "維基詞典 · march",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95362681"
+        }
+      ]
+    },
+    {
+      "id": "core-2795",
+      "word": "deadline",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "dead（此處聯想到不可逾越）＋ line（界線）",
+      "key_origin": "現代「截稿時間」的用法見於美國報業；與早期監獄界線用法的關係仍有不確定性。",
+      "mnemonic": "把截止時間想成一條到點就關門的線：meet a deadline。",
+      "sources": [
+        {
+          "title": "維基詞典 · deadline",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95533349"
+        },
+        {
+          "title": "Etymonline · deadline",
+          "url": "https://www.etymonline.com/word/deadline"
+        }
+      ]
+    },
+    {
+      "id": "core-2810",
+      "word": "receipt",
+      "group": "容易拆錯",
+      "method": "整字記",
+      "split": "從 receive（收到）聯想 receipt（收據）；p 不發音",
+      "key_origin": "可追到拉丁語 recipere「收取」，英文字拼寫後來補上 p，以接近拉丁來源。",
+      "mnemonic": "店家收到錢，你收到證明它已收錢的收據：keep the receipt。",
+      "sources": [
+        {
+          "title": "維基詞典 · receipt",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93718365"
+        },
+        {
+          "title": "維基詞典 · recipio",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=89362725"
+        }
+      ]
+    },
+    {
+      "id": "core-2815",
+      "word": "shipment",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "ship（運送）＋ -ment（形成名詞）",
+      "key_origin": "ship 從「船」發展出「運送」的動詞義，也能用於其他運輸方式。",
+      "mnemonic": "同一批被送出去的貨，就是 a shipment。",
+      "sources": [
+        {
+          "title": "維基詞典 · shipment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94571600"
+        },
+        {
+          "title": "維基詞典 · ship",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642551"
+        }
+      ]
+    },
+    {
+      "id": "core-2858",
+      "word": "precede",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "pre-（在前）＋ cede（行進）",
+      "key_origin": "源於拉丁語 praecēdō，cēdō 在這組詞裡是「走」。",
+      "mnemonic": "A precedes B，想成 A 走在 B 前面，因此 A 先發生。",
+      "sources": [
+        {
+          "title": "維基詞典 · precede",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93137738"
+        },
+        {
+          "title": "維基詞典 · cedo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95633479"
+        }
+      ]
+    },
+    {
+      "id": "core-2889",
+      "word": "sandwich",
+      "group": "容易拆錯",
+      "method": "整字記",
+      "split": "源自名稱 Sandwich，常用詞義整字記",
+      "key_origin": "食物名稱通常追溯到第四代三明治伯爵的頭銜。",
+      "mnemonic": "想像兩片麵包，把餡料夾在中間；be sandwiched between 也可指被夾在兩者之間。",
+      "sources": [
+        {
+          "title": "維基詞典 · sandwich",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93770616"
+        }
+      ]
+    },
+    {
+      "id": "core-2905",
+      "word": "feedback",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "feed（送入、提供）＋ back（回去）",
+      "key_origin": "這個複合詞的關鍵是 back：回應或訊號回到原來的一端。",
+      "mnemonic": "你交出報告，對方把意見送回來，就是 feedback。",
+      "sources": [
+        {
+          "title": "維基詞典 · feedback",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95536914"
+        },
+        {
+          "title": "維基詞典 · feed",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586471"
+        }
+      ]
+    },
+    {
+      "id": "core-2908",
+      "word": "warehouse",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "ware（商品、貨品）＋ house（房屋）",
+      "key_origin": "ware 在這裡是貨品，與 kitchenware 裡的 ware 有相同詞根。",
+      "mnemonic": "專門給貨物住的房子，就是倉庫。",
+      "sources": [
+        {
+          "title": "維基詞典 · warehouse",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588917"
+        },
+        {
+          "title": "維基詞典 · ware",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95407465"
+        }
+      ]
+    },
+    {
+      "id": "core-2913",
+      "word": "inspection",
+      "group": "常見詞根",
+      "method": "構詞",
+      "split": "inspect（檢查）＋ -ion（形成名詞）",
+      "key_origin": "經法語傳入，源頭與拉丁語 īnspiciō「查看」相同。",
+      "mnemonic": "inspect 是做檢查；incoming inspection 是進料檢驗。",
+      "sources": [
+        {
+          "title": "維基詞典 · inspection",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94559419"
+        },
+        {
+          "title": "維基詞典 · inspect",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92362661"
+        }
+      ]
+    },
+    {
+      "id": "core-2916",
+      "word": "inspect",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "in-（往裡）＋ spect-（看）",
+      "key_origin": "spect- 對應拉丁語 specere「看」，īnspicere 有往裡查看的意思。",
+      "mnemonic": "把零件翻過來仔細看一遍，就是 inspect the part。",
+      "sources": [
+        {
+          "title": "維基詞典 · inspect",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92362661"
+        },
+        {
+          "title": "維基詞典 · specio",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95454386"
+        }
+      ]
+    },
+    {
+      "id": "core-2922",
+      "word": "rewrite",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "re-（再一次）＋ write（寫）",
+      "key_origin": "re- 源自拉丁語前綴，此處用來表示再做一次。",
+      "mnemonic": "文件要改到得再寫一次，就是 rewrite the document。",
+      "sources": [
+        {
+          "title": "維基詞典 · rewrite",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93604336"
+        },
+        {
+          "title": "維基詞典 · re-",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95679623"
+        }
+      ]
+    },
+    {
+      "id": "core-2976",
+      "word": "supervise",
+      "group": "容易拆錯",
+      "method": "歷史構詞",
+      "split": "super-（在上方）＋ 與 videre（看）相關的部分",
+      "key_origin": "可追到拉丁語 supervidere，結合「在上方」與「看」。",
+      "mnemonic": "想成站在旁邊看著流程有沒有照做：supervise production＝監督生產。",
+      "sources": [
+        {
+          "title": "維基詞典 · supervise",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94573780"
+        }
+      ]
+    },
+    {
+      "id": "core-3016",
+      "word": "unhappy",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "un-（不）＋ happy（快樂的）",
+      "key_origin": "happy 早期也有「幸運的」之意，常被連到 hap「運氣、際遇」。",
+      "mnemonic": "先認出 happy，再把情緒反轉：不快樂、對結果不滿。",
+      "sources": [
+        {
+          "title": "維基詞典 · unhappy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93731252"
+        },
+        {
+          "title": "維基詞典 · happy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94557613"
+        }
+      ]
+    },
+    {
+      "id": "core-3152",
+      "word": "reimburse",
+      "group": "容易拆錯",
+      "method": "構詞",
+      "split": "re-（回去）＋ imburse（付錢、把錢放入錢袋的舊詞）",
+      "key_origin": "imburse 經法語可追到錢袋一詞，與英語 purse 有歷史關聯。",
+      "mnemonic": "你先墊錢，之後把花出去的錢補回錢包，就是 reimburse＝報銷、償還。",
+      "sources": [
+        {
+          "title": "維基詞典 · reimburse",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92156263"
+        },
+        {
+          "title": "維基詞典 · bursa",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95530853"
+        }
+      ]
+    },
+    {
+      "id": "core-3192",
+      "word": "distract",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "dis-（分開）＋ -tract（拉）",
+      "key_origin": "源自拉丁語 distrahere「拉開」，和 attract 的 -tract 同源。",
+      "mnemonic": "注意力被手機拉走，就是分心：distract someone from work。",
+      "sources": [
+        {
+          "title": "維基詞典 · distract",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586276"
+        },
+        {
+          "title": "維基詞典 · traho",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95680838"
+        }
+      ]
+    },
+    {
+      "id": "core-3280",
+      "word": "mislead",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "mis-（錯誤地）＋ lead（引導）",
+      "key_origin": "古英語已有相近的構法 mislǣdan，兩部分分別是「錯」和「引導」。",
+      "mnemonic": "把人帶往錯誤方向叫誤導；數據帶出錯誤印象也能用 mislead。",
+      "sources": [
+        {
+          "title": "維基詞典 · mislead",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93707957"
+        },
+        {
+          "title": "維基詞典 · mis-",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93377991"
+        }
+      ]
+    },
+    {
+      "id": "core-3587",
+      "word": "conform",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "con-（一起）＋ form（形狀、形式）",
+      "key_origin": "拉丁語 conformāre 有塑形、依某一樣式塑造的意思。",
+      "mnemonic": "想成零件做得和圖面形狀一致：conform to the specification＝符合規格。",
+      "sources": [
+        {
+          "title": "維基詞典 · conform",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94550788"
+        },
+        {
+          "title": "維基詞典 · conformo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92299075"
+        }
+      ]
+    },
+    {
+      "id": "core-3636",
+      "word": "disconnect",
+      "group": "日常構詞",
+      "method": "構詞",
+      "split": "dis-（分開）＋ connect（連接）",
+      "key_origin": "此處的 dis- 表示分離或解除，作用在 connect「連接」上。",
+      "mnemonic": "線接上是 connect the cable，把它拔開是 disconnect the cable。",
+      "sources": [
+        {
+          "title": "維基詞典 · disconnect",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=91194789"
+        },
+        {
+          "title": "維基詞典 · dis-",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95495756"
+        }
+      ]
+    },
+    {
+      "id": "core-3730",
+      "word": "transmit",
+      "group": "常見詞根",
+      "method": "歷史構詞",
+      "split": "trans-（跨越）＋ -mit（送）",
+      "key_origin": "拉丁語 trānsmittō 的構法就是把東西送到另一邊。",
+      "mnemonic": "把訊號送過去就是 transmit a signal，也可用於傳播疾病。",
+      "sources": [
+        {
+          "title": "維基詞典 · transmit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=90921713"
+        },
+        {
+          "title": "維基詞典 · mitto",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92143833"
+        }
+      ]
+    }
+  ]
+}

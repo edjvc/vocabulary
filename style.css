@@ -9,3 +9,50 @@
 .external-lookup[hidden] {
   display: none;
 }
+
+.root-notes {
+  margin: 18px 0 24px;
+  padding: 14px;
+  background: #f7f9f6;
+  border-radius: 12px;
+}
+.root-notes h3 {
+  margin: 0 0 10px;
+}
+.root-notes dl {
+  margin: 0;
+}
+.root-notes dl > div + div {
+  margin-top: 10px;
+}
+.root-notes dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+.root-notes dd {
+  margin: 3px 0 0;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.root-notes-links {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.root-notes-links > a {
+  border-radius: 6px;
+  padding: 8px 5px;
+  margin-left: -5px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.root-notes-links summary {
+  cursor: pointer;
+  width: fit-content;
+  padding: 4px 0;
+}
+.root-notes-links ul {
+  margin: 2px 0 0;
+  padding-inline-start: 18px;
+}

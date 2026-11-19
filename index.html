@@ -27,7 +27,6 @@
           <div class="card-actions">
             <button id="reveal-btn" class="secondary-btn">顯示答案</button>
             <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
-            <a id="etymonline-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
             <button id="copy-btn" class="text-btn">複製單字</button>
           </div>
        </div>
@@ -49,7 +48,7 @@
      <section id="view-settings" class="view">
        <div class="page-header"><div><div class="eyebrow">SETTINGS</div><h1>資料與備份</h1><p>平常自動儲存；只有備份／還原才需操作檔案。</p></div></div>
        <div class="panel"><h3>本機資料備份</h3><p>匯出自訂單字、熟練度、筆記及補充內容。備份可自行存至「我的 iPhone」或 iCloud Drive。</p><div class="settings-actions"><button id="export-btn" class="primary-btn">建立備份 JSON</button><button id="import-btn" class="secondary-btn">載入備份</button><input type="file" id="import-file" accept=".json,application/json" hidden/></div><p class="muted" id="backup-state">尚無本次使用紀錄</p></div>
-       <div class="panel"><h3>核心字庫</h3><p><strong id="core-status">檢查中…</strong></p><p>原始詞條唯讀。個人筆記與熟練度另存於本機。</p><p class="muted"><a href="https://lexifold.com/word-lists/" target="_blank" rel="noopener noreferrer">Lexifold TOEIC 字表</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。原始資料由 Browne、Culligan 和 Phillips 的 NGSL 1.2、TSL 1.2 與 NAWL 1.2 改作，已轉為 JSON。</p></div>
+       <div class="panel"><h3>核心字庫</h3><p><strong id="core-status">檢查中…</strong></p><p id="root-notes-count" class="muted" role="status">讀取字根記憶進度…</p><p>原始詞條唯讀。個人筆記與熟練度另存於本機。</p><p class="muted"><a href="https://lexifold.com/word-lists/" target="_blank" rel="noopener noreferrer">Lexifold TOEIC 字表</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。原始資料由 Browne、Culligan 和 Phillips 的 NGSL 1.2、TSL 1.2 與 NAWL 1.2 改作，已轉為 JSON。</p></div>
        <div class="panel"><h3>安裝到 iPhone</h3><p>在 Safari 開啟網站 → 分享 →「加入主畫面」。此 App 不需要帳號或伺服器。</p></div>
      </section>
    </main>
@@ -63,8 +62,22 @@
      <h3>中文解釋</h3>
      <div id="detail-meaning" class="detail-text"></div>
      <p id="detail-meaning-source" class="muted"></p>
-     <h3>構詞拆解</h3>
-     <div id="detail-roots" class="detail-text"></div>
+     <section class="root-notes" aria-labelledby="root-notes-title">
+       <h3 id="root-notes-title">字根記憶</h3>
+       <p id="root-note-status" class="muted" aria-live="polite"></p>
+       <dl id="root-note-content" hidden>
+         <div><dt>拆解</dt><dd id="root-note-split"></dd></div>
+         <div><dt>關鍵來源</dt><dd id="root-note-origin"></dd></div>
+         <div><dt>助記</dt><dd id="root-note-mnemonic"></dd></div>
+       </dl>
+       <div class="root-notes-links">
+         <a id="detail-etymonline" class="external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
+         <details id="root-note-sources" hidden>
+           <summary>資料來源</summary>
+           <ul id="root-note-source-list"></ul>
+         </details>
+       </div>
+     </section>
      <h3>英文例句</h3>
      <div id="detail-examples" class="detail-text"></div>
      <div id="detail-collocation-section" hidden>
@@ -79,7 +92,6 @@
    </div>
    <div class="dialog-footer">
      <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
-     <a id="detail-etymonline" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>

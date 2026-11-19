@@ -1,5 +1,6 @@
 import {getAll,saveRecord,deleteRecord,replaceRecords} from './db.js';
 import {lookupDictionary,dictionarySourceURL} from './dictionary.js';
+import {loadRootNotes} from './root-notes.js';
 
 const $ = id => document.getElementById(id);
 const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', lastDrawn:null, searchLimit:70, detailKey:null, totalDrawn:0};
@@ -7,6 +8,8 @@ const lookups = new Map();
 const lookupErrors = new Set();
 let glosses = {};
 let glossesReady;
+let rootNotes = new Map();
+let rootNotesStatus = 'loading';
 let pendingCustomLookup;
 const now = () => new Date().toISOString();
 const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
@@ -18,7 +21,7 @@ const records = () => Array.from(state.records.values());
 const recordFor = item => state.records.get(item.key) || {key:item.key, word:item.word, grade:0, note:'', added_at:null, updated_at:null};
 const isCore = item => item.key.startsWith('core:');
 const getWords = () => [
-  ...state.core.map(w => ({key:keyFor('core',w.word),word:w.word,type:'core'})),
+  ...state.core.map(w => ({key:keyFor('core',w.word),id:w.id,word:w.word,type:'core'})),
   ...records().filter(r => r.key.startsWith('custom:')).map(r=>({key:r.key,word:r.word,type:'custom'}))
 ];
 const showToast = (message) => {const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove('show'),2600);};
@@ -56,15 +59,58 @@ function dictionarySections(item){
   const translated = dictionary?.translations?.join('、') || '';
   return {
     meaning: local || record.meaning || translated,
-    roots: dictionary?.roots?.join('\n') || '',
     examples: dictionary?.examples?.join('\n\n') || record.examples || '',
     collocations: dictionary?.collocations?.join('\n') || '',
     meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
   };
 }
+function renderRootNotes(item){
+  const note = rootNotes.get(item.id);
+  $('root-note-content').hidden = !note;
+  $('root-note-status').hidden = Boolean(note);
+  $('root-note-status').textContent = !isCore(item) ? '尚無字根記憶。'
+    : rootNotesStatus === 'loading' ? '正在讀取字根記憶…'
+    : rootNotesStatus === 'error' ? '暫時無法載入字根記憶。'
+    : '這個單字的字根記憶尚未整理。';
+
+  const references = $('root-note-sources');
+  const list = $('root-note-source-list');
+  references.hidden = !note;
+  references.open = false;
+  list.replaceChildren();
+  if (!note) return;
+  $('root-note-split').textContent = note.split;
+  $('root-note-origin').textContent = note.key_origin;
+  $('root-note-mnemonic').textContent = note.mnemonic;
+  for (const source of note.sources) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = source.url;
+    link.textContent = source.title;
+    link.className = 'external-lookup';
+    link.target = externalLookupTarget();
+    link.rel = 'noopener noreferrer';
+    li.append(link);
+    list.append(li);
+  }
+}
+async function initializeRootNotes(){
+  try {
+    rootNotes = await loadRootNotes(state.core);
+    const total = state.core.length.toLocaleString();
+    $('root-notes-count').textContent = `字根記憶已整理 ${rootNotes.size.toLocaleString()} / ${total} 字`;
+    rootNotesStatus = 'ready';
+  } catch(error) {
+    console.warn(error);
+    $('root-notes-count').textContent = '暫時無法載入字根記憶。';
+    rootNotesStatus = 'error';
+  }
+  const item = $('detail-dialog').open && getWords().find(w=>w.key===state.detailKey);
+  if (item) renderRootNotes(item);
+}
 function renderDictionary(item){
   const data = dictionarySections(item);
-  for (const field of ['meaning','roots','examples']) {
+  for (const field of ['meaning','examples']) {
     $('detail-' + field).textContent = data[field] || '查無資料';
   }
   $('detail-collocations').textContent = data.collocations;
@@ -240,7 +286,6 @@ function renderCard(){
   $('reveal-btn').disabled=!item;
   $('next-btn').disabled=!item && getWords().length===0;
   setLookupLink('cambridge-btn',item,cambridge);
-  setLookupLink('etymonline-btn',item,etymonline);
   $('copy-btn').disabled=!item;
   $('card-full').disabled=!item;
   for(const btn of document.querySelectorAll('[data-grade]')){
@@ -310,6 +355,7 @@ function openDetail(item){
   setLookupLink('detail-cambridge',item,cambridge);
   setLookupLink('detail-etymonline',item,etymonline);
   $('detail-dialog').showModal();
+  renderRootNotes(item);
   renderDictionary(item);
   lookupWord(item);
 }
@@ -359,7 +405,7 @@ function validateBackup(obj){
     const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');
-    if (r.dictionary != null && (!['translations','roots','examples'].every(
+    if (r.dictionary != null && (!['translations','examples'].every(
       field => Array.isArray(r.dictionary[field]) && r.dictionary[field].every(value => typeof value === 'string')
     ))) throw Error('備份的字典資料格式有誤');
     const collocations = r.dictionary?.collocations;
@@ -405,14 +451,14 @@ function wire(){
     drawNext();
   });
   $('reveal-btn').addEventListener('click',reveal);
-  for (const link of document.querySelectorAll('.external-lookup')) {
-    link.addEventListener('click',ev=>{
-      link.target = externalLookupTarget();
-      if (link.target === '_self' && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey) {
-        rememberLookupReturn();
-      }
-    });
-  }
+  document.addEventListener('click',ev=>{
+    const link = ev.target.closest('a.external-lookup');
+    if (!link) return;
+    link.target = externalLookupTarget();
+    if (link.target === '_self' && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey) {
+      rememberLookupReturn();
+    }
+  });
   window.addEventListener('pageshow',ev=>{if (ev.persisted) takeLookupReturn();});
   $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
   $('card-full').addEventListener('click',()=>{if(state.current)openDetail(state.current)});
@@ -493,6 +539,7 @@ async function main(){
     state.core=json.words;state.coreMeta=json;
     $('core-status').textContent=`已鎖定 ${json.word_count.toLocaleString()} 字`;
   }catch(err){error=err;$('core-status').textContent='尚未載入核心字庫';console.warn(err);}
+  initializeRootNotes();
   try{
     const stored = await getAll();
     const normalized = stored.map(normalizeStoredRecord);

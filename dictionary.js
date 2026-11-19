@@ -41,21 +41,7 @@ function sectionTitle(heading) {
   return (heading.id || heading.querySelector('.mw-headline')?.id || text(heading)).replace(/_/g, ' ');
 }
 
-function wordParts(paragraph) {
-  const copy = paragraph.cloneNode(true);
-  copy.querySelectorAll('[class*="mention-gloss"], .ann-pos, .reference').forEach(node => node.remove());
-  const terms = [];
-  for (const mention of copy.querySelectorAll('.mention[lang]')) {
-    terms.push(text(mention));
-    mention.replaceWith(`§${terms.length - 1}§`);
-  }
-  const normalized = text(copy).replace(/[\u200e\u200f]/g, '');
-  return [...normalized.matchAll(/§\d+§(?:\s*\+\s*§\d+§)+/g)].map(([chain]) =>
-    chain.replace(/§(\d+)§/g, (_, index) => terms[Number(index)]));
-}
-
 export function parseEnglishEntry(html) {
-  const roots = [];
   const examples = [];
   const collocations = [];
   const translations = [];
@@ -65,9 +51,6 @@ export function parseEnglishEntry(html) {
     if (heading) {
       section = sectionTitle(heading).replace(/ \d+$/, '');
       continue;
-    }
-    if (section === 'Etymology' && (node.matches('p,ul,ol'))) {
-      roots.push(...wordParts(node));
     }
     if (PARTS_OF_SPEECH.test(section) && node.matches('ol')) {
       for (const item of node.children) {
@@ -85,7 +68,6 @@ export function parseEnglishEntry(html) {
   }
 
   return {
-    roots: unique(roots, 8),
     examples: unique(examples, 6),
     collocations: unique(collocations, 6),
     translations: unique(translations, 12)

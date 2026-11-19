@@ -27,7 +27,14 @@ headwords to the study list.
 On-demand text comes from the English and Chinese editions of Wiktionary, by
 Wiktionary contributors, under applicable terms including
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-Results extract and reformat Chinese senses, explicit word-formation
-combinations and dictionary usage examples. Page revision links in the app
+Results extract and reformat Chinese senses and dictionary usage examples.
+Page revision links in the app
 credit and identify the source. Cambridge Dictionary and Etymonline are linked
 externally.
+
+## Root notes
+
+`data/root-notes.json` contains curated Traditional Chinese study notes. Each
+entry identifies its sources. Material adapted from Wiktionary retains
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) attribution
+through its linked revisions. The recognition cues and mnemonics are original.
