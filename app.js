@@ -11,8 +11,11 @@ let glossesReady;
 let rootNotes = new Map();
 let rootNotesStatus = 'loading';
 let pendingCustomLookup;
+let addingWord = false;
+const masteryLevels = ['不熟練','普通','熟練'];
 const now = () => new Date().toISOString();
 const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
+const duplicateKey = word => canonical(word).normalize('NFC').replace(/[‘’]/g,"'");
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
 const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
@@ -27,16 +30,23 @@ const getWords = () => [
 const showToast = (message) => {const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove('show'),2600);};
 const setSaving = text => $('saving').textContent=text;
 let pendingWrites = 0;
-async function write(item, changes, existingOnly = false){
+async function write(item, changes, options){
   pendingWrites++;
   $('export-btn').disabled = true;
   setSaving('儲存中…');
   try {
-    const saved = await saveRecord(recordFor(item), {...changes, updated_at:now()}, existingOnly);
-    if (!saved) return false;
+    const updatedAt = now();
+    const saved = await saveRecord(recordFor(item), record=>({
+      ...(typeof changes === 'function' ? changes(record) : changes),
+      updated_at:updatedAt
+    }),options);
+    if (!saved) {
+      if (pendingWrites === 1) setSaving('本機儲存已啟用');
+      return null;
+    }
     state.records.set(saved.key,saved);
     if (pendingWrites === 1) setSaving('已自動儲存');
-    return true;
+    return saved;
   } catch(err){
     console.error(err);
     setSaving('儲存失敗');
@@ -74,24 +84,21 @@ function renderRootNotes(item){
     : '這個單字的字根記憶尚未整理。';
 
   const references = $('root-note-sources');
-  const list = $('root-note-source-list');
   references.hidden = !note;
-  references.open = false;
-  list.replaceChildren();
+  references.replaceChildren();
   if (!note) return;
   $('root-note-split').textContent = note.split;
   $('root-note-origin').textContent = note.key_origin;
   $('root-note-mnemonic').textContent = note.mnemonic;
   for (const source of note.sources) {
-    const li = document.createElement('li');
     const link = document.createElement('a');
     link.href = source.url;
     link.textContent = source.title;
     link.className = 'external-lookup';
     link.target = externalLookupTarget();
     link.rel = 'noopener noreferrer';
-    li.append(link);
-    list.append(li);
+    if (references.childElementCount) references.append(' · ');
+    references.append(link);
   }
 }
 async function initializeRootNotes(){
@@ -152,7 +159,6 @@ function renderDictionary(item){
 }
 function refreshDictionary(item){
   if (state.detailKey === item.key && $('detail-dialog').open) renderDictionary(item);
-  if (state.current?.key === item.key && !$('card-back').hidden) setCardDetails(item);
 }
 function lookupWord(item, retry = false){
   if (lookups.has(item.key)) return lookups.get(item.key).promise;
@@ -169,7 +175,7 @@ function lookupWord(item, retry = false){
       const dictionary = await lookupDictionary(item.word,Boolean(offlineGloss(item)),controller.signal);
       if (controller.signal.aborted) return false;
       if (!isCore(item) && state.records.get(item.key)?.added_at !== startingRecord.added_at) return false;
-      const saved = await write(item,{dictionary,dictionaryPending:dictionary.partial},!isCore(item));
+      const saved = await write(item,{dictionary,dictionaryPending:dictionary.partial},{existingOnly:!isCore(item)});
       if (!saved && !controller.signal.aborted) lookupErrors.add(item.key);
       return saved && !dictionary.partial;
     } catch(error) {
@@ -212,15 +218,6 @@ function drawNext(){
   if(state.current)state.totalDrawn++;
   renderCard();
 }
-function setCardDetails(item){
-  const r=recordFor(item);
-  const dictionary = dictionarySections(item);
-  const chunks=[];
-  if(dictionary.meaning)chunks.push(`<div><b>中文意思</b><p>${esc(dictionary.meaning)}</p></div>`);
-  if(r.note)chunks.push(`<div><b>筆記</b><p>${esc(r.note)}</p></div>`);
-  if(!chunks.length)chunks.push(`<p class="muted">${lookups.has(item.key) ? '正在查詢字典…' : '目前沒有釋義。可開啟詳細資料查看或重新查詢。'}</p>`);
-  $('card-details').innerHTML=chunks.join('');
-}
 function externalLookupTarget(){
   const useSameContext = navigator.standalone === true ||
     window.matchMedia('(pointer: coarse), (display-mode: standalone)').matches;
@@ -241,7 +238,6 @@ function rememberLookupReturn(){
       current:state.current?.key,
       queue:state.queue.map(item=>item.key),
       totalDrawn:state.totalDrawn,
-      revealed:!$('card-back').hidden,
       search:$('search-word').value,
       detail:$('detail-dialog').open ? state.detailKey : null
     }},'');
@@ -270,7 +266,6 @@ function restoreLookupReturn(saved){
   if (!state.current && state.queue.length) drawNext();
   view(saved.view);
   if (saved.view !== 'review') renderCard();
-  if (saved.revealed && state.current && $('card-back').hidden) reveal();
   const detail = words.get(saved.detail);
   if (detail) openDetail(detail);
 }
@@ -279,44 +274,41 @@ function renderCard(){
   $('card-word').textContent=item?.word||'這個範圍目前沒有單字';
   $('card-counter').textContent=item?`第 ${state.totalDrawn} 張`:'0 張';
   $('card-tag').textContent=item?'VOCABULARY':'EMPTY';
-  $('card-back').hidden=true;
-  $('card-placeholder').hidden=!item;
-  $('card-placeholder').textContent='先想想這個字的意思，再揭曉答案。';
-  $('reveal-btn').textContent='顯示答案';
   $('reveal-btn').disabled=!item;
   $('next-btn').disabled=!item && getWords().length===0;
   setLookupLink('cambridge-btn',item,cambridge);
   $('copy-btn').disabled=!item;
-  $('card-full').disabled=!item;
-  for(const btn of document.querySelectorAll('[data-grade]')){
-    const grade=Number(btn.dataset.grade);
-    btn.disabled=!item;
-    btn.classList.toggle('selected',item!=null && gradeOf(item)===grade);
-  }
+  renderMastery($('review-mastery'),item);
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
   $('review-note').textContent=item?'同一輪抽背不會重複，全部抽完才重新洗牌。':'可以更改抽背篩選，或到「單字庫」新增單字。';
 }
-function reveal(){
-  if(!state.current)return;
-  if($('card-back').hidden){
-    $('card-back').hidden=false;$('card-placeholder').hidden=true;setCardDetails(state.current);$('reveal-btn').textContent='隱藏答案';
-    if (!offlineGloss(state.current)) lookupWord(state.current);
-  }
-  else{$('card-back').hidden=true;$('card-placeholder').hidden=false;$('reveal-btn').textContent='顯示答案';}
+function masteryButtons(item){
+  const selected = item ? gradeOf(item) : 0;
+  return masteryLevels.map((label,index)=>{
+    const grade = index + 1;
+    const pressed = selected === grade;
+    return `<button type="button" data-grade="${grade}" aria-pressed="${pressed}"${item ? '' : ' disabled'}>${label}</button>`;
+  }).join('');
 }
-async function setGrade(grade){
-  const item = state.current;
-  if(!item)return;
-  if(await write(item,{grade})){
-    if (state.current?.key === item.key) {
-      document.querySelectorAll('[data-grade]').forEach(btn=>btn.classList.toggle('selected',Number(btn.dataset.grade)===gradeOf(item)));
-    }
-    showToast('熟練度已儲存');
-    // Keep the undrawn queue intact, preventing repeats within the round.
-    state.queue=state.queue.filter(matches);
-    $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
-    renderStats();
+function renderMastery(group,item){
+  group.dataset.key = item?.key || '';
+  if (!group.firstElementChild) group.innerHTML = masteryButtons(item);
+  const selected = item ? gradeOf(item) : 0;
+  for (const button of group.children) {
+    button.disabled = !item;
+    button.setAttribute('aria-pressed',String(Number(button.dataset.grade) === selected));
   }
+}
+async function setGrade(item,grade){
+  const saved = await write(item,record=>({grade:record.grade===grade ? 0 : grade}),{existingOnly:!isCore(item)});
+  if (!saved) return;
+  for (const group of document.querySelectorAll('.mastery-buttons[data-key]')) {
+    if (group.dataset.key === item.key) renderMastery(group,item);
+  }
+  showToast(saved.grade ? '熟練度已儲存' : '已取消熟練度標記');
+  state.queue=state.queue.filter(matches);
+  $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
+  renderStats();
 }
 function renderStats(){
   const all=getWords();const counts=[0,0,0,0];
@@ -333,8 +325,16 @@ function renderList(){
   const result=getWords().filter(w=>canonical(w.word).includes(q));
   $('search-count').textContent=`共 ${result.length.toLocaleString()} 筆`;
   const subset=result.slice(0,state.searchLimit);
-  $('word-list').innerHTML=subset.map(w=>`<button class="word-row" data-key="${esc(w.key)}"><span class="word-row-main"><b>${esc(w.word)}</b><small>${isCore(w)?'核心詞條 · 唯讀':'自訂單字'}</small></span><span class="word-grade g${gradeOf(w)}">${['未標記','不熟練','普通','熟練'][gradeOf(w)]}</span><span class="chevron">›</span></button>`).join('') || '<div class="empty-list">沒有符合的單字。</div>';
+  $('word-list').innerHTML=subset.map(item=>`
+    <article class="word-row">
+      <button type="button" class="word-row-main word-open" data-key="${esc(item.key)}">
+        <b>${esc(item.word)}</b><small>${isCore(item) ? '核心詞條 · 唯讀' : '自訂單字'}</small>
+      </button>
+      <div class="mastery-buttons compact-mastery" role="group"
+        data-key="${esc(item.key)}" aria-label="${esc(item.word)}的熟練度">${masteryButtons(item)}</div>
+    </article>`).join('') || '<div class="empty-list">沒有符合的單字。</div>';
   $('load-more').hidden=result.length<=state.searchLimit;
+  $('add-word-btn').disabled=addingWord || !q;
 }
 function view(name){
   document.querySelectorAll('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+name));
@@ -354,25 +354,33 @@ function openDetail(item){
   $('detail-delete').hidden=isCore(item);
   setLookupLink('detail-cambridge',item,cambridge);
   setLookupLink('detail-etymonline',item,etymonline);
+  renderMastery($('detail-mastery'),item);
   $('detail-dialog').showModal();
   renderRootNotes(item);
   renderDictionary(item);
   lookupWord(item);
 }
-async function addWord(ev){
-  ev.preventDefault();
-  const word=$('new-word').value.trim().replace(/\s+/g,' ');
+async function addWord(){
+  if (addingWord) return;
+  const search=$('search-word');
+  const input=search.value;
+  const word=input.normalize('NFC').trim().replace(/\s+/g,' ');
   if(!word || word.length>100 || !/^\p{Script=Latin}[\p{Script=Latin}\p{Mark}\s'’-]*$/u.test(word)){showToast('請輸入有效的英文單字');return;}
-  if ($('add-form').dataset.saving) return;
-  const words = getWords();
-  const existing = words.find(w=>w.word===word) || words.find(w=>canonical(w.word)===canonical(word));
-  if(existing){showToast('這個單字已在字庫中');openDetail(existing);return;}
+  const duplicateMessage = '此單字已在資料庫，無法重複新增。';
+  const spelling = duplicateKey(word);
+  if (getWords().some(item=>duplicateKey(item.word)===spelling)) {
+    window.alert(duplicateMessage);
+    return;
+  }
   const item={key:keyFor('custom',word),word,type:'custom'};
-  $('add-form').dataset.saving = 'true';
-  const good=await write(item,{added_at:now(),dictionaryPending:true});
-  delete $('add-form').dataset.saving;
+  addingWord=true;
+  $('add-word-btn').disabled=true;
+  const good=await write(item,{added_at:now(),dictionaryPending:true},{createOnly:true});
+  addingWord=false;
+  $('add-word-btn').disabled=!search.value.trim();
+  if (good === null) window.alert(duplicateMessage);
   if(!good)return;
-  $('new-word').value='';
+  if (search.value===input) search.value='';
   state.searchLimit=70;
   if (matches(item)) state.queue.unshift(item);
   if (!state.current) drawNext();
@@ -450,7 +458,7 @@ function wire(){
     takeLookupReturn();
     drawNext();
   });
-  $('reveal-btn').addEventListener('click',reveal);
+  $('reveal-btn').addEventListener('click',()=>{if(state.current)openDetail(state.current);});
   document.addEventListener('click',ev=>{
     const link = ev.target.closest('a.external-lookup');
     if (!link) return;
@@ -459,14 +467,24 @@ function wire(){
       rememberLookupReturn();
     }
   });
+  document.addEventListener('click',ev=>{
+    const button = ev.target.closest('.mastery-buttons button[data-grade]');
+    if (!button) return;
+    const key = button.closest('.mastery-buttons').dataset.key;
+    const item = getWords().find(word=>word.key===key);
+    if (item) setGrade(item,Number(button.dataset.grade));
+  });
   window.addEventListener('pageshow',ev=>{if (ev.persisted) takeLookupReturn();});
   $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
-  $('card-full').addEventListener('click',()=>{if(state.current)openDetail(state.current)});
-  document.querySelectorAll('[data-grade]').forEach(btn=>btn.addEventListener('click',()=>setGrade(Number(btn.dataset.grade))));
-  $('add-form').addEventListener('submit',addWord);
+  $('add-word-btn').addEventListener('click',addWord);
   $('search-word').addEventListener('input',()=>{state.searchLimit=70;renderList();});
   $('load-more').addEventListener('click',()=>{state.searchLimit+=100;renderList();});
-  $('word-list').addEventListener('click',ev=>{const row=ev.target.closest('[data-key]');if(!row)return;const item=getWords().find(w=>w.key===row.dataset.key);if(item)openDetail(item);});
+  $('word-list').addEventListener('click',ev=>{
+    const row=ev.target.closest('.word-open');
+    if (!row) return;
+    const item=getWords().find(word=>word.key===row.dataset.key);
+    if (item) openDetail(item);
+  });
   $('close-dialog').addEventListener('click',()=>$('detail-dialog').close());
   $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))$('detail-dialog').close();});
   $('detail-lookup').addEventListener('click',()=>{
@@ -553,6 +571,6 @@ async function main(){
   restoreLookupReturn(takeLookupReturn());
   resumeCustomLookups();
   if(error){showToast(error.message);$('review-note').textContent=error.message;}
-  if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(console.warn);
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(console.warn);
 }
 main();

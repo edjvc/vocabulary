@@ -22,22 +22,24 @@
        <div class="flash-card" id="flash-card">
           <div class="flash-top"><span id="card-counter">—</span><span id="card-tag">WORD CARD</span></div>
           <h2 id="card-word">正在載入單字…</h2>
-          <div id="card-back" class="card-back" hidden><div id="card-details" class="card-details"></div><button class="link-button" id="card-full">開啟詳細資料 →</button></div>
-          <div id="card-placeholder" class="card-placeholder">先想想這個字的意思，再揭曉答案。</div>
           <div class="card-actions">
             <button id="reveal-btn" class="secondary-btn">顯示答案</button>
             <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
             <button id="copy-btn" class="text-btn">複製單字</button>
           </div>
        </div>
-       <div class="mastery-group"><span>熟練度</span><div class="mastery-buttons"><button data-grade="1">不熟練</button><button data-grade="2">普通</button><button data-grade="3">熟練</button></div></div>
+       <div class="mastery-group"><span>熟練度</span><div id="review-mastery" class="mastery-buttons" role="group" aria-label="抽背熟練度"></div></div>
        <button id="next-btn" class="primary-btn wide">下一個單字 <span>→</span></button>
        <p id="review-note" class="inline-note"></p>
      </section>
      <section id="view-library" class="view">
        <div class="page-header"><div><div class="eyebrow">MY WORDS</div><h1>單字庫</h1><p>核心清單鎖定；可自由新增自己的單字。</p></div></div>
-       <form id="add-form" class="add-form"><label for="new-word">新增英文單字</label><div class="input-row"><input id="new-word" required maxlength="100" autocomplete="off" placeholder="例如：acquiesce" /><button class="primary-btn" type="submit">新增</button></div><div class="hint">單字會先存入本機，連網時自動查詢字典。</div></form>
-       <div class="search-row"><input id="search-word" type="search" placeholder="搜尋全部單字…" aria-label="搜尋單字"/><span id="search-count"></span></div>
+       <div class="search-row">
+         <input id="search-word" type="search" maxlength="100" autocapitalize="none" autocomplete="off"
+           spellcheck="false" placeholder="搜尋或輸入單字…" aria-label="搜尋或輸入要新增的英文單字" />
+         <span id="search-count"></span>
+         <button id="add-word-btn" class="primary-btn" type="button" disabled>新增</button>
+       </div>
        <div id="word-list" class="word-list"></div><button id="load-more" class="secondary-btn wide" hidden>顯示更多</button>
      </section>
      <section id="view-stats" class="view">
@@ -58,25 +60,23 @@
    <div class="dialog-head"><span></span><button id="close-dialog" aria-label="關閉">✕</button></div>
    <h2 id="detail-word"></h2>
    <p id="detail-category" class="muted"></p>
+   <div id="detail-mastery" class="mastery-buttons detail-mastery" role="group" aria-label="單字詳細頁熟練度"></div>
    <div class="detail-body">
      <h3>中文解釋</h3>
      <div id="detail-meaning" class="detail-text"></div>
      <p id="detail-meaning-source" class="muted"></p>
      <section class="root-notes" aria-labelledby="root-notes-title">
-       <h3 id="root-notes-title">字根記憶</h3>
+       <div class="root-notes-header">
+         <h3 id="root-notes-title">字根記憶</h3>
+         <a id="detail-etymonline" class="external-lookup etymology-button" aria-label="在 Etymonline 查詞源" rel="noopener noreferrer" hidden>查詞源 ↗</a>
+       </div>
        <p id="root-note-status" class="muted" aria-live="polite"></p>
        <dl id="root-note-content" hidden>
          <div><dt>拆解</dt><dd id="root-note-split"></dd></div>
          <div><dt>關鍵來源</dt><dd id="root-note-origin"></dd></div>
          <div><dt>助記</dt><dd id="root-note-mnemonic"></dd></div>
        </dl>
-       <div class="root-notes-links">
-         <a id="detail-etymonline" class="external-lookup" rel="noopener noreferrer" hidden>Etymonline 查詞源 ↗</a>
-         <details id="root-note-sources" hidden>
-           <summary>資料來源</summary>
-           <ul id="root-note-source-list"></ul>
-         </details>
-       </div>
+       <p id="root-note-sources" class="root-notes-links" hidden></p>
      </section>
      <h3>英文例句</h3>
      <div id="detail-examples" class="detail-text"></div>
