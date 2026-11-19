@@ -12,7 +12,14 @@ let rootNotes = new Map();
 let rootNotesStatus = 'loading';
 let pendingCustomLookup;
 let addingWord = false;
-const masteryLevels = ['不熟練','普通','熟練'];
+// Existing IDs keep their meaning in IndexedDB and previously exported backups.
+const masteryLevels = [
+  {grade:3,label:'熟悉'},
+  {grade:4,label:'僅發音不熟'},
+  {grade:2,label:'不太熟'},
+  {grade:1,label:'陌生'},
+];
+const validGrades = [0,...masteryLevels.map(({grade})=>grade)];
 const now = () => new Date().toISOString();
 const canonical = word => word.trim().replace(/\s+/g,' ').toLocaleLowerCase('en');
 const duplicateKey = word => canonical(word).normalize('NFC').replace(/[‘’]/g,"'");
@@ -284,8 +291,7 @@ function renderCard(){
 }
 function masteryButtons(item){
   const selected = item ? gradeOf(item) : 0;
-  return masteryLevels.map((label,index)=>{
-    const grade = index + 1;
+  return masteryLevels.map(({grade,label})=>{
     const pressed = selected === grade;
     return `<button type="button" data-grade="${grade}" aria-pressed="${pressed}"${item ? '' : ' disabled'}>${label}</button>`;
   }).join('');
@@ -311,11 +317,11 @@ async function setGrade(item,grade){
   renderStats();
 }
 function renderStats(){
-  const all=getWords();const counts=[0,0,0,0];
+  const all=getWords();const counts=Object.fromEntries(validGrades.map(grade=>[grade,0]));
   all.forEach(w=>counts[gradeOf(w)]++);
   $('stat-total').textContent=all.length.toLocaleString();
   $('stat-marked').textContent=(all.length-counts[0]).toLocaleString();
-  for(let i=0;i<4;i++)$('stat-'+i).textContent=counts[i].toLocaleString();
+  for(const grade of validGrades)$('stat-'+grade).textContent=counts[grade].toLocaleString();
   const marked=all.length?Math.round((all.length-counts[0])/all.length*100):0;
   $('progress-bar').firstElementChild.style.width=marked+'%';
   $('progress-text').textContent=`已標記 ${marked}% · 核心 ${state.core.length.toLocaleString()} 字 · 自訂 ${all.length-state.core.length} 字`;
@@ -409,7 +415,7 @@ function validateBackup(obj){
   if(obj.records.length>100000)throw Error('備份紀錄數過多');
   const keys=new Set();
   const validated = obj.records.map(record => {
-    if(!record||typeof record.key!=='string'||typeof record.word!=='string'||!record.word.trim()||record.word.length>100||typeof record.note!=='string'||![0,1,2,3].includes(record.grade))throw Error('備份內容有不合法的紀錄');
+    if(!record||typeof record.key!=='string'||typeof record.word!=='string'||!record.word.trim()||record.word.length>100||typeof record.note!=='string'||!validGrades.includes(record.grade))throw Error('備份內容有不合法的紀錄');
     const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');

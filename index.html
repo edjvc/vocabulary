@@ -17,8 +17,20 @@
    <header class="topbar"><div class="brand"><span class="brand-icon">v.</span><span>Vocabulary<small>PERSONAL WORD LIBRARY</small></span></div><div id="saving" class="saving" aria-live="polite">載入中…</div></header>
    <main>
      <section id="view-review" class="view active">
-       <div class="page-header"><div><div class="eyebrow">DAILY PRACTICE</div><h1>隨機抽背</h1><p>先回想，再揭曉。每次標記都會自動儲存。</p></div><div id="count-pill" class="count-pill">— 個單字</div></div>
-       <div class="toolbar"><label for="filter-select">抽背範圍</label><select id="filter-select"><option value="all">全部</option><option value="0">未標記</option><option value="1">不熟練</option><option value="2">普通</option><option value="3">熟練</option></select></div>
+       <div class="review-toolbar">
+         <div class="review-filter">
+           <label for="filter-select">抽背範圍</label>
+           <select id="filter-select">
+             <option value="all">全部</option>
+             <option value="3">熟悉</option>
+             <option value="4">僅發音不熟</option>
+             <option value="2">不太熟</option>
+             <option value="1">陌生</option>
+             <option value="0">未標記</option>
+           </select>
+         </div>
+         <div id="count-pill" class="count-pill">— 個單字</div>
+       </div>
        <div class="flash-card" id="flash-card">
           <div class="flash-top"><span id="card-counter">—</span><span id="card-tag">WORD CARD</span></div>
           <h2 id="card-word">正在載入單字…</h2>
@@ -44,7 +56,15 @@
      </section>
      <section id="view-stats" class="view">
        <div class="page-header"><div><div class="eyebrow">PROGRESS</div><h1>學習統計</h1><p>核心字庫與自訂單字一起統計。</p></div></div>
-       <div class="stat-grid"><div class="stat"><span>總單字</span><strong id="stat-total">—</strong></div><div class="stat"><span>已標記</span><strong id="stat-marked">—</strong></div><div class="stat"><span>不熟練</span><strong id="stat-1">—</strong></div><div class="stat"><span>普通</span><strong id="stat-2">—</strong></div><div class="stat"><span>熟練</span><strong id="stat-3">—</strong></div><div class="stat"><span>未標記</span><strong id="stat-0">—</strong></div></div>
+       <div class="stat-grid">
+         <div class="stat"><span>總單字</span><strong id="stat-total">—</strong></div>
+         <div class="stat"><span>已標記</span><strong id="stat-marked">—</strong></div>
+         <div class="stat"><span>熟悉</span><strong id="stat-3">—</strong></div>
+         <div class="stat"><span>僅發音不熟</span><strong id="stat-4">—</strong></div>
+         <div class="stat"><span>不太熟</span><strong id="stat-2">—</strong></div>
+         <div class="stat"><span>陌生</span><strong id="stat-1">—</strong></div>
+         <div class="stat"><span>未標記</span><strong id="stat-0">—</strong></div>
+       </div>
        <div class="panel"><h3>熟練度分布</h3><div id="progress-bar" class="progress-bar"><span></span></div><p id="progress-text" class="muted"></p></div>
      </section>
      <section id="view-settings" class="view">
