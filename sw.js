@@ -1,6 +1,6 @@
 const scope = self.registration.scope;
 const cachePrefix = `vocabulary:${scope}:`;
-const cacheName = `${cachePrefix}v9`;
+const cacheName = `${cachePrefix}v10`;
 const rootNotesPath = './data/root-notes.json';
 const rootNotesURL = new URL(rootNotesPath,scope).href;
 const paths = [

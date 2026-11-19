@@ -6,15 +6,18 @@
   <meta name="theme-color" content="#24342f" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Vocabulary" />
+  <meta name="apple-mobile-web-app-title" content="Ed Vocab EN" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
   <link rel="stylesheet" href="./style.css" />
-  <title>Vocabulary — 個人英文單字庫</title>
+  <title>Ed Vocabulary — 英文單字庫</title>
 </head>
 <body>
  <div class="app-shell">
-   <header class="topbar"><div class="brand"><span class="brand-icon">v.</span><span>Vocabulary<small>PERSONAL WORD LIBRARY</small></span></div><div id="saving" class="saving" aria-live="polite">載入中…</div></header>
+   <header class="topbar">
+     <div class="brand" lang="en"><img class="brand-icon" src="./assets/icon-192.png" width="30" height="30" alt="" /><span>Ed Vocabulary<small>English</small></span></div>
+     <div id="saving" class="saving" aria-live="polite">載入中…</div>
+   </header>
    <main>
      <section id="view-review" class="view active">
        <div class="page-header review-header">
@@ -46,7 +49,10 @@
             <button id="copy-btn" class="text-btn">複製單字</button>
           </div>
        </div>
-       <div class="mastery-group"><span>熟練度</span><div id="review-mastery" class="mastery-buttons" role="group" aria-label="抽背熟練度"></div></div>
+       <div class="familiarity-field review-familiarity">
+         <span>熟悉度</span>
+         <button id="review-familiarity" class="familiarity-status" type="button" aria-haspopup="dialog" aria-controls="familiarity-dialog" disabled>未標記</button>
+       </div>
        <button id="next-btn" class="primary-btn wide">下一個單字 <span>→</span></button>
        <p id="review-note" class="inline-note"></p>
      </section>
@@ -71,12 +77,12 @@
          <div class="stat"><span>陌生</span><strong id="stat-1">—</strong></div>
          <div class="stat"><span>未標記</span><strong id="stat-0">—</strong></div>
        </div>
-       <div class="panel"><h3>熟練度分布</h3><div id="progress-bar" class="progress-bar"><span></span></div><p id="progress-text" class="muted"></p></div>
+       <div class="panel"><h3>熟悉度分布</h3><div id="progress-bar" class="progress-bar"><span></span></div><p id="progress-text" class="muted"></p></div>
      </section>
      <section id="view-settings" class="view">
        <div class="page-header"><div><div class="eyebrow">SETTINGS</div><h1>資料與備份</h1><p>平常自動儲存；只有備份／還原才需操作檔案。</p></div></div>
-       <div class="panel"><h3>本機資料備份</h3><p>匯出自訂單字、熟練度、筆記及補充內容。備份可自行存至「我的 iPhone」或 iCloud Drive。</p><div class="settings-actions"><button id="export-btn" class="primary-btn">建立備份 JSON</button><button id="import-btn" class="secondary-btn">載入備份</button><input type="file" id="import-file" accept=".json,application/json" hidden/></div><p class="muted" id="backup-state">尚無本次使用紀錄</p></div>
-       <div class="panel"><h3>核心字庫</h3><p><strong id="core-status">檢查中…</strong></p><p id="root-notes-count" class="muted" role="status">讀取字根記憶進度…</p><p>原始詞條唯讀。個人筆記與熟練度另存於本機。</p><p class="muted"><a href="https://lexifold.com/word-lists/" target="_blank" rel="noopener noreferrer">Lexifold TOEIC 字表</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。原始資料由 Browne、Culligan 和 Phillips 的 NGSL 1.2、TSL 1.2 與 NAWL 1.2 改作，已轉為 JSON。</p></div>
+       <div class="panel"><h3>本機資料備份</h3><p>匯出自訂單字、熟悉度、筆記及補充內容。備份可自行存至「我的 iPhone」或 iCloud Drive。</p><div class="settings-actions"><button id="export-btn" class="primary-btn">建立備份 JSON</button><button id="import-btn" class="secondary-btn">載入備份</button><input type="file" id="import-file" accept=".json,application/json" hidden/></div><p class="muted" id="backup-state">尚無本次使用紀錄</p></div>
+       <div class="panel"><h3>核心字庫</h3><p><strong id="core-status">檢查中…</strong></p><p id="root-notes-count" class="muted" role="status">讀取字根記憶進度…</p><p>原始詞條唯讀。個人筆記與熟悉度另存於本機。</p><p class="muted"><a href="https://lexifold.com/word-lists/" target="_blank" rel="noopener noreferrer">Lexifold TOEIC 字表</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。原始資料由 Browne、Culligan 和 Phillips 的 NGSL 1.2、TSL 1.2 與 NAWL 1.2 改作，已轉為 JSON。</p></div>
        <div class="panel"><h3>安裝到 iPhone</h3><p>在 Safari 開啟網站 → 分享 →「加入主畫面」。此 App 不需要帳號或伺服器。</p></div>
      </section>
    </main>
@@ -86,7 +92,10 @@
    <div class="dialog-head"><span></span><button id="close-dialog" aria-label="關閉">✕</button></div>
    <h2 id="detail-word"></h2>
    <p id="detail-category" class="muted"></p>
-   <div id="detail-mastery" class="mastery-buttons detail-mastery" role="group" aria-label="單字詳細頁熟練度"></div>
+   <div class="familiarity-field detail-familiarity">
+     <span>熟悉度</span>
+     <button id="detail-familiarity" class="familiarity-status" type="button" aria-haspopup="dialog" aria-controls="familiarity-dialog">未標記</button>
+   </div>
    <div class="detail-body">
      <h3>中文解釋</h3>
      <div id="detail-meaning" class="detail-text"></div>
@@ -120,6 +129,17 @@
      <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge 查發音 ↗</a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
+   </div>
+ </dialog>
+ <dialog id="familiarity-dialog" class="familiarity-dialog" aria-labelledby="familiarity-title" aria-describedby="familiarity-word">
+   <div class="familiarity-dialog-content">
+     <div class="dialog-head">
+       <h2 id="familiarity-title">調整熟悉度</h2>
+       <button id="close-familiarity" type="button" aria-label="關閉">✕</button>
+     </div>
+     <p id="familiarity-word" class="muted"></p>
+     <fieldset id="familiarity-options" class="familiarity-options" aria-label="選擇熟悉度"></fieldset>
+     <p id="familiarity-error" class="familiarity-error" role="status"></p>
    </div>
  </dialog>
  <div id="toast" class="toast" role="status" aria-live="polite"></div>

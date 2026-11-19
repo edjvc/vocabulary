@@ -13,13 +13,15 @@ let rootNotesStatus = 'loading';
 let pendingCustomLookup;
 let addingWord = false;
 // Existing IDs keep their meaning in IndexedDB and previously exported backups.
-const masteryLevels = [
+const familiarityLevels = [
   {grade:3,label:'熟悉'},
   {grade:4,label:'僅發音不熟'},
   {grade:2,label:'不熟'},
   {grade:1,label:'陌生'},
+  {grade:0,label:'未標記'},
 ];
-const validGrades = [0,...masteryLevels.map(({grade})=>grade)];
+const validGrades = familiarityLevels.map(({grade})=>grade);
+const familiarityLabel = grade => familiarityLevels.find(level=>level.grade===grade)?.label || '未標記';
 const now = () => new Date().toISOString();
 const normalizeSpaces = word => word.trim().replace(/\s+/g,' ');
 const canonical = word => normalizeSpaces(word).toLocaleLowerCase('en');
@@ -287,36 +289,69 @@ function renderCard(){
   $('next-btn').disabled=!item && getWords().length===0;
   setLookupLink('cambridge-btn',item,cambridge);
   $('copy-btn').disabled=!item;
-  renderMastery($('review-mastery'),item);
+  renderFamiliarity($('review-familiarity'),item);
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
   $('review-note').textContent=item?'同一輪抽背不會重複，全部抽完才重新洗牌。':'可以更改抽背篩選，或到「單字庫」新增單字。';
 }
-function masteryButtons(item){
-  const selected = item ? gradeOf(item) : 0;
-  return masteryLevels.map(({grade,label})=>{
-    const pressed = selected === grade;
-    return `<button type="button" data-grade="${grade}" aria-pressed="${pressed}"${item ? '' : ' disabled'}>${label}</button>`;
-  }).join('');
+function renderFamiliarity(button,item){
+  const grade = item ? gradeOf(item) : 0;
+  const label = familiarityLabel(grade);
+  button.dataset.grade = grade;
+  button.textContent = label;
+  button.disabled = !item;
+  button.setAttribute('aria-label',`目前熟悉度為${label}，點選更改`);
 }
-function renderMastery(group,item){
-  group.dataset.key = item?.key || '';
-  if (!group.firstElementChild) group.innerHTML = masteryButtons(item);
-  const selected = item ? gradeOf(item) : 0;
-  for (const button of group.children) {
-    button.disabled = !item;
-    button.setAttribute('aria-pressed',String(Number(button.dataset.grade) === selected));
-  }
+function openFamiliarity(item){
+  const dialog = $('familiarity-dialog');
+  const options = $('familiarity-options');
+  if (!item || dialog.open || options.disabled) return;
+  const selected = gradeOf(item);
+  dialog.dataset.key = item.key;
+  $('familiarity-word').textContent = item.word;
+  $('familiarity-error').textContent = '';
+  options.innerHTML = familiarityLevels.map(({grade,label})=>`
+    <button type="button" class="familiarity-choice" data-grade="${grade}" aria-pressed="${grade===selected}">${grade===0 ? '取消標記' : label}</button>`
+  ).join('');
+  dialog.showModal();
+  (options.querySelector('[aria-pressed="true"]') || options.firstElementChild).focus();
 }
 async function setGrade(item,grade){
-  const saved = await write(item,record=>({grade:record.grade===grade ? 0 : grade}),{existingOnly:!isCore(item)});
-  if (!saved) return;
-  for (const group of document.querySelectorAll('.mastery-buttons[data-key]')) {
-    if (group.dataset.key === item.key) renderMastery(group,item);
+  const saved = await write(item,{grade},{existingOnly:!isCore(item)});
+  if (!saved) return false;
+  if (state.current?.key === item.key) renderFamiliarity($('review-familiarity'),item);
+  if (state.detailKey === item.key) renderFamiliarity($('detail-familiarity'),item);
+  const row = Array.from($('word-list').querySelectorAll('.word-row')).find(row=>row.dataset.key===item.key);
+  if (row) {
+    const badge = row.querySelector('.familiarity-badge');
+    badge.dataset.grade = saved.grade;
+    badge.textContent = familiarityLabel(saved.grade);
   }
-  showToast(saved.grade ? '熟練度已儲存' : '已取消熟練度標記');
+  showToast(saved.grade ? '熟悉度已儲存' : '已取消熟悉度標記');
   state.queue=state.queue.filter(matches);
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
   renderStats();
+  return true;
+}
+async function selectFamiliarity(grade){
+  const dialog = $('familiarity-dialog');
+  const options = $('familiarity-options');
+  if (!dialog.open || options.disabled) return;
+  const item = getWords().find(item=>item.key===dialog.dataset.key);
+  if (!item) return;
+  if (grade === gradeOf(item)) {
+    dialog.close();
+    return;
+  }
+  $('familiarity-error').textContent = '';
+  options.disabled = true;
+  const saved = await setGrade(item,grade);
+  options.disabled = false;
+  if (!dialog.open) return;
+  if (saved) dialog.close();
+  else {
+    $('familiarity-error').textContent = '熟悉度未儲存，請再試一次。';
+    options.querySelector(`[data-grade="${grade}"]`)?.focus();
+  }
 }
 function renderStats(){
   const all=getWords();const counts=Object.fromEntries(validGrades.map(grade=>[grade,0]));
@@ -335,14 +370,15 @@ function renderList(){
   const count = result.length > 99999 ? '99,999+' : result.length.toLocaleString('en-US');
   $('search-count').textContent=`共 ${count} 筆`;
   const subset=result.slice(0,state.searchLimit);
-  $('word-list').innerHTML=subset.map(item=>`
-    <article class="word-row">
-      <button type="button" class="word-row-main word-open" data-key="${esc(item.key)}">
+  $('word-list').innerHTML=subset.map(item=>{
+    const grade = gradeOf(item);
+    return `<button type="button" class="word-row" data-key="${esc(item.key)}">
+      <span class="word-row-main">
         <b>${esc(item.word)}</b><small>${isCore(item) ? '核心詞條 · 唯讀' : '自訂單字'}</small>
-      </button>
-      <div class="mastery-buttons compact-mastery" role="group"
-        data-key="${esc(item.key)}" aria-label="${esc(item.word)}的熟練度">${masteryButtons(item)}</div>
-    </article>`).join('') || '<div class="empty-list">沒有符合的單字。</div>';
+      </span>
+      <span class="familiarity-badge" data-grade="${grade}">${familiarityLabel(grade)}</span>
+    </button>`;
+  }).join('') || '<div class="empty-list">沒有符合的單字。</div>';
   $('load-more').hidden=result.length<=state.searchLimit;
   const addButton = $('add-word-btn');
   addButton.hidden = !validNewWord(word) || result.some(item=>duplicateKey(item.word)===q);
@@ -366,7 +402,7 @@ function openDetail(item){
   $('detail-delete').hidden=isCore(item);
   setLookupLink('detail-cambridge',item,cambridge);
   setLookupLink('detail-etymonline',item,etymonline);
-  renderMastery($('detail-mastery'),item);
+  renderFamiliarity($('detail-familiarity'),item);
   $('detail-dialog').showModal();
   renderRootNotes(item);
   renderDictionary(item);
@@ -446,7 +482,7 @@ async function restoreFile(file){
     if(state.core.length && backup.core_count!==state.core.length){
       if(!confirm(`此備份來自 ${backup.core_count} 字版本；目前核心字庫是 ${state.core.length} 字。是否仍繼續？`))return;
     }
-    if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟練度、筆記和自訂單字。建議先建立現有資料的備份。`))return;
+    if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟悉度、筆記和自訂單字。建議先建立現有資料的備份。`))return;
     for (const job of lookups.values()) job.controller.abort();
     lookups.clear();
     lookupErrors.clear();
@@ -478,20 +514,23 @@ function wire(){
       rememberLookupReturn();
     }
   });
-  document.addEventListener('click',ev=>{
-    const button = ev.target.closest('.mastery-buttons button[data-grade]');
-    if (!button) return;
-    const key = button.closest('.mastery-buttons').dataset.key;
-    const item = getWords().find(word=>word.key===key);
-    if (item) setGrade(item,Number(button.dataset.grade));
+  $('review-familiarity').addEventListener('click',()=>openFamiliarity(state.current));
+  $('detail-familiarity').addEventListener('click',()=>{
+    openFamiliarity(getWords().find(word=>word.key===state.detailKey));
   });
+  $('familiarity-options').addEventListener('click',ev=>{
+    const button = ev.target.closest('button[data-grade]');
+    if (button) selectFamiliarity(Number(button.dataset.grade));
+  });
+  $('close-familiarity').addEventListener('click',()=>$('familiarity-dialog').close());
+  $('familiarity-dialog').addEventListener('click',ev=>{if(ev.target===ev.currentTarget)ev.currentTarget.close();});
   window.addEventListener('pageshow',ev=>{if (ev.persisted) takeLookupReturn();});
   $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
   $('add-word-btn').addEventListener('click',addWord);
   $('search-word').addEventListener('input',()=>{state.searchLimit=70;renderList();});
   $('load-more').addEventListener('click',()=>{state.searchLimit+=100;renderList();});
   $('word-list').addEventListener('click',ev=>{
-    const row=ev.target.closest('.word-open');
+    const row=ev.target.closest('.word-row');
     if (!row) return;
     const item=getWords().find(word=>word.key===row.dataset.key);
     if (item) openDetail(item);
