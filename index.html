@@ -49,10 +49,7 @@
             <button id="copy-btn" class="text-btn">複製單字</button>
           </div>
        </div>
-       <div class="familiarity-field review-familiarity">
-         <span>熟悉度</span>
-         <button id="review-familiarity" class="familiarity-status" type="button" aria-haspopup="dialog" aria-controls="familiarity-dialog" disabled>未標記</button>
-       </div>
+       <div id="review-familiarity" class="review-familiarity" role="group" aria-label="抽背熟悉度"></div>
        <button id="next-btn" class="primary-btn wide">下一個單字 <span>→</span></button>
        <p id="review-note" class="inline-note"></p>
      </section>
@@ -71,6 +68,7 @@
        <div class="stat-grid">
          <div class="stat"><span>總單字</span><strong id="stat-total">—</strong></div>
          <div class="stat"><span>已標記</span><strong id="stat-marked">—</strong></div>
+         <div class="stat"><span>今日已標記</span><strong id="stat-today">—</strong></div>
          <div class="stat"><span>熟悉</span><strong id="stat-3">—</strong></div>
          <div class="stat"><span>僅發音不熟</span><strong id="stat-4">—</strong></div>
          <div class="stat"><span>不熟</span><strong id="stat-2">—</strong></div>
@@ -92,8 +90,7 @@
    <div class="dialog-head"><span></span><button id="close-dialog" aria-label="關閉">✕</button></div>
    <h2 id="detail-word"></h2>
    <p id="detail-category" class="muted"></p>
-   <div class="familiarity-field detail-familiarity">
-     <span>熟悉度</span>
+   <div class="detail-familiarity">
      <button id="detail-familiarity" class="familiarity-status" type="button" aria-haspopup="dialog" aria-controls="familiarity-dialog">未標記</button>
    </div>
    <div class="detail-body">
@@ -131,15 +128,11 @@
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>
  </dialog>
- <dialog id="familiarity-dialog" class="familiarity-dialog" aria-labelledby="familiarity-title" aria-describedby="familiarity-word">
+ <dialog id="familiarity-dialog" class="familiarity-dialog" aria-label="選擇熟悉度">
    <div class="familiarity-dialog-content">
-     <div class="dialog-head">
-       <h2 id="familiarity-title">調整熟悉度</h2>
-       <button id="close-familiarity" type="button" aria-label="關閉">✕</button>
-     </div>
-     <p id="familiarity-word" class="muted"></p>
+     <button id="close-familiarity" type="button" aria-label="關閉">✕</button>
      <fieldset id="familiarity-options" class="familiarity-options" aria-label="選擇熟悉度"></fieldset>
-     <p id="familiarity-error" class="familiarity-error" role="status"></p>
+     <div id="familiarity-error" class="familiarity-error" role="status"></div>
    </div>
  </dialog>
  <div id="toast" class="toast" role="status" aria-live="polite"></div>

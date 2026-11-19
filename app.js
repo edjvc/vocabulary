@@ -23,6 +23,11 @@ const familiarityLevels = [
 const validGrades = familiarityLevels.map(({grade})=>grade);
 const familiarityLabel = grade => familiarityLevels.find(level=>level.grade===grade)?.label || '未標記';
 const now = () => new Date().toISOString();
+function localDay(date = new Date()) {
+  const month = String(date.getMonth() + 1).padStart(2,'0');
+  const day = String(date.getDate()).padStart(2,'0');
+  return `${date.getFullYear()}-${month}-${day}`;
+}
 const normalizeSpaces = word => word.trim().replace(/\s+/g,' ');
 const canonical = word => normalizeSpaces(word).toLocaleLowerCase('en');
 const duplicateKey = word => canonical(word).normalize('NFC').replace(/[‘’]/g,"'");
@@ -289,7 +294,7 @@ function renderCard(){
   $('next-btn').disabled=!item && getWords().length===0;
   setLookupLink('cambridge-btn',item,cambridge);
   $('copy-btn').disabled=!item;
-  renderFamiliarity($('review-familiarity'),item);
+  renderFamiliarityChoices($('review-familiarity'),item);
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
   $('review-note').textContent=item?'同一輪抽背不會重複，全部抽完才重新洗牌。':'可以更改抽背篩選，或到「單字庫」新增單字。';
 }
@@ -301,24 +306,35 @@ function renderFamiliarity(button,item){
   button.disabled = !item;
   button.setAttribute('aria-label',`目前熟悉度為${label}，點選更改`);
 }
+function renderFamiliarityChoices(group,item,includeClear = false){
+  if (!group.firstElementChild) {
+    group.innerHTML = familiarityLevels.filter(({grade})=>grade || includeClear).map(({grade,label})=>`
+      <button type="button" class="familiarity-choice" data-grade="${grade}">${grade===0 ? '取消標記' : label}</button>`
+    ).join('');
+  }
+  const selected = item ? gradeOf(item) : 0;
+  for (const button of group.children) {
+    button.disabled = !item;
+    button.setAttribute('aria-pressed',String(Number(button.dataset.grade) === selected));
+  }
+}
 function openFamiliarity(item){
   const dialog = $('familiarity-dialog');
   const options = $('familiarity-options');
   if (!item || dialog.open || options.disabled) return;
-  const selected = gradeOf(item);
   dialog.dataset.key = item.key;
-  $('familiarity-word').textContent = item.word;
   $('familiarity-error').textContent = '';
-  options.innerHTML = familiarityLevels.map(({grade,label})=>`
-    <button type="button" class="familiarity-choice" data-grade="${grade}" aria-pressed="${grade===selected}">${grade===0 ? '取消標記' : label}</button>`
-  ).join('');
+  renderFamiliarityChoices(options,item,true);
   dialog.showModal();
   (options.querySelector('[aria-pressed="true"]') || options.firstElementChild).focus();
 }
-async function setGrade(item,grade){
-  const saved = await write(item,{grade},{existingOnly:!isCore(item)});
+async function setGrade(item,grade,{toggle = false} = {}){
+  const saved = await write(item,record=>{
+    const nextGrade = toggle && record.grade===grade ? 0 : grade;
+    return {grade:nextGrade,marked_on:nextGrade ? localDay() : null};
+  },{existingOnly:!isCore(item)});
   if (!saved) return false;
-  if (state.current?.key === item.key) renderFamiliarity($('review-familiarity'),item);
+  if (state.current?.key === item.key) renderFamiliarityChoices($('review-familiarity'),item);
   if (state.detailKey === item.key) renderFamiliarity($('detail-familiarity'),item);
   const row = Array.from($('word-list').querySelectorAll('.word-row')).find(row=>row.dataset.key===item.key);
   if (row) {
@@ -338,7 +354,7 @@ async function selectFamiliarity(grade){
   if (!dialog.open || options.disabled) return;
   const item = getWords().find(item=>item.key===dialog.dataset.key);
   if (!item) return;
-  if (grade === gradeOf(item)) {
+  if (grade === 0 && gradeOf(item) === 0) {
     dialog.close();
     return;
   }
@@ -353,15 +369,29 @@ async function selectFamiliarity(grade){
     options.querySelector(`[data-grade="${grade}"]`)?.focus();
   }
 }
+let midnightTimer;
 function renderStats(){
-  const all=getWords();const counts=Object.fromEntries(validGrades.map(grade=>[grade,0]));
-  all.forEach(w=>counts[gradeOf(w)]++);
+  const time = new Date();
+  const today = localDay(time);
+  const all = getWords();
+  const counts = Object.fromEntries(validGrades.map(grade=>[grade,0]));
+  let markedToday = 0;
+  for (const word of all) {
+    const record = recordFor(word);
+    const grade = Number(record.grade || 0);
+    counts[grade]++;
+    if (grade && record.marked_on === today) markedToday++;
+  }
   $('stat-total').textContent=all.length.toLocaleString();
   $('stat-marked').textContent=(all.length-counts[0]).toLocaleString();
+  $('stat-today').textContent=markedToday.toLocaleString();
   for(const grade of validGrades)$('stat-'+grade).textContent=counts[grade].toLocaleString();
   const marked=all.length?Math.round((all.length-counts[0])/all.length*100):0;
   $('progress-bar').firstElementChild.style.width=marked+'%';
   $('progress-text').textContent=`已標記 ${marked}% · 核心 ${state.core.length.toLocaleString()} 字 · 自訂 ${all.length-state.core.length} 字`;
+  time.setHours(24,0,0,0);
+  clearTimeout(midnightTimer);
+  midnightTimer = setTimeout(renderStats,Math.max(0,time.getTime()-Date.now()));
 }
 function renderList(){
   const word = normalizeSpaces($('search-word').value.normalize('NFC'));
@@ -460,6 +490,9 @@ function validateBackup(obj){
     const r = normalizeStoredRecord(record);
     if(!['custom:','core:'].some(p=>r.key.startsWith(p))||r.key!==keyFor(r.key.startsWith('core:')?'core':'custom',r.word))throw Error('備份含有不合法的詞條識別碼');
     if(keys.has(r.key))throw Error('備份包含重複詞條');
+    if (r.marked_on != null && (typeof r.marked_on !== 'string' || !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(r.marked_on))) {
+      throw Error('備份的標記日期格式有誤');
+    }
     if (r.dictionary != null && (!['translations','examples'].every(
       field => Array.isArray(r.dictionary[field]) && r.dictionary[field].every(value => typeof value === 'string')
     ))) throw Error('備份的字典資料格式有誤');
@@ -514,7 +547,10 @@ function wire(){
       rememberLookupReturn();
     }
   });
-  $('review-familiarity').addEventListener('click',()=>openFamiliarity(state.current));
+  $('review-familiarity').addEventListener('click',ev=>{
+    const button = ev.target.closest('button[data-grade]');
+    if (button && state.current) setGrade(state.current,Number(button.dataset.grade),{toggle:true});
+  });
   $('detail-familiarity').addEventListener('click',()=>{
     openFamiliarity(getWords().find(word=>word.key===state.detailKey));
   });
@@ -524,7 +560,11 @@ function wire(){
   });
   $('close-familiarity').addEventListener('click',()=>$('familiarity-dialog').close());
   $('familiarity-dialog').addEventListener('click',ev=>{if(ev.target===ev.currentTarget)ev.currentTarget.close();});
-  window.addEventListener('pageshow',ev=>{if (ev.persisted) takeLookupReturn();});
+  window.addEventListener('pageshow',ev=>{
+    if (ev.persisted) takeLookupReturn();
+    renderStats();
+  });
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden) renderStats();});
   $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
   $('add-word-btn').addEventListener('click',addWord);
   $('search-word').addEventListener('input',()=>{state.searchLimit=70;renderList();});
