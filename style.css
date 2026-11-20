@@ -93,15 +93,6 @@
   padding: 4px 8px;
   border: 1px solid var(--control-line);
 }
-.root-notes-links {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 12px;
-}
-.root-notes-links a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
 .root-notes-header {
   display: flex;
   align-items: center;

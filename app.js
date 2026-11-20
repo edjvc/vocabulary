@@ -38,7 +38,17 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;',
 const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
 const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
 const etymonline = word => `https://www.etymonline.com/search?q=${encodeURIComponent(word)}`;
-const rootNotePrompt = word => `請為 ${word} 寫一張繁中字根卡，依序輸出「拆解／關鍵來源／助記」，每欄一句。拆解先列現代構詞，再追溯一個最有用的字根。助記要把字根連到現代字義。詞源不確定就直說。`;
+const rootNotePrompt = word => `請為 ${word} 寫一張繁中字根卡。先說明現代構詞，再追溯一個最有助記憶的字根或原詞。助記請用一句聯想或常見搭配，把詞源連到現代用法。詞源不確定就直說。
+
+只輸出一個 Markdown 程式碼區塊，內容嚴格照下面三段排版。每段的粗體標籤後接一個全形空格，段落之間空一行：
+
+**拆解**　……
+
+**關鍵來源**　……
+
+**助記**　……
+
+省略單字標題、音標、獨立翻譯、網址、連結、圖片、引用標記和來源清單。區塊外也不要加文字。`;
 const chatgptLookup = word => `https://chatgpt.com/?q=${encodeURIComponent(rootNotePrompt(word))}&hints=search&temporary-chat=true`;
 const records = () => Array.from(state.records.values());
 const recordFor = item => state.records.get(item.key) || {key:item.key, word:item.word, grade:0, note:'', added_at:null, updated_at:null};
@@ -94,10 +104,16 @@ function dictionarySections(item){
     meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
   };
 }
-function renderRootNotes(item){
+function editableRootNote(item, record){
   const bundled = rootNotes.get(item.id);
-  const personal = recordFor(item).rootNote;
-  const note = rootNoteMarkdown(personal ?? bundled);
+  // Older records displayed the bundled sources outside the saved note.
+  const sources = record.rootNoteSourcesInline === true ? [] : bundled?.sources;
+  return rootNoteMarkdown(record.rootNote ?? bundled,sources);
+}
+function renderRootNotes(item){
+  const record = recordFor(item);
+  const personal = record.rootNote;
+  const note = editableRootNote(item,record);
   const hasText = Boolean(note.trim());
   const editor = rootNoteEditor?.key === item.key ? rootNoteEditor : null;
   const button = $('root-note-toggle');
@@ -114,26 +130,11 @@ function renderRootNotes(item){
     : rootNotesStatus === 'loading' ? '正在讀取字根記憶…'
     : rootNotesStatus === 'error' ? '暫時無法載入字根記憶。'
     : '這個單字的字根記憶尚未整理。';
-
-  const references = $('root-note-sources');
-  references.hidden = Boolean(editor) || !hasText || !bundled?.sources.length;
-  references.replaceChildren();
-  if (references.hidden) return;
-  if (personal != null) references.append('原始資料來源　');
-  for (const source of bundled?.sources ?? []) {
-    const link = document.createElement('a');
-    link.href = source.url;
-    link.textContent = source.title;
-    link.className = 'external-lookup';
-    link.target = externalLookupTarget();
-    link.rel = 'noopener noreferrer';
-    if (references.childElementCount) references.append(' · ');
-    references.append(link);
-  }
 }
 function startRootNoteEdit(item, savedEdit){
-  const note = recordFor(item).rootNote ?? rootNotes.get(item.id);
-  const initial = rootNoteMarkdown(savedEdit?.initial ?? note);
+  const initial = savedEdit
+    ? rootNoteMarkdown(savedEdit.initial)
+    : editableRootNote(item,recordFor(item));
   rootNoteEditor = {key:item.key,initial,saving:false};
   const input = $('root-note-editor');
   input.value = rootNoteMarkdown(savedEdit?.draft ?? initial);
@@ -154,7 +155,7 @@ async function toggleRootNoteEdit(item){
     editor.saving = true;
     $('root-note-feedback').textContent = '儲存中…';
     renderRootNotes(item);
-    const saved = await write(item,{rootNote:value},{existingOnly:!isCore(item)});
+    const saved = await write(item,{rootNote:value,rootNoteSourcesInline:true},{existingOnly:!isCore(item)});
     if (rootNoteEditor !== editor) return;
     if (!saved) {
       editor.saving = false;

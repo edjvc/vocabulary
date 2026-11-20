@@ -11,11 +11,17 @@ function escapeLegacyText(text) {
     .replace(/^( {0,3}\d{1,9})([.)])(?=[ \t])/gm, '$1\\$2');
 }
 
-export function rootNoteMarkdown(value) {
-  if (typeof value === 'string') return value;
-  return sections.filter(([key]) => value?.[key]?.trim())
+export function rootNoteMarkdown(value,sources = []) {
+  const body = typeof value === 'string' ? value : sections
+    .filter(([key]) => value?.[key]?.trim())
     .map(([key,label]) => `**${label}**　${escapeLegacyText(value[key])}`)
     .join('\n\n');
+  if (!body.trim() || !sources.length) return body;
+  const links = sources.flatMap(({title,url}) => {
+    const href = webURL(url);
+    return href ? [`[${escapeLegacyText(title)}](<${href}>)`] : [];
+  });
+  return links.length ? `${body}\n\n原始資料來源　${links.join(' · ')}` : body;
 }
 
 export function isRootNoteValue(value) {
