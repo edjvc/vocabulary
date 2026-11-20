@@ -51,7 +51,8 @@
 .root-notes dl > div + div {
   margin-top: 10px;
 }
-.root-notes dt {
+.root-notes dt,
+#root-note-editor label {
   color: var(--muted);
   font-size: 12px;
   font-weight: 650;
@@ -60,6 +61,7 @@
   margin: 3px 0 0;
   line-height: 1.65;
   overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 .root-notes-links {
   margin-top: 10px;
@@ -74,20 +76,72 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   margin-bottom: 10px;
 }
 .root-notes-header h3 {
   margin: 0;
 }
-.etymology-button {
-  border: 1px solid var(--line);
+.root-notes-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.root-note-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
-  padding: 6px 8px;
-  font-size: 11px;
+  border: 1px solid var(--accent-line);
+  min-height: 34px;
+  padding: 4px 5px;
+  font-size: 12px;
   font-weight: 650;
   white-space: nowrap;
+  text-decoration: none;
+  color: var(--accent);
   background: var(--panel);
+}
+.root-note-edit-action {
+  background: var(--accent-soft);
+}
+.root-note-edit-action[aria-expanded="true"] {
+  background: var(--accent-fill);
+  color: var(--accent-ink);
+}
+.root-note-action:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+#root-note-editor {
+  border: 0;
+  margin: 0;
+  min-inline-size: 0;
+  padding: 0;
+}
+#root-note-editor label {
+  display: block;
+  margin: 0 0 4px;
+}
+#root-note-editor textarea {
+  display: block;
+  min-height: 57px;
+  font-size: 16px;
+}
+#root-note-editor textarea + label {
+  margin-top: 8px;
+}
+.root-note-feedback {
+  margin: 6px 0 0;
+}
+.root-note-feedback:empty {
+  margin: 0;
+}
+@media (max-width: 360px) {
+  .root-notes {
+    padding-inline: 9px;
+  }
 }
 .page-header.review-header {
   margin: 20px 0 12px;

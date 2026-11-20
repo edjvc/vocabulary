@@ -10,6 +10,8 @@ let glosses = {};
 let glossesReady;
 let rootNotes = new Map();
 let rootNotesStatus = 'loading';
+const rootNoteFields = ['split','key_origin','mnemonic'];
+let rootNoteEditor = null;
 let pendingCustomLookup;
 let addingWord = false;
 // Existing IDs keep their meaning in IndexedDB and previously exported backups.
@@ -36,6 +38,8 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;',
 const keyFor = (type,word) => `${type}:${type === 'core' ? word : canonical(word)}`;
 const cambridge = word => `https://dictionary.cambridge.org/search/english/direct/?q=${encodeURIComponent(word)}`;
 const etymonline = word => `https://www.etymonline.com/search?q=${encodeURIComponent(word)}`;
+const rootNotePrompt = word => `請為 ${word} 寫一張繁中字根卡，依序輸出「拆解／關鍵來源／助記」，每欄一句。拆解先列現代構詞，再追溯一個最有用的字根。助記要把字根連到現代字義。詞源不確定就直說。`;
+const chatgptLookup = word => `https://chatgpt.com/?q=${encodeURIComponent(rootNotePrompt(word))}&hints=search&temporary-chat=true`;
 const records = () => Array.from(state.records.values());
 const recordFor = item => state.records.get(item.key) || {key:item.key, word:item.word, grade:0, note:'', added_at:null, updated_at:null};
 const isCore = item => item.key.startsWith('core:');
@@ -90,23 +94,36 @@ function dictionarySections(item){
     meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
   };
 }
+const rootNoteInput = field => $('root-note-field-' + field);
+const readRootNoteEditor = () => Object.fromEntries(rootNoteFields.map(field=>[field,rootNoteInput(field).value]));
 function renderRootNotes(item){
-  const note = rootNotes.get(item.id);
-  $('root-note-content').hidden = !note;
-  $('root-note-status').hidden = Boolean(note);
-  $('root-note-status').textContent = !isCore(item) ? '尚無字根記憶。'
+  const bundled = rootNotes.get(item.id);
+  const personal = recordFor(item).rootNote;
+  const note = personal ?? bundled;
+  const hasText = rootNoteFields.some(field=>Boolean(note?.[field]));
+  const editor = rootNoteEditor?.key === item.key ? rootNoteEditor : null;
+  const button = $('root-note-toggle');
+  button.textContent = editor ? '儲存' : '編輯';
+  button.setAttribute('aria-expanded',String(Boolean(editor)));
+  button.disabled = Boolean(editor?.saving) || (!personal && isCore(item) && rootNotesStatus === 'loading');
+  $('root-note-editor').hidden = !editor;
+  $('root-note-editor').disabled = Boolean(editor?.saving);
+  $('root-note-content').hidden = Boolean(editor) || !hasText;
+  $('root-note-status').hidden = Boolean(editor) || hasText;
+  $('root-note-status').textContent = !isCore(item) || personal ? '尚無字根記憶。'
     : rootNotesStatus === 'loading' ? '正在讀取字根記憶…'
     : rootNotesStatus === 'error' ? '暫時無法載入字根記憶。'
     : '這個單字的字根記憶尚未整理。';
 
   const references = $('root-note-sources');
-  references.hidden = !note;
+  references.hidden = Boolean(editor) || !hasText || !bundled?.sources.length;
   references.replaceChildren();
-  if (!note) return;
-  $('root-note-split').textContent = note.split;
-  $('root-note-origin').textContent = note.key_origin;
-  $('root-note-mnemonic').textContent = note.mnemonic;
-  for (const source of note.sources) {
+  if (!hasText) return;
+  $('root-note-split').textContent = note.split || '—';
+  $('root-note-origin').textContent = note.key_origin || '—';
+  $('root-note-mnemonic').textContent = note.mnemonic || '—';
+  if (personal && bundled?.sources.length) references.append('原始資料來源　');
+  for (const source of bundled?.sources ?? []) {
     const link = document.createElement('a');
     link.href = source.url;
     link.textContent = source.title;
@@ -116,6 +133,56 @@ function renderRootNotes(item){
     if (references.childElementCount) references.append(' · ');
     references.append(link);
   }
+}
+function startRootNoteEdit(item, savedEdit){
+  const note = recordFor(item).rootNote ?? rootNotes.get(item.id);
+  const initial = savedEdit?.initial ??
+    Object.fromEntries(rootNoteFields.map(field=>[field,note?.[field] ?? '']));
+  rootNoteEditor = {key:item.key,initial,saving:false};
+  for (const field of rootNoteFields) {
+    rootNoteInput(field).value = (savedEdit?.draft ?? initial)[field];
+  }
+  $('root-note-feedback').textContent = '';
+  renderRootNotes(item);
+  if (!savedEdit) rootNoteInput('split').focus();
+}
+async function toggleRootNoteEdit(item){
+  const editor = rootNoteEditor;
+  if (!editor) {
+    startRootNoteEdit(item);
+    return;
+  }
+  if (editor.saving) return;
+  const value = readRootNoteEditor();
+  const trimmed = Object.fromEntries(rootNoteFields.map(field=>[field,value[field].trim()]));
+  const changed = rootNoteFields.some(field=>trimmed[field] !== editor.initial[field]);
+  if (changed) {
+    editor.saving = true;
+    $('root-note-feedback').textContent = '儲存中…';
+    renderRootNotes(item);
+    const saved = await write(item,{rootNote:trimmed},{existingOnly:!isCore(item)});
+    if (rootNoteEditor !== editor) return;
+    if (!saved) {
+      editor.saving = false;
+      $('root-note-feedback').textContent = '儲存失敗，請再試一次。';
+      renderRootNotes(item);
+      return;
+    }
+  }
+  rootNoteEditor = null;
+  takeLookupReturn();
+  $('root-note-feedback').textContent = changed ? '字根記憶已儲存' : '';
+  renderRootNotes(item);
+  $('root-note-toggle').focus({preventScroll:true});
+}
+function requestDetailClose(){
+  const editor = rootNoteEditor;
+  if (editor?.saving) return;
+  if (editor && rootNoteFields.some(field=>rootNoteInput(field).value !== editor.initial[field]) &&
+      !window.confirm('字根記憶尚未儲存。要捨棄變更並關閉嗎？')) return;
+  rootNoteEditor = null;
+  if (editor) takeLookupReturn();
+  $('detail-dialog').close();
 }
 async function initializeRootNotes(){
   try {
@@ -248,6 +315,7 @@ function setLookupLink(id,item,buildURL){
 }
 function rememberLookupReturn(){
   try {
+    const editor = rootNoteEditor;
     window.history.replaceState({...window.history.state,vocabularyLookup:{
       view:document.querySelector('.nav-item.active')?.dataset.view || 'review',
       filter:state.filter,
@@ -255,7 +323,8 @@ function rememberLookupReturn(){
       queue:state.queue.map(item=>item.key),
       totalDrawn:state.totalDrawn,
       search:$('search-word').value,
-      detail:$('detail-dialog').open ? state.detailKey : null
+      detail:$('detail-dialog').open ? state.detailKey : null,
+      rootNoteEdit:editor ? {initial:editor.initial,draft:readRootNoteEditor()} : null
     }},'');
   } catch(error) {
     console.warn('無法記住查詢前的畫面',error);
@@ -283,7 +352,10 @@ function restoreLookupReturn(saved){
   view(saved.view);
   if (saved.view !== 'review') renderCard();
   const detail = words.get(saved.detail);
-  if (detail) openDetail(detail);
+  if (detail) {
+    openDetail(detail);
+    if (saved.rootNoteEdit) startRootNoteEdit(detail,saved.rootNoteEdit);
+  }
 }
 function renderCard(){
   const item=state.current;
@@ -424,13 +496,16 @@ function view(name){
 }
 function openDetail(item){
   state.detailKey=item.key;
+  rootNoteEditor = null;
   const r=recordFor(item);
   $('detail-word').textContent=item.word;
   $('detail-category').textContent=isCore(item)?'Lexifold 核心詞條 · 原始資料已鎖定':'自訂單字 · 可刪除';
   $('detail-note').value=r.note||'';
   $('note-saved').textContent='輸入後自動儲存';
+  $('root-note-feedback').textContent = '';
   $('detail-delete').hidden=isCore(item);
   setLookupLink('detail-cambridge',item,cambridge);
+  setLookupLink('detail-ai-lookup',item,chatgptLookup);
   setLookupLink('detail-etymonline',item,etymonline);
   renderFamiliarity($('detail-familiarity'),item);
   $('detail-dialog').showModal();
@@ -501,6 +576,9 @@ function validateBackup(obj){
         !collocations.every(value => typeof value === 'string'))) {
       throw Error('備份的字典資料格式有誤');
     }
+    if (r.rootNote != null && !rootNoteFields.every(field=>typeof r.rootNote[field] === 'string')) {
+      throw Error('備份的字根記憶格式有誤');
+    }
     keys.add(r.key);
     return r;
   });
@@ -515,7 +593,7 @@ async function restoreFile(file){
     if(state.core.length && backup.core_count!==state.core.length){
       if(!confirm(`此備份來自 ${backup.core_count} 字版本；目前核心字庫是 ${state.core.length} 字。是否仍繼續？`))return;
     }
-    if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟悉度、筆記和自訂單字。建議先建立現有資料的備份。`))return;
+    if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟悉度、筆記、編輯過的字根記憶和自訂單字。建議先建立現有資料的備份。`))return;
     for (const job of lookups.values()) job.controller.abort();
     lookups.clear();
     lookupErrors.clear();
@@ -542,6 +620,10 @@ function wire(){
   document.addEventListener('click',ev=>{
     const link = ev.target.closest('a.external-lookup');
     if (!link) return;
+    if (rootNoteEditor?.saving) {
+      ev.preventDefault();
+      return;
+    }
     link.target = externalLookupTarget();
     if (link.target === '_self' && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey) {
       rememberLookupReturn();
@@ -575,8 +657,29 @@ function wire(){
     const item=getWords().find(word=>word.key===row.dataset.key);
     if (item) openDetail(item);
   });
-  $('close-dialog').addEventListener('click',()=>$('detail-dialog').close());
-  $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))$('detail-dialog').close();});
+  $('close-dialog').addEventListener('click',requestDetailClose);
+  $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))requestDetailClose();});
+  $('detail-dialog').addEventListener('cancel',ev=>{
+    ev.preventDefault();
+    requestDetailClose();
+  });
+  $('root-note-toggle').addEventListener('click',()=>{
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (item) toggleRootNoteEdit(item);
+  });
+  $('root-note-copy-prompt').addEventListener('click',async()=>{
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (!item) return;
+    const prompt = rootNotePrompt(item.word);
+    try {
+      await navigator.clipboard.writeText(prompt);
+      if (item.key === state.detailKey && $('detail-dialog').open && !rootNoteEditor?.saving) {
+        $('root-note-feedback').textContent = '已複製提示語';
+      }
+    } catch {
+      window.prompt('請手動複製提示語',prompt);
+    }
+  });
   $('detail-lookup').addEventListener('click',()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) lookupWord(item,true);
@@ -607,7 +710,7 @@ function wire(){
   });
   $('detail-delete').addEventListener('click',async()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
-    if(!item||isCore(item))return;
+    if(!item||isCore(item)||rootNoteEditor?.saving)return;
     if(!confirm(`確定刪除自訂單字「${item.word}」及其學習紀錄？`))return;
     lookups.get(item.key)?.controller.abort();
     lookups.delete(item.key);
@@ -615,6 +718,7 @@ function wire(){
     try{
       await deleteRecord(item.key);
       state.records.delete(item.key);
+      rootNoteEditor = null;
       $('detail-dialog').close();
       state.queue = state.queue.filter(entry => entry.key !== item.key);
       if (state.current?.key === item.key) drawNext();
