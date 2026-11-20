@@ -3,7 +3,7 @@
   "schema_version": 1,
   "core_source": "Lexifold TOEIC",
   "core_word_count": 4027,
-  "entry_count": 650,
+  "entry_count": 850,
   "wiktionary_license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "entries": [
     {
@@ -9249,6 +9249,408 @@
       ]
     },
     {
+      "id": "core-0607",
+      "word": "drink",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 drincan，動詞變化 drink–drank–drunk",
+      "key_origin": "從日耳曼語傳承而來，核心是把液體喝入口。名詞可指一杯飲料，語境中也常指酒。",
+      "mnemonic": "drink enough water 是多喝水，go for a drink 則常指約去喝一杯。",
+      "sources": [
+        {
+          "title": "維基詞典 · drink",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738563"
+        }
+      ]
+    },
+    {
+      "id": "core-0608",
+      "word": "opinion",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 opīniō 源於 opīnārī「認為、推想」",
+      "key_origin": "經法語等形式進入英語，指一個人看待事情的方式，也可指專家的判斷。",
+      "mnemonic": "in my opinion 用來標明自己的看法，get a second opinion 是另找一位專家評估。",
+      "sources": [
+        {
+          "title": "維基詞典 · opinion",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95634998"
+        }
+      ]
+    },
+    {
+      "id": "core-0609",
+      "word": "park",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "由「圍起來的場地」聯想公園與停放",
+      "key_origin": "中古英語 park 經古法語 parc 而來，早期可指圈起的園地。動詞後來也用於讓車停在某處。",
+      "mnemonic": "walk in the park 是在公園散步，park near the entrance 是把車停在入口旁。",
+      "sources": [
+        {
+          "title": "維基詞典 · park",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739318"
+        }
+      ]
+    },
+    {
+      "id": "core-0610",
+      "word": "represent",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上是拉丁語 re- ＋ praesentāre（呈到面前）",
+      "key_origin": "拉丁語 repraesentāre 有使事物呈現眼前的意思，經法語傳入。現代「再展示一次」的 re-present 是另一種構詞。",
+      "mnemonic": "讓某人或某事藉另一個形式出現。represent the team 是代表團隊出面，The graph represents sales 是圖表呈現銷售量。",
+      "sources": [
+        {
+          "title": "維基詞典 · represent",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93745851"
+        }
+      ]
+    },
+    {
+      "id": "core-0611",
+      "word": "key",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 cǣġ「鑰匙」，整字聯想「用來開啟的東西」",
+      "key_origin": "實體鑰匙可以開鎖，相關義也延伸到操作用的按鍵、解題線索和關鍵事物。",
+      "mnemonic": "the key to solving the problem 是解開難題的關鍵，press any key 是按任意鍵。",
+      "sources": [
+        {
+          "title": "維基詞典 · key",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95658738"
+        }
+      ]
+    },
+    {
+      "id": "core-0612",
+      "word": "inside",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "in（在裡面）＋ side（一側）",
+      "key_origin": "兩個英語成分組合成「內側」，可作名詞、介系詞、形容詞或副詞。",
+      "mnemonic": "inside the box 是在箱子裡，the inside of the box 則特指箱子內部。",
+      "sources": [
+        {
+          "title": "維基詞典 · inside",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93701992"
+        }
+      ]
+    },
+    {
+      "id": "core-0613",
+      "word": "manager",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "manage（管理、操控）＋ -er（做這件事的人）",
+      "key_origin": "manage 的歷史與拉丁語 manus「手」相連，可聯想到用手掌控。",
+      "mnemonic": "team manager 是負責管理團隊的人，project manager 是把進度、協調與資源掌握好的人。",
+      "sources": [
+        {
+          "title": "維基詞典 · manager",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95546716"
+        },
+        {
+          "title": "維基詞典 · manage",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586959"
+        }
+      ]
+    },
+    {
+      "id": "core-0614",
+      "word": "international",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "inter-（在……之間）＋ national（國家的）",
+      "key_origin": "national 由 nation 和 -al 構成。加 inter- 後把範圍擴展到多個國家之間。",
+      "mnemonic": "international trade 是跨國貿易。inter- 還可用在 interdepartmental，表示跨部門。",
+      "sources": [
+        {
+          "title": "維基詞典 · international",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717515"
+        },
+        {
+          "title": "維基詞典 · national",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93709348"
+        }
+      ]
+    },
+    {
+      "id": "core-0615",
+      "word": "contain",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上是拉丁語 con-（一起）＋ tenēre（握住、持有）",
+      "key_origin": "經古法語 contenir 進入英語。把東西持在一起或留在某界線內，可連到包含、控制擴散。",
+      "mnemonic": "The box contains samples 是盒內有樣品，contain the leak 是把洩漏控制在一定範圍。",
+      "sources": [
+        {
+          "title": "維基詞典 · contain",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586107"
+        }
+      ]
+    },
+    {
+      "id": "core-0616",
+      "word": "notice",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 nōtitia「認識、認知」，與 nōtus「已知的」相連",
+      "key_origin": "經法語等形式進入英語，名詞「通知」讓對方知道事情，動詞「注意到」則是自己察覺。",
+      "mnemonic": "notice a defect 是自己發現瑕疵，a written notice 是正式讓人知道的書面通知。",
+      "sources": [
+        {
+          "title": "維基詞典 · notice",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643844"
+        }
+      ]
+    },
+    {
+      "id": "core-0617",
+      "word": "wonder",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 wundor（奇事）和 wundrian（驚奇）",
+      "key_origin": "從對事情感到驚奇，可聯想到對未知道的情況好奇。",
+      "mnemonic": "I wonder why it stopped 是想知道為何停了。No wonder it stopped 則是「難怪停了」。",
+      "sources": [
+        {
+          "title": "維基詞典 · wonder",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93735002"
+        }
+      ]
+    },
+    {
+      "id": "core-0618",
+      "word": "nature",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 nātūra 與 nāscī「出生、產生」同族",
+      "key_origin": "經古法語 nature 進入英語，可指物事的本性，也可泛指自然世界。",
+      "mnemonic": "the nature of the problem 是問題本身的性質，spend time in nature 是到大自然走走。",
+      "sources": [
+        {
+          "title": "維基詞典 · nature",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95674831"
+        }
+      ]
+    },
+    {
+      "id": "core-0619",
+      "word": "structure",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史詞根 struct- 來自拉丁語 struere「堆疊、建造」",
+      "key_origin": "拉丁語 structūra 指建造或結構。把材料或要素按一定方式放在一起，就有構造。",
+      "mnemonic": "想像先搭骨架。the structure of a report 是報告架構，structure the meeting 是把會議安排出順序。",
+      "sources": [
+        {
+          "title": "維基詞典 · structure",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94573262"
+        }
+      ]
+    },
+    {
+      "id": "core-0620",
+      "word": "section",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史詞根 sect- 來自拉丁語 secāre「切」",
+      "key_origin": "拉丁語 sectiō 原指切割，後來 section 也指切出或區分出來的部分。",
+      "mnemonic": "the next section of the contract 是合約下一節，a cross-section 則是橫切後看到的剖面。",
+      "sources": [
+        {
+          "title": "維基詞典 · section",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717978"
+        }
+      ]
+    },
+    {
+      "id": "core-0621",
+      "word": "myself",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "my（我的）＋ self（自身）",
+      "key_origin": "早期形式也有 me 與 self 的組合，後來部分重新理解成 my ＋ self。今天可作反身代名詞或用來強調。",
+      "mnemonic": "I hurt myself 是我弄傷自己。I fixed it myself 是我親手修好的。",
+      "sources": [
+        {
+          "title": "維基詞典 · myself",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95674806"
+        }
+      ]
+    },
+    {
+      "id": "core-0622",
+      "word": "exactly",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "exact（精確的）＋ -ly（副詞）",
+      "key_origin": "exact 源於拉丁語 exigere 的相關詞形，早期可聯到衡量或檢驗。",
+      "mnemonic": "exactly 50 mm 表示剛好五十毫米，單獨回答 Exactly! 則是「正是如此」。",
+      "sources": [
+        {
+          "title": "維基詞典 · exactly",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93692915"
+        },
+        {
+          "title": "維基詞典 · exact",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93692929"
+        }
+      ]
+    },
+    {
+      "id": "core-0623",
+      "word": "plant",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 planta「幼苗、插枝」是植物義的關鍵",
+      "key_origin": "古英語 plante 源自拉丁語。動詞也可指把東西放好或固定，工業用的 plant 可指整套設備或廠房。",
+      "mnemonic": "plant a seed 是種下種子，a power plant 是設置用來發電的工廠。",
+      "sources": [
+        {
+          "title": "維基詞典 · plant",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95719642"
+        }
+      ]
+    },
+    {
+      "id": "core-0624",
+      "word": "paint",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可連到拉丁語 pingere「畫、上色」",
+      "key_origin": "經古法語 peindre 及其分詞詞形進入英語，和 picture 的遠源相連。",
+      "mnemonic": "paint the wall 是給牆上色，a coat of paint 是漆在表面的一層。",
+      "sources": [
+        {
+          "title": "維基詞典 · paint",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94566010"
+        }
+      ]
+    },
+    {
+      "id": "core-0625",
+      "word": "worker",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "work（工作）＋ -er（做這件事的人）",
+      "key_origin": "古英語已有 work 的相關形式，現代以 -er 指從事某種工作的人或生物。",
+      "mnemonic": "a factory worker 是工廠員工，worker bees 則是負責做工的工蜂。",
+      "sources": [
+        {
+          "title": "維基詞典 · worker",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94578204"
+        }
+      ]
+    },
+    {
+      "id": "core-0626",
+      "word": "press",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "按壓和新聞媒體可從「施壓印刷」一起記",
+      "key_origin": "按壓義經法語可追到拉丁語 pressāre，與 premere「壓」相關。印刷機的名稱又延伸到報刊媒體。",
+      "mnemonic": "press the button 是按鍵，the press 可以指採訪報導的新聞媒體。",
+      "sources": [
+        {
+          "title": "維基詞典 · press",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587633"
+        }
+      ]
+    },
+    {
+      "id": "core-0627",
+      "word": "whatever",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "what（什麼）＋ ever（在此擴大範圍）",
+      "key_origin": "中古英語已有 what 與 ever 相接的形式，常表示不限定是哪一個事物。",
+      "mnemonic": "choose whatever you like 是喜歡什麼就選什麼。Whatever happens 是不管發生什麼事。",
+      "sources": [
+        {
+          "title": "維基詞典 · whatever",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94577867"
+        }
+      ]
+    },
+    {
+      "id": "core-0628",
+      "word": "necessary",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 necessārius「必要的」與 necesse「不可避免」相連",
+      "key_origin": "經法語及拉丁語路徑進入英語，核心是情況需要，省略會有影響。",
+      "mnemonic": "if necessary 是有這個需要時才做，the necessary documents 是辦事必備的文件。",
+      "sources": [
+        {
+          "title": "維基詞典 · necessary",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93709436"
+        }
+      ]
+    },
+    {
+      "id": "core-0629",
+      "word": "region",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 regiō「方向、區域」與 regere「導引、劃定」相關",
+      "key_origin": "經法語傳入，地理上可指一片區域，身體或數值也可劃出某個範圍。",
+      "mnemonic": "想像在圖上圈一塊。the northern region 是北部地區，in the region of $500 是大約五百元。",
+      "sources": [
+        {
+          "title": "維基詞典 · region",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95563503"
+        }
+      ]
+    },
+    {
+      "id": "core-0630",
+      "word": "growth",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "grow（生長、增加）＋ -th（表結果或狀態的名詞成分）",
+      "key_origin": "在英語中可用 grow 與名詞字尾 -th 分解，也可和古諾斯語的同源詞比較。",
+      "mnemonic": "想像數字或植物往上長。sales growth 是銷售成長，plant growth 則是植物生長。",
+      "sources": [
+        {
+          "title": "維基詞典 · growth",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94557318"
+        }
+      ]
+    },
+    {
+      "id": "core-0631",
+      "word": "evening",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ǣfnung 與 ǣfen（傍晚）相連",
+      "key_origin": "歷史上指進入一天末段、接近夜晚的時候，今可涵蓋晚餐前後到入夜。",
+      "mnemonic": "Good evening 是晚間見面問候，this evening 則是今天傍晚或今晚。",
+      "sources": [
+        {
+          "title": "維基詞典 · evening",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586412"
+        }
+      ]
+    },
+    {
+      "id": "core-0632",
+      "word": "influence",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上是拉丁語 in-（向內）＋ fluere（流）",
+      "key_origin": "早期可指星體作用流入人事的觀念，後來泛指使人或事物有所改變的力量。",
+      "mnemonic": "像一股水流慢慢改變方向。influence a decision 是對決定產生影響，have an influence on 以 on 接受影響的對象。",
+      "sources": [
+        {
+          "title": "維基詞典 · influence",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95663242"
+        }
+      ]
+    },
+    {
       "id": "core-0633",
       "word": "respect",
       "group": "常見詞根",
@@ -9264,6 +9666,498 @@
         {
           "title": "維基詞典 · specio",
           "url": "https://en.wiktionary.org/w/index.php?oldid=95454386"
+        }
+      ]
+    },
+    {
+      "id": "core-0634",
+      "word": "various",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "可用 vary（變動）＋ -ous（形容詞字尾）來辨識",
+      "key_origin": "經法語 varieux 可追到拉丁語 varius「多樣、不一」，和 variety 同族。",
+      "mnemonic": "想像桌上擺著好幾種樣品。various sizes 是尺寸各不相同，various reasons 是原因有好幾種。",
+      "sources": [
+        {
+          "title": "維基詞典 · various",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92057895"
+        }
+      ]
+    },
+    {
+      "id": "core-0635",
+      "word": "catch",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "經盎格魯法語 cachier 一類形式，可聯到 chase",
+      "key_origin": "早期用於追捕、抓住，現代也表示趕上交通工具、察覺事物或感染疾病。",
+      "mnemonic": "catch a train 是及時趕上車，catch a mistake 是當場抓到錯誤。變化為 catch–caught–caught。",
+      "sources": [
+        {
+          "title": "維基詞典 · catch",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586022"
+        }
+      ]
+    },
+    {
+      "id": "core-0636",
+      "word": "thus",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þus「如此、這樣」，整字記憶",
+      "key_origin": "由「以這種方式」延伸到「所以、因而」，現代通常偏書面。",
+      "mnemonic": "The road was blocked, thus delaying delivery 是道路阻塞，因而延誤交貨。",
+      "sources": [
+        {
+          "title": "維基詞典 · thus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644563"
+        }
+      ]
+    },
+    {
+      "id": "core-0637",
+      "word": "skill",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古諾斯語 skil 涉及辨別、理解",
+      "key_origin": "較早的「能辨別、能判斷」發展成做某事的能力與技巧。",
+      "mnemonic": "想像熟手看得出哪種材料適合。communication skills 包括把話說清楚、聽懂別人的技巧。",
+      "sources": [
+        {
+          "title": "維基詞典 · skill",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644063"
+        }
+      ]
+    },
+    {
+      "id": "core-0638",
+      "word": "attempt",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可辨識拉丁語 ad-（朝向）與 temptāre（試）",
+      "key_origin": "拉丁語 attemptāre 可指試探或著手嘗試，經法語等形式進入英語。",
+      "mnemonic": "把手伸出去試一次。attempt to repair 是嘗試修理，make another attempt 是再試一次。",
+      "sources": [
+        {
+          "title": "維基詞典 · attempt",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643295"
+        }
+      ]
+    },
+    {
+      "id": "core-0639",
+      "word": "son",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sunu「兒子」，整字記憶",
+      "key_origin": "屬於早期日耳曼語的親屬稱謂。可和 daughter 一起記成一組。",
+      "mnemonic": "their eldest son 是他們的長子，son-in-law 是女婿，也就是因婚姻而建立的親屬關係。",
+      "sources": [
+        {
+          "title": "維基詞典 · son",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717321"
+        }
+      ]
+    },
+    {
+      "id": "core-0640",
+      "word": "simple",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 simplex 可聯想到「只摺一層」，可比較 duplex「雙重的」",
+      "key_origin": "經古法語 simple 傳入，從單一、不複雜發展出容易理解或完成的常用義。",
+      "mnemonic": "想像只有一步的操作。a simple procedure 是簡單的程序，keep it simple 是把做法保持簡單。",
+      "sources": [
+        {
+          "title": "維基詞典 · simple",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94571897"
+        }
+      ]
+    },
+    {
+      "id": "core-0641",
+      "word": "medium",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 medius「在中間的」，medium 為其相關形式",
+      "key_origin": "居中的事物可表示中間尺寸，也可指讓訊息通過的媒介。",
+      "mnemonic": "a medium coffee 是中杯咖啡，a medium for communication 是溝通的媒介。",
+      "sources": [
+        {
+          "title": "維基詞典 · medium",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95547218"
+        }
+      ]
+    },
+    {
+      "id": "core-0642",
+      "word": "average",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "整字記憶，從分攤後算出的份額想到平均",
+      "key_origin": "這個詞早期與船貨損害或相關費用有關；平均義常被連到按比例分攤損失的做法。更早的來源有不同說法。",
+      "mnemonic": "把總數分給每一份。on average 是平均來看，an average score 是平均分數或普通的成績，依語境判斷。",
+      "sources": [
+        {
+          "title": "維基詞典 · average",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95413450"
+        }
+      ]
+    },
+    {
+      "id": "core-0643",
+      "word": "stock",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 stocc「樹幹、木樁」，整字記常見商務義",
+      "key_origin": "歷史上也用於根基、世系或資產，進而出現存貨和股份等用法。",
+      "mnemonic": "想像店內放著一批備貨。in stock 是有庫存，buy stocks 則是買股票。",
+      "sources": [
+        {
+          "title": "維基詞典 · stock",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95706385"
+        }
+      ]
+    },
+    {
+      "id": "core-0644",
+      "word": "management",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "manage（管理）＋ -ment（行動、結果）",
+      "key_origin": "構詞源頭可回到 manage「操控、處理」的歷史詞族。名詞也可代指公司管理階層。",
+      "mnemonic": "inventory management 是管理庫存的工作，senior management 則是高階主管群。",
+      "sources": [
+        {
+          "title": "維基詞典 · management",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95618867"
+        }
+      ]
+    },
+    {
+      "id": "core-0645",
+      "word": "character",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 kharaktḗr「刻記、標記」，與「刻出」有關",
+      "key_origin": "經拉丁語、法語等形式傳入，從可辨認的印記可聯想到文字、人物或性格。",
+      "mnemonic": "把它想成可辨認的特徵。a Chinese character 是一個漢字，the main character 是故事主角。",
+      "sources": [
+        {
+          "title": "維基詞典 · character",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93684116"
+        }
+      ]
+    },
+    {
+      "id": "core-0646",
+      "word": "bed",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 bedd「床、睡臥處」，整字記憶",
+      "key_origin": "可指平放或鋪墊的位置，也用於花圃和河床等義。",
+      "mnemonic": "get out of bed 是起床，a river bed 是河水流經的底部。",
+      "sources": [
+        {
+          "title": "維基詞典 · bed",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585847"
+        }
+      ]
+    },
+    {
+      "id": "core-0647",
+      "word": "hit",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古諾斯語 hitta 早期有碰見、找到之義",
+      "key_origin": "中古英語 hitten 由碰上發展為擊中，名詞也可指大受歡迎的作品。",
+      "mnemonic": "hit the target 是打中目標，The song was a hit 是那首歌大受歡迎。三態都是 hit。",
+      "sources": [
+        {
+          "title": "維基詞典 · hit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95716210"
+        }
+      ]
+    },
+    {
+      "id": "core-0648",
+      "word": "establish",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "核心可追到拉丁語 stabilis「穩固的、站得住的」",
+      "key_origin": "古法語 establir 一族有使穩定、立起來的意思，和 stable 同族。",
+      "mnemonic": "想像把基礎打穩。establish a company 是創立公司，establish the facts 是把事實查明。",
+      "sources": [
+        {
+          "title": "維基詞典 · establish",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94554515"
+        }
+      ]
+    },
+    {
+      "id": "core-0649",
+      "word": "indeed",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "in（在）＋ deed（行為、事實）",
+      "key_origin": "較早的 in deed 可理解為以實情來看，凝結後用來肯定或加強語氣。",
+      "mnemonic": "It was difficult indeed 是「確實很難」，Indeed, the costs rose 是強調成本的確上升了。",
+      "sources": [
+        {
+          "title": "維基詞典 · indeed",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586745"
+        }
+      ]
+    },
+    {
+      "id": "core-0650",
+      "word": "final",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 fīnis「界限、終點」＋ 形容詞成分 -ālis",
+      "key_origin": "經古法語 final 等形式進入英語，與 finish 同族。",
+      "mnemonic": "想像流程走到最後一關。the final decision 是最後定案，the final round 是最後一輪。",
+      "sources": [
+        {
+          "title": "維基詞典 · final",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95457385"
+        }
+      ]
+    },
+    {
+      "id": "core-0651",
+      "word": "economy",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 oîkos（家）＋ 與管理、分配有關的成分",
+      "key_origin": "希臘語 oikonomía 早期指家務或家產管理，後來用來談更大範圍的資源與經濟活動。",
+      "mnemonic": "從一個家怎麼分配資源，想到 the local economy。economy class 則是節省開支的票艙等級。",
+      "sources": [
+        {
+          "title": "維基詞典 · economy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95499941"
+        }
+      ]
+    },
+    {
+      "id": "core-0652",
+      "word": "fit",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "合適、健康與 a fit（突然發作）分開記",
+      "key_origin": "合適義沿中古英語 fitten 等形式演變，適於某活動可引申為身體狀況好。發作義另有較早來源。",
+      "mnemonic": "The shoes fit 是鞋子合腳，stay fit 是保持體能，a coughing fit 則是突然一陣咳嗽。",
+      "sources": [
+        {
+          "title": "維基詞典 · fit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95537194"
+        }
+      ]
+    },
+    {
+      "id": "core-0653",
+      "word": "guy",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "口語指「人」，與英國人名 Guy 有歷史關係",
+      "key_origin": "早期可指英國篝火節慶中被焚燒的 Guy Fawkes 人像，後來泛指男子，也常見於口語的 you guys。",
+      "mnemonic": "a guy at work 是上班認識的一個人，Hey, guys! 可用來向一群熟人打招呼。",
+      "sources": [
+        {
+          "title": "維基詞典 · guy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643658"
+        }
+      ]
+    },
+    {
+      "id": "core-0654",
+      "word": "function",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 fūnctiō 與 fungī「執行、履行」相關",
+      "key_origin": "經法語或拉丁語進入英語，從履行職責延伸為某物應發揮的作用。",
+      "mnemonic": "想像每個零件都有事要做。the function of the valve 是閥的功能，The system functions well 是系統運作正常。",
+      "sources": [
+        {
+          "title": "維基詞典 · function",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643616"
+        }
+      ]
+    },
+    {
+      "id": "core-0655",
+      "word": "yesterday",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "yester-（昨天的、前一日的）＋ day（日）",
+      "key_origin": "源於古英語 ġiestrandeġ 一類形式。yester- 現代少獨用，可從 yesterday 認出。",
+      "mnemonic": "yesterday morning 是昨天早上，the day before yesterday 則要再往前一天。",
+      "sources": [
+        {
+          "title": "維基詞典 · yesterday",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95728422"
+        }
+      ]
+    },
+    {
+      "id": "core-0656",
+      "word": "image",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 imāgō「肖像、形象」是關鍵",
+      "key_origin": "古法語 image 源自拉丁語 imāgō，實體圖像和別人心中的印象都可用這個詞。",
+      "mnemonic": "a digital image 是看得見的圖像，brand image 是顧客心中的品牌樣子。",
+      "sources": [
+        {
+          "title": "維基詞典 · image",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95540103"
+        }
+      ]
+    },
+    {
+      "id": "core-0657",
+      "word": "size",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "與法語 assise（裁定、規格）一族有歷史關聯",
+      "key_origin": "中古英語 sise 曾指規定的尺寸或份量，後來泛指物件的大小。",
+      "mnemonic": "想像試穿時看標籤。What size do you wear? 是問穿什麼尺寸，full-size 則是完整尺寸。",
+      "sources": [
+        {
+          "title": "維基詞典 · size",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587888"
+        },
+        {
+          "title": "維基詞典 · assise",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=90613975"
+        }
+      ]
+    },
+    {
+      "id": "core-0658",
+      "word": "behavior",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "behave（舉止、表現）＋ -ior（名詞成分）",
+      "key_origin": "中古英語 behavoure 的末尾受 havour 等詞影響，可和 behave 一起記。",
+      "mnemonic": "a child's behavior 是孩子的行為，the behavior of a material 則是材料在某條件下的表現。",
+      "sources": [
+        {
+          "title": "維基詞典 · behavior",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94547638"
+        }
+      ]
+    },
+    {
+      "id": "core-0659",
+      "word": "addition",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "add（加上）與名詞 addition 一起記",
+      "key_origin": "經古法語傳入，源自拉丁語 additiō，與 addere「加上」同族。",
+      "mnemonic": "想像清單末尾再添一項。in addition to shipping costs 是「除了運費之外，還有……」。",
+      "sources": [
+        {
+          "title": "維基詞典 · addition",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92701230"
+        }
+      ]
+    },
+    {
+      "id": "core-0660",
+      "word": "determine",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 dē- ＋ termināre（劃定界線）",
+      "key_origin": "termināre 來自 terminus「界限、終點」。把界線確定下來，可聯想到決定或查明。",
+      "mnemonic": "determine the root cause 是查明根本原因，demand determines the price 是需求決定價格。",
+      "sources": [
+        {
+          "title": "維基詞典 · determine",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94590825"
+        }
+      ]
+    },
+    {
+      "id": "core-0661",
+      "word": "station",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 statiō 指站立、駐留的位置",
+      "key_origin": "經盎格魯法語傳入，詞族與 stare「站立」相連。",
+      "mnemonic": "想像車在固定位置停靠。a train station 是車站，a work station 是從事特定工作的固定位置。",
+      "sources": [
+        {
+          "title": "維基詞典 · station",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95706481"
+        }
+      ]
+    },
+    {
+      "id": "core-0662",
+      "word": "population",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "populate（使有人居住、填入）＋ -ion（名詞）",
+      "key_origin": "英文借入後期拉丁語 populātiō「民眾、群體」，按形式可和 populus「人民」一起記。",
+      "mnemonic": "先想「範圍內有多少人」。the population of Taipei 是台北人口，研究中也用 population 指抽樣的母體。",
+      "sources": [
+        {
+          "title": "維基詞典 · population",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95706436"
+        },
+        {
+          "title": "維基詞典 · populus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93440434"
+        }
+      ]
+    },
+    {
+      "id": "core-0663",
+      "word": "fail",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 falir 與拉丁語 fallere「欺騙、辜負」一族相連",
+      "key_origin": "由落空、沒有達到預期等義，發展成失敗、不及格或停止運作。",
+      "mnemonic": "fail an inspection 是沒通過檢驗，the pump failed 是泵浦失效，fail to reply 是未能回覆。",
+      "sources": [
+        {
+          "title": "維基詞典 · fail",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586447"
+        }
+      ]
+    },
+    {
+      "id": "core-0664",
+      "word": "environment",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "environ（圍繞）＋ -ment（名詞），由法語來源傳入",
+      "key_origin": "environ 與法語「在周圍」的表達相連，environment 可指環繞人或事物的條件。",
+      "mnemonic": "想像在對象周圍畫個圈。work environment 是工作環境，the environment 也常指自然環境。",
+      "sources": [
+        {
+          "title": "維基詞典 · environment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95440045"
+        },
+        {
+          "title": "維基詞典 · environ",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92748509"
+        }
+      ]
+    },
+    {
+      "id": "core-0665",
+      "word": "production",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "produce（生產、產出）＋ -tion（過程、結果）",
+      "key_origin": "源於拉丁語 productiō，與 prōdūcere「帶出、引出」同族。",
+      "mnemonic": "把產品想成從線上送出。production line 是生產線，a film production 是製作出來的影片或製作活動。",
+      "sources": [
+        {
+          "title": "維基詞典 · production",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92064238"
         }
       ]
     },
@@ -9287,6 +10181,1060 @@
       ]
     },
     {
+      "id": "core-0667",
+      "word": "player",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "play（玩、演奏）＋ -er（做這件事的人或器具）",
+      "key_origin": "古英語 pleġere 已用於從事玩樂或表演的人，現代也可指播放器。",
+      "mnemonic": "a team player 可指擅長團隊合作的人，a music player 則是播放音樂的裝置或軟體。",
+      "sources": [
+        {
+          "title": "維基詞典 · player",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95633084"
+        }
+      ]
+    },
+    {
+      "id": "core-0668",
+      "word": "comment",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 commentum 有想出來的內容之意",
+      "key_origin": "經古法語 coment 等形式傳入，後來指對事情發表的看法或說明。",
+      "mnemonic": "leave a comment 是留下一則評論，comment on a proposal 是針對提案發表意見。",
+      "sources": [
+        {
+          "title": "維基詞典 · comment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94592090"
+        }
+      ]
+    },
+    {
+      "id": "core-0669",
+      "word": "enter",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 intrā「內部、在裡面」是關鍵",
+      "key_origin": "拉丁語 intrāre 經古法語 entrer 傳入英語，基本動作是從外部進入。",
+      "mnemonic": "enter the room 是走進房間，enter the data 是把資料輸入系統。",
+      "sources": [
+        {
+          "title": "維基詞典 · enter",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707970"
+        }
+      ]
+    },
+    {
+      "id": "core-0670",
+      "word": "occur",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 ob-（迎向）＋ currere（跑）",
+      "key_origin": "拉丁語 occurrere 有迎面遇到的意思。英語常用於事情發生，也用於想法浮現。",
+      "mnemonic": "想像一件事跑到眼前。An error occurred 是發生錯誤，It occurred to me 是我忽然想到。",
+      "sources": [
+        {
+          "title": "維基詞典 · occur",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93711265"
+        }
+      ]
+    },
+    {
+      "id": "core-0671",
+      "word": "alone",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "歷史上是 all（完全）＋ one（一個）",
+      "key_origin": "由中古英語 all one 等形式縮合，字面可想成只有自己這一個人。",
+      "mnemonic": "alone 指身邊沒別人。I live alone 是獨居，情緒上孤單則可用 lonely。",
+      "sources": [
+        {
+          "title": "維基詞典 · alone",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94545755"
+        }
+      ]
+    },
+    {
+      "id": "core-0672",
+      "word": "significant",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 signum（記號）＋ 由 facere（做）變化的成分",
+      "key_origin": "拉丁語 significāre「表示、有所指示」的分詞形成 significant，後來也指影響明顯、值得注意。",
+      "mnemonic": "想像在數字旁畫一個重點記號。a significant increase 是明顯的增加。",
+      "sources": [
+        {
+          "title": "維基詞典 · significant",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93722415"
+        }
+      ]
+    },
+    {
+      "id": "core-0673",
+      "word": "drug",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "整字記憶，從藥品、藥物兩個常見語境下手",
+      "key_origin": "經法語 drogue 等形式進入英語，常被連到低地德語或中古荷蘭語裡表示乾燥的詞，更遠的來源有不確定性。",
+      "mnemonic": "prescription drug 是處方藥，drug abuse 則是在說藥物或毒品濫用。",
+      "sources": [
+        {
+          "title": "維基詞典 · drug",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94553595"
+        }
+      ]
+    },
+    {
+      "id": "core-0674",
+      "word": "wall",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古英語 weall 可追到拉丁語 vallum「城防、壁壘」",
+      "key_origin": "拉丁詞透過早期日耳曼語借入，保留阻隔、圍住的意象。",
+      "mnemonic": "a brick wall 是磚牆，the stomach wall 則是包圍胃腔的胃壁。",
+      "sources": [
+        {
+          "title": "維基詞典 · wall",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95659069"
+        }
+      ]
+    },
+    {
+      "id": "core-0675",
+      "word": "series",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 seriēs「一排、連續」與 serere「串接」相連",
+      "key_origin": "借入英語後可指按順序連在一起的同類事物，單複數同形。",
+      "mnemonic": "想像把幾份報告依序排好。a series of tests 是一連串測試，two TV series 是兩部影集。",
+      "sources": [
+        {
+          "title": "維基詞典 · series",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587828"
+        }
+      ]
+    },
+    {
+      "id": "core-0676",
+      "word": "direct",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 dīrigere 的分詞 dīrēctus，與 regere「導引」同族",
+      "key_origin": "詞族可聯到使事物走上指定方向。形容詞常指中途沒有轉折，動詞可指引導。",
+      "mnemonic": "a direct flight 是直達航班，direct visitors to reception 是引導訪客去接待處。",
+      "sources": [
+        {
+          "title": "維基詞典 · direct",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93689630"
+        }
+      ]
+    },
+    {
+      "id": "core-0677",
+      "word": "success",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "來自拉丁語 successus，相關動詞含 sub- ＋ cēdere（走、前進）",
+      "key_origin": "succēdere 可指接續、進行，名詞早期可指事情的結果，英語後來多指好結果。",
+      "mnemonic": "沿著一連串步驟走到想要的結果。the success of the project 是專案做成了。",
+      "sources": [
+        {
+          "title": "維基詞典 · success",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644128"
+        }
+      ]
+    },
+    {
+      "id": "core-0678",
+      "word": "tomorrow",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "to- ＋ morrow（次日、早晨的舊詞）",
+      "key_origin": "古英語 tō morgne 字面可指往次日早晨，後來泛指明天整日。",
+      "mnemonic": "tomorrow morning 是明早，the day after tomorrow 是後天。",
+      "sources": [
+        {
+          "title": "維基詞典 · tomorrow",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95691829"
+        }
+      ]
+    },
+    {
+      "id": "core-0679",
+      "word": "director",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "direct（指導、主管）＋ -or（做這件事的人）",
+      "key_origin": "英語歷史上也借自法語 directeur 與後期拉丁語 dīrēctor。",
+      "mnemonic": "想像某人定下整體方向。a film director 是電影導演，a director of operations 是營運主管。",
+      "sources": [
+        {
+          "title": "維基詞典 · director",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95673326"
+        }
+      ]
+    },
+    {
+      "id": "core-0680",
+      "word": "clearly",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "clear（清楚的、清晰的）＋ -ly（副詞）",
+      "key_origin": "中古英語已有 clerli 等形式，表示方式清楚，或用來說判斷明顯。",
+      "mnemonic": "speak clearly 是把話說清楚，Clearly, we need more time 則是「顯然還需要更多時間」。",
+      "sources": [
+        {
+          "title": "維基詞典 · clearly",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95498194"
+        }
+      ]
+    },
+    {
+      "id": "core-0681",
+      "word": "lack",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "整字記憶，從「應有的東西缺了一部分」聯想",
+      "key_origin": "中古英語有 lack、lakke 等形式，背後與較早的日耳曼語詞族相關。",
+      "mnemonic": "lack experience 是缺乏經驗，a lack of experience 用名詞搭配 of。",
+      "sources": [
+        {
+          "title": "維基詞典 · lack",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643753"
+        }
+      ]
+    },
+    {
+      "id": "core-0682",
+      "word": "review",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上是 re-（再）＋ 古法語 veoir（看）",
+      "key_origin": "來自古法語 reveoir 或其相關詞形，原有重新看的概念。",
+      "mnemonic": "想像把資料翻回來看一遍。review a contract 是審閱合約，a product review 是使用後寫的評價。",
+      "sources": [
+        {
+          "title": "維基詞典 · review",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95463511"
+        }
+      ]
+    },
+    {
+      "id": "core-0683",
+      "word": "depend",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 dē-（從……往下）＋ pendēre（懸掛）",
+      "key_origin": "經法語 dépendre 的早期形式進入英語。從懸在某物下方，延伸到依賴、取決於。",
+      "mnemonic": "結果像吊在一個支點上。It depends on the weather 是「要看天氣」，depend on someone 則是倚靠某人。",
+      "sources": [
+        {
+          "title": "維基詞典 · depend",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93688933"
+        }
+      ]
+    },
+    {
+      "id": "core-0684",
+      "word": "race",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "競速與族群是同拼字的不同來源",
+      "key_origin": "競速義可追到古英語 rǣs 與古諾斯語 rás 等相近形式。分類義經法語 race、義大利語 razza 而來，更早來源未定。",
+      "mnemonic": "a bike race 是自行車競賽，race against time 是跟時間賽跑。用搭配判斷是否在談族群。",
+      "sources": [
+        {
+          "title": "維基詞典 · race",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587699"
+        }
+      ]
+    },
+    {
+      "id": "core-0685",
+      "word": "recognize",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 re-（再）＋ cognōscere（認識、得知）",
+      "key_origin": "經法語等形式與拉丁語 recognōscere 相連，從再次認出延伸到承認或表彰。",
+      "mnemonic": "recognize her voice 是聽出是她，recognize an achievement 是正式肯定一項成就。",
+      "sources": [
+        {
+          "title": "維基詞典 · recognize",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95715852"
+        }
+      ]
+    },
+    {
+      "id": "core-0686",
+      "word": "window",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古諾斯語 vindr（風）＋ auga（眼睛）",
+      "key_origin": "vindauga 字面可理解為「風的眼睛」，是一個讓風或光進來的開口。",
+      "mnemonic": "先想開窗進風。a delivery window 則像在時間表上開一扇窗，指可收貨的一段時間。",
+      "sources": [
+        {
+          "title": "維基詞典 · window",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94578032"
+        }
+      ]
+    },
+    {
+      "id": "core-0687",
+      "word": "purpose",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上與表示「放置」的拉丁語 pōnere 一族相連",
+      "key_origin": "古法語 purposer 早期可指把某件事提出、放在前面考量，名詞表示意圖或用途。",
+      "mnemonic": "想像先把目標放到前面。the purpose of the test 是試驗目的，on purpose 表示有意為之。",
+      "sources": [
+        {
+          "title": "維基詞典 · purpose",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95708782"
+        }
+      ]
+    },
+    {
+      "id": "core-0688",
+      "word": "department",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可聯想 departir「分開、分配」與名詞成分",
+      "key_origin": "源自法語 département 的早期形式，可表示分開管理的一部分。",
+      "mnemonic": "想像把公司劃成幾個單位。quality department 是品管或品質部門，department store 是分區賣不同商品的百貨公司。",
+      "sources": [
+        {
+          "title": "維基詞典 · department",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94552454"
+        }
+      ]
+    },
+    {
+      "id": "core-0689",
+      "word": "gain",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "整字記憶，核心是讓手上多出一些成果",
+      "key_origin": "古諾斯語 gagn 指好處、利益。中古英語的相關詞也受到法語中表示賺取、獲益的詞影響。",
+      "mnemonic": "gain experience 是增加經驗，gain weight 是體重增加，capital gains 則是資本利得。",
+      "sources": [
+        {
+          "title": "維基詞典 · gain",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93696313"
+        }
+      ]
+    },
+    {
+      "id": "core-0690",
+      "word": "tree",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 trēow 可指樹木、木材",
+      "key_origin": "沿日耳曼語傳承，分叉的外形也用於描述組織與關係。",
+      "mnemonic": "想像枝條一層層分出來。a family tree 是把親屬關係畫成樹狀的家族譜。",
+      "sources": [
+        {
+          "title": "維基詞典 · tree",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95669990"
+        }
+      ]
+    },
+    {
+      "id": "core-0691",
+      "word": "college",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 collēgium 有同僚團體、機構的意思",
+      "key_origin": "經法語傳入，從共同組成的機構延伸到學校或大學裡的學院。",
+      "mnemonic": "a college of engineering 是工程學院，go to college 在美式英語常指去念大學。",
+      "sources": [
+        {
+          "title": "維基詞典 · college",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95532499"
+        }
+      ]
+    },
+    {
+      "id": "core-0692",
+      "word": "argue",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 arguere「顯示、證明、指控」是關鍵",
+      "key_origin": "經古法語 arguer 進入英語。既可指爭論，也可指提出論據主張。",
+      "mnemonic": "argue with a coworker 是和同事爭辯，argue that the data is incomplete 是提出理由，主張資料不全。",
+      "sources": [
+        {
+          "title": "維基詞典 · argue",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95612059"
+        }
+      ]
+    },
+    {
+      "id": "core-0693",
+      "word": "board",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "木板、委員會、登乘，可分三種場景記",
+      "key_origin": "古英語 bord 可指板或桌一類物件。桌旁議事、登上船等用法讓同詞有多種延伸。",
+      "mnemonic": "a wooden board 是木板，the board of directors 是董事會，board a plane 是登機。",
+      "sources": [
+        {
+          "title": "維基詞典 · board",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95660203"
+        }
+      ]
+    },
+    {
+      "id": "core-0694",
+      "word": "holiday",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "holy（神聖的）＋ day（日）",
+      "key_origin": "古英語 hāligdæġ 可指宗教節日，後來也用於一般假日或度假。",
+      "mnemonic": "public holiday 是公共假日，on holiday 在英式英語常指正在度假。",
+      "sources": [
+        {
+          "title": "維基詞典 · holiday",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93651417"
+        }
+      ]
+    },
+    {
+      "id": "core-0695",
+      "word": "mark",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 mearc 可指邊界、記號",
+      "key_origin": "從用符號畫界線，發展成標出位置、留下印記或登記分數等用法。",
+      "mnemonic": "mark a spot on the map 是在地圖上標位置，a scratch mark 是刮痕留下的記號。",
+      "sources": [
+        {
+          "title": "維基詞典 · mark",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586986"
+        }
+      ]
+    },
+    {
+      "id": "core-0696",
+      "word": "church",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可追到希臘語 kyriakon「主的」",
+      "key_origin": "經早期日耳曼語借入古英語，和用來指教堂的概念相連。",
+      "mnemonic": "go to church 常指去做禮拜，the church at the corner 可指轉角那棟教堂。",
+      "sources": [
+        {
+          "title": "維基詞典 · church",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95502381"
+        }
+      ]
+    },
+    {
+      "id": "core-0697",
+      "word": "machine",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 māchina「裝置」來自希臘語相關詞",
+      "key_origin": "經法語進入英語，和 mechanical「機械的」有歷史親緣。",
+      "mnemonic": "a packaging machine 是一台包裝機，machine a part 是用工具機加工零件。",
+      "sources": [
+        {
+          "title": "維基詞典 · machine",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94638842"
+        }
+      ]
+    },
+    {
+      "id": "core-0698",
+      "word": "achieve",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 achever，可連到古法語 chief「頭、末端」",
+      "key_origin": "早期有做到終點、完成的意思。現代多指努力後達成預定目標。",
+      "mnemonic": "想像走過最後一段到終點。achieve a goal 是達成目標，achievement 則是達成的成果。",
+      "sources": [
+        {
+          "title": "維基詞典 · achieve",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93675028"
+        }
+      ]
+    },
+    {
+      "id": "core-0699",
+      "word": "item",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 item 是「也、同樣」",
+      "key_origin": "清單列完一項，下一項以 item 接著列；英語遂把它用作條目或單件物品。",
+      "mnemonic": "把清單上的每行看成一個 item。an agenda item 是一項議程，an item of equipment 是一件設備。",
+      "sources": [
+        {
+          "title": "維基詞典 · item",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95429490"
+        }
+      ]
+    },
+    {
+      "id": "core-0700",
+      "word": "prove",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 probāre 可指檢驗、證明，與 probus「良好、可靠」同族",
+      "key_origin": "古英語 prōfian 和法語 prover 均與此一拉丁詞有關。",
+      "mnemonic": "先做檢驗再下結論。prove that it works 是證明可行，It proved useful 是「結果證實它有用」。",
+      "sources": [
+        {
+          "title": "維基詞典 · prove",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587648"
+        }
+      ]
+    },
+    {
+      "id": "core-0701",
+      "word": "cent",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 centum「一百」，經法語傳入",
+      "key_origin": "作幣值單位時通常表示主要貨幣單位的一百分之一。",
+      "mnemonic": "one dollar has one hundred cents，和 per cent「每一百」放在一起記。",
+      "sources": [
+        {
+          "title": "維基詞典 · cent",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95639862"
+        }
+      ]
+    },
+    {
+      "id": "core-0702",
+      "word": "season",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "季節與調味，分別聯想到播種時期與法語調製詞族",
+      "key_origin": "時間義經法語 seson 追到拉丁語 satiō「播種」。調味動詞與法語 assaisonner 相連。",
+      "mnemonic": "the rainy season 是雨季，season the soup with salt 是用鹽替湯調味。",
+      "sources": [
+        {
+          "title": "維基詞典 · season",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94570968"
+        }
+      ]
+    },
+    {
+      "id": "core-0703",
+      "word": "floor",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 flōr「地面、地板」，整字記憶",
+      "key_origin": "由人站立的水平表面，延伸到樓層以及不得低於的下限。",
+      "mnemonic": "on the third floor 是在三樓，a price floor 是價格下限，像是數字底下的一塊地板。",
+      "sources": [
+        {
+          "title": "維基詞典 · floor",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94555715"
+        }
+      ]
+    },
+    {
+      "id": "core-0704",
+      "word": "stuff",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "口語的「東西」與動詞「填塞」分開看用法",
+      "key_origin": "名詞源於古法語表示裝備、材料的一族，動詞與古法語「裝備、填塞」的詞有關。",
+      "mnemonic": "Where's my stuff? 是「我的東西在哪？」stuff the bag with clothes 是把衣物塞進袋子。",
+      "sources": [
+        {
+          "title": "維基詞典 · stuff",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644122"
+        }
+      ]
+    },
+    {
+      "id": "core-0705",
+      "word": "wide",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 wīd「寬廣的」，可與 width 互記",
+      "key_origin": "形容左右相隔大，也能描述涵蓋範圍大。",
+      "mnemonic": "a wide street 是寬街道，a wide range of products 是產品種類涵蓋得廣。",
+      "sources": [
+        {
+          "title": "維基詞典 · wide",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95589136"
+        }
+      ]
+    },
+    {
+      "id": "core-0706",
+      "word": "anyone",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "any（任何）＋ one（一個人）",
+      "key_origin": "中古英語已有分開寫的相近形式，現代合成一個不定代名詞。",
+      "mnemonic": "Can anyone help? 是問有沒有人可以幫忙。Anyone can apply 表示任何人都可申請。",
+      "sources": [
+        {
+          "title": "維基詞典 · anyone",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585751"
+        }
+      ]
+    },
+    {
+      "id": "core-0707",
+      "word": "method",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 meta- ＋ hodós（道路、路徑）",
+      "key_origin": "méthodos 經拉丁語和法語進入英語，早期可指沿著一套途徑探求。",
+      "mnemonic": "把方法想成通往結果的路。a payment method 是付款方式，a test method 是執行測試的一套做法。",
+      "sources": [
+        {
+          "title": "維基詞典 · method",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92766313"
+        }
+      ]
+    },
+    {
+      "id": "core-0708",
+      "word": "analysis",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 ana- ＋ lýein（解開、鬆開）",
+      "key_origin": "希臘語 análysis 有解開、分解的意象，經中世紀拉丁語傳入。",
+      "mnemonic": "把打結的問題一段段解開。root cause analysis 是分析造成問題的根本原因。複數為 analyses。",
+      "sources": [
+        {
+          "title": "維基詞典 · analysis",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95607373"
+        }
+      ]
+    },
+    {
+      "id": "core-0709",
+      "word": "election",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "elect（選出）＋ -ion（過程、結果）",
+      "key_origin": "拉丁語 ēligere「挑選」的分詞詞幹 ēlect- 留在 ēlectiō 裡，經法語進入英語。",
+      "mnemonic": "想像從候選人中投票選出一位。hold an election 是舉行選舉，elect a chair 是選出主席。",
+      "sources": [
+        {
+          "title": "維基詞典 · election",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95492950"
+        }
+      ]
+    },
+    {
+      "id": "core-0710",
+      "word": "military",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 mīles（士兵）＋ 形容詞成分 -āris",
+      "key_origin": "拉丁語 mīlitāris 經法語進入英語，核心是與士兵、軍隊相關。",
+      "mnemonic": "military service 是服兵役，the military 則合指軍方或武裝部隊。",
+      "sources": [
+        {
+          "title": "維基詞典 · military",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94562577"
+        }
+      ]
+    },
+    {
+      "id": "core-0711",
+      "word": "hotel",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "法語 hôtel 與 hostel、hospital 有共同的拉丁語來源",
+      "key_origin": "較早的 hostel、ostel 一類形式源於拉丁語 hospitālis「與接待客人相關的」。",
+      "mnemonic": "從接待旅人聯想到 book a hotel room。hostel 常指較平價、可有共用房間的旅宿。",
+      "sources": [
+        {
+          "title": "維基詞典 · hotel",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95539799"
+        }
+      ]
+    },
+    {
+      "id": "core-0712",
+      "word": "club",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "早期是粗木棒，可用握在手裡的形象記",
+      "key_origin": "中古英語 clubbe 可追到古諾斯語 klubba 一類詞。社團義後來用於聚在一起的人。",
+      "mnemonic": "a golf club 可以是一支高爾夫球桿，也可以是一個高爾夫球俱樂部，靠上下文區分。",
+      "sources": [
+        {
+          "title": "維基詞典 · club",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94550318"
+        }
+      ]
+    },
+    {
+      "id": "core-0713",
+      "word": "below",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "be-（古字首）＋ low（低）",
+      "key_origin": "中古英語已有 bilooghe 等形式，通常用於指位置、數值低於參照點。",
+      "mnemonic": "想像有一條基準線。below freezing 是低於冰點，see below 是往頁面的下方看。",
+      "sources": [
+        {
+          "title": "維基詞典 · below",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95612006"
+        }
+      ]
+    },
+    {
+      "id": "core-0714",
+      "word": "movie",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "moving picture（會動的影像）的口語縮短形式",
+      "key_origin": "在美式英語中截取 moving 的一部分，加上口語名詞結尾 -ie，形成 movie。",
+      "mnemonic": "想像一張會動的照片。watch a movie 是看電影，go to the movies 是去電影院看電影。",
+      "sources": [
+        {
+          "title": "維基詞典 · movie",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94584735"
+        }
+      ]
+    },
+    {
+      "id": "core-0715",
+      "word": "doctor",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 doctor「教師」來自 docēre（教）",
+      "key_origin": "經法語傳入，後來可作學位頭銜，也成為醫師的常用名稱。",
+      "mnemonic": "a doctor at the clinic 通常是診所醫師，a doctorate 則是博士學位。",
+      "sources": [
+        {
+          "title": "維基詞典 · doctor",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94553288"
+        }
+      ]
+    },
+    {
+      "id": "core-0716",
+      "word": "discussion",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "discuss（討論）＋ -ion（行動、過程）",
+      "key_origin": "經法語傳入，與拉丁語 discutere「搖散、分開」的詞族相連。",
+      "mnemonic": "把問題拆開來談。have a discussion about the plan 可以加 about，動詞 discuss the plan 直接接主題。",
+      "sources": [
+        {
+          "title": "維基詞典 · discussion",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94553065"
+        }
+      ]
+    },
+    {
+      "id": "core-0717",
+      "word": "sorry",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sāriġ，與 sore「疼痛的」同族",
+      "key_origin": "早期有傷心、苦痛的意思，後來常用於道歉或表達同情。",
+      "mnemonic": "I’m sorry I’m late 是為遲到道歉，I'm sorry to hear that 則是聽到壞消息時表達關心。",
+      "sources": [
+        {
+          "title": "維基詞典 · sorry",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739179"
+        }
+      ]
+    },
+    {
+      "id": "core-0718",
+      "word": "challenge",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "整字記憶，先抓住「對現況提出質疑或考驗」",
+      "key_origin": "經古法語 chalenge 等形式而來，遠源與拉丁語 calumnia「指控」一族相關。",
+      "mnemonic": "challenge a decision 是質疑一項決定，take on a challenge 是接受一項有難度的任務。",
+      "sources": [
+        {
+          "title": "維基詞典 · challenge",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95656158"
+        }
+      ]
+    },
+    {
+      "id": "core-0719",
+      "word": "nation",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 nātiō 與 nāscī「出生」同族",
+      "key_origin": "經古法語 nacion 傳入，早期可依出生地或共同起源指一群人，後來常指民族或國家。",
+      "mnemonic": "the whole nation 可理解成全國人民。再加 -al 便成 national。",
+      "sources": [
+        {
+          "title": "維基詞典 · nation",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92745656"
+        }
+      ]
+    },
+    {
+      "id": "core-0720",
+      "word": "nearly",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "near（靠近）＋ -ly（副詞）",
+      "key_origin": "由「接近」引申到差一點就到達某數字或狀態。",
+      "mnemonic": "想像進度條快滿了。nearly 100 units 是接近一百件，nearly finished 是快完成了。",
+      "sources": [
+        {
+          "title": "維基詞典 · nearly",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94563764"
+        }
+      ]
+    },
+    {
+      "id": "core-0721",
+      "word": "statement",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "state（清楚陳述）＋ -ment（行動、結果）",
+      "key_origin": "由 state 的陳述義構成，用於說出的聲明或正式的書面紀錄。",
+      "mnemonic": "issue a statement 是發表聲明，a bank statement 則是把帳戶往來列出來的對帳單。",
+      "sources": [
+        {
+          "title": "維基詞典 · statement",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93724710"
+        }
+      ]
+    },
+    {
+      "id": "core-0722",
+      "word": "link",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "從一節鏈環聯想到事物彼此連接",
+      "key_origin": "中古英語 linke 合流了古英語和古諾斯語的相關形式，核心是可接成鏈的一節。",
+      "mnemonic": "a link in the chain 是其中一環，link A to B 是建立 A 與 B 的連結。",
+      "sources": [
+        {
+          "title": "維基詞典 · link",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95744454"
+        }
+      ]
+    },
+    {
+      "id": "core-0723",
+      "word": "despite",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "從古法語 despit「輕蔑」一族演變，整字當介系詞記",
+      "key_origin": "遠源拉丁語 dēspicere，有從上往下看、輕視的含意。舊表達 in despite of 與現代讓步義有關。",
+      "mnemonic": "想像障礙存在，事情仍然照做。despite the delay 是儘管有延誤，可以直接接名詞。",
+      "sources": [
+        {
+          "title": "維基詞典 · despite",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93689125"
+        }
+      ]
+    },
+    {
+      "id": "core-0724",
+      "word": "introduce",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 intrō（往裡面）＋ dūcere（帶領）",
+      "key_origin": "拉丁語 intrōdūcere 意為帶入，經法語等形式進入英語。",
+      "mnemonic": "把新東西帶到眾人面前。introduce a colleague 是介紹同事，introduce new rules 是推出新規則。",
+      "sources": [
+        {
+          "title": "維基詞典 · introduce",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586772"
+        }
+      ]
+    },
+    {
+      "id": "core-0725",
+      "word": "advantage",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 avant「在前」是關鍵，與 advance 同族",
+      "key_origin": "古法語 avantage 帶有領先、有利的意思。英語拼字中的 d 是後來加入的。",
+      "mnemonic": "想像起跑時先站前一步。a competitive advantage 是競爭優勢，take advantage of an offer 是利用優惠。",
+      "sources": [
+        {
+          "title": "維基詞典 · advantage",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95722280"
+        }
+      ]
+    },
+    {
+      "id": "core-0726",
+      "word": "ready",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ġerǣde 等形式已有準備就緒的概念",
+      "key_origin": "中古英語有 redy 等詞形，現代常說某人或物現在已可開始、使用。",
+      "mnemonic": "ready for the meeting 是準備好參加會議，ready to leave 是準備好要出發。看後面接名詞還是動作。",
+      "sources": [
+        {
+          "title": "維基詞典 · ready",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587700"
+        }
+      ]
+    },
+    {
+      "id": "core-0727",
+      "word": "marry",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "經盎格魯法語 marïer，可追到拉丁語 marītus「丈夫、已婚的」",
+      "key_origin": "拉丁語 marītāre 和結婚或使人結婚相關。現代英語的 marry 可直接接結婚對象。",
+      "mnemonic": "She married Alex 是她和 Alex 結婚。已有婚姻狀態則可說 She is married to Alex。",
+      "sources": [
+        {
+          "title": "維基詞典 · marry",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95401123"
+        }
+      ]
+    },
+    {
+      "id": "core-0728",
+      "word": "strike",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "敲擊、突然襲來與罷工都用 strike；三態 strike–struck–struck",
+      "key_origin": "古英語 strīcan 有擦過、撫過等義，後來發展出擊打等用法。",
+      "mnemonic": "strike a match 是劃火柴，A thought struck me 是念頭突然冒出，go on strike 是開始罷工。",
+      "sources": [
+        {
+          "title": "維基詞典 · strike",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707940"
+        }
+      ]
+    },
+    {
+      "id": "core-0729",
+      "word": "mile",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 mīlia「千」是關鍵",
+      "key_origin": "古英語 mīl 的早期來源是羅馬里程，與 mīlia passuum「若干千步」的算法相連。",
+      "mnemonic": "羅馬里是一千個羅馬步，一個羅馬步約等於左右腳各跨一次。現代 a mile 約 1.6 公里，比一公里長。",
+      "sources": [
+        {
+          "title": "維基詞典 · mile",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739203"
+        }
+      ]
+    },
+    {
+      "id": "core-0730",
+      "word": "seek",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sēċan「尋找、前往」，變化 seek–sought–sought",
+      "key_origin": "日耳曼語傳承的尋找義也可用於追求抽象的事物。",
+      "mnemonic": "seek advice 是尋求建議，a job seeker 是求職者。日常也可用較口語的 look for。",
+      "sources": [
+        {
+          "title": "維基詞典 · seek",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95722494"
+        }
+      ]
+    },
+    {
+      "id": "core-0731",
+      "word": "ability",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "able（能夠的）＋ -ity（狀態、性質），詞形為 ability",
+      "key_origin": "借自古法語 ablete，遠源拉丁語 habilitās，與 able 的歷史詞族相連。",
+      "mnemonic": "the ability to solve problems 是解題能力。用 able 講同一概念時可說 be able to solve problems。",
+      "sources": [
+        {
+          "title": "維基詞典 · ability",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585710"
+        }
+      ]
+    },
+    {
+      "id": "core-0732",
+      "word": "unit",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "與 unity「一體」同源，核心是一個可計數的單位",
+      "key_origin": "由較舊的 unite 名詞形式演變，遠源與拉丁語 ūnus「一」相連。",
+      "mnemonic": "把同類東西各算一份。per unit 是每單位，a housing unit 則是一戶住宅。",
+      "sources": [
+        {
+          "title": "維基詞典 · unit",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588627"
+        }
+      ]
+    },
+    {
+      "id": "core-0733",
+      "word": "card",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 charta「紙、紙草紙」是卡片義的來源",
+      "key_origin": "透過古法語 carte 傳入，與 chart 在歷史上同源。薄片可承載文字、圖案或身分資訊。",
+      "mnemonic": "a business card 是名片，pay by card 是刷卡付款。把它想成帶有用途的薄片。",
+      "sources": [
+        {
+          "title": "維基詞典 · card",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95673315"
+        }
+      ]
+    },
+    {
+      "id": "core-0734",
+      "word": "hospital",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 hospes「客人、主人」是關鍵",
+      "key_origin": "經古法語 hospital 與拉丁語 hospitāle 傳入，早期可指接待或照顧旅客、病人等的地方。",
+      "mnemonic": "hotel 接待住客，hospital 收治病人。be in hospital 是英式英語常用的住院說法。",
+      "sources": [
+        {
+          "title": "維基詞典 · hospital",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95742771"
+        },
+        {
+          "title": "維基詞典 · hospes",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95400574"
+        }
+      ]
+    },
+    {
+      "id": "core-0735",
+      "word": "quickly",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "quick（快的）＋ -ly（副詞）",
+      "key_origin": "quickly 有古英語副詞形式的傳承，現代常修飾動作完成的速度。",
+      "mnemonic": "quickly check the numbers 是快速核對數字。a quick check 則用形容詞 quick 修飾名詞。",
+      "sources": [
+        {
+          "title": "維基詞典 · quickly",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642070"
+        }
+      ]
+    },
+    {
+      "id": "core-0736",
+      "word": "interview",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "inter-（彼此、相互）＋ view（看）可對應古法語結構",
+      "key_origin": "古法語 entreveue 與「彼此見面」的動詞相連，後來用於有目的的會談。",
+      "mnemonic": "想像兩方見面問答。a job interview 是求職面試，interview a witness 是訪談證人。",
+      "sources": [
+        {
+          "title": "維基詞典 · interview",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95540489"
+        }
+      ]
+    },
+    {
       "id": "core-0737",
       "word": "agreement",
       "group": "日常構詞",
@@ -9302,6 +11250,1110 @@
         {
           "title": "維基詞典 · agree",
           "url": "https://en.wiktionary.org/w/index.php?oldid=95409968"
+        }
+      ]
+    },
+    {
+      "id": "core-0738",
+      "word": "release",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "一般的「釋放、發布」整字記；「重新租賃」可寫 re-lease",
+      "key_origin": "常見義源於古法語 relaisser 一類形式，有鬆放、放手的概念。",
+      "mnemonic": "像打開門讓東西出去。release a report 是把報告發布出去，release the brake 是鬆開煞車。",
+      "sources": [
+        {
+          "title": "維基詞典 · release",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95716185"
+        }
+      ]
+    },
+    {
+      "id": "core-0739",
+      "word": "tax",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 taxāre「評估、估價」，經稅額義的 taxa 演變",
+      "key_origin": "經法語傳入，核心可聯想到評定金額後徵收。tax 與 task 有歷史親緣。",
+      "mnemonic": "pay income tax 是繳所得稅，tax my patience 則比喻事情消耗我的耐心。",
+      "sources": [
+        {
+          "title": "維基詞典 · tax",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95490028"
+        },
+        {
+          "title": "維基詞典 · task",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588067"
+        },
+        {
+          "title": "維基詞典 · taxare",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93111387"
+        }
+      ]
+    },
+    {
+      "id": "core-0740",
+      "word": "solution",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "solve（解決、解開）與名詞 solution 同族，字形變成 solu-",
+      "key_origin": "經法語源於拉丁語 solūtiō，與 solvere「鬆開、解開」相連。",
+      "mnemonic": "把問題像繩結一樣解開。a solution to a problem 是解法；salt solution 則是鹽溶在液體中形成的溶液。",
+      "sources": [
+        {
+          "title": "維基詞典 · solution",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93571800"
+        }
+      ]
+    },
+    {
+      "id": "core-0741",
+      "word": "capital",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 caput「頭」的詞幹 capit- 是多個常見義的線索",
+      "key_origin": "拉丁語 capitālis 與頭部或首要地位有關。經法語等路徑可聯到首都、資本與大寫。",
+      "mnemonic": "想像放在最前或最主要。the capital city 是首都，raise capital 是籌集營運所需的資本，a capital letter 是大寫字母。",
+      "sources": [
+        {
+          "title": "維基詞典 · capital",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95632445"
+        }
+      ]
+    },
+    {
+      "id": "core-0742",
+      "word": "popular",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 populus（人民）與 populāris（人民的）",
+      "key_origin": "英語經中古英語借詞一路連到此詞族，現代常形容受到許多人喜愛或採用。",
+      "mnemonic": "想成很多人都選。popular with customers 是受到顧客歡迎，popular opinion 則是大眾意見。",
+      "sources": [
+        {
+          "title": "維基詞典 · popular",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95640887"
+        },
+        {
+          "title": "維基詞典 · populus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93440434"
+        }
+      ]
+    },
+    {
+      "id": "core-0743",
+      "word": "specific",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 speciēs（種類）＋ -ficus（使成為、形成的成分）",
+      "key_origin": "後期拉丁語 specificus 經法語傳入，核心可聯想到指明種類或個別對象。",
+      "mnemonic": "在一堆物件中指定一個。a specific part number 是指定的料號，be more specific 是把話說得更具體。",
+      "sources": [
+        {
+          "title": "維基詞典 · specific",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95428778"
+        }
+      ]
+    },
+    {
+      "id": "core-0744",
+      "word": "beautiful",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "beauty（美）＋ -ful（具有……的），y 變 i",
+      "key_origin": "中古英語已有 bewteful 等形式。beauty 經法語可回溯到 beau「美的」一族。",
+      "mnemonic": "先想「有美感的」。beautiful scenery 是美麗的風景，還可把 -ful 認在 useful 裡。",
+      "sources": [
+        {
+          "title": "維基詞典 · beautiful",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95564244"
+        }
+      ]
+    },
+    {
+      "id": "core-0745",
+      "word": "fear",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fǣr 與危險、突發災禍相關",
+      "key_origin": "由會帶來威脅的事物，發展出面對威脅時的恐懼以及擔心。",
+      "mnemonic": "fear of failure 是害怕失敗。I fear we may be late 語氣較正式，表示恐怕會遲到。",
+      "sources": [
+        {
+          "title": "維基詞典 · fear",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717536"
+        }
+      ]
+    },
+    {
+      "id": "core-0746",
+      "word": "aim",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 esmer「估計」與拉丁語 aestimāre「衡量」相連",
+      "key_origin": "中古英語有估計、瞄準等義。可用「先估量，再對準目標」作聯想。",
+      "mnemonic": "aim at the center 是瞄準中心，aim to reduce waste 是以減少浪費為目標。",
+      "sources": [
+        {
+          "title": "維基詞典 · aim",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739273"
+        }
+      ]
+    },
+    {
+      "id": "core-0747",
+      "word": "television",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "tele-（遠距）＋ vision（看見、影像）",
+      "key_origin": "近代組成的詞，tele- 源自希臘語表示距離的成分，vision 則可溯到拉丁語 vidēre「看」。",
+      "mnemonic": "在家看遠方傳來的活動影像。on television 是在電視上播出。",
+      "sources": [
+        {
+          "title": "維基詞典 · television",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95410577"
+        }
+      ]
+    },
+    {
+      "id": "core-0748",
+      "word": "serious",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "與拉丁語 sērius「嚴肅的、認真的」同族",
+      "key_origin": "經古法語 serieux 和後期拉丁語詞形演變，可形容態度認真或情況嚴重。",
+      "mnemonic": "a serious defect 是嚴重瑕疵，Are you serious? 是問對方是不是認真的。",
+      "sources": [
+        {
+          "title": "維基詞典 · serious",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93012186"
+        }
+      ]
+    },
+    {
+      "id": "core-0749",
+      "word": "target",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "法語 targette 原指一面小盾牌",
+      "key_origin": "由 targe「盾牌」加小稱成分而來，後來可指瞄準的靶及努力想達到的目標。",
+      "mnemonic": "畫一個靶心。hit the target 是射中靶子或達到設定的數字。",
+      "sources": [
+        {
+          "title": "維基詞典 · target",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588057"
+        }
+      ]
+    },
+    {
+      "id": "core-0750",
+      "word": "degree",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 gradus「步、階」是關鍵",
+      "key_origin": "經古法語 degré 傳入。一步一級可延伸到程度，也可指量度的一度或學位。",
+      "mnemonic": "a degree of uncertainty 是某種程度的不確定性，a master's degree 是碩士學位。",
+      "sources": [
+        {
+          "title": "維基詞典 · degree",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94634482"
+        }
+      ]
+    },
+    {
+      "id": "core-0751",
+      "word": "pull",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 pullian，整字記憶，和 push 成對",
+      "key_origin": "更早的來源未定。常見動作是把東西拉向自己或拉離原處。",
+      "mnemonic": "門上寫 PULL 就往自己這側拉。pull a report from the database 則是從資料庫取出報表。",
+      "sources": [
+        {
+          "title": "維基詞典 · pull",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95708730"
+        }
+      ]
+    },
+    {
+      "id": "core-0752",
+      "word": "red",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 rēad 與其他日耳曼語的紅色詞同族",
+      "key_origin": "紅色是基本義，也常在圖表、警告和財務紀錄中帶有特定訊號。",
+      "mnemonic": "a red light 是紅燈，in the red 可聯想帳上用紅字記虧損。",
+      "sources": [
+        {
+          "title": "維基詞典 · red",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738100"
+        }
+      ]
+    },
+    {
+      "id": "core-0753",
+      "word": "husband",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古諾斯語 hús（房屋）＋ bóndi（戶主、經營者）",
+      "key_origin": "中古英語 husbonde 早先可指一家之主，後來主要指丈夫。",
+      "mnemonic": "先用房屋聯想家中的身分。her husband 是她的丈夫，husband and wife 是夫妻。",
+      "sources": [
+        {
+          "title": "維基詞典 · husband",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95641973"
+        }
+      ]
+    },
+    {
+      "id": "core-0754",
+      "word": "access",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 ad-（朝向）＋ cēdere（走）經詞形變化",
+      "key_origin": "拉丁語 accessus 與接近、到達有關，經法語等形式進入英語。",
+      "mnemonic": "想像一扇能進得去的門。access to the files 是檔案存取權，access the files 作動詞直接接檔案。",
+      "sources": [
+        {
+          "title": "維基詞典 · access",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95437893"
+        }
+      ]
+    },
+    {
+      "id": "core-0755",
+      "word": "movement",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "move（移動）＋ -ment（動作、結果）",
+      "key_origin": "中古英語借自古法語的相應構詞，詞族遠源拉丁語 movēre「移動」。",
+      "mnemonic": "movement of goods 是貨物流動，a social movement 則是一群人共同推動改變的行動。",
+      "sources": [
+        {
+          "title": "維基詞典 · movement",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93422240"
+        }
+      ]
+    },
+    {
+      "id": "core-0756",
+      "word": "treat",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 tractāre 有處理、操作的意思，與 trahere「拖、拉」相連",
+      "key_origin": "經古法語 traiter 等形式進入英語，常指以某種方式對待、處理或治療。",
+      "mnemonic": "treat a patient 是治療病人，treat someone with respect 是以尊重對待對方。",
+      "sources": [
+        {
+          "title": "維基詞典 · treat",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93729120"
+        }
+      ]
+    },
+    {
+      "id": "core-0757",
+      "word": "identify",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可辨識表示「同一」的成分與 facere（做）",
+      "key_origin": "經法語 identifier 而來，現代可指判定身分、辨認或找出。",
+      "mnemonic": "把所見的東西與身分對上。identify the root cause 是從可能原因中找出真正的原因。",
+      "sources": [
+        {
+          "title": "維基詞典 · identify",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93700842"
+        }
+      ]
+    },
+    {
+      "id": "core-0758",
+      "word": "loss",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 los「損失」，和 lose 同族",
+      "key_origin": "名詞表示失去的行動、狀態或數量。在商務等語境也指虧損。",
+      "mnemonic": "lose money 是虧錢的動作，a financial loss 是已造成的一筆財務損失。",
+      "sources": [
+        {
+          "title": "維基詞典 · loss",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94681848"
+        }
+      ]
+    },
+    {
+      "id": "core-0759",
+      "word": "modern",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "後期拉丁語 modernus 來自 modo「剛剛、此刻」",
+      "key_origin": "經法語 moderne 傳入，核心是屬於當代，或符合較新的作法。",
+      "mnemonic": "把焦點拉回現在。modern technology 是現代科技，modernize the equipment 是更新設備使其符合現在需要。",
+      "sources": [
+        {
+          "title": "維基詞典 · modern",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95630444"
+        }
+      ]
+    },
+    {
+      "id": "core-0760",
+      "word": "pressure",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史詞根 press-（壓）可連到拉丁語 premere",
+      "key_origin": "拉丁語 pressūra 指壓迫或壓力。現代也用於心理負擔或他人施加的要求。",
+      "mnemonic": "想像力量壓在表面，也能壓在心上。air pressure 是氣壓，work under pressure 是在壓力下工作。",
+      "sources": [
+        {
+          "title": "維基詞典 · pressure",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95373153"
+        }
+      ]
+    },
+    {
+      "id": "core-0761",
+      "word": "bus",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "omnibus（公共載客車）的縮短形式",
+      "key_origin": "omnibus 原為拉丁語「給大家」的形式，公共載客車的稱呼後來縮成 bus。",
+      "mnemonic": "想像一部大家都能搭的車。take the bus 是搭公車，get off the bus 是下車。",
+      "sources": [
+        {
+          "title": "維基詞典 · bus",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717572"
+        }
+      ]
+    },
+    {
+      "id": "core-0762",
+      "word": "treatment",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "treat（處理、對待、治療）＋ -ment（方式、過程）",
+      "key_origin": "英語用 treat 構成這個名詞，法語也有相近的 traitement。",
+      "mnemonic": "問「對什麼、做什麼處理」。medical treatment 是醫療處置，surface treatment 則是表面處理。",
+      "sources": [
+        {
+          "title": "維基詞典 · treatment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=90961551"
+        }
+      ]
+    },
+    {
+      "id": "core-0763",
+      "word": "conference",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 con-（一起）＋ ferre（帶來）",
+      "key_origin": "法語 conférence 的拉丁語詞族有帶到一起、商議等含意。",
+      "mnemonic": "想像把發言者和議題集合。attend a conference 是參加研討會，a video conference 是視訊會議。",
+      "sources": [
+        {
+          "title": "維基詞典 · conference",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93787518"
+        }
+      ]
+    },
+    {
+      "id": "core-0764",
+      "word": "yourself",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "your（你的）＋ self（自身）",
+      "key_origin": "中古英語已有 yourself，現代常作反身代名詞或加強親自做的意思。",
+      "mnemonic": "Introduce yourself 是請自我介紹。Did you fix it yourself? 問的是不是你親手修的。",
+      "sources": [
+        {
+          "title": "維基詞典 · yourself",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95674808"
+        }
+      ]
+    },
+    {
+      "id": "core-0765",
+      "word": "supply",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 sub- ＋ plēre（填滿）形成 supplēre",
+      "key_origin": "supplēre 有補足、填滿的意思，經古法語傳入英語，後來常指供給所需。",
+      "mnemonic": "把缺的物品補上。supply parts to a factory 是供應零件給工廠，a water supply 是供水或水源。",
+      "sources": [
+        {
+          "title": "維基詞典 · supply",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93726140"
+        },
+        {
+          "title": "維基詞典 · suppleo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=91329600"
+        }
+      ]
+    },
+    {
+      "id": "core-0766",
+      "word": "village",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 villa（農莊、鄉間住宅）是關鍵",
+      "key_origin": "經拉丁語 vīllāticus 與古法語 village 等形式進入英語，指聚集在一起的小型村落。",
+      "mnemonic": "想像農莊附近聚了幾戶人家。a fishing village 是靠捕魚維生的村落。",
+      "sources": [
+        {
+          "title": "維基詞典 · village",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642137"
+        }
+      ]
+    },
+    {
+      "id": "core-0767",
+      "word": "worth",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 weorþ，核心是價值或相當於某數",
+      "key_origin": "可以評估金錢價值，也可以評估花時間、力氣是否值得。",
+      "mnemonic": "worth $50 是價值五十元，worth trying 是值得試試，後面直接接動名詞。",
+      "sources": [
+        {
+          "title": "維基詞典 · worth",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95491728"
+        }
+      ]
+    },
+    {
+      "id": "core-0768",
+      "word": "natural",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "nature（自然、本性）＋ -al（與……有關的）",
+      "key_origin": "經古法語 naturel 等形式，遠源拉丁語 nātūrālis，與出生、產生的詞族相連。",
+      "mnemonic": "沿著「原本就有」來想。natural resources 是自然資源，a natural reaction 是很自然會出現的反應。",
+      "sources": [
+        {
+          "title": "維基詞典 · natural",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587199"
+        }
+      ]
+    },
+    {
+      "id": "core-0769",
+      "word": "express",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "表達、明確、快速運送可用「直接到位」聯想",
+      "key_origin": "動詞的法語來源可追到拉丁語 exprimere，其中 ex- 為「出」，premere 為「壓」。快速服務義與「特別派送、專程送達」的用法相關。",
+      "mnemonic": "express an opinion 是把意見講出來。express delivery 是用快速服務配送。",
+      "sources": [
+        {
+          "title": "維基詞典 · express",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94554844"
+        }
+      ]
+    },
+    {
+      "id": "core-0770",
+      "word": "indicate",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 indicāre 有指出、顯示之意",
+      "key_origin": "英文借入相關分詞詞形 indicātus。可把字族和 index「指標、食指」相連。",
+      "mnemonic": "想像用手指指出一個方向。The gauge indicates low pressure 是儀表顯示壓力低。",
+      "sources": [
+        {
+          "title": "維基詞典 · indicate",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95662959"
+        }
+      ]
+    },
+    {
+      "id": "core-0771",
+      "word": "attend",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 ad-（朝向）＋ tendere（伸展）",
+      "key_origin": "經古法語 atendre 進入英語，早期含把心力投向某人或事。",
+      "mnemonic": "attend a meeting 是去參加會議，attend to a customer 是去照顧、處理顧客的需求。",
+      "sources": [
+        {
+          "title": "維基詞典 · attend",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92316200"
+        }
+      ]
+    },
+    {
+      "id": "core-0772",
+      "word": "brother",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 brōþor，整字記兄弟稱謂",
+      "key_origin": "從日耳曼語傳承而來，英語詞本身不區分哥哥、弟弟，通常加 older 或 younger。",
+      "mnemonic": "older brother 是哥哥，younger brother 是弟弟，brother-in-law 則需依彼此關係翻譯。",
+      "sources": [
+        {
+          "title": "維基詞典 · brother",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93739888"
+        }
+      ]
+    },
+    {
+      "id": "core-0773",
+      "word": "investment",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "invest（投入資源以求效益）＋ -ment（行動或結果）",
+      "key_origin": "由 invest 的投入義構成，可指投入的行為或投入的本身。invest 的古老詞族也曾有穿戴的意思。",
+      "mnemonic": "想像先把錢、時間投入，希望日後有回報。an investment in training 是對訓練的投資。",
+      "sources": [
+        {
+          "title": "維基詞典 · investment",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586785"
+        }
+      ]
+    },
+    {
+      "id": "core-0774",
+      "word": "score",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古諾斯語 skor 可指刻痕、記號，也曾用來計數",
+      "key_origin": "與較早表示切、割的日耳曼語詞族相關，刻痕便於記下數量，後來也指計分。",
+      "mnemonic": "想像得一分就刻一記。a test score 是考試分數，score a goal 是進球得分。",
+      "sources": [
+        {
+          "title": "維基詞典 · score",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739229"
+        }
+      ]
+    },
+    {
+      "id": "core-0775",
+      "word": "organize",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "organ ＋ -ize（使形成、安排成）可作辨識線索",
+      "key_origin": "中古英語借入法語和中世紀拉丁語相關形式，拉丁語詞族與形成器官、有組織的構造相連。",
+      "mnemonic": "想像把不同部分排出各自的位置。organize files 是整理檔案，organize an event 是安排活動。",
+      "sources": [
+        {
+          "title": "維基詞典 · organize",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94565430"
+        }
+      ]
+    },
+    {
+      "id": "core-0776",
+      "word": "trip",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "旅行、絆倒可從移步的動作分義記",
+      "key_origin": "中古英語 trippen 可指輕快地踩步，來源有法語、低地語等說法。後來衍生行程與失足等常見義。",
+      "mnemonic": "a business trip 是出差行程，trip over a cable 則是被電線絆到。",
+      "sources": [
+        {
+          "title": "維基詞典 · trip",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642386"
+        }
+      ]
+    },
+    {
+      "id": "core-0777",
+      "word": "beyond",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "歷史上是古英語 be- ＋ ġeond（在另一側），與 yonder 同族",
+      "key_origin": "古英語 beġeondan 指在更遠處，後來也用於超出程度或能力。",
+      "mnemonic": "想像越過線的另一邊。beyond the bridge 是在橋的那一端，beyond repair 是損壞已超出可修復的程度。",
+      "sources": [
+        {
+          "title": "維基詞典 · beyond",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585867"
+        }
+      ]
+    },
+    {
+      "id": "core-0778",
+      "word": "sleep",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 slēpan「睡」，變化 sleep–slept–slept",
+      "key_origin": "動詞與古英語睡眠名詞同源，現代也可用於電子設備的待機狀態。",
+      "mnemonic": "get enough sleep 是睡得夠，sleep mode 則讓裝置暫時休眠。",
+      "sources": [
+        {
+          "title": "維基詞典 · sleep",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95669069"
+        }
+      ]
+    },
+    {
+      "id": "core-0779",
+      "word": "fish",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fisċ（魚）與 fiscian（捕魚）",
+      "key_origin": "沿日耳曼語傳承，名詞指魚，動詞指捕魚或試著取得東西。",
+      "mnemonic": "go fishing 是去釣魚，fish for compliments 則比喻故意引人稱讚自己。",
+      "sources": [
+        {
+          "title": "維基詞典 · fish",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93694376"
+        }
+      ]
+    },
+    {
+      "id": "core-0780",
+      "word": "promise",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 prō-（向前）＋ mittere（送）經分詞形式演變",
+      "key_origin": "古法語 promesse 來自拉丁語 prōmittere 的詞族，有承諾之意。",
+      "mnemonic": "像先把話送出去，約定之後做到。keep a promise 是遵守承諾，promise to call 是答應會打電話。",
+      "sources": [
+        {
+          "title": "維基詞典 · promise",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642507"
+        }
+      ]
+    },
+    {
+      "id": "core-0781",
+      "word": "potential",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 potentia（能力）與 potens（有能力的）",
+      "key_origin": "後期拉丁語 potentiālis 可表示有能力成為某種狀態，英語承接可能性、潛力等義。",
+      "mnemonic": "先記「可能會發展出來」。potential problems 是可能發生的問題，have potential 是有發展潛力。",
+      "sources": [
+        {
+          "title": "維基詞典 · potential",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95421530"
+        }
+      ]
+    },
+    {
+      "id": "core-0782",
+      "word": "energy",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 en-（在……中）＋ érgon（工作、作用）",
+      "key_origin": "希臘語 enérgeia 指作用、活動，經後期拉丁語及法語傳入。",
+      "mnemonic": "把 energy 想成能讓事情動起來的東西。save energy 是節省能源，have no energy left 是已經沒精神了。",
+      "sources": [
+        {
+          "title": "維基詞典 · energy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586378"
+        }
+      ]
+    },
+    {
+      "id": "core-0783",
+      "word": "trouble",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上可追到拉丁語 turba「喧擾、人群」的詞族",
+      "key_origin": "古法語 troubler 有擾亂、攪動之意，進入英語後可指麻煩或造成困擾。",
+      "mnemonic": "想像把本來平靜的水攪亂。have trouble starting the car 是發動車子遇到困難。",
+      "sources": [
+        {
+          "title": "維基詞典 · trouble",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95730358"
+        }
+      ]
+    },
+    {
+      "id": "core-0784",
+      "word": "relation",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "和 relate 同族，可連到拉丁語 relātus（帶回、報告的分詞詞形）",
+      "key_origin": "拉丁語 relātiō 經法語傳入，現代常用於相互關係或對照基準。",
+      "mnemonic": "把一件事拉回來和另一件事對照。in relation to the baseline 是相對於基準值。",
+      "sources": [
+        {
+          "title": "維基詞典 · relation",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92127985"
+        }
+      ]
+    },
+    {
+      "id": "core-0785",
+      "word": "touch",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 tochier 可指碰觸、碰擊，整字記憶",
+      "key_origin": "經古法語進入英語，從接觸物體延伸到情緒受觸動或維持聯絡。",
+      "mnemonic": "touch the screen 是碰螢幕，keep in touch 是保持聯絡。把聯絡想成接觸沒有中斷。",
+      "sources": [
+        {
+          "title": "維基詞典 · touch",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95476425"
+        }
+      ]
+    },
+    {
+      "id": "core-0786",
+      "word": "file",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "文件、排成一列、銼刀可分開記",
+      "key_origin": "文書義可追到拉丁語 fīlum「線」，讓人聯想到將文書串起；銼刀義來自另一個古英語詞。",
+      "mnemonic": "file a report 是正式提交報告，a nail file 則是磨指甲用的銼刀。",
+      "sources": [
+        {
+          "title": "維基詞典 · file",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95434283"
+        }
+      ]
+    },
+    {
+      "id": "core-0787",
+      "word": "middle",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 middel 與 mid「中間」同族",
+      "key_origin": "沿日耳曼語傳承，指兩端之間的位置，也可用於時間範圍。",
+      "mnemonic": "想像在左右兩端之間畫一點。the middle of the month 是月中，a middle seat 是中間座位。",
+      "sources": [
+        {
+          "title": "維基詞典 · middle",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94974598"
+        }
+      ]
+    },
+    {
+      "id": "core-0788",
+      "word": "bar",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "橫桿、吧台、禁止可從橫向隔開的形象記",
+      "key_origin": "古法語 barre 的歷史詞族與橫桿相連。吧台義可聯想到區隔顧客與店員的長檯。",
+      "mnemonic": "a chocolate bar 是一條巧克力，a hotel bar 是飯店酒吧，bar entry 是禁止進入。",
+      "sources": [
+        {
+          "title": "維基詞典 · bar",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95743957"
+        }
+      ]
+    },
+    {
+      "id": "core-0789",
+      "word": "suffer",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 sub-（在下、從下方）＋ ferre（承載）",
+      "key_origin": "拉丁語 sufferre 經盎格魯法語傳入，有承受、忍受之意。",
+      "mnemonic": "像肩上扛著負擔。suffer from back pain 是受背痛困擾，suffer a loss 是承受損失。",
+      "sources": [
+        {
+          "title": "維基詞典 · suffer",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94573482"
+        }
+      ]
+    },
+    {
+      "id": "core-0790",
+      "word": "strategy",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 stratós（軍隊）＋ ágein（帶領）",
+      "key_origin": "希臘語 stratēgía 與統率軍隊有關，現代延伸到為達成目標而訂定的整體方針。",
+      "mnemonic": "像在行動前先決定把資源放在哪裡。a pricing strategy 是整體定價策略。",
+      "sources": [
+        {
+          "title": "維基詞典 · strategy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95743989"
+        }
+      ]
+    },
+    {
+      "id": "core-0791",
+      "word": "deep",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 dēop「深的」，和名詞 depth 一起記",
+      "key_origin": "從距離水面或地面很遠，延伸到程度大、深入或情緒強烈。",
+      "mnemonic": "deep water 是深水，a deep understanding 是理解深入，a deep breath 是吸得很深的一口氣。",
+      "sources": [
+        {
+          "title": "維基詞典 · deep",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94552261"
+        }
+      ]
+    },
+    {
+      "id": "core-0792",
+      "word": "except",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 ex-（出）＋ capere（拿、取）",
+      "key_origin": "拉丁語 excipere 的分詞 exceptus 有被取出、被排除的意象，經法語等形式傳入。",
+      "mnemonic": "想像把其中一項從清單拿掉。everyone except Alex 是除了 Alex 之外的所有人。",
+      "sources": [
+        {
+          "title": "維基詞典 · except",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586425"
+        }
+      ]
+    },
+    {
+      "id": "core-0793",
+      "word": "clean",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 clǣne 等形式，核心是潔淨、純粹",
+      "key_origin": "同一詞可形容沒有污物，也有動詞「弄乾淨」和延伸的乾淨紀錄等用法。",
+      "mnemonic": "clean the kitchen 是清理廚房，a clean record 是紀錄上沒有違規或污點。",
+      "sources": [
+        {
+          "title": "維基詞典 · clean",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95568533"
+        }
+      ]
+    },
+    {
+      "id": "core-0794",
+      "word": "tend",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "tend to do 表傾向；tend a garden 表照料",
+      "key_origin": "傾向義經古法語 tendre 連到拉丁語 tendere「伸展、朝向」。照料義與較長的 attend 等詞有關。",
+      "mnemonic": "想像注意力或走向偏往一邊。Prices tend to fall 是價格往往下跌，tend the garden 是照料花園。",
+      "sources": [
+        {
+          "title": "維基詞典 · tend",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93727319"
+        }
+      ]
+    },
+    {
+      "id": "core-0795",
+      "word": "advance",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 avant（在前）與拉丁語 ante 相連",
+      "key_origin": "盎格魯法語 avancier 有向前之意，英文拼字中的 d 是後加的。",
+      "mnemonic": "把進度往前推。advance to the next round 是晉級下一輪，pay in advance 是先付款。",
+      "sources": [
+        {
+          "title": "維基詞典 · advance",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95722269"
+        }
+      ]
+    },
+    {
+      "id": "core-0796",
+      "word": "fill",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fyllan（填滿）與 full（滿的）同族",
+      "key_origin": "動作義指使空間或空缺變成已占滿、已補足的狀態。",
+      "mnemonic": "從空到滿。fill the tank 是把槽裝滿，fill a vacancy 是補上職缺，fill in a blank 是填一個空格。",
+      "sources": [
+        {
+          "title": "維基詞典 · fill",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95733112"
+        }
+      ]
+    },
+    {
+      "id": "core-0797",
+      "word": "star",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 steorra「星」，與 aster 有遠親關係",
+      "key_origin": "明亮醒目的天體也可用於比喻有名的人或代表評價的星形記號。",
+      "mnemonic": "想像舞台上最亮的那一位。a film star 是電影明星，a five-star hotel 是五星級飯店。",
+      "sources": [
+        {
+          "title": "維基詞典 · star",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94572934"
+        }
+      ]
+    },
+    {
+      "id": "core-0798",
+      "word": "network",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "net（網）＋ work（作品、構造）",
+      "key_origin": "早期字面可指網狀構造，後來用來說連成網的人、設備和組織。",
+      "mnemonic": "想像線交織成許多節點。a computer network 是把電腦連起來，a professional network 是工作上有往來的人脈網。",
+      "sources": [
+        {
+          "title": "維基詞典 · network",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93297031"
+        }
+      ]
+    },
+    {
+      "id": "core-0799",
+      "word": "generally",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "general（一般的、普遍的）＋ -ly（副詞）",
+      "key_origin": "中古英語已有 generalliche 等形式，可表示就整體而言或通常如此。",
+      "mnemonic": "想像先把少數例外放一旁。Generally speaking 是一般來說，generally available 則可表示普遍可取得。",
+      "sources": [
+        {
+          "title": "維基詞典 · generally",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586572"
+        }
+      ]
+    },
+    {
+      "id": "core-0800",
+      "word": "operation",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "operate（運作、操作）＋ -ion（過程或結果）",
+      "key_origin": "法語和拉丁語來源可追到 operārī「工作」，與 opus「工作、作品」同族。",
+      "mnemonic": "問「正在做哪種工作」。operations team 負責營運，an operation 在醫療場合也可以指一場手術。",
+      "sources": [
+        {
+          "title": "維基詞典 · operation",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92722085"
+        }
+      ]
+    },
+    {
+      "id": "core-0801",
+      "word": "match",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "配對或比賽與火柴是同形的兩條來源",
+      "key_origin": "配對義可追到古英語 mæċċa「同伴、配偶」；火柴義經古法語 mesche傳入，原指燈芯一類物件。",
+      "mnemonic": "match the colors 是讓顏色搭配，watch a match 是看比賽，strike a match 是劃火柴。",
+      "sources": [
+        {
+          "title": "維基詞典 · match",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586991"
+        }
+      ]
+    },
+    {
+      "id": "core-0802",
+      "word": "avoid",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "歷史上與古法語「清空」的詞族相連",
+      "key_origin": "中古英語 avoiden 由盎格魯法語等形式借入，遠源與拉丁語 vacuus「空的」有關。",
+      "mnemonic": "想像刻意繞開危險的路段。avoid traffic 是避開車潮。avoid doing something 是避免做某事，後接動名詞。",
+      "sources": [
+        {
+          "title": "維基詞典 · avoid",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585827"
+        }
+      ]
+    },
+    {
+      "id": "core-0803",
+      "word": "seat",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sǣte 等相關形式，可和 sit 一起記",
+      "key_origin": "詞族的核心是可以坐的位置，也可延伸到固定席次、權力中心。",
+      "mnemonic": "take a seat 是請坐，win a seat in parliament 是取得國會的一個席次。",
+      "sources": [
+        {
+          "title": "維基詞典 · seat",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587810"
+        }
+      ]
+    },
+    {
+      "id": "core-0804",
+      "word": "throw",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þrāwan 先有扭轉義，變化 throw–threw–thrown",
+      "key_origin": "後來發展出拋擲、把東西迅速送離手邊等義。",
+      "mnemonic": "throw the ball 是丟球，throw away the packaging 是把包裝丟掉。",
+      "sources": [
+        {
+          "title": "維基詞典 · throw",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588176"
+        }
+      ]
+    },
+    {
+      "id": "core-0805",
+      "word": "task",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語北部形式 tasque「所派的工作、義務」",
+      "key_origin": "經早期拉丁語相關形式，可連到 taxāre「估定」。早期為分派的工作，現代指要完成的任務。",
+      "mnemonic": "把一件需要做完的事寫在清單上。assign a task 是分派任務，complete a task 是完成它。",
+      "sources": [
+        {
+          "title": "維基詞典 · task",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588067"
+        },
+        {
+          "title": "維基詞典 · taxare",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93111387"
+        }
+      ]
+    },
+    {
+      "id": "core-0806",
+      "word": "normal",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 nōrma 原指供木工測量直角的工具或規則",
+      "key_origin": "normālis 有合乎角尺、規範的含意，進入英語後可表示常態或符合預期。",
+      "mnemonic": "想像把角尺放到物件上看是否合規。normal operating conditions 是正常操作條件。",
+      "sources": [
+        {
+          "title": "維基詞典 · normal",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95494716"
+        },
+        {
+          "title": "維基詞典 · norma",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95551562"
+        }
+      ]
+    },
+    {
+      "id": "core-0807",
+      "word": "goal",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "以「終點」聯想球門與目標，整字記憶",
+      "key_origin": "中古英語有 gol 一類形式，早期指競賽中的界線或終點，更早來源有不同解釋。",
+      "mnemonic": "想像先畫好終點，努力朝它前進。set a goal 是訂目標，score a goal 是進球得分。",
+      "sources": [
+        {
+          "title": "維基詞典 · goal",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586604"
+        }
+      ]
+    },
+    {
+      "id": "core-0808",
+      "word": "associate",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 ad-（朝向）＋ sociāre（結合），和 socius「同伴」相連",
+      "key_origin": "拉丁語 associāre 有聯合的意思，英語動詞可指聯想、交往，名詞可指同事或夥伴。",
+      "mnemonic": "把兩件事用線連上。associate A with B 是把 A 和 B 聯想到一起，a business associate 是商務夥伴。",
+      "sources": [
+        {
+          "title": "維基詞典 · associate",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95609842"
+        }
+      ]
+    },
+    {
+      "id": "core-0809",
+      "word": "blue",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語 blew 一類形式經法語傳入，深層詞源屬日耳曼語",
+      "key_origin": "有顏色義，後來也用於情緒與其他習語，這些搭配可整組記。",
+      "mnemonic": "a blue shirt 是藍襯衫，feel blue 是心情低落，out of the blue 則是事情突然發生。",
+      "sources": [
+        {
+          "title": "維基詞典 · blue",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738565"
         }
       ]
     },
