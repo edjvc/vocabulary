@@ -1,6 +1,7 @@
 import {getAll,saveRecord,deleteRecord,replaceRecords} from './db.js';
 import {lookupDictionary,dictionarySourceURL} from './dictionary.js';
 import {loadRootNotes} from './root-notes.js';
+import {isRootNoteValue,renderRootNoteMarkdown,rootNoteMarkdown} from './root-note-markdown.js';
 
 const $ = id => document.getElementById(id);
 const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', lastDrawn:null, searchLimit:70, detailKey:null, totalDrawn:0};
@@ -10,7 +11,6 @@ let glosses = {};
 let glossesReady;
 let rootNotes = new Map();
 let rootNotesStatus = 'loading';
-const rootNoteFields = ['split','key_origin','mnemonic'];
 let rootNoteEditor = null;
 let pendingCustomLookup;
 let addingWord = false;
@@ -94,23 +94,23 @@ function dictionarySections(item){
     meaningSource: local ? 'ECDICT · 臺灣繁體轉換' : translated ? '維基詞典中文資料 · 字形依原文' : ''
   };
 }
-const rootNoteInput = field => $('root-note-field-' + field);
-const readRootNoteEditor = () => Object.fromEntries(rootNoteFields.map(field=>[field,rootNoteInput(field).value]));
 function renderRootNotes(item){
   const bundled = rootNotes.get(item.id);
   const personal = recordFor(item).rootNote;
-  const note = personal ?? bundled;
-  const hasText = rootNoteFields.some(field=>Boolean(note?.[field]));
+  const note = rootNoteMarkdown(personal ?? bundled);
+  const hasText = Boolean(note.trim());
   const editor = rootNoteEditor?.key === item.key ? rootNoteEditor : null;
   const button = $('root-note-toggle');
   button.textContent = editor ? '儲存' : '編輯';
   button.setAttribute('aria-expanded',String(Boolean(editor)));
-  button.disabled = Boolean(editor?.saving) || (!personal && isCore(item) && rootNotesStatus === 'loading');
+  button.disabled = Boolean(editor?.saving) || (personal == null && isCore(item) && rootNotesStatus === 'loading');
   $('root-note-editor').hidden = !editor;
   $('root-note-editor').disabled = Boolean(editor?.saving);
-  $('root-note-content').hidden = Boolean(editor) || !hasText;
+  const content = $('root-note-content');
+  content.hidden = Boolean(editor) || !hasText;
+  content.innerHTML = content.hidden ? '' : renderRootNoteMarkdown(note);
   $('root-note-status').hidden = Boolean(editor) || hasText;
-  $('root-note-status').textContent = !isCore(item) || personal ? '尚無字根記憶。'
+  $('root-note-status').textContent = !isCore(item) || personal != null ? '尚無字根記憶。'
     : rootNotesStatus === 'loading' ? '正在讀取字根記憶…'
     : rootNotesStatus === 'error' ? '暫時無法載入字根記憶。'
     : '這個單字的字根記憶尚未整理。';
@@ -118,11 +118,8 @@ function renderRootNotes(item){
   const references = $('root-note-sources');
   references.hidden = Boolean(editor) || !hasText || !bundled?.sources.length;
   references.replaceChildren();
-  if (!hasText) return;
-  $('root-note-split').textContent = note.split || '—';
-  $('root-note-origin').textContent = note.key_origin || '—';
-  $('root-note-mnemonic').textContent = note.mnemonic || '—';
-  if (personal && bundled?.sources.length) references.append('原始資料來源　');
+  if (references.hidden) return;
+  if (personal != null) references.append('原始資料來源　');
   for (const source of bundled?.sources ?? []) {
     const link = document.createElement('a');
     link.href = source.url;
@@ -136,15 +133,13 @@ function renderRootNotes(item){
 }
 function startRootNoteEdit(item, savedEdit){
   const note = recordFor(item).rootNote ?? rootNotes.get(item.id);
-  const initial = savedEdit?.initial ??
-    Object.fromEntries(rootNoteFields.map(field=>[field,note?.[field] ?? '']));
+  const initial = rootNoteMarkdown(savedEdit?.initial ?? note);
   rootNoteEditor = {key:item.key,initial,saving:false};
-  for (const field of rootNoteFields) {
-    rootNoteInput(field).value = (savedEdit?.draft ?? initial)[field];
-  }
+  const input = $('root-note-editor');
+  input.value = rootNoteMarkdown(savedEdit?.draft ?? initial);
   $('root-note-feedback').textContent = '';
   renderRootNotes(item);
-  if (!savedEdit) rootNoteInput('split').focus();
+  if (!savedEdit) input.focus();
 }
 async function toggleRootNoteEdit(item){
   const editor = rootNoteEditor;
@@ -153,14 +148,13 @@ async function toggleRootNoteEdit(item){
     return;
   }
   if (editor.saving) return;
-  const value = readRootNoteEditor();
-  const trimmed = Object.fromEntries(rootNoteFields.map(field=>[field,value[field].trim()]));
-  const changed = rootNoteFields.some(field=>trimmed[field] !== editor.initial[field]);
+  const value = $('root-note-editor').value;
+  const changed = value !== editor.initial;
   if (changed) {
     editor.saving = true;
     $('root-note-feedback').textContent = '儲存中…';
     renderRootNotes(item);
-    const saved = await write(item,{rootNote:trimmed},{existingOnly:!isCore(item)});
+    const saved = await write(item,{rootNote:value},{existingOnly:!isCore(item)});
     if (rootNoteEditor !== editor) return;
     if (!saved) {
       editor.saving = false;
@@ -178,7 +172,7 @@ async function toggleRootNoteEdit(item){
 function requestDetailClose(){
   const editor = rootNoteEditor;
   if (editor?.saving) return;
-  if (editor && rootNoteFields.some(field=>rootNoteInput(field).value !== editor.initial[field]) &&
+  if (editor && $('root-note-editor').value !== editor.initial &&
       !window.confirm('字根記憶尚未儲存。要捨棄變更並關閉嗎？')) return;
   rootNoteEditor = null;
   if (editor) takeLookupReturn();
@@ -324,7 +318,7 @@ function rememberLookupReturn(){
       totalDrawn:state.totalDrawn,
       search:$('search-word').value,
       detail:$('detail-dialog').open ? state.detailKey : null,
-      rootNoteEdit:editor ? {initial:editor.initial,draft:readRootNoteEditor()} : null
+      rootNoteEdit:editor ? {initial:editor.initial,draft:$('root-note-editor').value} : null
     }},'');
   } catch(error) {
     console.warn('無法記住查詢前的畫面',error);
@@ -576,7 +570,7 @@ function validateBackup(obj){
         !collocations.every(value => typeof value === 'string'))) {
       throw Error('備份的字典資料格式有誤');
     }
-    if (r.rootNote != null && !rootNoteFields.every(field=>typeof r.rootNote[field] === 'string')) {
+    if (r.rootNote != null && !isRootNoteValue(r.rootNote)) {
       throw Error('備份的字根記憶格式有誤');
     }
     keys.add(r.key);

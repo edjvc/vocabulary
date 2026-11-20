@@ -1,11 +1,12 @@
 const scope = self.registration.scope;
 const cachePrefix = `vocabulary:${scope}:`;
-const cacheName = `${cachePrefix}v17`;
+const cacheName = `${cachePrefix}v18`;
 const rootNotesPath = './data/root-notes.json';
 const rootNotesURL = new URL(rootNotesPath,scope).href;
 const paths = [
   './', './index.html', './style.css', './app.js', './db.js',
-  './dictionary.js', './root-notes.js', './data/core.json', rootNotesPath,
+  './dictionary.js', './root-notes.js', './root-note-markdown.js', './vendor/marked.esm.js',
+  './data/core.json', rootNotesPath,
   './data/glosses-zh.json', './manifest.webmanifest',
   './assets/icon-192.png', './assets/icon-512.png'
 ];

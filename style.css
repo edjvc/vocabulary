@@ -42,26 +42,56 @@
   background: var(--panel-soft);
   border-radius: 12px;
 }
-.root-notes h3 {
-  margin: 0 0 10px;
-}
-.root-notes dl {
-  margin: 0;
-}
-.root-notes dl > div + div {
-  margin-top: 10px;
-}
-.root-notes dt,
-#root-note-editor label {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 650;
-}
-.root-notes dd {
-  margin: 3px 0 0;
+.root-note-markdown {
   line-height: 1.65;
   overflow-wrap: anywhere;
-  white-space: pre-wrap;
+}
+.root-note-markdown :is(p, ul, ol, blockquote, pre, table) {
+  margin: 0 0 8px;
+}
+.root-note-markdown :is(h1, h2, h3, h4, h5, h6) {
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: normal;
+  margin: 12px 0 6px;
+}
+.root-note-markdown > :first-child {
+  margin-top: 0;
+}
+.root-note-markdown > :last-child {
+  margin-bottom: 0;
+}
+.root-note-markdown :is(ul, ol) {
+  padding-inline-start: 1.4em;
+}
+.root-note-markdown blockquote {
+  border-inline-start: 2px solid var(--accent-line);
+  padding-inline-start: 10px;
+  color: var(--muted);
+}
+.root-note-markdown pre {
+  overflow: auto;
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--panel);
+}
+.root-note-markdown code {
+  font-size: 0.9em;
+}
+.root-note-markdown a {
+  display: inline;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.root-note-markdown table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+.root-note-markdown :is(th, td) {
+  padding: 4px 8px;
+  border: 1px solid var(--control-line);
 }
 .root-notes-links {
   margin-top: 10px;
@@ -115,22 +145,10 @@
   outline-offset: 1px;
 }
 #root-note-editor {
-  border: 0;
-  margin: 0;
-  min-inline-size: 0;
-  padding: 0;
-}
-#root-note-editor label {
-  display: block;
-  margin: 0 0 4px;
-}
-#root-note-editor textarea {
-  display: block;
-  min-height: 57px;
+  min-height: 160px;
   font-size: 16px;
-}
-#root-note-editor textarea + label {
-  margin-top: 8px;
+  line-height: 1.6;
+  vertical-align: top;
 }
 .root-note-feedback {
   margin: 6px 0 0;
@@ -141,6 +159,9 @@
 @media (max-width: 360px) {
   .root-notes {
     padding-inline: 9px;
+  }
+  .root-note-action {
+    padding-inline: 3px;
   }
 }
 .page-header.review-header {

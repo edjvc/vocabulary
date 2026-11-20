@@ -45,7 +45,7 @@
           <h2 id="card-word">正在載入單字…</h2>
           <div class="card-actions">
             <button id="reveal-btn" class="secondary-btn">顯示答案</button>
-            <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>cambridge字典</a>
+            <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
             <button id="copy-btn" class="text-btn">複製單字</button>
           </div>
        </div>
@@ -101,26 +101,15 @@
        <div class="root-notes-header">
          <h3 id="root-notes-title">字根記憶</h3>
          <div class="root-notes-actions">
-           <a id="detail-ai-lookup" class="external-lookup root-note-action" aria-label="AI查詢，在 ChatGPT 暫存聊天中查詢" rel="noopener noreferrer" hidden>AI查詢</a>
+           <a id="detail-ai-lookup" class="external-lookup root-note-action" aria-label="AI查詢，在 ChatGPT 暫存聊天中查詢" rel="noopener noreferrer" hidden>AI查詢<span aria-hidden="true">↗</span></a>
            <button id="root-note-copy-prompt" type="button" class="root-note-action">複製提示語</button>
-           <a id="detail-etymonline" class="external-lookup root-note-action" aria-label="詞源網，在 Etymonline 查詞源" rel="noopener noreferrer" hidden>詞源網</a>
+           <a id="detail-etymonline" class="external-lookup root-note-action" aria-label="詞源網，在 Etymonline 查詞源" rel="noopener noreferrer" hidden>詞源網<span aria-hidden="true">↗</span></a>
            <button id="root-note-toggle" type="button" class="root-note-action root-note-edit-action" aria-controls="root-note-editor">編輯</button>
          </div>
        </div>
        <p id="root-note-status" class="muted" aria-live="polite"></p>
-       <dl id="root-note-content" hidden>
-         <div><dt>拆解</dt><dd id="root-note-split"></dd></div>
-         <div><dt>關鍵來源</dt><dd id="root-note-origin"></dd></div>
-         <div><dt>助記</dt><dd id="root-note-mnemonic"></dd></div>
-       </dl>
-       <fieldset id="root-note-editor" aria-label="編輯字根記憶" hidden>
-         <label for="root-note-field-split">拆解</label>
-         <textarea id="root-note-field-split" rows="2"></textarea>
-         <label for="root-note-field-key_origin">關鍵來源</label>
-         <textarea id="root-note-field-key_origin" rows="2"></textarea>
-         <label for="root-note-field-mnemonic">助記</label>
-         <textarea id="root-note-field-mnemonic" rows="2"></textarea>
-       </fieldset>
+       <div id="root-note-content" class="root-note-markdown" hidden></div>
+       <textarea id="root-note-editor" aria-label="編輯字根記憶（支援 Markdown）" rows="8" spellcheck="false" hidden></textarea>
        <p id="root-note-sources" class="root-notes-links" hidden></p>
        <p id="root-note-feedback" class="muted root-note-feedback" role="status"></p>
      </section>
@@ -137,7 +126,7 @@
      <p id="note-saved" class="muted">輸入後自動儲存</p>
    </div>
    <div class="dialog-footer">
-     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>cambridge字典</a>
+     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>
