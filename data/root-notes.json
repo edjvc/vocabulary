@@ -3,9 +3,2513 @@
   "schema_version": 1,
   "core_source": "Lexifold TOEIC",
   "core_word_count": 4027,
-  "entry_count": 50,
+  "entry_count": 250,
   "wiktionary_license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "entries": [
+    {
+      "id": "core-0001",
+      "word": "have",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 habban，表示持有、具備。",
+      "key_origin": "have、has、had 是同一詞的不同形式。持有、經歷及助動詞等用法在英語中逐漸發展。",
+      "mnemonic": "have a copy＝手上有一份。have sent a copy＝已經寄過一份。",
+      "sources": [
+        {
+          "title": "維基詞典 · have",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739083"
+        }
+      ]
+    },
+    {
+      "id": "core-0002",
+      "word": "do",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 dōn，核心是做、使發生。",
+      "key_origin": "do、does、did 屬於同一組動詞形式。英語後來也用 do 幫忙構成疑問句和否定句。",
+      "mnemonic": "Do you do any training? 前一個 do 幫忙提問，後一個是「做、進行」。",
+      "sources": [
+        {
+          "title": "維基詞典 · do",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738857"
+        }
+      ]
+    },
+    {
+      "id": "core-0003",
+      "word": "say",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 secgan，指告知、說出。",
+      "key_origin": "said 是 say 的不規則過去式，兩者出自同一個古老動詞。",
+      "mnemonic": "say it clearly＝把話說清楚。看到 said 就回想「已經說過」。",
+      "sources": [
+        {
+          "title": "維基詞典 · say",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95732984"
+        }
+      ]
+    },
+    {
+      "id": "core-0004",
+      "word": "go",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "go 來自古英語 gān；went 歷史上屬於 wend。",
+      "key_origin": "went 這個「走、行進」動詞的舊過去式，後來補入 go 的變化表。",
+      "mnemonic": "go to work＝去上班。昨天去了就說 went to work，把兩個形式成對記。",
+      "sources": [
+        {
+          "title": "維基詞典 · go",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739068"
+        },
+        {
+          "title": "維基詞典 · went",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=88605408"
+        }
+      ]
+    },
+    {
+      "id": "core-0005",
+      "word": "all",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 eall，表示全部、整個。",
+      "key_origin": "日耳曼語傳承詞，核心概念是把範圍內每一部分都納進來。",
+      "mnemonic": "all the files＝所有檔案。all day＝一整天，兩者都是把範圍算滿。",
+      "sources": [
+        {
+          "title": "維基詞典 · all",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738874"
+        }
+      ]
+    },
+    {
+      "id": "core-0006",
+      "word": "one",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ān，表示一個、單一。",
+      "key_origin": "one 和不定冠詞 a／an 可追到同一個表示「一」的古英語詞。",
+      "mnemonic": "one copy 數量明確是一份；a copy 只是先提到一份。",
+      "sources": [
+        {
+          "title": "維基詞典 · one",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95360211"
+        }
+      ]
+    },
+    {
+      "id": "core-0007",
+      "word": "about",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "歷史上可追到古英語 onbūtan，後段與「在外、在周圍」有關。",
+      "key_origin": "早期帶有繞著、在周圍的空間概念，後來也用來標示話題或約略範圍。",
+      "mnemonic": "talk about costs＝圍繞成本來談。about ten＝在十左右。",
+      "sources": [
+        {
+          "title": "維基詞典 · about",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95669786"
+        }
+      ]
+    },
+    {
+      "id": "core-0008",
+      "word": "know",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 cnāwan，指辨認、知道。",
+      "key_origin": "古拼寫的 c 與 n 起首相連，現代拼寫的 kn- 留下歷史痕跡。",
+      "mnemonic": "know the answer＝答案已在腦中。look up the answer＝還要去查。",
+      "sources": [
+        {
+          "title": "維基詞典 · know",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738832"
+        }
+      ]
+    },
+    {
+      "id": "core-0009",
+      "word": "more",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 māra，已有「較多、較大」之義。",
+      "key_origin": "古英語另有副詞形式 mā，現代 more 用於數量比較，也可放在形容詞前。",
+      "mnemonic": "more time＝更多時間。more useful＝更有用，都是在原程度上往上加。",
+      "sources": [
+        {
+          "title": "維基詞典 · more",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739239"
+        }
+      ]
+    },
+    {
+      "id": "core-0010",
+      "word": "get",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "主要經中古英語 geten，可追到古諾斯語 geta。",
+      "key_origin": "早期有取得、得到等義，同源的古英語動詞形態還可在 forget 一類字的歷史中看到。",
+      "mnemonic": "get a ticket＝拿到票。get cold＝進入「變冷」的狀態。",
+      "sources": [
+        {
+          "title": "維基詞典 · get",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739052"
+        },
+        {
+          "title": "維基詞典 · forget",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92721643"
+        }
+      ]
+    },
+    {
+      "id": "core-0011",
+      "word": "like",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「喜歡」與「相似」分屬不同的古英語形式。",
+      "key_origin": "動詞源自 līcian「使喜悅、合意」；比較用的 like 可追到 ġelīc「相像的」。",
+      "mnemonic": "I like it＝我喜歡。It looks like mine＝它看起來像我的。",
+      "sources": [
+        {
+          "title": "維基詞典 · like",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95708110"
+        }
+      ]
+    },
+    {
+      "id": "core-0012",
+      "word": "think",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þencan，表示想、思考。",
+      "key_origin": "過去式 thought 保留了較古老的形態，和同拼法的名詞 thought 可以一起記。",
+      "mnemonic": "think it through＝把問題從頭想到尾。a thought＝腦中出現的一個想法。",
+      "sources": [
+        {
+          "title": "維基詞典 · think",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95708400"
+        }
+      ]
+    },
+    {
+      "id": "core-0013",
+      "word": "make",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 macian，指製作、形成。",
+      "key_origin": "基礎意象是使某物成形，後來也常用於使人或事物進入某種狀態。",
+      "mnemonic": "make a list＝做出一張清單。make it easier＝讓某件事變容易。",
+      "sources": [
+        {
+          "title": "維基詞典 · make",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95661425"
+        }
+      ]
+    },
+    {
+      "id": "core-0014",
+      "word": "time",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 tīma，指時間、時段。",
+      "key_origin": "源頭是日耳曼語詞，英語用法既能指時間長度，也能指一次事件發生的時機。",
+      "mnemonic": "take time＝需要時間。three times＝發生三次，將事件一回回數出來。",
+      "sources": [
+        {
+          "title": "維基詞典 · time",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95667446"
+        }
+      ]
+    },
+    {
+      "id": "core-0015",
+      "word": "see",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sēon，表示看見。",
+      "key_origin": "源於日耳曼語的視覺動詞，英語也常把「看見」用來表達理解。",
+      "mnemonic": "I can see the sign＝我看得見標誌。I see your point＝我懂你的重點。",
+      "sources": [
+        {
+          "title": "維基詞典 · see",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717312"
+        }
+      ]
+    },
+    {
+      "id": "core-0016",
+      "word": "up",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 upp，表示向上或在上方。",
+      "key_origin": "這個方向詞進入動詞片語後，也可表達增加、到達或完成等概念。",
+      "mnemonic": "turn up the volume＝把音量調高。use up the supplies＝把物料用完。",
+      "sources": [
+        {
+          "title": "維基詞典 · up",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739265"
+        }
+      ]
+    },
+    {
+      "id": "core-0017",
+      "word": "some",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 sum，表示某個或若干。",
+      "key_origin": "傳承自日耳曼語，本來就可指不特定的人或事物。",
+      "mnemonic": "some time＝一點時間。some people＝某些人，數量沒有說死。",
+      "sources": [
+        {
+          "title": "維基詞典 · some",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587923"
+        }
+      ]
+    },
+    {
+      "id": "core-0018",
+      "word": "other",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ōþer，曾表示「另一個」或「第二」。",
+      "key_origin": "這個詞可以把兩者中的另一方分出來，也能指同一範圍中的其餘成員。",
+      "mnemonic": "one on this side, the other on that side＝一個在這側，另一個在那側。",
+      "sources": [
+        {
+          "title": "維基詞典 · other",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738889"
+        }
+      ]
+    },
+    {
+      "id": "core-0019",
+      "word": "out",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ūt，表示在外或向外。",
+      "key_origin": "原有的空間方向也延伸到用完、顯露或排除等用法。",
+      "mnemonic": "step out＝走出去。out of stock＝手邊已沒有庫存。",
+      "sources": [
+        {
+          "title": "維基詞典 · out",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739272"
+        }
+      ]
+    },
+    {
+      "id": "core-0020",
+      "word": "good",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 gōd，表示好的、合宜的。",
+      "key_origin": "good、better、best 的比較形式歷史上並非同一詞幹的規則變化。",
+      "mnemonic": "good enough＝好到符合要求。good at math＝擅長數學。",
+      "sources": [
+        {
+          "title": "維基詞典 · good",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95673413"
+        },
+        {
+          "title": "維基詞典 · better",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93743984"
+        }
+      ]
+    },
+    {
+      "id": "core-0021",
+      "word": "people",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "由中古英語經盎格魯諾曼語借入，遠源是拉丁語 populus。",
+      "key_origin": "populus 指人民、群眾。population 也出自同一拉丁詞族。",
+      "mnemonic": "people 是人群，population 是一地的人口。遇到 six people 就直接想六個人。",
+      "sources": [
+        {
+          "title": "維基詞典 · people",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94566536"
+        }
+      ]
+    },
+    {
+      "id": "core-0022",
+      "word": "year",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ġēar，表示一年。",
+      "key_origin": "這是日耳曼語傳承詞，和德語 Jahr 同源。",
+      "mnemonic": "last year 是上一年，in a year 是過一年後。先找時間表上的這一格。",
+      "sources": [
+        {
+          "title": "維基詞典 · year",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94578319"
+        }
+      ]
+    },
+    {
+      "id": "core-0023",
+      "word": "take",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語 taken 承接古英語 tacan 一類形式，通常認為與古諾斯語 taka 有關。",
+      "key_origin": "早期有拿取、抓住等義，後來進入接受、搭乘、需要等用法。",
+      "mnemonic": "take the bus＝選擇並搭上那班車。take an hour＝這件事會占用一小時。",
+      "sources": [
+        {
+          "title": "維基詞典 · take",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95611769"
+        }
+      ]
+    },
+    {
+      "id": "core-0024",
+      "word": "well",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「好、順利」與「井」是不同來源。",
+      "key_origin": "副詞來自古英語 wel；名詞「井」可追到古英語 wielle 一類表示泉水、井的形式。",
+      "mnemonic": "work well＝運作順利。a deep well＝一口深井。",
+      "sources": [
+        {
+          "title": "維基詞典 · well",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738129"
+        }
+      ]
+    },
+    {
+      "id": "core-0025",
+      "word": "because",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "中古英語 by cause 一類短語逐漸合成 because。",
+      "key_origin": "cause 表示原因，由法語借入並可追到拉丁語 causa。",
+      "mnemonic": "because it rained 接完整事件；because of the rain 接原因的名詞片語。",
+      "sources": [
+        {
+          "title": "維基詞典 · because",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95611876"
+        }
+      ]
+    },
+    {
+      "id": "core-0026",
+      "word": "very",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語 verrai 經古法語借入，原有真實、確實之義。",
+      "key_origin": "更早可連到拉丁語 vērus「真的」，後來 very 常拿來加強程度。",
+      "mnemonic": "the very same day＝正是同一天。very cold＝非常冷。",
+      "sources": [
+        {
+          "title": "維基詞典 · very",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94591570"
+        }
+      ]
+    },
+    {
+      "id": "core-0027",
+      "word": "just",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "源自古法語 juste，遠源拉丁語 iūstus。",
+      "key_origin": "iūstus 有正當、公平之義，與 iūs「法律、權利」同族。英語副詞另有「恰好、剛剛」等用法。",
+      "mnemonic": "a just decision＝公正的決定。just enough＝剛好夠用。",
+      "sources": [
+        {
+          "title": "維基詞典 · just",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95638439"
+        }
+      ]
+    },
+    {
+      "id": "core-0028",
+      "word": "come",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 cuman，表示來、到達。",
+      "key_origin": "表示朝指定參照點移動，這個參照點常是說話者所在處。",
+      "mnemonic": "Come to my office＝來我辦公室。對方問你要不要過來，也能回答 I’m coming。",
+      "sources": [
+        {
+          "title": "維基詞典 · come",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739026"
+        }
+      ]
+    },
+    {
+      "id": "core-0029",
+      "word": "work",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞可追到古英語 weorc；動詞與古英語 wyrcan 等形式相關。",
+      "key_origin": "兩支同屬日耳曼詞族，涉及做事、出力和做出的成果。",
+      "mnemonic": "work on a project＝投入專案。The machine works＝機器能運作。",
+      "sources": [
+        {
+          "title": "維基詞典 · work",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95612948"
+        }
+      ]
+    },
+    {
+      "id": "core-0030",
+      "word": "use",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "動詞可追到古法語 user，遠源拉丁語 ūtī。",
+      "key_origin": "拉丁語 ūtī 指使用、利用；英語保留了動詞和名詞兩種用法。",
+      "mnemonic": "use 名詞「用途」詞尾常讀 /s/；動詞「使用」詞尾讀 /z/，像 use a tool。",
+      "sources": [
+        {
+          "title": "維基詞典 · use",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95609226"
+        }
+      ]
+    },
+    {
+      "id": "core-0031",
+      "word": "now",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 nū，表示現在。",
+      "key_origin": "日耳曼語傳承的時間副詞，在對話中也用來把注意力移到眼前。",
+      "mnemonic": "right now＝就在此刻。for now＝目前先這樣。",
+      "sources": [
+        {
+          "title": "維基詞典 · now",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738826"
+        }
+      ]
+    },
+    {
+      "id": "core-0032",
+      "word": "then",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þonne、þanne 等形式，表示那時、接著。",
+      "key_origin": "then 可指回到某個時間點，也可把下一步接上去。",
+      "mnemonic": "First check the list, then send it＝先核對，再寄出。",
+      "sources": [
+        {
+          "title": "維基詞典 · then",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95496108"
+        }
+      ]
+    },
+    {
+      "id": "core-0033",
+      "word": "also",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "可追到古英語 eallswā，構成成分相當於 all ＋ so。",
+      "key_origin": "早期有「也如此、同樣地」的概念，現代通常用於補充另一項。",
+      "mnemonic": "She also called the supplier＝她另外也打給供應商。",
+      "sources": [
+        {
+          "title": "維基詞典 · also",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95606831"
+        }
+      ]
+    },
+    {
+      "id": "core-0034",
+      "word": "into",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "in ＋ to 組合，古英語已有類似形式。",
+      "key_origin": "in 表內部，to 指方向。into 常標出從外往內的路徑或變化結果。",
+      "mnemonic": "walk into the room＝走進房間。turn into a problem＝變成一個問題。",
+      "sources": [
+        {
+          "title": "維基詞典 · into",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95604362"
+        }
+      ]
+    },
+    {
+      "id": "core-0035",
+      "word": "only",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 ānlīċ 等形式，與 ān「一」及 -līc 相關。",
+      "key_origin": "早期重點是單一、唯一，副詞用法則限制數量或範圍。",
+      "mnemonic": "Only Ken called＝只有 Ken 打來。Ken only called＝Ken 只打了電話，沒有採取其他行動。",
+      "sources": [
+        {
+          "title": "維基詞典 · only",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587273"
+        }
+      ]
+    },
+    {
+      "id": "core-0036",
+      "word": "look",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 lōcian，指看、注視。",
+      "key_origin": "基礎是把視線朝向某處，因此可分出觀看、尋找與外觀等用法。",
+      "mnemonic": "look at the screen＝看螢幕。look for the file＝找檔案。It looks fine＝看起來沒問題。",
+      "sources": [
+        {
+          "title": "維基詞典 · look",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642340"
+        }
+      ]
+    },
+    {
+      "id": "core-0037",
+      "word": "want",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語經古諾斯語 vanta 借入，原義與欠缺有關。",
+      "key_origin": "從「欠缺、需要」發展出「想要」；名詞 a want of 有時仍指匱乏。",
+      "mnemonic": "I want more time＝我想要更多時間。想成「手邊少了這個，所以想得到它」。",
+      "sources": [
+        {
+          "title": "維基詞典 · want",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739186"
+        }
+      ]
+    },
+    {
+      "id": "core-0038",
+      "word": "give",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "可追到古英語 ġiefan 一類形式，現代形式也受古諾斯語影響。",
+      "key_origin": "核心是把某物交到別人手中，英語也用在抽象事物上。",
+      "mnemonic": "give a reason＝給一個理由。give someone a hand＝幫人一把。",
+      "sources": [
+        {
+          "title": "維基詞典 · give",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95667616"
+        }
+      ]
+    },
+    {
+      "id": "core-0039",
+      "word": "first",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fyrest 一類形式，歷史上屬於「在前」的最高級形式。",
+      "key_origin": "first 說的是位置、時間或順序上最前面的一個。",
+      "mnemonic": "the first step＝第一步。Come first＝首先考量或排在最前。",
+      "sources": [
+        {
+          "title": "維基詞典 · first",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95608615"
+        }
+      ]
+    },
+    {
+      "id": "core-0040",
+      "word": "new",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 nīewe 一類形式，表示新的、新近的。",
+      "key_origin": "與日耳曼語中表示「新」的形式同源，現代常用於剛出現或個人剛接觸的事物。",
+      "mnemonic": "a new hire＝新進員工。new to this role＝剛接觸這個職務。",
+      "sources": [
+        {
+          "title": "維基詞典 · new",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95709058"
+        }
+      ]
+    },
+    {
+      "id": "core-0041",
+      "word": "way",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 weġ，表示路、行進方向。",
+      "key_origin": "從可以走的路，延伸成達到目標的方法與做事方式。",
+      "mnemonic": "the way to the station＝去車站的路。a way to reduce waste＝減少浪費的方法。",
+      "sources": [
+        {
+          "title": "維基詞典 · way",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95589187"
+        }
+      ]
+    },
+    {
+      "id": "core-0042",
+      "word": "find",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 findan，指發現、找到。",
+      "key_origin": "found 是 find 的不規則過去式；表示「創立」的 found 則是另一個詞。",
+      "mnemonic": "find a defect＝找到缺點。We found one yesterday＝昨天已經找到一個。",
+      "sources": [
+        {
+          "title": "維基詞典 · find",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586478"
+        }
+      ]
+    },
+    {
+      "id": "core-0043",
+      "word": "over",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ofer，表示在上方、越過。",
+      "key_origin": "在上方的空間圖像也可延伸為超過數量、橫跨一段時間。",
+      "mnemonic": "over ten units＝超過十件。over the weekend＝在週末這段時間內。",
+      "sources": [
+        {
+          "title": "維基詞典 · over",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95607391"
+        }
+      ]
+    },
+    {
+      "id": "core-0044",
+      "word": "any",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 ǣniġ 源於 ān「一」及形容詞構形成分。",
+      "key_origin": "從「一個、任何一個」發展為疑問、否定或不限制選項時常用的詞。",
+      "mnemonic": "any questions?＝有任何問題嗎？any day will do＝哪一天都可以。",
+      "sources": [
+        {
+          "title": "維基詞典 · any",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738875"
+        }
+      ]
+    },
+    {
+      "id": "core-0045",
+      "word": "after",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 æfter，表示後方、之後。",
+      "key_origin": "時間上的「之後」和順序上的「後面」用的是同一個方向概念。",
+      "mnemonic": "after lunch＝午餐後。the day after tomorrow＝後天。",
+      "sources": [
+        {
+          "title": "維基詞典 · after",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738564"
+        }
+      ]
+    },
+    {
+      "id": "core-0046",
+      "word": "day",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 dæġ，表示白天或一天。",
+      "key_origin": "可追到日耳曼語，和德語 Tag 同源。",
+      "mnemonic": "during the day＝白天。three days＝三天，留意是在說日照時段還是計天數。",
+      "sources": [
+        {
+          "title": "維基詞典 · day",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95716114"
+        }
+      ]
+    },
+    {
+      "id": "core-0047",
+      "word": "thing",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þing 可表示集會、事務或事項。",
+      "key_origin": "早期可指拿到集會上處理的事，現代也用來泛指物品、事情或想法。",
+      "mnemonic": "one more thing＝再補充一件事。a thing on the desk＝桌上的某件東西。",
+      "sources": [
+        {
+          "title": "維基詞典 · thing",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588161"
+        }
+      ]
+    },
+    {
+      "id": "core-0048",
+      "word": "most",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 mǣst，是「最多、最大」的形式。",
+      "key_origin": "和 more 屬於同一組程度比較；也可用在 most people「多數人」這類短語。",
+      "mnemonic": "more options＝更多選項。the most options＝選項最多。",
+      "sources": [
+        {
+          "title": "維基詞典 · most",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587077"
+        }
+      ]
+    },
+    {
+      "id": "core-0049",
+      "word": "need",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 nēod、nīed 等形式，關乎需求、迫切情況。",
+      "key_origin": "名詞是必要的事或所需，動詞則是缺了就不行或有必要做。",
+      "mnemonic": "We need to check it＝我們有必要查看。a need for training＝有訓練需求。",
+      "sources": [
+        {
+          "title": "維基詞典 · need",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717681"
+        }
+      ]
+    },
+    {
+      "id": "core-0050",
+      "word": "much",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 much 等形式可追到古英語 myċel「大的、多的」。",
+      "key_origin": "現代 much 常修飾不可數量或程度；和 many 的用法分工不同。",
+      "mnemonic": "much time＝很多時間。many days＝很多天，可以逐一數天數。",
+      "sources": [
+        {
+          "title": "維基詞典 · much",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739289"
+        }
+      ]
+    },
+    {
+      "id": "core-0051",
+      "word": "right",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "可追到古英語 riht、reht 等形式，涉及筆直、正當、正確。",
+      "key_origin": "「正確」「權利」和方向「右」是同一歷史詞族發展出的用法。",
+      "mnemonic": "right answer＝正確答案。turn right＝右轉。have the right to ask＝有詢問的權利。",
+      "sources": [
+        {
+          "title": "維基詞典 · right",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95610350"
+        }
+      ]
+    },
+    {
+      "id": "core-0052",
+      "word": "back",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 bæc，原指人體的背。",
+      "key_origin": "身體的背後引出位置「後面」，副詞也可表示往回或回到原狀。",
+      "mnemonic": "the back of the room＝房間後方。send it back＝把它送回去。",
+      "sources": [
+        {
+          "title": "維基詞典 · back",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95666581"
+        }
+      ]
+    },
+    {
+      "id": "core-0053",
+      "word": "mean",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「意指」「刻薄」「平均」分屬三支。",
+      "key_origin": "動詞可追到古英語 mǣnan。「刻薄」一支源自古英語表示普通、共有的詞；平均值源自法語一支，遠源是拉丁語 medius「中間」。",
+      "mnemonic": "What do you mean? 問你想表達什麼。a mean comment 是刻薄的話。the mean score 是平均分數。",
+      "sources": [
+        {
+          "title": "維基詞典 · mean",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95632337"
+        }
+      ]
+    },
+    {
+      "id": "core-0054",
+      "word": "even",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "古英語 efn 表示平坦、相等；另有副詞用法。",
+      "key_origin": "even numbers 可被 2 整除；even 當強調副詞時，常把意料之外的人或事帶進來。",
+      "mnemonic": "an even surface＝平整的表面。Even Ken knew＝連 Ken 都知道。",
+      "sources": [
+        {
+          "title": "維基詞典 · even",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95662297"
+        }
+      ]
+    },
+    {
+      "id": "core-0055",
+      "word": "here",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hēr，意思是「在這裡」。",
+      "key_origin": "與德語 hier 同源。和 there 一起記，用位置指到說話者這一側。",
+      "mnemonic": "Come here＝過來這裡。from here＝從這個地方開始。",
+      "sources": [
+        {
+          "title": "維基詞典 · here",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738833"
+        }
+      ]
+    },
+    {
+      "id": "core-0056",
+      "word": "many",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 maniġ、moniġ 等形式，早已有「很多」之義。",
+      "key_origin": "現代 many 搭配可數名詞複數，用來談能一個個數出的項目。",
+      "mnemonic": "many suppliers＝很多供應商。問有幾家可用 How many suppliers?",
+      "sources": [
+        {
+          "title": "維基詞典 · many",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739177"
+        }
+      ]
+    },
+    {
+      "id": "core-0057",
+      "word": "such",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 swelċ，早期構成相當於 so ＋ like。",
+      "key_origin": "古日耳曼形式有「像這樣、這類」的概念；現代拼法已縮短。",
+      "mnemonic": "such a problem＝這類問題。such as A and B＝像 A 和 B 這些例子。",
+      "sources": [
+        {
+          "title": "維基詞典 · such",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95475059"
+        }
+      ]
+    },
+    {
+      "id": "core-0058",
+      "word": "last",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「最後、上一個」與動詞「持續」分屬兩支。",
+      "key_origin": "前者是古英語 latost「最晚」的後裔；動詞可追到古英語 lǣstan。",
+      "mnemonic": "last Monday＝上個星期一。The meeting lasted an hour＝會議持續了一小時。",
+      "sources": [
+        {
+          "title": "維基詞典 · last",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95637661"
+        }
+      ]
+    },
+    {
+      "id": "core-0059",
+      "word": "child",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ċild，表示小孩。",
+      "key_origin": "複數 children 保留了歷史變化，和一般加 -s 的複數不同。",
+      "mnemonic": "看到 one child 後，接著想 two children。learn as a child＝小時候學會。",
+      "sources": [
+        {
+          "title": "維基詞典 · child",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707888"
+        }
+      ]
+    },
+    {
+      "id": "core-0060",
+      "word": "tell",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 tellan，可指數算、敘述。",
+      "key_origin": "先按順序點數，再把內容交代出來，是把兩個古義連起來的記法。",
+      "mnemonic": "tell me what happened＝把發生的事告訴我。I can tell the difference＝我分辨得出差異。",
+      "sources": [
+        {
+          "title": "維基詞典 · tell",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739156"
+        }
+      ]
+    },
+    {
+      "id": "core-0061",
+      "word": "really",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "real（真實的）＋ -ly（副詞）。",
+      "key_origin": "中古英語已有相關副詞；really 可確認事實，也能強調語氣。",
+      "mnemonic": "Did it really happen?＝真的發生了嗎？really useful＝真的很有用。",
+      "sources": [
+        {
+          "title": "維基詞典 · really",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95678170"
+        }
+      ]
+    },
+    {
+      "id": "core-0062",
+      "word": "call",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 callen，與古諾斯語 kalla 和古英語相關的呼喊動詞同族。",
+      "key_origin": "呼喊或呼喚的概念延伸到叫某個名字、喊人來和打電話。",
+      "mnemonic": "call a technician＝找技師來。Call me Ed＝叫我 Ed。",
+      "sources": [
+        {
+          "title": "維基詞典 · call",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95641629"
+        }
+      ]
+    },
+    {
+      "id": "core-0063",
+      "word": "before",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 beforan，由 be- ＋ foran「在前面」構成。",
+      "key_origin": "「在前」同時適用於順序、位置和時間。",
+      "mnemonic": "before Friday＝星期五以前。Check it before shipping＝出貨前先檢查。",
+      "sources": [
+        {
+          "title": "維基詞典 · before",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585855"
+        }
+      ]
+    },
+    {
+      "id": "core-0064",
+      "word": "company",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 compaignie「作伴、同伴群體」，和 companion 同族。",
+      "key_origin": "companion 的詞源含「一起」和「麵包」的成分，可聯想到共餐的夥伴。",
+      "mnemonic": "keep someone company＝陪伴某人。a company＝一群人組成的企業。",
+      "sources": [
+        {
+          "title": "維基詞典 · company",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94550642"
+        },
+        {
+          "title": "維基詞典 · companion",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94550633"
+        }
+      ]
+    },
+    {
+      "id": "core-0065",
+      "word": "through",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 þurh，表示穿過、經過。",
+      "key_origin": "今日 through 的字母順序經過中古英語變化；仍可想像從一端穿到另一端。",
+      "mnemonic": "walk through the door＝穿過門。read through the report＝從頭到尾看一遍。",
+      "sources": [
+        {
+          "title": "維基詞典 · through",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95508551"
+        }
+      ]
+    },
+    {
+      "id": "core-0066",
+      "word": "down",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "向下的 down 可追到古英語 ofdūne，字面是「離開山丘往下」。",
+      "key_origin": "dūn 指山丘；原來的短語後來縮短成方向詞。羽絨義另有來源。",
+      "mnemonic": "walk down the stairs＝下樓梯。cut down on waste＝把浪費減下來。",
+      "sources": [
+        {
+          "title": "維基詞典 · down",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95715898"
+        }
+      ]
+    },
+    {
+      "id": "core-0067",
+      "word": "show",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 scēawian，可指觀看，也可指展示。",
+      "key_origin": "兩個方向共用「讓視線接觸某物」的概念，現代動詞多用於展示或顯示。",
+      "mnemonic": "Show me the results＝把結果給我看。The data show a trend＝資料顯示一個趨勢。",
+      "sources": [
+        {
+          "title": "維基詞典 · show",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95726961"
+        }
+      ]
+    },
+    {
+      "id": "core-0068",
+      "word": "life",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 līf，指生命或生存。",
+      "key_origin": "life 和 live 屬同一詞族，現代分別用於生命、生活與生存、居住等概念。",
+      "mnemonic": "daily life＝日常生活。service life＝設備能使用的壽命。",
+      "sources": [
+        {
+          "title": "維基詞典 · life",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739171"
+        }
+      ]
+    },
+    {
+      "id": "core-0069",
+      "word": "man",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "古英語 mann 可指人，也可指男性。",
+      "key_origin": "較早的泛指用法見於部分舊式或固定表達；動詞 man 另可指配置人員。",
+      "mnemonic": "a man 在現代一般指一名男性。用 person 泛指一個人。",
+      "sources": [
+        {
+          "title": "維基詞典 · man",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738816"
+        }
+      ]
+    },
+    {
+      "id": "core-0070",
+      "word": "change",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 changier，遠源可追到表示交換的拉丁語詞族。",
+      "key_origin": "交換是用一物換另一物，英語 change 也常指狀態改變。",
+      "mnemonic": "change a plan＝換個計畫。Do you have any change?＝你有零錢嗎？",
+      "sources": [
+        {
+          "title": "維基詞典 · change",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95429154"
+        }
+      ]
+    },
+    {
+      "id": "core-0071",
+      "word": "place",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語融合古英語 plæċe 和古法語 place 等形式。",
+      "key_origin": "兩支可追到拉丁語 platēa「寬街、廣場」，英文後來泛指位置。",
+      "mnemonic": "a place to sit＝可以坐的地方。place an order＝把訂單正式下出去。",
+      "sources": [
+        {
+          "title": "維基詞典 · place",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95705477"
+        }
+      ]
+    },
+    {
+      "id": "core-0072",
+      "word": "long",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「長」可追到古英語 long、lang；「渴望」來自古英語動詞 langian。",
+      "key_origin": "一個描述長度或時長，另一個用 long for 表達想念或渴望。",
+      "mnemonic": "a long wait＝等很久。I long for a break＝我很想休息一下。",
+      "sources": [
+        {
+          "title": "維基詞典 · long",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739170"
+        }
+      ]
+    },
+    {
+      "id": "core-0073",
+      "word": "between",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 betwēonum，歷史構成帶有「在兩者旁邊」。",
+      "key_origin": "後段與「兩個」同族；現代也可用於三者以上各自分明的關係。",
+      "mnemonic": "between A and B＝在 A 與 B 之間。choose between three options＝在三個明確選項間選。",
+      "sources": [
+        {
+          "title": "維基詞典 · between",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94547786"
+        }
+      ]
+    },
+    {
+      "id": "core-0074",
+      "word": "feel",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fēlan，表示感受。",
+      "key_origin": "感受可從手摸到的觸感，延伸到身體狀態、心情和主觀判斷。",
+      "mnemonic": "It feels rough＝摸起來粗。I feel tired＝我感到累。",
+      "sources": [
+        {
+          "title": "維基詞典 · feel",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586487"
+        }
+      ]
+    },
+    {
+      "id": "core-0075",
+      "word": "too",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 tō 的副詞用法，曾表示「此外、也」。",
+      "key_origin": "too 和介系詞 to 有共同來源，現代拼寫和用法分開。",
+      "mnemonic": "I need it too＝我也需要。It’s too hot＝熱過頭了。",
+      "sources": [
+        {
+          "title": "維基詞典 · too",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738858"
+        }
+      ]
+    },
+    {
+      "id": "core-0076",
+      "word": "still",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「靜止、仍然」來自古英語 stille；蒸餾器義是另一支。",
+      "key_origin": "不動的畫面可幫忙記副詞「狀態到現在仍如此」。",
+      "mnemonic": "Keep still＝保持不動。We’re still waiting＝我們還在等。",
+      "sources": [
+        {
+          "title": "維基詞典 · still",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95743028"
+        }
+      ]
+    },
+    {
+      "id": "core-0077",
+      "word": "problem",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘文 pro-（在前）＋ bállein（投、擲）是歷史構成。",
+      "key_origin": "希臘語 próblēma 可指拋到前面之物、阻礙；經拉丁語、法語進入英語。",
+      "mnemonic": "想像前方擺著一個待處理的障礙。solve a problem＝把問題解決。",
+      "sources": [
+        {
+          "title": "維基詞典 · problem",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95615572"
+        }
+      ]
+    },
+    {
+      "id": "core-0078",
+      "word": "write",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 wrītan，日耳曼語詞源和刻、寫相關。",
+      "key_origin": "現在寫字多用筆或鍵盤，詞源可想著在表面留下記號。",
+      "mnemonic": "write it down＝把它寫下來。written instructions＝書面指示。",
+      "sources": [
+        {
+          "title": "維基詞典 · write",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717330"
+        }
+      ]
+    },
+    {
+      "id": "core-0079",
+      "word": "same",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 same，古諾斯語 samr 和古英語相關形式皆可能參與。",
+      "key_origin": "共同的日耳曼語來源已有「相同」的概念。",
+      "mnemonic": "the same size＝一樣大。at the same time＝在同一時間。",
+      "sources": [
+        {
+          "title": "維基詞典 · same",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95716122"
+        }
+      ]
+    },
+    {
+      "id": "core-0080",
+      "word": "lot",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "古英語 hlot，可指份額、抽籤所得的決定。",
+      "key_origin": "從分到的一份，延伸到一批、一塊地或 a lot「很多」。",
+      "mnemonic": "a production lot＝一批生產的產品。a lot of work＝很多工作。",
+      "sources": [
+        {
+          "title": "維基詞典 · lot",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717714"
+        }
+      ]
+    },
+    {
+      "id": "core-0081",
+      "word": "great",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 grēat，早期有大、粗厚一類義。",
+      "key_origin": "大小上的顯著也可表達重要、程度大或出色。",
+      "mnemonic": "a great deal of time＝大量時間。a great idea＝好點子。",
+      "sources": [
+        {
+          "title": "維基詞典 · great",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95479448"
+        }
+      ]
+    },
+    {
+      "id": "core-0082",
+      "word": "try",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "經盎格魯諾曼語、古法語 trier 一類形式。",
+      "key_origin": "早期有分選、挑選、審查或裁決的概念，後來常表示嘗試。",
+      "mnemonic": "try a new method＝試新方法。try to fix it＝試著修好它。",
+      "sources": [
+        {
+          "title": "維基詞典 · try",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95603390"
+        }
+      ]
+    },
+    {
+      "id": "core-0083",
+      "word": "leave",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "動詞「離開、留下」來自古英語 lǣfan；名詞「准假」是另一支。",
+      "key_origin": "兩個動詞義可用「人走了、某物仍留在原處」串連；permission 義的 leave 可追到 lēaf。",
+      "mnemonic": "leave the room＝離開房間。leave the key here＝把鑰匙留下。annual leave＝年假。",
+      "sources": [
+        {
+          "title": "維基詞典 · leave",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95669296"
+        }
+      ]
+    },
+    {
+      "id": "core-0084",
+      "word": "number",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "由盎格魯諾曼語或古法語借入，遠源拉丁語 numerus。",
+      "key_origin": "numerus 指數量或數目；numeral 是同族的英語詞。",
+      "mnemonic": "the number of items＝物品的數量。a number of items＝若干物品。",
+      "sources": [
+        {
+          "title": "維基詞典 · number",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643847"
+        }
+      ]
+    },
+    {
+      "id": "core-0085",
+      "word": "both",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 bā þā 一類說法，帶有「兩者都」之義。",
+      "key_origin": "古諾斯語的相關形式也可能影響後來的拼法。",
+      "mnemonic": "both A and B＝A 與 B 兩個都算進去。",
+      "sources": [
+        {
+          "title": "維基詞典 · both",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95709069"
+        }
+      ]
+    },
+    {
+      "id": "core-0086",
+      "word": "own",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「自己的」來自古英語 āgen；現代動詞 own 和 owner 的構形成因相關。",
+      "key_origin": "早期形容詞與「擁有」的古英語動詞 āgan 有關。",
+      "mnemonic": "my own tool＝我自己的工具。own a business＝擁有一家企業。",
+      "sources": [
+        {
+          "title": "維基詞典 · own",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738130"
+        }
+      ]
+    },
+    {
+      "id": "core-0087",
+      "word": "part",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古英語和古法語都有借入的 part 形式，遠源為拉丁語 pars。",
+      "key_origin": "pars 的變格含 part-，指部分、分到的一份或所占的一方。",
+      "mnemonic": "part of the team＝團隊的一分子。a spare part＝一個備用零件。",
+      "sources": [
+        {
+          "title": "維基詞典 · part",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739323"
+        }
+      ]
+    },
+    {
+      "id": "core-0088",
+      "word": "point",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 point，遠源拉丁語 pūnctum「刺出的點」。",
+      "key_origin": "從小小的刺痕，可連到位置上的一點或討論中要指出的一點。",
+      "mnemonic": "point to a defect＝指向缺點。get to the point＝講到重點。",
+      "sources": [
+        {
+          "title": "維基詞典 · point",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587596"
+        }
+      ]
+    },
+    {
+      "id": "core-0089",
+      "word": "little",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 lȳtel，表示小、少。",
+      "key_origin": "little 既能修飾體積，也能修飾不可數的量。",
+      "mnemonic": "a little time＝還有一點時間。little time＝時間很少。",
+      "sources": [
+        {
+          "title": "維基詞典 · little",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642999"
+        }
+      ]
+    },
+    {
+      "id": "core-0090",
+      "word": "help",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞來自古英語 help；動詞可追到 helpan。",
+      "key_origin": "兩支同屬日耳曼語，核心是給予協助或緩解。",
+      "mnemonic": "help someone with a task＝在一項工作上幫忙。It helps＝這有幫助。",
+      "sources": [
+        {
+          "title": "維基詞典 · help",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739193"
+        }
+      ]
+    },
+    {
+      "id": "core-0091",
+      "word": "ask",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 āscian，指詢問、請求。",
+      "key_origin": "中古英語有 asken 和 axen 一類變體，標準拼法後來定為 ask。",
+      "mnemonic": "ask about the cost＝詢問成本。ask for a discount＝請求折扣。",
+      "sources": [
+        {
+          "title": "維基詞典 · ask",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95641564"
+        }
+      ]
+    },
+    {
+      "id": "core-0092",
+      "word": "meet",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 mētan，指碰到、遇見。",
+      "key_origin": "英語也會把「碰上」用於數量、標準或要求，指達到指定的點。",
+      "mnemonic": "meet the client＝和客戶會面。meet the deadline＝趕上截止時間。",
+      "sources": [
+        {
+          "title": "維基詞典 · meet",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586993"
+        }
+      ]
+    },
+    {
+      "id": "core-0093",
+      "word": "start",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 styrtan，有突然跳起的意思。",
+      "key_origin": "突然動起來可連到開始動作，也保留在「嚇得一跳」的表達裡。",
+      "mnemonic": "start the engine＝讓引擎開始運轉。wake with a start＝猛然驚醒。",
+      "sources": [
+        {
+          "title": "維基詞典 · start",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587970"
+        }
+      ]
+    },
+    {
+      "id": "core-0094",
+      "word": "talk",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 talken，屬日耳曼語詞族。",
+      "key_origin": "可連到較古老的「計數、敘說」一支，和 tell 有歷史上的親緣。",
+      "mnemonic": "talk to a colleague＝和同事談。talk about a problem＝談某個問題。",
+      "sources": [
+        {
+          "title": "維基詞典 · talk",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644156"
+        }
+      ]
+    },
+    {
+      "id": "core-0095",
+      "word": "something",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "some（某個）＋ thing（事、物）。",
+      "key_origin": "中古英語已有相當的片語或合寫形式，指尚未明說的事物。",
+      "mnemonic": "something to check＝有個東西要檢查。something went wrong＝有件事出錯了。",
+      "sources": [
+        {
+          "title": "維基詞典 · something",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587916"
+        }
+      ]
+    },
+    {
+      "id": "core-0096",
+      "word": "put",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "中古英語 putten 等形式；更早的來源和關聯有不同解釋。",
+      "key_origin": "常用義以整字掌握，重點是使某物到某個位置或狀態。",
+      "mnemonic": "put the file on the desk＝把檔案放上桌。put it in writing＝把事情寫成文字。",
+      "sources": [
+        {
+          "title": "維基詞典 · put",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95733047"
+        }
+      ]
+    },
+    {
+      "id": "core-0097",
+      "word": "another",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "an（一個）＋ other（另一個）。",
+      "key_origin": "中古英語已有合寫。可以指再一個，也可以指不同的一個。",
+      "mnemonic": "another cup＝再一杯。another way＝另一種做法。",
+      "sources": [
+        {
+          "title": "維基詞典 · another",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95635211"
+        }
+      ]
+    },
+    {
+      "id": "core-0098",
+      "word": "become",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "be- ＋ come，可追到古英語 becuman。",
+      "key_origin": "古英語可表示到達、遇到等。借用「來到一個新狀態」的畫面，可記現代的「成為」。",
+      "mnemonic": "become available＝變成可使用的狀態。become a manager＝成為經理。",
+      "sources": [
+        {
+          "title": "維基詞典 · become",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95641576"
+        }
+      ]
+    },
+    {
+      "id": "core-0099",
+      "word": "interest",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 inter（在之間）＋ esse（存在），合成 interesse。",
+      "key_origin": "interesse 可指介於其間，也可指「有關係、重要」。法語及中世紀拉丁語形式影響英文。",
+      "mnemonic": "show interest＝表現關注。earn interest＝賺取利息。用「自己與這件事有關」串起關注和利害。",
+      "sources": [
+        {
+          "title": "維基詞典 · interest",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94559549"
+        },
+        {
+          "title": "維基詞典 · intersum",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92491404"
+        }
+      ]
+    },
+    {
+      "id": "core-0100",
+      "word": "country",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語 contre，經法語借入。",
+      "key_origin": "早期指城鎮周圍地域或開闊鄉間，後來也指一個國家。",
+      "mnemonic": "a foreign country＝外國。in the country＝在鄉下，留意這個固定短語。",
+      "sources": [
+        {
+          "title": "維基詞典 · country",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95532525"
+        }
+      ]
+    },
+    {
+      "id": "core-0101",
+      "word": "old",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 eald、ald，表示年老、舊有。",
+      "key_origin": "原是日耳曼語的年齡形容詞，德語 alt 同源。",
+      "mnemonic": "an old friend 可指認識多年的朋友。How old? 則是問年齡。",
+      "sources": [
+        {
+          "title": "維基詞典 · old",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95633773"
+        }
+      ]
+    },
+    {
+      "id": "core-0102",
+      "word": "each",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "可追到古英語 ǣlċ 一類形式，歷史構成已縮合。",
+      "key_origin": "核心是把群體中的成員逐一看待。",
+      "mnemonic": "each item on the list＝清單上一項又一項都算到。",
+      "sources": [
+        {
+          "title": "維基詞典 · each",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95733092"
+        }
+      ]
+    },
+    {
+      "id": "core-0103",
+      "word": "school",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "教育義可追到希臘語 scholḗ；魚群義另經中古荷蘭語。",
+      "key_origin": "scholḗ 曾指閒暇，也指利用閒暇來討論、求學，後來有教學場所等義。",
+      "mnemonic": "go to school＝去上學。a school of fish＝一群聚在一起游的魚。",
+      "sources": [
+        {
+          "title": "維基詞典 · school",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94588148"
+        }
+      ]
+    },
+    {
+      "id": "core-0104",
+      "word": "late",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 læt，有遲、慢等義。",
+      "key_origin": "現代可指比預定時間晚，也可指接近一段時間的尾端。",
+      "mnemonic": "We’re late＝我們遲到了。late in the day＝到了當天較晚的時候。",
+      "sources": [
+        {
+          "title": "維基詞典 · late",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95683242"
+        }
+      ]
+    },
+    {
+      "id": "core-0105",
+      "word": "high",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hēah，意思是位置高。",
+      "key_origin": "可把高度想成刻度，延伸到數值、程度或層級偏高。",
+      "mnemonic": "high pressure＝壓力高。a high shelf＝位置高的架子。",
+      "sources": [
+        {
+          "title": "維基詞典 · high",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95661452"
+        }
+      ]
+    },
+    {
+      "id": "core-0106",
+      "word": "different",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "現代可聯想 differ（有差異）＋ -ent（形容詞）。",
+      "key_origin": "借自古法語 different，遠源為拉丁語 differēns，是 differō 的分詞。",
+      "mnemonic": "A is different from B＝A 和 B 有差別。先抓住 differ，再記形容詞搭配 from。",
+      "sources": [
+        {
+          "title": "維基詞典 · different",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95503419"
+        }
+      ]
+    },
+    {
+      "id": "core-0107",
+      "word": "off",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 of 等形式，是現代 of 和 off 的共同來源。",
+      "key_origin": "現代 off 強調離開、脫離或中斷。",
+      "mnemonic": "take off your shoes＝讓鞋子離開腳。turn off the light＝關燈。",
+      "sources": [
+        {
+          "title": "維基詞典 · off",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95610413"
+        }
+      ]
+    },
+    {
+      "id": "core-0108",
+      "word": "next",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "源自古英語 nīehst，是「近」的最高級形式。",
+      "key_origin": "near 和 next 歷史上有關，next 是靠得最近或順序緊接的一個。",
+      "mnemonic": "the next stop＝順序上緊跟著的一站。next to me＝緊鄰我。",
+      "sources": [
+        {
+          "title": "維基詞典 · next",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707996"
+        }
+      ]
+    },
+    {
+      "id": "core-0109",
+      "word": "end",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ende，表示端點、終點。",
+      "key_origin": "有形的端點也可用在事件或時間的結尾。",
+      "mnemonic": "at the end of the shift＝到了班次尾聲。end the call＝結束通話。",
+      "sources": [
+        {
+          "title": "維基詞典 · end",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95607626"
+        }
+      ]
+    },
+    {
+      "id": "core-0110",
+      "word": "live",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "動詞來自古英語 libban、lifian。形容詞是 alive 的縮短形式。",
+      "key_origin": "動詞 live /lɪv/ 指居住或活著；live /laɪv/ 修飾現場、即時等狀態。",
+      "mnemonic": "I live nearby＝我住附近。a live broadcast＝一場現場直播。",
+      "sources": [
+        {
+          "title": "維基詞典 · live",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739175"
+        }
+      ]
+    },
+    {
+      "id": "core-0111",
+      "word": "while",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞可追到古英語 hwīl，表示一小段時間。",
+      "key_origin": "作連接詞可把兩件事放在同一時段，也可表示對照。",
+      "mnemonic": "wait a while＝等一會兒。while you wait＝在你等待的這段時間。",
+      "sources": [
+        {
+          "title": "維基詞典 · while",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738998"
+        }
+      ]
+    },
+    {
+      "id": "core-0112",
+      "word": "world",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 weorold 可從歷史上的 wer「人」與 eld「年代」來聯想。",
+      "key_origin": "早期「人世」的概念後來也用於整個世界或特定領域。",
+      "mnemonic": "the world of finance＝金融世界。around the world＝世界各地。",
+      "sources": [
+        {
+          "title": "維基詞典 · world",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644281"
+        }
+      ]
+    },
+    {
+      "id": "core-0113",
+      "word": "week",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 wice、wucu，表示週。",
+      "key_origin": "這個時間詞傳承自日耳曼語，德語 Woche 同源。",
+      "mnemonic": "in two weeks＝兩週後。twice a week＝每週兩次。",
+      "sources": [
+        {
+          "title": "維基詞典 · week",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95561442"
+        }
+      ]
+    },
+    {
+      "id": "core-0114",
+      "word": "play",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "來自古英語 plegian 等形式，更早的來源仍有不確定性。",
+      "key_origin": "可整字記住遊玩、進行遊戲或表演等用法。",
+      "mnemonic": "play a game＝玩遊戲。play an instrument＝演奏樂器。play a role＝扮演角色。",
+      "sources": [
+        {
+          "title": "維基詞典 · play",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95705545"
+        }
+      ]
+    },
+    {
+      "id": "core-0115",
+      "word": "home",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hām，指家園或居住的地方。",
+      "key_origin": "home 可以指人的歸處，也可直接當副詞表示往家裡去。",
+      "mnemonic": "go home＝回家，中間通常不加 to。work from home＝在家工作。",
+      "sources": [
+        {
+          "title": "維基詞典 · home",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95666970"
+        }
+      ]
+    },
+    {
+      "id": "core-0116",
+      "word": "never",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "ne（古代否定詞）＋ ever（曾經、任何時候）。",
+      "key_origin": "古英語已有 nǣfre，概念是沒有任何一次。",
+      "mnemonic": "I’ve never tried it＝從過去到現在一次也沒試過。",
+      "sources": [
+        {
+          "title": "維基詞典 · never",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95506362"
+        }
+      ]
+    },
+    {
+      "id": "core-0117",
+      "word": "include",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 in-（在內）＋「關閉」的詞幹，形成 inclūdere。",
+      "key_origin": "include 與 enclose 同源，一個常用於範圍包含，另一個也可指把物品封入。",
+      "mnemonic": "把清單想成一個框。The price includes tax＝稅已放進價格範圍。",
+      "sources": [
+        {
+          "title": "維基詞典 · include",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93701448"
+        },
+        {
+          "title": "維基詞典 · claudo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93580170"
+        }
+      ]
+    },
+    {
+      "id": "core-0118",
+      "word": "course",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 cours 源自拉丁語 cursus，和 currere「跑」同族。",
+      "key_origin": "原有奔跑、路程等義，能聯想到朝某方向走的一連串進程。",
+      "mnemonic": "a training course＝一段有安排的訓練。change course＝改變行進方向。",
+      "sources": [
+        {
+          "title": "維基詞典 · course",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586166"
+        }
+      ]
+    },
+    {
+      "id": "core-0119",
+      "word": "house",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hūs，表示屋子。",
+      "key_origin": "派生的動詞也有提供住所或把物品安置在其中的意思。",
+      "mnemonic": "house 一棟房子，字尾讀 /s/；house equipment 安置設備，動詞字尾讀 /z/。",
+      "sources": [
+        {
+          "title": "維基詞典 · house",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95706966"
+        }
+      ]
+    },
+    {
+      "id": "core-0120",
+      "word": "report",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 re-（回）＋ portāre（攜帶），形成 reportāre。",
+      "key_origin": "「帶回」可用來記「帶回消息、回報」；字經盎格魯諾曼語進入英語。",
+      "mnemonic": "想像把現場看到的資訊帶回來。report a defect＝通報缺點。",
+      "sources": [
+        {
+          "title": "維基詞典 · report",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717791"
+        }
+      ]
+    },
+    {
+      "id": "core-0121",
+      "word": "group",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "由法語 groupe 借入，來源是義大利語 gruppo、groppo。",
+      "key_origin": "可從聚成一團的意象記住一群人或分類後的一組事物。",
+      "mnemonic": "a group of workers＝一群工作者。group them by size＝依尺寸分組。",
+      "sources": [
+        {
+          "title": "維基詞典 · group",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586630"
+        }
+      ]
+    },
+    {
+      "id": "core-0122",
+      "word": "case",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「情況、案件」與「盒、外殼」分屬不同來源。",
+      "key_origin": "前者來自拉丁語 cāsus「發生的事情」，與 cadere「落下」相關；後者可追到拉丁語 capsa「盒」。",
+      "mnemonic": "in this case＝在這種情況下。a phone case＝手機保護殼。",
+      "sources": [
+        {
+          "title": "維基詞典 · case",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95618076"
+        }
+      ]
+    },
+    {
+      "id": "core-0123",
+      "word": "woman",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 wīf（女性）＋ mann（人），合為 wīfmann。",
+      "key_origin": "古代成分的意思與今天的 wife、man 有差異；複數 women 保留歷史變化。",
+      "mnemonic": "a woman 是一名女性，two women 是兩名女性，拼字和讀音一起記。",
+      "sources": [
+        {
+          "title": "維基詞典 · woman",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95408330"
+        }
+      ]
+    },
+    {
+      "id": "core-0124",
+      "word": "around",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "a-（歷史上相當於 on）＋ round（周圍、成圓形）。",
+      "key_origin": "round 由法語借入；around 可指環繞，亦可指大約。",
+      "mnemonic": "walk around the building＝繞著建築物走。around noon＝大約中午。",
+      "sources": [
+        {
+          "title": "維基詞典 · around",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707964"
+        }
+      ]
+    },
+    {
+      "id": "core-0125",
+      "word": "book",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞來自古英語 bōc，動詞也有從名詞派生的支系。",
+      "key_origin": "動詞 book 可想成預先把姓名、時段寫入登記簿。",
+      "mnemonic": "a book＝一本書。book a room＝預訂房間。",
+      "sources": [
+        {
+          "title": "維基詞典 · book",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95633310"
+        }
+      ]
+    },
+    {
+      "id": "core-0126",
+      "word": "family",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "借自拉丁語 familia，指家庭、家戶等。",
+      "key_origin": "同一個家戶的概念也延伸到因共同特性而組成的一群。",
+      "mnemonic": "a family business＝家族企業。a family of products＝同系列的產品。",
+      "sources": [
+        {
+          "title": "維基詞典 · family",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95670807"
+        }
+      ]
+    },
+    {
+      "id": "core-0127",
+      "word": "seem",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "經中古英語 semen，源自古諾斯語 sœma。",
+      "key_origin": "早期詞義與合宜、相稱有關，現代多表達從跡象看來如此。",
+      "mnemonic": "It seems fine＝看起來沒問題。seem to work＝似乎有效。",
+      "sources": [
+        {
+          "title": "維基詞典 · seem",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92753629"
+        }
+      ]
+    },
+    {
+      "id": "core-0128",
+      "word": "let",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "常用「允許」來自古英語 lǣtan。少見的「阻礙」義來自 lettan。",
+      "key_origin": "日常優先記「讓、允許」一支。網球的 let 是專門用法。",
+      "mnemonic": "Let me check＝讓我看一下。Let’s go＝讓我們出發，也就是「走吧」。",
+      "sources": [
+        {
+          "title": "維基詞典 · let",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586875"
+        }
+      ]
+    },
+    {
+      "id": "core-0129",
+      "word": "again",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 onġēan，含有迎面、回向等方向概念。",
+      "key_origin": "現代「再次」可以用回到同一動作的畫面記憶。",
+      "mnemonic": "read it again＝回到剛才那段再看一次。",
+      "sources": [
+        {
+          "title": "維基詞典 · again",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95629160"
+        }
+      ]
+    },
+    {
+      "id": "core-0130",
+      "word": "kind",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "名詞可追到古英語 cynd「種類、本性」；形容詞與 ġecynde 等形式有關。",
+      "key_origin": "兩支有詞族關係。現代分別常表示類別和親切。",
+      "mnemonic": "What kind of work?＝哪一種工作？It’s kind of you＝你人真好。",
+      "sources": [
+        {
+          "title": "維基詞典 · kind",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95488083"
+        }
+      ]
+    },
+    {
+      "id": "core-0131",
+      "word": "keep",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 cēpan，屬日耳曼語詞族。",
+      "key_origin": "現代可用「讓東西或狀態繼續在原處」串起保留、保持及持續。",
+      "mnemonic": "keep the receipt＝保留收據。keep the door open＝讓門維持開著。",
+      "sources": [
+        {
+          "title": "維基詞典 · keep",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739095"
+        }
+      ]
+    },
+    {
+      "id": "core-0132",
+      "word": "hear",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hēran、hīeran 等形式，表示聽見。",
+      "key_origin": "hear 可表聲音進入耳朵，也可表收到消息。listen 則常強調有意聽。",
+      "mnemonic": "hear a noise＝聽到聲音。hear from a client＝收到客戶的消息。",
+      "sources": [
+        {
+          "title": "維基詞典 · hear",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717367"
+        }
+      ]
+    },
+    {
+      "id": "core-0133",
+      "word": "system",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 sýstēma 和「使站在一起」的動詞構成有關。",
+      "key_origin": "歷史組成可聯想到 syn-（一起）與「站立、安置」的詞族。",
+      "mnemonic": "把零散部分安排成能一起運作的整體。a quality system＝品質管理系統。",
+      "sources": [
+        {
+          "title": "維基詞典 · system",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95672556"
+        },
+        {
+          "title": "維基詞典 · συνίστημι",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92082743"
+        }
+      ]
+    },
+    {
+      "id": "core-0134",
+      "word": "every",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "可追到古英語 ǣfre「始終」與「每一」一詞的結合。",
+      "key_origin": "現代多搭配單數可數名詞，表示範圍內沒有遺漏任何一個。",
+      "mnemonic": "every report＝每一份報告。Every report is ready 用單數動詞 is。",
+      "sources": [
+        {
+          "title": "維基詞典 · every",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95432829"
+        }
+      ]
+    },
+    {
+      "id": "core-0135",
+      "word": "question",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 question 可追到拉丁語 quaestiō。",
+      "key_origin": "拉丁語 quaerere 指尋求、詢問；question 可想成尋找答案的提問。",
+      "mnemonic": "ask a question＝問問題。question the result＝對結果提出質疑。",
+      "sources": [
+        {
+          "title": "維基詞典 · question",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94568829"
+        },
+        {
+          "title": "維基詞典 · quaero",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94533247"
+        }
+      ]
+    },
+    {
+      "id": "core-0136",
+      "word": "during",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "中古英語 duren（持續）＋ -ing，後來成為介系詞。",
+      "key_origin": "表示某事件發生在另一個時段的範圍內。",
+      "mnemonic": "during the meeting＝在會議期間。接完整子句可用 while we were meeting。",
+      "sources": [
+        {
+          "title": "維基詞典 · during",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95635811"
+        }
+      ]
+    },
+    {
+      "id": "core-0137",
+      "word": "always",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 ealne weġ 原意相當於「整條路」。",
+      "key_origin": "經中古英語 alway、alweyes 等形式，後來常表示一直或每次都。",
+      "mnemonic": "想像沿路從頭到尾都如此。I always check twice＝我每次都核對兩遍。",
+      "sources": [
+        {
+          "title": "維基詞典 · always",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95678413"
+        }
+      ]
+    },
+    {
+      "id": "core-0138",
+      "word": "big",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "中古英語已有 big、bigge；更早的來源有不同說法。",
+      "key_origin": "日常把 big 當整字記即可，涵蓋體積大、規模大和重要。",
+      "mnemonic": "a big box＝一個大箱子。a big decision＝一個影響很大的決定。",
+      "sources": [
+        {
+          "title": "維基詞典 · big",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738827"
+        }
+      ]
+    },
+    {
+      "id": "core-0139",
+      "word": "set",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "常用動詞來自古英語 settan「使坐下、放置」。",
+      "key_origin": "settan 歷史上與 sit 同族。英語也用 set 表示設定、使就位，另有「一組」的名詞用法。",
+      "mnemonic": "set a date＝把日期定下來。a set of tools＝一組工具。",
+      "sources": [
+        {
+          "title": "維基詞典 · set",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739132"
+        }
+      ]
+    },
+    {
+      "id": "core-0140",
+      "word": "small",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 smæl，表示細小、窄。",
+      "key_origin": "現代延伸為體積、數量、規模偏小。",
+      "mnemonic": "a small batch＝一小批。a small difference＝差距很小。",
+      "sources": [
+        {
+          "title": "維基詞典 · small",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738835"
+        }
+      ]
+    },
+    {
+      "id": "core-0141",
+      "word": "study",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 estudie、estudier，遠源拉丁語 studium。",
+      "key_origin": "studium 帶有致力、熱衷或鑽研的概念，衍生出讀書與研究等用法。",
+      "mnemonic": "study the data＝仔細研究資料。a study＝一項研究。",
+      "sources": [
+        {
+          "title": "維基詞典 · study",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95744935"
+        }
+      ]
+    },
+    {
+      "id": "core-0142",
+      "word": "follow",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 folgian，表示跟隨。",
+      "key_origin": "跟在某物後面可用於實際移動，也可指照著指示或接續發生。",
+      "mnemonic": "follow the instructions＝照著指示做。A follows B＝A 在 B 之後。",
+      "sources": [
+        {
+          "title": "維基詞典 · follow",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93694921"
+        }
+      ]
+    },
+    {
+      "id": "core-0143",
+      "word": "begin",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 beginnan，由 be- 與古日耳曼語動詞詞幹組成。",
+      "key_origin": "後半今天不常單獨使用。begin、began、begun 宜整組記。",
+      "mnemonic": "begin work＝開始工作。Work began at nine＝工作九點開始。",
+      "sources": [
+        {
+          "title": "維基詞典 · begin",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585848"
+        }
+      ]
+    },
+    {
+      "id": "core-0144",
+      "word": "important",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "歷史上來自中世紀拉丁語 importāns，可聯想 import 的「重要性」義。",
+      "key_origin": "important 與 importance 同族，可用「有分量、會影響結果」記。",
+      "mnemonic": "an important detail＝會影響結果的重要細節。This detail matters＝這細節很重要。",
+      "sources": [
+        {
+          "title": "維基詞典 · important",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95662623"
+        }
+      ]
+    },
+    {
+      "id": "core-0145",
+      "word": "since",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "可追到古英語 sīþþan 及相關片語，中古英語形態逐步縮短。",
+      "key_origin": "時間用法標出起點到參照時刻的區間；也能作連接詞表示原因。",
+      "mnemonic": "since Monday＝從星期一那個起點算起。Since you’re here＝既然你在這裡。",
+      "sources": [
+        {
+          "title": "維基詞典 · since",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587903"
+        }
+      ]
+    },
+    {
+      "id": "core-0146",
+      "word": "run",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語有 runnen、rennen，與古英語及古諾斯語的跑動詞相關。",
+      "key_origin": "從持續跑動，可聯想到機器運轉、營運或把流程跑一遍。",
+      "mnemonic": "run a test＝執行一次測試。The machine is running＝機器正在運轉。",
+      "sources": [
+        {
+          "title": "維基詞典 · run",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587801"
+        }
+      ]
+    },
+    {
+      "id": "core-0147",
+      "word": "under",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 under，表示在下面、在某範圍內。",
+      "key_origin": "空間上的下方可延伸為低於上限、受約束或處在某種狀態中。",
+      "mnemonic": "under ten dollars＝低於十元。under review＝正在審查中。",
+      "sources": [
+        {
+          "title": "維基詞典 · under",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644222"
+        }
+      ]
+    },
+    {
+      "id": "core-0148",
+      "word": "turn",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "英語融合古英語與古法語的相關形式，源頭可追到拉丁語 tornāre。",
+      "key_origin": "詞族與車削、旋轉相關，英文也常拿轉向記輪替或變化。",
+      "mnemonic": "turn left＝轉向左邊。It’s your turn＝輪到你了。",
+      "sources": [
+        {
+          "title": "維基詞典 · turn",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95588512"
+        }
+      ]
+    },
+    {
+      "id": "core-0149",
+      "word": "few",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 fēaw，表示少數。",
+      "key_origin": "現代搭配可數名詞複數，a few 和 few 帶出的語氣不同。",
+      "mnemonic": "a few days＝還有幾天。few options＝選項少得不太夠。",
+      "sources": [
+        {
+          "title": "維基詞典 · few",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643586"
+        }
+      ]
+    },
+    {
+      "id": "core-0150",
+      "word": "bring",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 bringan，表示帶來。",
+      "key_origin": "概念是把人、物或話題帶到指定的人或地點。",
+      "mnemonic": "Bring the samples here＝把樣品帶到這裡。bring up an issue＝把議題提出來。",
+      "sources": [
+        {
+          "title": "維基詞典 · bring",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585932"
+        }
+      ]
+    },
+    {
+      "id": "core-0151",
+      "word": "early",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 ǣrlīċ、ǣrlīċe，可與 ere（之前）＋ -ly 聯想。",
+      "key_origin": "古語 ere 帶有在某時之前的概念。early 可作形容詞，也可作副詞。",
+      "mnemonic": "an early meeting＝時間排得早的會議。arrive early＝提早抵達。",
+      "sources": [
+        {
+          "title": "維基詞典 · early",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95629147"
+        }
+      ]
+    },
+    {
+      "id": "core-0152",
+      "word": "hand",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 hand，意思是手。",
+      "key_origin": "名詞可以指手或協助，動詞則像用手把東西交過去。",
+      "mnemonic": "hand me the form＝把表單遞給我。give me a hand＝幫我一把。",
+      "sources": [
+        {
+          "title": "維基詞典 · hand",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95707887"
+        }
+      ]
+    },
+    {
+      "id": "core-0153",
+      "word": "state",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "名詞經古法語 estat 及拉丁語 stātus；同族有 status、estate。",
+      "key_origin": "拉丁語 stātus 可追到 stāre「站立」，從所處情形可聯想到狀態。英語也用 state 指國家、州等政治實體。",
+      "mnemonic": "the state of the machine＝機器的狀態。state your reasons＝把理由明確說出。",
+      "sources": [
+        {
+          "title": "維基詞典 · state",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739180"
+        }
+      ]
+    },
+    {
+      "id": "core-0154",
+      "word": "move",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 movoir 一類形式，遠源拉丁語 movēre「使移動」。",
+      "key_origin": "從位置變化延伸到使人感動、採取行動等。",
+      "mnemonic": "move the boxes＝移動箱子。The story moved me＝故事讓我感動。",
+      "sources": [
+        {
+          "title": "維基詞典 · move",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95501039"
+        }
+      ]
+    },
+    {
+      "id": "core-0155",
+      "word": "money",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "經盎格魯諾曼語、古法語借入，遠源拉丁語 monēta。",
+      "key_origin": "monēta 與古羅馬鑄幣場所相關，英語 money 後來泛指貨幣或資金。",
+      "mnemonic": "把錢幣和鑄幣所聯在一起。save money＝存錢或節省開支。",
+      "sources": [
+        {
+          "title": "維基詞典 · money",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642017"
+        },
+        {
+          "title": "維基詞典 · monēta",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=87848447"
+        }
+      ]
+    },
+    {
+      "id": "core-0156",
+      "word": "fact",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 factum，與 facere「做、製作」同族。",
+      "key_origin": "factum 可指做過的事，後來英語 fact 常指確實如此、可認定為真的事。",
+      "mnemonic": "a fact we can verify＝一項可證實的事實。用「做過或發生的事」來記。",
+      "sources": [
+        {
+          "title": "維基詞典 · fact",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94356603"
+        },
+        {
+          "title": "維基詞典 · facio",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95536661"
+        }
+      ]
+    },
+    {
+      "id": "core-0157",
+      "word": "however",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "how（如何、多麼）＋ -ever（不拘、一律）。",
+      "key_origin": "有「無論多麼、無論如何」的用法，也發展成轉折副詞。",
+      "mnemonic": "however hard it is＝無論多難。It’s hard. However, we can try.＝雖然很難，但還能試。",
+      "sources": [
+        {
+          "title": "維基詞典 · however",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586685"
+        }
+      ]
+    },
+    {
+      "id": "core-0158",
+      "word": "area",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "借自拉丁語 ārea，可指空地、平坦場地。",
+      "key_origin": "從一塊場地延伸到面積、區域或抽象領域。",
+      "mnemonic": "the storage area＝存放區。the area of the room＝房間的面積。",
+      "sources": [
+        {
+          "title": "維基詞典 · area",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95585767"
+        }
+      ]
+    },
+    {
+      "id": "core-0159",
+      "word": "provide",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 prō-（在前）＋ vidēre（看），合成 prōvidēre。",
+      "key_origin": "「事先看見」可連到預作安排、準備所需物；英文後來常表示提供。",
+      "mnemonic": "想像先看見對方的需求，再把東西備好。provide training＝提供訓練。",
+      "sources": [
+        {
+          "title": "維基詞典 · provide",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95732132"
+        },
+        {
+          "title": "維基詞典 · provideo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92637580"
+        }
+      ]
+    },
+    {
+      "id": "core-0160",
+      "word": "name",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞古英語 nama、noma，動詞也有古英語同族形式。",
+      "key_origin": "以一個名稱指認人或事物，也可以把命名當動作。",
+      "mnemonic": "write your name＝寫下姓名。name the file＝替檔案命名。",
+      "sources": [
+        {
+          "title": "維基詞典 · name",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738806"
+        }
+      ]
+    },
+    {
+      "id": "core-0161",
+      "word": "read",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 rǣdan，曾有解讀、勸告等義。",
+      "key_origin": "動詞過去式與現在式在標準拼寫都寫 read，讀音不同。",
+      "mnemonic": "I read /riːd/ every day＝我每天讀。I read /rɛd/ it yesterday＝我昨天讀過了。",
+      "sources": [
+        {
+          "title": "維基詞典 · read",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717383"
+        }
+      ]
+    },
+    {
+      "id": "core-0162",
+      "word": "friend",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 frēond，與古代表示喜愛、珍視的詞族有關。",
+      "key_origin": "名詞指朋友；friendly 是在現代可辨識的 friend ＋ -ly。",
+      "mnemonic": "an old friend＝一位老朋友。a friendly reply＝友善的回覆。",
+      "sources": [
+        {
+          "title": "維基詞典 · friend",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95738913"
+        }
+      ]
+    },
+    {
+      "id": "core-0163",
+      "word": "month",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 mōnaþ，與 moon（月亮）同源。",
+      "key_origin": "月相週期曾用於計時，把「月亮一輪」和月份連在一起。",
+      "mnemonic": "next month＝下個月。once a month＝一個月一次。",
+      "sources": [
+        {
+          "title": "維基詞典 · month",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95587039"
+        }
+      ]
+    },
+    {
+      "id": "core-0164",
+      "word": "large",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 large，遠源拉丁語 largus。",
+      "key_origin": "拉丁語有寬廣、豐足等義。現代 large 多用於尺寸、數量或規模。",
+      "mnemonic": "a large order＝數量大的訂單。a large room＝面積大的房間。",
+      "sources": [
+        {
+          "title": "維基詞典 · large",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94560531"
+        }
+      ]
+    },
     {
       "id": "core-0165",
       "word": "business",
@@ -18,6 +2522,96 @@
         {
           "title": "維基詞典 · business",
           "url": "https://en.wiktionary.org/w/index.php?oldid=95585962"
+        }
+      ]
+    },
+    {
+      "id": "core-0166",
+      "word": "without",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 wiþūtan，可聯想 with ＋ out 的歷史形式。",
+      "key_origin": "舊有「在外面」的空間義，現代最常表示缺少或省去某項。",
+      "mnemonic": "without sugar＝糖留在這杯飲料之外。without waiting＝省去等待這一步。",
+      "sources": [
+        {
+          "title": "維基詞典 · without",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95708461"
+        }
+      ]
+    },
+    {
+      "id": "core-0167",
+      "word": "information",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "inform（告知）＋ -ation（動作或結果名詞）。",
+      "key_origin": "字經古法語等傳入，遠源拉丁語 īnfōrmātiō，與「使成形、告知」相關。",
+      "mnemonic": "把資訊想成讓人腦中「有了形狀」的材料。some information＝一些資訊。",
+      "sources": [
+        {
+          "title": "維基詞典 · information",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95732847"
+        }
+      ]
+    },
+    {
+      "id": "core-0168",
+      "word": "open",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "形容詞可追到古英語 open，原有打開、開放等義。",
+      "key_origin": "從打開的物體，可延伸到可進入、可使用或尚待討論。",
+      "mnemonic": "The store is open＝店還開著。an open question＝尚未定論的問題。",
+      "sources": [
+        {
+          "title": "維基詞典 · open",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642047"
+        }
+      ]
+    },
+    {
+      "id": "core-0169",
+      "word": "order",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "古法語 ordre，遠源拉丁語 ōrdō「排列、次序」。",
+      "key_origin": "排列的意象可連到秩序；英語另有指令、訂單等用法。",
+      "mnemonic": "put the items in order＝把物品排好。place an order＝下訂單。",
+      "sources": [
+        {
+          "title": "維基詞典 · order",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95682130"
+        }
+      ]
+    },
+    {
+      "id": "core-0170",
+      "word": "government",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "govern（治理）＋ -ment（名詞）。",
+      "key_origin": "古法語 governement 也已用相應的兩個成分組成，可指治理或政府。",
+      "mnemonic": "先認 govern a country「治理國家」，再記負責治理的組織叫 government。",
+      "sources": [
+        {
+          "title": "維基詞典 · government",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95660021"
+        }
+      ]
+    },
+    {
+      "id": "core-0171",
+      "word": "word",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 word，表示言語、詞。",
+      "key_origin": "從聽到的一個詞，可延伸到消息或作出的承諾。",
+      "mnemonic": "a new word＝一個新單字。keep your word＝說到做到。",
+      "sources": [
+        {
+          "title": "維基詞典 · word",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95665989"
         }
       ]
     },
@@ -41,6 +2635,363 @@
       ]
     },
     {
+      "id": "core-0173",
+      "word": "market",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語承接古英語晚期及盎格魯諾曼語的相關形式。",
+      "key_origin": "遠源拉丁語 mercātus「市場、交易」，merchant 也出自相關詞族。",
+      "mnemonic": "週末市集是 a weekend market。the job market＝人們找工作、企業找人的市場。",
+      "sources": [
+        {
+          "title": "維基詞典 · market",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586997"
+        }
+      ]
+    },
+    {
+      "id": "core-0174",
+      "word": "pay",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "常用「付錢」義經古法語 paiier，遠源拉丁語 pācāre。",
+      "key_origin": "拉丁語帶有安撫、使平息的概念；支付可想成清償一筆欠款。",
+      "mnemonic": "pay the bill＝把帳結清。pay attention＝把注意力用在這件事上。",
+      "sources": [
+        {
+          "title": "維基詞典 · pay",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644929"
+        }
+      ]
+    },
+    {
+      "id": "core-0175",
+      "word": "build",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 bilden 等形式可追到古英語 byldan、bytlian 一類動詞。",
+      "key_origin": "這支詞族帶有建造住所的概念，現代也用在抽象能力或關係。",
+      "mnemonic": "build a house＝一部分一部分蓋起房子。build trust＝逐步建立信任。",
+      "sources": [
+        {
+          "title": "維基詞典 · build",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95493189"
+        }
+      ]
+    },
+    {
+      "id": "core-0176",
+      "word": "hold",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "常用動詞來自古英語 healdan，涉及持有、維持。",
+      "key_origin": "從拿住或維持某種狀態，英語也延伸到舉行、容納等用法。",
+      "mnemonic": "hold the door open＝把門撐著。hold a meeting＝舉行會議。",
+      "sources": [
+        {
+          "title": "維基詞典 · hold",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95664299"
+        }
+      ]
+    },
+    {
+      "id": "core-0177",
+      "word": "service",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "中古英語 servise 與古法語 servir「服務」相關。",
+      "key_origin": "遠源為拉丁語 servitium，曾與服役、服事有關，現代廣泛用於提供服務。",
+      "mnemonic": "customer service＝顧客服務。out of service＝暫停服務或設備停用。",
+      "sources": [
+        {
+          "title": "維基詞典 · service",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95709156"
+        }
+      ]
+    },
+    {
+      "id": "core-0178",
+      "word": "against",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "歷史上與 again／againes 一類形式相關，末尾 -t 後來加入。",
+      "key_origin": "早期帶有迎面、相對的方向概念，現代也可表示抵住或反對。",
+      "mnemonic": "lean against the wall＝身體抵著牆。vote against the proposal＝投票反對提案。",
+      "sources": [
+        {
+          "title": "維基詞典 · against",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95605895"
+        }
+      ]
+    },
+    {
+      "id": "core-0179",
+      "word": "believe",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 belīefan，含 be- 及與允許、信任相關的舊詞幹。",
+      "key_origin": "後半的歷史關聯接近「允許」那支 leave，與「離開」的用法不同。",
+      "mnemonic": "believe him＝相信他說的話。believe in him＝對他有信心。",
+      "sources": [
+        {
+          "title": "維基詞典 · believe",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95746328"
+        }
+      ]
+    },
+    {
+      "id": "core-0180",
+      "word": "second",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "順序義來自拉丁語 secundus「接在後面的」；時間單位由相關短語縮短。",
+      "key_origin": "secundus 與 sequī「跟隨」同族。古代先把小時細分成分，再把分細分成秒。second 是這個「第二次細分」的簡稱。",
+      "mnemonic": "the second step＝接在第一步後面。ten seconds＝十秒。",
+      "sources": [
+        {
+          "title": "維基詞典 · second",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95666413"
+        }
+      ]
+    },
+    {
+      "id": "core-0181",
+      "word": "though",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "中古英語 though 受古諾斯語影響；原生古英語有同源形式 þēah。",
+      "key_origin": "用於讓步，先承認一個條件，再說仍然成立的情況。",
+      "mnemonic": "Though it’s expensive, it’s durable＝雖然貴，但耐用。",
+      "sources": [
+        {
+          "title": "維基詞典 · though",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=94590789"
+        }
+      ]
+    },
+    {
+      "id": "core-0182",
+      "word": "love",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "名詞古英語 lufu；動詞古英語 lufian。",
+      "key_origin": "名詞和動詞早已有詞族關係，涵蓋強烈感情或深切喜愛。",
+      "mnemonic": "love a person＝愛一個人。love working with data＝非常喜歡和資料打交道。",
+      "sources": [
+        {
+          "title": "維基詞典 · love",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95717319"
+        }
+      ]
+    },
+    {
+      "id": "core-0183",
+      "word": "increase",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 in- ＋ crescere（生長），合成 increscere。",
+      "key_origin": "經盎格魯諾曼語借入；可想成數量或程度一路長上去。",
+      "mnemonic": "increase production＝提高產量。a 10% increase＝增加 10%。",
+      "sources": [
+        {
+          "title": "維基詞典 · increase",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95662846"
+        },
+        {
+          "title": "維基詞典 · cresco",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92172944"
+        }
+      ]
+    },
+    {
+      "id": "core-0184",
+      "word": "job",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "常用「工作、任務」義早期見於 job of work 一類說法。",
+      "key_origin": "更遠來源有多種假說，整字記住一份工作或一項要完成的任務即可。",
+      "mnemonic": "get a job＝找到一份工作。do a good job＝把手上的事情做好。",
+      "sources": [
+        {
+          "title": "維基詞典 · job",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95611578"
+        }
+      ]
+    },
+    {
+      "id": "core-0185",
+      "word": "plan",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "借自法語 plan「平面、平面圖」；遠源拉丁語 plānus「平的」。",
+      "key_origin": "把在紙上畫出的安排當記憶連結，可從圖面記到計畫。",
+      "mnemonic": "a floor plan＝樓層平面圖。make a plan＝把之後要做的事安排好。",
+      "sources": [
+        {
+          "title": "維基詞典 · plan",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95610078"
+        }
+      ]
+    },
+    {
+      "id": "core-0186",
+      "word": "result",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 resultāre 有回彈等義，可追到 re-（回）和 salīre（跳）。",
+      "key_origin": "英文較早已有從某事衍生、接著發生之義。",
+      "mnemonic": "想像丟球後彈回來的是結果。A results from B＝A 是由 B 造成的。",
+      "sources": [
+        {
+          "title": "維基詞典 · result",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95719356"
+        }
+      ]
+    },
+    {
+      "id": "core-0187",
+      "word": "away",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "古英語 āweġ、onweġ，歷史上相當於 on ＋ way。",
+      "key_origin": "早期可聯想到上路而離開，後來常表示遠離或不在場。",
+      "mnemonic": "walk away＝往別處走。I’m away this week＝我這週不在。",
+      "sources": [
+        {
+          "title": "維基詞典 · away",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95739231"
+        }
+      ]
+    },
+    {
+      "id": "core-0188",
+      "word": "example",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 example 等形式，遠源拉丁語 exemplum「樣本、範例」。",
+      "key_origin": "exemplum 可聯到拉丁語 eximere「取出」，sample 也出自這一詞族。",
+      "mnemonic": "give an example＝挑出一個具體案例來說明。",
+      "sources": [
+        {
+          "title": "維基詞典 · example",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643645"
+        },
+        {
+          "title": "維基詞典 · eximo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=92778911"
+        }
+      ]
+    },
+    {
+      "id": "core-0189",
+      "word": "happen",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "可聯想 hap（運氣、際遇）＋ -en（動詞構形成分）。",
+      "key_origin": "中古英語已有 happenen 一類形式；核心是碰上或發生。",
+      "mnemonic": "What happened?＝發生了什麼事？happen to know＝碰巧知道。",
+      "sources": [
+        {
+          "title": "維基詞典 · happen",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643020"
+        }
+      ]
+    },
+    {
+      "id": "core-0190",
+      "word": "offer",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "常用動詞經古法語 offrir，遠源為拉丁語 offerre。",
+      "key_origin": "拉丁構成含 ob-（朝向）與 ferre（帶來），可想成把某物拿到對方面前。",
+      "mnemonic": "offer help＝主動提出幫忙。an offer＝提出供對方考慮的條件。",
+      "sources": [
+        {
+          "title": "維基詞典 · offer",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95675362"
+        },
+        {
+          "title": "維基詞典 · offero",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=91779516"
+        }
+      ]
+    },
+    {
+      "id": "core-0191",
+      "word": "young",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 ġeong，表示年少的。",
+      "key_origin": "日耳曼語傳承詞，德語 jung 同源。",
+      "mnemonic": "young children＝年幼的孩子。young company＝成立時間短的公司。",
+      "sources": [
+        {
+          "title": "維基詞典 · young",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95589558"
+        }
+      ]
+    },
+    {
+      "id": "core-0192",
+      "word": "close",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "關閉義與古英語 clȳsan、古法語 clos 有關；詞族遠源為拉丁語 claudere。",
+      "key_origin": "形容詞源頭可連至拉丁語 clausum「封閉的」。動詞 close 多讀 /z/ 尾音，形容詞多讀 /s/。",
+      "mnemonic": "close the door＝關上門。close to the station＝離車站很近。",
+      "sources": [
+        {
+          "title": "維基詞典 · close",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586085"
+        }
+      ]
+    },
+    {
+      "id": "core-0193",
+      "word": "program",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "希臘語 pró（在前、公開在前）＋ gráphein（寫）。",
+      "key_origin": "希臘語 prógramma 指公開張貼的告示，經拉丁語、法語傳入。",
+      "mnemonic": "先寫好要做的順序。a training program＝訓練計畫，a computer program＝指令照順序執行的程式。",
+      "sources": [
+        {
+          "title": "維基詞典 · program",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95559896"
+        }
+      ]
+    },
+    {
+      "id": "core-0194",
+      "word": "lead",
+      "group": "多義與同形",
+      "method": "分義記憶",
+      "split": "「引導」來自古英語 lǣdan；金屬「鉛」源自古英語 lēad。",
+      "key_origin": "兩支拼法相同，動詞通常讀 /liːd/，金屬讀 /lɛd/。動詞過去式寫 led。",
+      "mnemonic": "lead a team＝帶領團隊。lead poisoning＝鉛中毒。We led the team＝我們帶過這團隊。",
+      "sources": [
+        {
+          "title": "維基詞典 · lead",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586867"
+        }
+      ]
+    },
+    {
+      "id": "core-0195",
+      "word": "buy",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 bycġan，表示買下。",
+      "key_origin": "更遠來源仍有不確定性。buy、bought 是英語同一個動詞的不同形式。",
+      "mnemonic": "買原料是 buy materials。We bought them yesterday＝我們昨天已經買了。",
+      "sources": [
+        {
+          "title": "維基詞典 · buy",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=93682729"
+        }
+      ]
+    },
+    {
       "id": "core-0196",
       "word": "understand",
       "group": "容易拆錯",
@@ -56,6 +3007,115 @@
         {
           "title": "Etymonline · understand",
           "url": "https://www.etymonline.com/word/understand"
+        }
+      ]
+    },
+    {
+      "id": "core-0197",
+      "word": "thank",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "動詞古英語 þancian，名詞相關形式為 þanc。",
+      "key_origin": "日耳曼語同族曾涵蓋想法或感激；英文 thank 主要保留表達謝意的用法。",
+      "mnemonic": "thank someone for the help＝為那份幫助向對方道謝。",
+      "sources": [
+        {
+          "title": "維基詞典 · thank",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95644165"
+        }
+      ]
+    },
+    {
+      "id": "core-0198",
+      "word": "far",
+      "group": "日耳曼語傳承",
+      "method": "整字記憶",
+      "split": "古英語 feor、feorr，表示距離遙遠。",
+      "key_origin": "可以說空間上的遠，也可表程度相差很大。",
+      "mnemonic": "far from home＝離家很遠。far better＝好得多。",
+      "sources": [
+        {
+          "title": "維基詞典 · far",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586455"
+        }
+      ]
+    },
+    {
+      "id": "core-0199",
+      "word": "today",
+      "group": "可拆解",
+      "method": "構詞",
+      "split": "to ＋ day，可追到古英語 tōdæġ、tō dæġe。",
+      "key_origin": "歷史上是帶介系詞的時間片語，今天可作名詞或副詞。",
+      "mnemonic": "I’ll send it today＝我今天會寄出。today’s meeting＝今天的會議。",
+      "sources": [
+        {
+          "title": "維基詞典 · today",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95642127"
+        }
+      ]
+    },
+    {
+      "id": "core-0200",
+      "word": "hour",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 houre，遠源拉丁語 hōra、希臘語 hṓra。",
+      "key_origin": "較早的時間概念包括時段、時刻；現代 hour 常是六十分鐘。",
+      "mnemonic": "an hour＝一小時。h 不發音，所以用 an。",
+      "sources": [
+        {
+          "title": "維基詞典 · hour",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95643696"
+        }
+      ]
+    },
+    {
+      "id": "core-0201",
+      "word": "student",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "拉丁語 studēns 是 studēre（致力、學習）的分詞，經法語等形式進入英語。",
+      "key_origin": "可把 stud- 與 study 放在一起記，student 是投入學習的人。",
+      "mnemonic": "study 是做的事，student 是正在做這件事的人。",
+      "sources": [
+        {
+          "title": "維基詞典 · student",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95570274"
+        },
+        {
+          "title": "維基詞典 · studeo",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95374444"
+        }
+      ]
+    },
+    {
+      "id": "core-0202",
+      "word": "face",
+      "group": "歷史詞源",
+      "method": "借詞聯想",
+      "split": "古法語 face，遠源拉丁語 faciēs「外貌、形狀」。",
+      "key_origin": "從臉或外表，延伸到物體表面、朝某方向或面對難題。",
+      "mnemonic": "the face of a clock＝鐘的正面。face a problem＝正面處理問題。",
+      "sources": [
+        {
+          "title": "維基詞典 · face",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95586451"
+        }
+      ]
+    },
+    {
+      "id": "core-0203",
+      "word": "hope",
+      "group": "詞源有不確定性",
+      "method": "整字記憶",
+      "split": "動詞可追到古英語 hopian，名詞有相應的 hopa。",
+      "key_origin": "再往前的詞源不明確，日常把「期待有好結果」當核心即可。",
+      "mnemonic": "I hope it works＝我希望它有效。hope for good news＝期盼好消息。",
+      "sources": [
+        {
+          "title": "維基詞典 · hope",
+          "url": "https://en.wiktionary.org/w/index.php?oldid=95671605"
         }
       ]
     },
