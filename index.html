@@ -18,10 +18,11 @@
      <div class="brand" lang="en"><span class="brand-icon" aria-hidden="true">EN</span><span>Ed Vocabulary<small>English</small></span></div>
      <div class="topbar-status">
        <div id="saving" class="saving" aria-live="polite">載入中…</div>
-       <div class="last-backup" aria-label="上次備份時間">
-         <span class="last-backup-label">上次備份</span>
-         <time id="last-backup-time">尚未備份</time>
-       </div>
+     </div>
+     <div class="last-backup" aria-label="上次備份資訊">
+       <span class="last-backup-label">上次備份</span>
+       <time id="last-backup-time">尚未備份</time>
+       <span id="last-backup-device" class="last-backup-device" hidden></span>
      </div>
    </header>
    <main>
@@ -87,7 +88,7 @@
        <div class="page-header"><div><div class="eyebrow">SETTINGS</div><h1>資料與備份</h1><p>平常自動儲存；只有備份／還原才需操作檔案。</p></div></div>
        <div class="panel device-settings">
          <h3>這台設備的名稱</h3>
-         <p>各設備可以使用不同名稱。名稱只儲存在這台設備，匯入備份不會覆蓋。</p>
+         <p>各設備可以使用不同名稱。名稱只儲存在這台設備，顯示於上次備份時間後方；匯入備份不會覆蓋。</p>
          <label class="device-name-label" for="device-name-input">設備名稱</label>
          <div class="device-name-row">
            <input id="device-name-input" type="text" maxlength="40" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="例如 Ed-iPhone" />
@@ -96,7 +97,7 @@
          <p id="device-name-state" class="muted" role="status"></p>
          <p class="device-filename">固定備份檔名：<code id="backup-filename-preview"></code></p>
        </div>
-       <div class="panel"><h3>本機資料備份</h3><p>匯出自訂單字、熟悉度、筆記及補充內容。備份檔名依設備名稱固定、不包含日期；建立時間保留在 JSON 內容中。請自行存至「我的 iPhone」或 iCloud Drive。</p><div class="settings-actions"><button id="export-btn" class="primary-btn">建立備份 JSON</button><button id="import-btn" class="secondary-btn">載入備份</button><input type="file" id="import-file" accept=".json,application/json" hidden/></div><p class="muted" id="backup-state">尚無本次使用紀錄</p><p class="muted">注意：同名下載檔案是否可覆蓋，取決於 iOS 的下載及「檔案」App；如出現重複檔名，請於儲存時選擇取代舊檔。</p></div>
+       <div class="panel"><h3>本機資料備份</h3><p>匯出自訂單字、熟悉度、筆記及補充內容。所有設備都使用相同的固定檔名，不包含設備名稱或日期；建立時間與來源設備名稱會保留在 JSON 內容中。請自行存至「我的 iPhone」或 iCloud Drive。</p><div class="settings-actions"><button id="export-btn" class="primary-btn">建立備份 JSON</button><button id="import-btn" class="secondary-btn">載入備份</button><input type="file" id="import-file" accept=".json,application/json" hidden/></div><p class="muted" id="backup-state">尚無本次使用紀錄</p><p class="muted">注意：同名下載檔案是否可覆蓋，取決於 iOS 的下載及「檔案」App；如出現重複檔名，請於儲存時選擇取代舊檔。</p></div>
        <div class="panel"><h3>核心字庫</h3><p><strong id="core-status">檢查中…</strong></p><p id="root-notes-count" class="muted" role="status">讀取字根記憶進度…</p><p>原始詞條唯讀。編輯後的字根記憶、筆記與熟悉度另存於本機。</p><p class="muted"><a href="https://lexifold.com/word-lists/" target="_blank" rel="noopener noreferrer">Lexifold TOEIC 字表</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。原始資料由 Browne、Culligan 和 Phillips 的 NGSL 1.2、TSL 1.2 與 NAWL 1.2 改作，已轉為 JSON。</p></div>
        <div class="panel"><h3>安裝到 iPhone</h3><p>在 Safari 開啟網站 → 分享 →「加入主畫面」。此 App 不需要帳號或伺服器。</p></div>
      </section>

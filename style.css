@@ -309,47 +309,71 @@
   margin: 0;
 }
 
-/* Permanent export timestamp at the top-right of every view. */
+/* Topbar: device + last export time share one right-aligned line on every view. */
 .topbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 6px 8px;
   height: auto;
   min-height: 76px;
-  gap: 8px;
+  padding-block: 10px;
+}
+.topbar .brand {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
 }
 .topbar-status {
-  min-width: 0;
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+  grid-column: 2;
+  grid-row: 1;
   text-align: right;
+  min-width: 0;
 }
 .last-backup {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: end;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  line-height: 1.25;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: 100%;
+  min-width: 0;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 .last-backup-label {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
+  flex: none;
 }
 .last-backup time {
   color: var(--accent);
   font-size: 11px;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  flex: none;
 }
+.last-backup-device {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.last-backup-device[hidden] { display: none; }
 @media (max-width: 370px) {
   .brand { font-size: 15px; }
   .topbar-status .saving { font-size: 10px; }
-  .last-backup time { font-size: 10px; }
+  .last-backup { gap: 5px; }
+  .last-backup :is(.last-backup-label, time, .last-backup-device) { font-size: 10px; }
 }
 
-/* Device-specific backup name: kept separate from imported learning records. */
+/* Local device label is kept separate from imported learning records. */
 .device-name-label {
   display: block;
   color: var(--muted);

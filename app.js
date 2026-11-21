@@ -49,17 +49,9 @@ function detectedDeviceName() {
   return 'My-Device';
 }
 let deviceName = detectedDeviceName();
-function safeFilenamePart(name) {
-  return name.normalize('NFKC')
-    .replace(/[\x00-\x1f\x7f\/\\:*?"<>|]/g, '-')
-    .replace(/\s+/g, '-').replace(/-+/g, '-')
-    .replace(/^[.\-]+|[.\-]+$/g, '').slice(0, 60) || 'Device';
-}
-function backupFilename() {
-  return `vocabulary-backup-${safeFilenamePart(deviceName)}.json`;
-}
+const backupFileName = 'english-vocabulary-app-backup.json';
 function updateBackupFilenamePreview() {
-  $('backup-filename-preview').textContent = backupFilename();
+  $('backup-filename-preview').textContent = backupFileName;
 }
 function loadDeviceName() {
   try {
@@ -83,7 +75,7 @@ function saveDeviceName() {
     localStorage.setItem(deviceNameKey, name);
     deviceName = name;
     input.value = name;
-    updateBackupFilenamePreview();
+    renderLastBackup(lastBackupDate);
     $('device-name-state').textContent = '已儲存在這台設備，不會被匯入的備份覆蓋。';
     showToast('設備名稱已儲存');
   } catch (err) {
@@ -91,9 +83,15 @@ function saveDeviceName() {
     $('device-name-state').textContent = '儲存失敗，請檢查網站儲存權限。';
   }
 }
+let lastBackupDate = null;
 function renderLastBackup(date) {
+  lastBackupDate = date;
   const label = $('last-backup-time');
+  const device = $('last-backup-device');
   label.textContent = date ? formatLastBackup(date) : '尚未備份';
+  device.textContent = date ? deviceName : '';
+  device.title = date ? deviceName : '';
+  device.hidden = !date;
   if (date) label.setAttribute('datetime',date.toISOString());
   else label.removeAttribute('datetime');
 }
@@ -629,7 +627,7 @@ function exportData(){
   const blob=new Blob([JSON.stringify(exported,null,2)],{type:'application/json;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;a.download=backupFilename();
+  a.href=url;a.download=backupFileName;
   document.body.append(a);
   try {
     a.click();
@@ -833,8 +831,8 @@ function wire(){
   $('import-file').addEventListener('change',ev=>restoreFile(ev.target.files?.[0]));
 }
 async function main(){
-  loadLastBackup();
   loadDeviceName();
+  loadLastBackup();
   glossesReady = fetch('./data/glosses-zh.json')
     .then(response => {
       if (!response.ok) throw Error(`中文釋義 HTTP ${response.status}`);
