@@ -25,6 +25,94 @@ const familiarityLevels = [
 const validGrades = familiarityLevels.map(({grade})=>grade);
 const familiarityLabel = grade => familiarityLevels.find(level=>level.grade===grade)?.label || '未標記';
 const now = () => new Date().toISOString();
+// This records the last export initiated on this device. Browser downloads cannot
+// confirm that the user actually saved the JSON to Files or iCloud Drive.
+const lastBackupKey = 'ed-vocabulary:last-backup-export';
+const shortDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const twoDigits = number => String(number).padStart(2,'0');
+function formatLastBackup(date) {
+  const hours = date.getHours();
+  const hours12 = hours % 12 || 12;
+  const ampm = hours < 12 ? 'AM' : 'PM';
+  return `${twoDigits(date.getMonth()+1)}-${twoDigits(date.getDate())} ${shortDays[date.getDay()]} ${hours12}:${twoDigits(date.getMinutes())} ${ampm}`;
+}
+// A device label is local to this installation and intentionally excluded from
+// restore. The backup JSON may carry it as source metadata only.
+const deviceNameKey = 'ed-vocabulary:device-name';
+function detectedDeviceName() {
+  const ua = navigator.userAgent || '';
+  if (/iPad/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) return 'iPad';
+  if (/iPhone|iPod/i.test(ua)) return 'iPhone';
+  if (/Android/i.test(ua)) return 'Android';
+  if (/Macintosh|Mac OS X/i.test(ua)) return 'Mac';
+  if (/Windows/i.test(ua)) return 'Windows-PC';
+  return 'My-Device';
+}
+let deviceName = detectedDeviceName();
+function safeFilenamePart(name) {
+  return name.normalize('NFKC')
+    .replace(/[\x00-\x1f\x7f\/\\:*?"<>|]/g, '-')
+    .replace(/\s+/g, '-').replace(/-+/g, '-')
+    .replace(/^[.\-]+|[.\-]+$/g, '').slice(0, 60) || 'Device';
+}
+function backupFilename() {
+  return `vocabulary-backup-${safeFilenamePart(deviceName)}.json`;
+}
+function updateBackupFilenamePreview() {
+  $('backup-filename-preview').textContent = backupFilename();
+}
+function loadDeviceName() {
+  try {
+    const saved = localStorage.getItem(deviceNameKey);
+    if (saved && saved.trim()) deviceName = saved.trim();
+  } catch (err) {
+    console.warn('無法讀取本機設備名稱', err);
+  }
+  $('device-name-input').value = deviceName;
+  updateBackupFilenamePreview();
+}
+function saveDeviceName() {
+  const input = $('device-name-input');
+  const name = input.value.trim().replace(/\s+/g, ' ');
+  if (!name) {
+    $('device-name-state').textContent = '請輸入設備名稱。';
+    input.focus();
+    return;
+  }
+  try {
+    localStorage.setItem(deviceNameKey, name);
+    deviceName = name;
+    input.value = name;
+    updateBackupFilenamePreview();
+    $('device-name-state').textContent = '已儲存在這台設備，不會被匯入的備份覆蓋。';
+    showToast('設備名稱已儲存');
+  } catch (err) {
+    console.warn('無法儲存本機設備名稱', err);
+    $('device-name-state').textContent = '儲存失敗，請檢查網站儲存權限。';
+  }
+}
+function renderLastBackup(date) {
+  const label = $('last-backup-time');
+  label.textContent = date ? formatLastBackup(date) : '尚未備份';
+  if (date) label.setAttribute('datetime',date.toISOString());
+  else label.removeAttribute('datetime');
+}
+function loadLastBackup() {
+  try {
+    const saved = localStorage.getItem(lastBackupKey);
+    if (!saved) return renderLastBackup(null);
+    const date = new Date(saved);
+    renderLastBackup(Number.isNaN(date.getTime()) ? null : date);
+  } catch (err) {
+    console.warn('無法讀取上次備份時間',err);
+    renderLastBackup(null);
+  }
+}
+function storeLastBackup(date) {
+  renderLastBackup(date);
+  try { localStorage.setItem(lastBackupKey,date.toISOString()); }
+  catch (err) { console.warn('無法保存上次備份時間',err); }
+}
 function localDay(date = new Date()) {
   const month = String(date.getMonth() + 1).padStart(2,'0');
   const day = String(date.getDate()).padStart(2,'0');
@@ -536,13 +624,21 @@ async function addWord(){
   showToast('已新增並儲存在本機');openDetail(item);
 }
 function exportData(){
-  const exported={format:'vocabulary-personal-backup',schema_version:1,created_at:now(),core_source:'Lexifold TOEIC',core_count:state.core.length,core_created_at:state.coreMeta?.generated_at||null,records:records()};
+  const exportedAt = new Date();
+  const exported={format:'vocabulary-personal-backup',schema_version:1,created_at:exportedAt.toISOString(),source_device_name:deviceName,core_source:'Lexifold TOEIC',core_count:state.core.length,core_created_at:state.coreMeta?.generated_at||null,records:records()};
   const blob=new Blob([JSON.stringify(exported,null,2)],{type:'application/json;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;a.download='vocabulary-backup-'+new Date().toISOString().slice(0,10)+'.json';
-  document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);
-  $('backup-state').textContent='已產生備份檔（請確認已存到 iPhone 檔案 App）';
+  a.href=url;a.download=backupFilename();
+  document.body.append(a);
+  try {
+    a.click();
+    storeLastBackup(exportedAt);
+    $('backup-state').textContent='已產生備份檔（請確認已存到 iPhone 檔案 App 或 iCloud Drive）';
+  } finally {
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),10000);
+  }
 }
 function normalizeStoredRecord(record){
   // The starter build lowercased core keys. Restore their original spelling.
@@ -588,7 +684,10 @@ async function restoreFile(file){
     if(state.core.length && backup.core_count!==state.core.length){
       if(!confirm(`此備份來自 ${backup.core_count} 字版本；目前核心字庫是 ${state.core.length} 字。是否仍繼續？`))return;
     }
-    if(!confirm(`要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟悉度、筆記、編輯過的字根記憶和自訂單字。建議先建立現有資料的備份。`))return;
+    const sourceDevice = typeof backup.source_device_name === 'string'
+      ? backup.source_device_name.trim().replace(/\s+/g, ' ').slice(0, 40) : '';
+    const sourceInfo = sourceDevice ? `來源設備：${sourceDevice}\n` : '';
+    if(!confirm(`${sourceInfo}要載入 ${recs.length} 筆個人紀錄嗎？這將取代現有的熟悉度、筆記、編輯過的字根記憶和自訂單字，但不會變更這台設備的名稱。建議先建立現有資料的備份。`))return;
     for (const job of lookups.values()) job.controller.abort();
     lookups.clear();
     lookupErrors.clear();
@@ -722,11 +821,20 @@ function wire(){
     }
     catch{showToast('刪除失敗')}
   });
+  $('save-device-name-btn').addEventListener('click',saveDeviceName);
+  $('device-name-input').addEventListener('keydown',event=>{
+    if (event.key === 'Enter') saveDeviceName();
+  });
+  $('device-name-input').addEventListener('input',()=>{
+    $('device-name-state').textContent = '修改名稱後請按「儲存」。';
+  });
   $('export-btn').addEventListener('click',exportData);
   $('import-btn').addEventListener('click',()=>$('import-file').click());
   $('import-file').addEventListener('change',ev=>restoreFile(ev.target.files?.[0]));
 }
 async function main(){
+  loadLastBackup();
+  loadDeviceName();
   glossesReady = fetch('./data/glosses-zh.json')
     .then(response => {
       if (!response.ok) throw Error(`中文釋義 HTTP ${response.status}`);
