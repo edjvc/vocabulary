@@ -4,7 +4,7 @@ import {loadRootNotes} from './root-notes.js';
 import {isRootNoteValue,renderRootNoteMarkdown,rootNoteMarkdown} from './root-note-markdown.js';
 
 const $ = id => document.getElementById(id);
-const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', lastDrawn:null, searchLimit:70, detailKey:null, totalDrawn:0};
+const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', libraryFilter:'all', lastDrawn:null, reviewHistory:[], reviewPosition:-1, searchLimit:70, detailKey:null, totalDrawn:0};
 const lookups = new Map();
 const lookupErrors = new Set();
 let glosses = {};
@@ -50,9 +50,6 @@ function detectedDeviceName() {
 }
 let deviceName = detectedDeviceName();
 const backupFileName = 'english-vocabulary-app-backup.json';
-function updateBackupFilenamePreview() {
-  $('backup-filename-preview').textContent = backupFileName;
-}
 function loadDeviceName() {
   try {
     const saved = localStorage.getItem(deviceNameKey);
@@ -61,7 +58,6 @@ function loadDeviceName() {
     console.warn('無法讀取本機設備名稱', err);
   }
   $('device-name-input').value = deviceName;
-  updateBackupFilenamePreview();
 }
 function saveDeviceName() {
   const input = $('device-name-input');
@@ -87,11 +83,7 @@ let lastBackupDate = null;
 function renderLastBackup(date) {
   lastBackupDate = date;
   const label = $('last-backup-time');
-  const device = $('last-backup-device');
   label.textContent = date ? formatLastBackup(date) : '尚未備份';
-  device.textContent = date ? deviceName : '';
-  device.title = date ? deviceName : '';
-  device.hidden = !date;
   if (date) label.setAttribute('datetime',date.toISOString());
   else label.removeAttribute('datetime');
 }
@@ -375,11 +367,40 @@ function refreshQueue(){
     [state.queue[0],state.queue[state.queue.length-1]]=[state.queue[state.queue.length-1],state.queue[0]];
   }
 }
+function resetReviewHistory(){
+  state.reviewHistory=[];
+  state.reviewPosition=-1;
+  state.totalDrawn=0;
+}
 function drawNext(){
-  if(!state.queue.length)refreshQueue();
+  // Returning from "上一個" must revisit the existing history before drawing a new word.
+  if (state.reviewPosition < state.reviewHistory.length - 1) {
+    state.reviewPosition++;
+    state.current=state.reviewHistory[state.reviewPosition];
+    state.totalDrawn=state.reviewPosition+1;
+    renderCard();
+    return;
+  }
+  // A completed round starts again at card 1; the queue is still shuffled without repeats.
+  if(!state.queue.length){
+    refreshQueue();
+    resetReviewHistory();
+  }
   state.current=state.queue.pop()||null;
   state.lastDrawn=state.current?.key||null;
-  if(state.current)state.totalDrawn++;
+  if(state.current){
+    state.reviewHistory.push(state.current);
+    state.reviewPosition=state.reviewHistory.length-1;
+    state.totalDrawn=state.reviewPosition+1;
+  }
+  renderCard();
+}
+function drawPrevious(){
+  // The first card deliberately keeps an enabled button but does nothing when tapped.
+  if (state.reviewPosition<=0) return;
+  state.reviewPosition--;
+  state.current=state.reviewHistory[state.reviewPosition];
+  state.totalDrawn=state.reviewPosition+1;
   renderCard();
 }
 function externalLookupTarget(){
@@ -402,7 +423,10 @@ function rememberLookupReturn(){
       filter:state.filter,
       current:state.current?.key,
       queue:state.queue.map(item=>item.key),
+      reviewHistory:state.reviewHistory.map(item=>item.key),
+      reviewPosition:state.reviewPosition,
       totalDrawn:state.totalDrawn,
+      libraryFilter:state.libraryFilter,
       search:$('search-word').value,
       detail:$('detail-dialog').open ? state.detailKey : null,
       rootNoteEdit:editor ? {initial:editor.initial,draft:$('root-note-editor').value} : null
@@ -422,13 +446,19 @@ function takeLookupReturn(){
 function restoreLookupReturn(saved){
   if (!saved) return;
   const words = new Map(getWords().map(item=>[item.key,item]));
-  state.filter = saved.filter;
+  state.filter = saved.filter || 'all';
   $('filter-select').value = state.filter;
-  $('search-word').value = saved.search;
-  state.current = words.get(saved.current) || null;
-  state.lastDrawn = state.current?.key || null;
-  state.queue = saved.queue.map(key=>words.get(key)).filter(item=>item && matches(item));
-  state.totalDrawn = saved.totalDrawn;
+  state.libraryFilter = saved.libraryFilter || 'all';
+  $('library-filter-select').value = state.libraryFilter;
+  $('search-word').value = saved.search || '';
+  state.queue = (saved.queue || []).map(key=>words.get(key)).filter(item=>item && matches(item));
+  const keys = Array.isArray(saved.reviewHistory) ? saved.reviewHistory : (saved.current ? [saved.current] : []);
+  state.reviewHistory = keys.map(key=>words.get(key)).filter(Boolean);
+  const requestedPosition = Number.isInteger(saved.reviewPosition) ? saved.reviewPosition : state.reviewHistory.length-1;
+  state.reviewPosition = Math.max(-1,Math.min(requestedPosition,state.reviewHistory.length-1));
+  state.current = state.reviewHistory[state.reviewPosition] || words.get(saved.current) || null;
+  state.lastDrawn = state.reviewHistory.at(-1)?.key || state.current?.key || null;
+  state.totalDrawn = state.current ? state.reviewPosition+1 : 0;
   if (!state.current && state.queue.length) drawNext();
   view(saved.view);
   if (saved.view !== 'review') renderCard();
@@ -444,7 +474,7 @@ function renderCard(){
   $('card-counter').textContent=item?`第 ${state.totalDrawn} 張`:'0 張';
   $('card-tag').textContent=item?'VOCABULARY':'EMPTY';
   $('reveal-btn').disabled=!item;
-  $('next-btn').disabled=!item && getWords().length===0;
+  $('next-btn').disabled=!item && !getWords().some(matches);
   setLookupLink('cambridge-btn',item,cambridge);
   $('copy-btn').disabled=!item;
   renderFamiliarityChoices($('review-familiarity'),item);
@@ -498,6 +528,7 @@ async function setGrade(item,grade,{toggle = false} = {}){
   showToast(saved.grade ? '熟悉度已儲存' : '已取消熟悉度標記');
   state.queue=state.queue.filter(matches);
   $('count-pill').textContent=`${getWords().filter(matches).length.toLocaleString('en-US')} 個單字`;
+  renderList();
   renderStats();
   return true;
 }
@@ -549,7 +580,8 @@ function renderStats(){
 function renderList(){
   const word = normalizeSpaces($('search-word').value.normalize('NFC'));
   const q = duplicateKey(word);
-  const result = getWords().filter(item=>duplicateKey(item.word).includes(q));
+  const allWords = getWords();
+  const result = allWords.filter(item=>(state.libraryFilter==='all'||gradeOf(item)===Number(state.libraryFilter)) && duplicateKey(item.word).includes(q));
   const count = result.length > 99999 ? '99,999+' : result.length.toLocaleString('en-US');
   $('search-count').textContent=`共 ${count} 筆`;
   const subset=result.slice(0,state.searchLimit);
@@ -564,7 +596,7 @@ function renderList(){
   }).join('') || '<div class="empty-list">沒有符合的單字。</div>';
   $('load-more').hidden=result.length<=state.searchLimit;
   const addButton = $('add-word-btn');
-  addButton.hidden = !validNewWord(word) || result.some(item=>duplicateKey(item.word)===q);
+  addButton.hidden = !validNewWord(word) || allWords.some(item=>duplicateKey(item.word)===q);
   addButton.disabled = addingWord;
 }
 function view(name){
@@ -692,7 +724,7 @@ async function restoreFile(file){
     // A single IDB transaction makes restoration atomic; original core snapshot is never touched.
     await replaceRecords(recs);
     state.records=new Map(recs.map(r=>[r.key,r]));
-    state.searchLimit=70;refreshQueue();drawNext();renderList();renderStats();
+    state.searchLimit=70;resetReviewHistory();refreshQueue();drawNext();renderList();renderStats();
     setSaving('已還原');showToast('備份已載入');
     resumeCustomLookups();
   }catch(err){console.error(err);showToast(`載入失敗：${err.message}`)}
@@ -703,7 +735,9 @@ function wire(){
     takeLookupReturn();
     view(el.dataset.view);
   }));
-  $('filter-select').addEventListener('change',ev=>{state.filter=ev.target.value;state.totalDrawn=0;refreshQueue();drawNext();});
+  $('filter-select').addEventListener('change',ev=>{state.filter=ev.target.value;resetReviewHistory();refreshQueue();drawNext();});
+  $('library-filter-select').addEventListener('change',ev=>{state.libraryFilter=ev.target.value;state.searchLimit=70;renderList();});
+  $('prev-btn').addEventListener('click',()=>{takeLookupReturn();drawPrevious();});
   $('next-btn').addEventListener('click',()=>{
     takeLookupReturn();
     drawNext();
@@ -813,8 +847,23 @@ function wire(){
       rootNoteEditor = null;
       $('detail-dialog').close();
       state.queue = state.queue.filter(entry => entry.key !== item.key);
-      if (state.current?.key === item.key) drawNext();
-      else renderCard();
+      const currentKey=state.current?.key;
+      state.reviewHistory=state.reviewHistory.filter(entry=>entry.key!==item.key);
+      if (currentKey===item.key) {
+        state.reviewPosition=Math.min(state.reviewPosition-1,state.reviewHistory.length-1);
+        state.current=state.reviewHistory[state.reviewPosition]||null;
+        if (!state.current){
+          resetReviewHistory();
+          drawNext();
+        } else {
+          state.totalDrawn=state.reviewPosition+1;
+          renderCard();
+        }
+      } else {
+        state.reviewPosition=state.reviewHistory.findIndex(entry=>entry.key===currentKey);
+        state.totalDrawn=state.reviewPosition+1;
+        renderCard();
+      }
       renderList();renderStats();showToast('已刪除自訂單字');
     }
     catch{showToast('刪除失敗')}
