@@ -6,7 +6,7 @@
   --panel: #fffefc;
   --panel-soft: #f6f2ea;
   --root-panel: #e8eee6;
-  --neutral-chip: #e7eaef;
+  --neutral-chip: #f3f3f1;
   --line: #e1e1d8;
   --control-line: #ccd6ca;
   --accent: #7a4e3f;
@@ -233,9 +233,9 @@
   --grade-ink: #853d46;
 }
 [data-grade="0"] {
-  --grade-bg: #e7eaef;
-  --grade-border: #bdc4cf;
-  --grade-ink: #4d5664;
+  --grade-bg: #f3f3f1;
+  --grade-border: #dededb;
+  --grade-ink: #777773;
 }
 .familiarity-status {
   inline-size: 6.75rem;
@@ -406,8 +406,8 @@
 .review-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
 .review-navigation button { min-width: 0; min-height: 46px; }
 
-/* Match the review selector without repeating the visible "範圍" label. */
-.review-filter select, .library-filter-group select {
+/* The library scope selector belongs to the page heading, not the search row. */
+.review-filter select, .library-header #library-filter-select {
   background: var(--panel);
   border: 1px solid var(--control-line);
   border-radius: 12px;
@@ -416,13 +416,16 @@
   min-height: 36px;
   max-width: 100%;
 }
-.library-filter-group {
-  display: flex;
-  flex-direction: column;
+.library-header {
   align-items: flex-end;
-  justify-content: center;
-  gap: 4px;
+}
+.library-header-title {
+  flex: 1;
   min-width: 0;
 }
-.library-filter-group #search-count { display: block; font-variant-numeric: tabular-nums; line-height: 1.25; }
+.library-header #library-filter-select {
+  flex: none;
+  align-self: flex-end;
+  max-width: min(49%, 144px);
+}
 .search-row { align-items: center; }

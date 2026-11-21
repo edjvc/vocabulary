@@ -58,27 +58,27 @@
        </div>
        <div id="review-familiarity" class="review-familiarity" role="group" aria-label="抽背熟悉度"></div>
        <div class="review-navigation" role="group" aria-label="切換抽背單字">
-         <button id="prev-btn" class="secondary-btn" type="button">← 上一個</button>
+         <button id="prev-btn" class="primary-btn" type="button">← 上一個</button>
          <button id="next-btn" class="primary-btn" type="button">下一個 →</button>
        </div>
        <p id="review-note" class="inline-note"></p>
      </section>
      <section id="view-library" class="view">
-       <div class="page-header"><div><div class="eyebrow">MY WORDS</div><h1>單字庫</h1><p>核心清單鎖定；可自由新增自己的單字。</p></div></div>
+       <div class="page-header library-header">
+         <div class="library-header-title"><div class="eyebrow">MY WORDS</div><h1>單字庫</h1><p>核心清單鎖定；可自由新增自己的單字。</p></div>
+         <select id="library-filter-select" aria-label="單字庫篩選">
+           <option value="all">全部</option>
+           <option value="3">熟悉</option>
+           <option value="4">僅發音不熟</option>
+           <option value="2">不熟</option>
+           <option value="1">陌生</option>
+           <option value="0">未標記</option>
+         </select>
+       </div>
        <div class="search-row">
          <input id="search-word" type="search" maxlength="100" autocapitalize="none" autocomplete="off"
            spellcheck="false" placeholder="搜尋或新增" aria-label="搜尋或輸入要新增的英文單字" />
-         <div class="library-filter-group">
-           <select id="library-filter-select" aria-label="單字庫篩選">
-             <option value="all">全部</option>
-             <option value="3">熟悉</option>
-             <option value="4">僅發音不熟</option>
-             <option value="2">不熟</option>
-             <option value="1">陌生</option>
-             <option value="0">未標記</option>
-           </select>
-           <span id="search-count"></span>
-         </div>
+         <span id="search-count"></span>
        </div>
        <button id="add-word-btn" class="primary-btn" type="button" hidden>新增</button>
        <div id="word-list" class="word-list"></div><button id="load-more" class="secondary-btn wide" hidden>顯示更多</button>
