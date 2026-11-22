@@ -88,10 +88,14 @@ function renderLastBackup(date) {
   label.textContent = date ? formatLastBackup(date) : '尚未備份';
   if (date) label.setAttribute('datetime',date.toISOString());
   else label.removeAttribute('datetime');
-  // Show this installation's local device name beside the timestamp, not as a separate grey label.
-  backupDevice.textContent = date ? deviceName : '';
-  backupDevice.title = date ? deviceName : '';
-  backupDevice.hidden = !date;
+  // The app shell and service worker can briefly be different versions during a
+  // PWA update. Missing optional header metadata must never stop initialization
+  // or prevent Settings buttons from receiving their event handlers.
+  if (backupDevice) {
+    backupDevice.textContent = date ? deviceName : '';
+    backupDevice.title = date ? deviceName : '';
+    backupDevice.hidden = !date;
+  }
 }
 function loadLastBackup() {
   try {
