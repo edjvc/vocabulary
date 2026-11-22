@@ -84,9 +84,14 @@ let lastBackupDate = null;
 function renderLastBackup(date) {
   lastBackupDate = date;
   const label = $('last-backup-time');
+  const backupDevice = $('last-backup-device');
   label.textContent = date ? formatLastBackup(date) : '尚未備份';
   if (date) label.setAttribute('datetime',date.toISOString());
   else label.removeAttribute('datetime');
+  // Show this installation's local device name beside the timestamp, not as a separate grey label.
+  backupDevice.textContent = date ? deviceName : '';
+  backupDevice.title = date ? deviceName : '';
+  backupDevice.hidden = !date;
 }
 function loadLastBackup() {
   try {

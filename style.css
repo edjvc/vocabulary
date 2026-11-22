@@ -365,13 +365,24 @@
   font-variant-numeric: tabular-nums;
   flex: none;
 }
+.last-backup-device {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 650;
+  min-width: 0;
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.last-backup-device[hidden] { display: none; }
 @media (max-width: 370px) {
   .topbar { gap: 5px; }
   .topbar .brand { font-size: 14px; gap: 5px; }
   .topbar .brand-icon { width: 26px; height: 26px; border-radius: 7px; }
   .topbar-status .saving { font-size: 9px; }
   .last-backup { gap: 4px; }
-  .last-backup :is(.last-backup-label, time) { font-size: 9px; }
+  .last-backup :is(.last-backup-label, time, .last-backup-device) { font-size: 9px; }
 }
 
 /* Device name stays local: the explanation follows its input control. */

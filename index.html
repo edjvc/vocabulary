@@ -23,6 +23,7 @@
        <div class="last-backup" aria-label="上次備份資訊">
          <span class="last-backup-label">上次備份</span>
          <time id="last-backup-time">尚未備份</time>
+         <span id="last-backup-device" class="last-backup-device" hidden></span>
        </div>
      </div>
    </header>
@@ -115,7 +116,7 @@
        <div class="panel"><h3>安裝到 iPhone</h3><p>在 Safari 開啟網站 → 分享 →「加入主畫面」。此 App 不需要帳號或伺服器。</p></div>
      </section>
    </main>
-   <nav class="bottom-nav" aria-label="主要導覽"><button class="nav-item active" data-view="review"><span>◈</span>抽背</button><button class="nav-item" data-view="library"><span>▤</span>單字庫</button><button class="nav-item" data-view="stats"><span>▥</span>統計</button><button class="nav-item" data-view="settings"><span>⚙</span>設定</button></nav>
+   <nav class="bottom-nav" aria-label="主要導覽"><button class="nav-item active" data-view="review"><span>◈</span>抽背</button><button class="nav-item" data-view="library"><span>▤</span>單字庫</button><button class="nav-item" data-view="stats"><span>▥</span>統計</button><button class="nav-item" data-view="settings"><span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.7 2.5h4.6l.7 2.4 1.6.9 2.5-.6 2.3 4-1.8 1.8v2l1.8 1.8-2.3 4-2.5-.6-1.6.9-.7 2.4H9.7L9 19.1l-1.6-.9-2.5.6-2.3-4 1.8-1.8v-2L2.6 9.2l2.3-4 2.5.6L9 4.9z"/><circle cx="12" cy="12" r="3"/></svg></span>設定</button></nav>
  </div>
  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-word">
    <div class="dialog-head"><span></span><button id="close-dialog" aria-label="關閉">✕</button></div>
@@ -151,18 +152,12 @@
      </div>
      <p id="detail-source" class="muted"></p>
      <p id="detail-lookup-status" class="muted" role="status"></p>
-     <section class="detail-note-section" aria-labelledby="detail-note-title">
-       <div class="root-notes-header detail-note-header">
-         <h3 id="detail-note-title">筆記</h3>
-         <button id="detail-note-toggle" type="button" class="root-note-action root-note-edit-action" aria-controls="detail-note" aria-expanded="false">編輯</button>
-       </div>
-       <div id="detail-note-content" class="detail-text detail-note-content"></div>
-       <textarea id="detail-note" aria-label="編輯筆記" rows="4" hidden></textarea>
-       <p id="note-saved" class="muted detail-note-feedback" role="status"></p>
-     </section>
+     <h3><label for="detail-note">筆記</label></h3>
+     <textarea id="detail-note" rows="4"></textarea>
+     <p id="note-saved" class="muted">輸入後自動儲存</p>
    </div>
    <div class="dialog-footer">
-     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>字典<span aria-hidden="true">↗</span></a>
+     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>
