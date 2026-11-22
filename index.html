@@ -152,12 +152,18 @@
      </div>
      <p id="detail-source" class="muted"></p>
      <p id="detail-lookup-status" class="muted" role="status"></p>
-     <h3><label for="detail-note">筆記</label></h3>
-     <textarea id="detail-note" rows="4"></textarea>
-     <p id="note-saved" class="muted">輸入後自動儲存</p>
+     <section class="detail-note-section" aria-labelledby="detail-note-title">
+       <div class="root-notes-header detail-note-header">
+         <h3 id="detail-note-title">筆記</h3>
+         <button id="detail-note-toggle" type="button" class="root-note-action root-note-edit-action" aria-controls="detail-note" aria-expanded="false">編輯</button>
+       </div>
+       <div id="detail-note-content" class="detail-text detail-note-content"></div>
+       <textarea id="detail-note" aria-label="編輯筆記" rows="4" hidden></textarea>
+       <p id="note-saved" class="muted detail-note-feedback" role="status"></p>
+     </section>
    </div>
    <div class="dialog-footer">
-     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
+     <a id="detail-cambridge" class="secondary-btn external-lookup" rel="noopener noreferrer" hidden>字典<span aria-hidden="true">↗</span></a>
      <button id="detail-lookup" class="secondary-btn">查詢字典</button>
      <button id="detail-delete" class="danger-btn" hidden>刪除自訂單字</button>
    </div>

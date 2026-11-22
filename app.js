@@ -4,6 +4,15 @@ import {loadRootNotes} from './root-notes.js';
 import {isRootNoteValue,renderRootNoteMarkdown,rootNoteMarkdown} from './root-note-markdown.js';
 
 const $ = id => document.getElementById(id);
+// A missing optional control must not stop listeners on unrelated pages from binding.
+function bind(id, event, handler) {
+  const element = $(id);
+  if (!element) {
+    console.error(`缺少介面元素 #${id}：已略過這個控制項，不影響其他頁面按鈕。`);
+    return;
+  }
+  element.addEventListener(event, handler);
+}
 const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', libraryFilter:'all', lastDrawn:null, reviewHistory:[], reviewPosition:-1, searchLimit:70, detailKey:null, totalDrawn:0, revealedKey:null};
 const lookups = new Map();
 const lookupErrors = new Set();
@@ -58,7 +67,7 @@ function loadDeviceName() {
   } catch (err) {
     console.warn('無法讀取本機設備名稱', err);
   }
-  $('device-name-input').value = deviceName;
+  if ($('device-name-input')) $('device-name-input').value = deviceName;
 }
 function saveDeviceName() {
   const input = $('device-name-input');
@@ -85,9 +94,11 @@ function renderLastBackup(date) {
   lastBackupDate = date;
   const label = $('last-backup-time');
   const backupDevice = $('last-backup-device');
-  label.textContent = date ? formatLastBackup(date) : '尚未備份';
-  if (date) label.setAttribute('datetime',date.toISOString());
-  else label.removeAttribute('datetime');
+  if (label) {
+    label.textContent = date ? formatLastBackup(date) : '尚未備份';
+    if (date) label.setAttribute('datetime',date.toISOString());
+    else label.removeAttribute('datetime');
+  }
   // The app shell and service worker can briefly be different versions during a
   // PWA update. Missing optional header metadata must never stop initialization
   // or prevent Settings buttons from receiving their event handlers.
@@ -262,6 +273,16 @@ function renderDetailNote(item){
   const editor = detailNoteEditor?.key === item.key ? detailNoteEditor : null;
   const note = recordFor(item).note || '';
   const content = $('detail-note-content');
+  // Backwards compatibility: while an old HTML shell is still cached by an iPhone,
+  // keep the old note field usable instead of throwing and breaking the detail dialog.
+  if (!content || !$('detail-note-toggle')) {
+    const legacyInput = $('detail-note');
+    if (legacyInput) {
+      legacyInput.hidden = false;
+      legacyInput.value = note;
+    }
+    return;
+  }
   content.textContent = note;
   content.classList.toggle('muted', false);
   content.hidden = Boolean(editor);
@@ -814,19 +835,19 @@ function wire(){
     takeLookupReturn();
     view(el.dataset.view);
   }));
-  $('filter-select').addEventListener('change',ev=>{state.filter=ev.target.value;resetReviewHistory();refreshQueue();drawNext();});
-  $('library-filter-select').addEventListener('change',ev=>{state.libraryFilter=ev.target.value;state.searchLimit=70;renderList();});
-  $('prev-btn').addEventListener('click',()=>{takeLookupReturn();drawPrevious();});
-  $('next-btn').addEventListener('click',()=>{
+  bind('filter-select','change',ev=>{state.filter=ev.target.value;resetReviewHistory();refreshQueue();drawNext();});
+  bind('library-filter-select','change',ev=>{state.libraryFilter=ev.target.value;state.searchLimit=70;renderList();});
+  bind('prev-btn','click',()=>{takeLookupReturn();drawPrevious();});
+  bind('next-btn','click',()=>{
     takeLookupReturn();
     drawNext();
   });
-  $('reveal-btn').addEventListener('click',()=>{
+  bind('reveal-btn','click',()=>{
     if (!state.current) return;
     state.revealedKey = state.revealedKey === state.current.key ? null : state.current.key;
     renderCard();
   });
-  $('detail-btn').addEventListener('click',()=>{if(state.current)openDetail(state.current);});
+  bind('detail-btn','click',()=>{if(state.current)openDetail(state.current);});
   document.addEventListener('click',ev=>{
     const link = ev.target.closest('a.external-lookup');
     if (!link) return;
@@ -839,45 +860,45 @@ function wire(){
       rememberLookupReturn();
     }
   });
-  $('review-familiarity').addEventListener('click',ev=>{
+  bind('review-familiarity','click',ev=>{
     const button = ev.target.closest('button[data-grade]');
     if (button && state.current) setGrade(state.current,Number(button.dataset.grade),{toggle:true});
   });
-  $('detail-familiarity').addEventListener('click',()=>{
+  bind('detail-familiarity','click',()=>{
     openFamiliarity(getWords().find(word=>word.key===state.detailKey));
   });
-  $('familiarity-options').addEventListener('click',ev=>{
+  bind('familiarity-options','click',ev=>{
     const button = ev.target.closest('button[data-grade]');
     if (button) selectFamiliarity(Number(button.dataset.grade));
   });
-  $('close-familiarity').addEventListener('click',()=>$('familiarity-dialog').close());
-  $('familiarity-dialog').addEventListener('click',ev=>{if(ev.target===ev.currentTarget)ev.currentTarget.close();});
+  bind('close-familiarity','click',()=>$('familiarity-dialog').close());
+  bind('familiarity-dialog','click',ev=>{if(ev.target===ev.currentTarget)ev.currentTarget.close();});
   window.addEventListener('pageshow',ev=>{
     if (ev.persisted) takeLookupReturn();
     renderStats();
   });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden) renderStats();});
-  $('copy-btn').addEventListener('click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
-  $('add-word-btn').addEventListener('click',addWord);
-  $('search-word').addEventListener('input',()=>{state.searchLimit=70;renderList();});
-  $('load-more').addEventListener('click',()=>{state.searchLimit+=100;renderList();});
-  $('word-list').addEventListener('click',ev=>{
+  bind('copy-btn','click',async()=>{if(!state.current)return;try{await navigator.clipboard.writeText(state.current.word);showToast('已複製單字');}catch{showToast('複製失敗，請長按選取單字');}});
+  bind('add-word-btn','click',addWord);
+  bind('search-word','input',()=>{state.searchLimit=70;renderList();});
+  bind('load-more','click',()=>{state.searchLimit+=100;renderList();});
+  bind('word-list','click',ev=>{
     const row=ev.target.closest('.word-row');
     if (!row) return;
     const item=getWords().find(word=>word.key===row.dataset.key);
     if (item) openDetail(item);
   });
-  $('close-dialog').addEventListener('click',requestDetailClose);
-  $('detail-dialog').addEventListener('click',ev=>{if(ev.target===$('detail-dialog'))requestDetailClose();});
-  $('detail-dialog').addEventListener('cancel',ev=>{
+  bind('close-dialog','click',requestDetailClose);
+  bind('detail-dialog','click',ev=>{if(ev.target===$('detail-dialog'))requestDetailClose();});
+  bind('detail-dialog','cancel',ev=>{
     ev.preventDefault();
     requestDetailClose();
   });
-  $('root-note-toggle').addEventListener('click',()=>{
+  bind('root-note-toggle','click',()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) toggleRootNoteEdit(item);
   });
-  $('root-note-copy-prompt').addEventListener('click',async()=>{
+  bind('root-note-copy-prompt','click',async()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (!item) return;
     const prompt = rootNotePrompt(item.word);
@@ -890,7 +911,7 @@ function wire(){
       window.prompt('請手動複製提示語',prompt);
     }
   });
-  $('detail-lookup').addEventListener('click',()=>{
+  bind('detail-lookup','click',()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) lookupWord(item,true);
   });
@@ -907,14 +928,23 @@ function wire(){
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) refreshDictionary(item);
   });
-  $('detail-note-toggle').addEventListener('click',()=>{
+  bind('detail-note-toggle','click',()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) toggleDetailNoteEdit(item);
   });
-  $('detail-note').addEventListener('input',()=>{
+  bind('detail-note','input',()=>{
     if (detailNoteEditor) $('note-saved').textContent = '';
   });
-  $('detail-delete').addEventListener('click',async()=>{
+  if (!$('detail-note-toggle')) {
+    // Compatibility only: legacy note editors save on change.
+    bind('detail-note','change',async()=>{
+      const item=getWords().find(w=>w.key===state.detailKey);
+      if (!item) return;
+      const saved=await write(item,{note:$('detail-note').value},{existingOnly:!isCore(item)});
+      if (saved) $('note-saved').textContent='筆記已儲存';
+    });
+  }
+  bind('detail-delete','click',async()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
     if(!item||isCore(item)||rootNoteEditor?.saving||detailNoteEditor?.saving)return;
     if(!confirm(`確定刪除自訂單字「${item.word}」及其學習紀錄？`))return;
@@ -949,16 +979,16 @@ function wire(){
     }
     catch{showToast('刪除失敗')}
   });
-  $('save-device-name-btn').addEventListener('click',saveDeviceName);
-  $('device-name-input').addEventListener('keydown',event=>{
+  bind('save-device-name-btn','click',saveDeviceName);
+  bind('device-name-input','keydown',event=>{
     if (event.key === 'Enter') saveDeviceName();
   });
-  $('device-name-input').addEventListener('input',()=>{
+  bind('device-name-input','input',()=>{
     $('device-name-state').textContent = '修改名稱後請按「儲存」。';
   });
-  $('export-btn').addEventListener('click',exportData);
-  $('import-btn').addEventListener('click',()=>$('import-file').click());
-  $('import-file').addEventListener('change',ev=>restoreFile(ev.target.files?.[0]));
+  bind('export-btn','click',exportData);
+  bind('import-btn','click',()=>$('import-file').click());
+  bind('import-file','change',ev=>restoreFile(ev.target.files?.[0]));
 }
 async function main(){
   loadDeviceName();
@@ -991,11 +1021,27 @@ async function main(){
     setSaving('本機儲存已啟用');
   }catch(err){console.error(err);setSaving('本機儲存不可用');showToast('無法使用 IndexedDB，請檢查瀏覽器設定');}
   refreshQueue();drawNext();renderList();renderStats();
-  await glossesReady;
+  // Register handlers immediately; slow/corrupt offline gloss loading should never
+  // make Settings or navigation buttons appear completely unresponsive.
   wire();
   restoreLookupReturn(takeLookupReturn());
   resumeCustomLookups();
+  void glossesReady.then(()=>{
+    // Refresh a visible translation or detail view once offline meanings are loaded.
+    if (state.current && state.revealedKey === state.current.key) renderCard();
+    const detail = getWords().find(item=>item.key === state.detailKey);
+    if (detail && $('detail-dialog')?.open) renderDictionary(detail);
+  });
   if(error){showToast(error.message);$('review-note').textContent=error.message;}
-  if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(console.warn);
 }
-main();
+// Update checks must run independently of the UI startup path. If a future
+// markup mismatch breaks main(), the installed PWA can still fetch a fixed SW.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(console.warn);
+}
+main().catch(error=>{
+  console.error('Vocabulary 初始化失敗',error);
+  const saving=$('saving');
+  if (saving) saving.textContent='初始化失敗';
+  if ($('toast')) showToast('App 初始化失敗，請重新開啟或更新程式');
+});
