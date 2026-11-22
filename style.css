@@ -436,12 +436,12 @@
 .detail-dialog { background: #fffefd; }
 
 
-/* Compact, single-row review actions; four controls fit even on narrow iPhones. */
+/* Comfortable four-control row; distributed like the former three-action layout. */
 .card-translation {
   width: 100%;
   margin: 0 0 18px;
   color: var(--ink);
-  font-size: clamp(15px, 3.6vw, 18px);
+  font-size: clamp(14px, 3.3vw, 17px);
   font-weight: 400;
   line-height: 1.65;
   text-align: left;
@@ -452,18 +452,18 @@
 .flash-card .card-actions {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: nowrap;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
 }
 .flash-card .card-actions > :is(button, a) {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   min-width: 0;
   min-height: 44px;
-  padding: 8px 7px;
-  font-size: 12px;
+  padding: 9px 11px;
+  font-size: 15px;
   border-radius: 10px;
   white-space: nowrap;
   display: inline-flex;
@@ -472,7 +472,28 @@
   text-align: center;
 }
 .flash-card .card-actions > a[hidden] { display: none; }
+@media (max-width: 430px) {
+  .flash-card .card-actions { gap: 6px; }
+  .flash-card .card-actions > :is(button, a) {
+    padding-inline: 7px;
+    font-size: 14px;
+  }
+}
 @media (max-width: 350px) {
-  .flash-card .card-actions { gap: 3px; }
-  .flash-card .card-actions > :is(button, a) { padding-inline: 5px; }
+  .flash-card .card-actions { gap: 4px; }
+  .flash-card .card-actions > :is(button, a) {
+    padding-inline: 5px;
+    font-size: 13px;
+  }
+}
+/* System sans-serif for natural spacing around English apostrophes and contractions.
+   pre-line also collapses incidental source whitespace without losing line breaks. */
+#detail-examples {
+  font-family: "Helvetica Neue", Arial, "PingFang TC", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-kerning: normal;
+  white-space: pre-line;
 }
