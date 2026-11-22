@@ -12,6 +12,7 @@ let glossesReady;
 let rootNotes = new Map();
 let rootNotesStatus = 'loading';
 let rootNoteEditor = null;
+let detailNoteEditor = null;
 let pendingCustomLookup;
 let addingWord = false;
 // Existing IDs keep their meaning in IndexedDB and previously exported backups.
@@ -248,13 +249,67 @@ async function toggleRootNoteEdit(item){
   renderRootNotes(item);
   $('root-note-toggle').focus({preventScroll:true});
 }
+function renderDetailNote(item){
+  const editor = detailNoteEditor?.key === item.key ? detailNoteEditor : null;
+  const note = recordFor(item).note || '';
+  const content = $('detail-note-content');
+  content.textContent = note || '尚無筆記。';
+  content.classList.toggle('muted', !note);
+  content.hidden = Boolean(editor);
+  const input = $('detail-note');
+  input.hidden = !editor;
+  input.disabled = Boolean(editor?.saving);
+  const button = $('detail-note-toggle');
+  button.textContent = editor ? '儲存' : '編輯';
+  button.setAttribute('aria-expanded',String(Boolean(editor)));
+  button.disabled = Boolean(editor?.saving);
+}
+function startDetailNoteEdit(item, savedEdit){
+  const initial = savedEdit ? String(savedEdit.initial ?? '') : (recordFor(item).note || '');
+  detailNoteEditor = {key:item.key, initial, saving:false};
+  $('detail-note').value = savedEdit ? String(savedEdit.draft ?? initial) : initial;
+  $('note-saved').textContent = '';
+  renderDetailNote(item);
+  if (!savedEdit) $('detail-note').focus();
+}
+async function toggleDetailNoteEdit(item){
+  const editor = detailNoteEditor;
+  if (!editor) {
+    startDetailNoteEdit(item);
+    return;
+  }
+  if (editor.saving) return;
+  const value = $('detail-note').value;
+  const changed = value !== editor.initial;
+  if (changed) {
+    editor.saving = true;
+    $('note-saved').textContent = '儲存中…';
+    renderDetailNote(item);
+    const saved = await write(item,{note:value},{existingOnly:!isCore(item)});
+    if (detailNoteEditor !== editor) return;
+    if (!saved) {
+      editor.saving = false;
+      $('note-saved').textContent = '儲存失敗，請再試一次。';
+      renderDetailNote(item);
+      return;
+    }
+  }
+  detailNoteEditor = null;
+  $('note-saved').textContent = changed ? '筆記已儲存' : '';
+  renderDetailNote(item);
+  $('detail-note-toggle').focus({preventScroll:true});
+}
 function requestDetailClose(){
   const editor = rootNoteEditor;
-  if (editor?.saving) return;
-  if (editor && $('root-note-editor').value !== editor.initial &&
-      !window.confirm('字根記憶尚未儲存。要捨棄變更並關閉嗎？')) return;
+  const noteEditor = detailNoteEditor;
+  if (editor?.saving || noteEditor?.saving) return;
+  const unsavedRoot = editor && $('root-note-editor').value !== editor.initial;
+  const unsavedNote = noteEditor && $('detail-note').value !== noteEditor.initial;
+  if ((unsavedRoot || unsavedNote) &&
+      !window.confirm('有尚未儲存的字根記憶或筆記。要捨棄變更並關閉嗎？')) return;
   rootNoteEditor = null;
-  if (editor) takeLookupReturn();
+  detailNoteEditor = null;
+  if (editor || noteEditor) takeLookupReturn();
   $('detail-dialog').close();
 }
 async function initializeRootNotes(){
@@ -434,7 +489,8 @@ function rememberLookupReturn(){
       libraryFilter:state.libraryFilter,
       search:$('search-word').value,
       detail:$('detail-dialog').open ? state.detailKey : null,
-      rootNoteEdit:editor ? {initial:editor.initial,draft:$('root-note-editor').value} : null
+      rootNoteEdit:editor ? {initial:editor.initial,draft:$('root-note-editor').value} : null,
+      detailNoteEdit:detailNoteEditor ? {initial:detailNoteEditor.initial,draft:$('detail-note').value} : null
     }},'');
   } catch(error) {
     console.warn('無法記住查詢前的畫面',error);
@@ -472,6 +528,7 @@ function restoreLookupReturn(saved){
   if (detail) {
     openDetail(detail);
     if (saved.rootNoteEdit) startRootNoteEdit(detail,saved.rootNoteEdit);
+    if (saved.detailNoteEdit) startDetailNoteEdit(detail,saved.detailNoteEdit);
   }
 }
 function renderCard(){
@@ -623,11 +680,11 @@ function view(name){
 function openDetail(item){
   state.detailKey=item.key;
   rootNoteEditor = null;
-  const r=recordFor(item);
+  detailNoteEditor = null;
   $('detail-word').textContent=item.word;
   $('detail-category').textContent=isCore(item)?'Lexifold 核心詞條 · 原始資料已鎖定':'自訂單字 · 可刪除';
-  $('detail-note').value=r.note||'';
-  $('note-saved').textContent='輸入後自動儲存';
+  $('note-saved').textContent='';
+  renderDetailNote(item);
   $('root-note-feedback').textContent = '';
   $('detail-delete').hidden=isCore(item);
   setLookupLink('detail-cambridge',item,cambridge);
@@ -764,7 +821,7 @@ function wire(){
   document.addEventListener('click',ev=>{
     const link = ev.target.closest('a.external-lookup');
     if (!link) return;
-    if (rootNoteEditor?.saving) {
+    if (rootNoteEditor?.saving || detailNoteEditor?.saving) {
       ev.preventDefault();
       return;
     }
@@ -841,20 +898,16 @@ function wire(){
     const item=getWords().find(w=>w.key===state.detailKey);
     if (item) refreshDictionary(item);
   });
-  $('detail-note').addEventListener('input',async ev=>{
-    const key=state.detailKey;
-    const item=getWords().find(w=>w.key===key);
-    if(!item)return;
-    const note = ev.target.value;
-    $('note-saved').textContent='儲存中…';
-    const good=await write(item,{note});
-    if(key===state.detailKey && $('detail-note').value===note) {
-      $('note-saved').textContent = good ? '已自動儲存' : '儲存失敗，請再試一次';
-    }
+  $('detail-note-toggle').addEventListener('click',()=>{
+    const item=getWords().find(w=>w.key===state.detailKey);
+    if (item) toggleDetailNoteEdit(item);
+  });
+  $('detail-note').addEventListener('input',()=>{
+    if (detailNoteEditor) $('note-saved').textContent = '';
   });
   $('detail-delete').addEventListener('click',async()=>{
     const item=getWords().find(w=>w.key===state.detailKey);
-    if(!item||isCore(item)||rootNoteEditor?.saving)return;
+    if(!item||isCore(item)||rootNoteEditor?.saving||detailNoteEditor?.saving)return;
     if(!confirm(`確定刪除自訂單字「${item.word}」及其學習紀錄？`))return;
     lookups.get(item.key)?.controller.abort();
     lookups.delete(item.key);
@@ -863,6 +916,7 @@ function wire(){
       await deleteRecord(item.key);
       state.records.delete(item.key);
       rootNoteEditor = null;
+      detailNoteEditor = null;
       $('detail-dialog').close();
       state.queue = state.queue.filter(entry => entry.key !== item.key);
       const currentKey=state.current?.key;

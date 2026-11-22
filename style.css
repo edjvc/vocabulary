@@ -6,8 +6,8 @@
   --bg: #efeeeb;
   --panel: #fffefe;
   --panel-soft: #f5f5f3;
-  --root-panel: #eef0ef;
-  --root-line: #d9ddda;
+  --root-panel: #f8f1dc;
+  --root-line: #e8ddbe;
   --neutral-chip: #f3f3f1;
   --line: #dedfdb;
   --control-line: #cbd1cc;
@@ -497,3 +497,45 @@
   font-kerning: normal;
   white-space: pre-line;
 }
+
+/* Stable review-card geometry: four lines of Chinese fit without resizing the card. */
+.flash-card {
+  height: 390px;
+  min-height: 0;
+}
+.flash-card h2 { margin-top: 38px; margin-bottom: 11px; }
+.flash-card .card-translation {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: 6.2em;
+  line-height: 1.55;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  margin-bottom: 12px;
+}
+.flash-card .card-translation[hidden] { display: none; }
+@media (min-width: 700px) {
+  .flash-card { height: 410px; min-height: 0; }
+  .flash-card h2 { margin-top: 46px; }
+}
+@media (max-width: 370px) {
+  .flash-card { height: 385px; }
+  .flash-card h2 { margin-top: 28px; }
+}
+
+/* Notes are displayed as plain text until Edit is pressed; background remains white. */
+.detail-note-section { margin-top: 20px; }
+.detail-note-header { margin-bottom: 9px; }
+.detail-body .detail-note-header h3 { margin: 0; }
+.detail-note-content {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.detail-note-content[hidden],
+#detail-note[hidden] { display: none; }
+.detail-note-feedback { margin: 6px 0 0; }
+.detail-note-feedback:empty { display: none; }
