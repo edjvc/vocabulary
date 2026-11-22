@@ -436,7 +436,7 @@
 .detail-dialog { background: #fffefd; }
 
 
-/* Comfortable four-control row; distributed like the former three-action layout. */
+/* Center four compact review actions together on every screen width. */
 .card-translation {
   width: 100%;
   margin: 0 0 18px;
@@ -453,9 +453,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: nowrap;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
 }
 .flash-card .card-actions > :is(button, a) {
