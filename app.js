@@ -4,7 +4,7 @@ import {loadRootNotes} from './root-notes.js';
 import {isRootNoteValue,renderRootNoteMarkdown,rootNoteMarkdown} from './root-note-markdown.js';
 
 const $ = id => document.getElementById(id);
-const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', libraryFilter:'all', lastDrawn:null, reviewHistory:[], reviewPosition:-1, searchLimit:70, detailKey:null, totalDrawn:0};
+const state = {core:[], coreMeta:null, records:new Map(), current:null, queue:[], filter:'all', libraryFilter:'all', lastDrawn:null, reviewHistory:[], reviewPosition:-1, searchLimit:70, detailKey:null, totalDrawn:0, revealedKey:null};
 const lookups = new Map();
 const lookupErrors = new Set();
 let glosses = {};
@@ -371,6 +371,7 @@ function resetReviewHistory(){
   state.reviewHistory=[];
   state.reviewPosition=-1;
   state.totalDrawn=0;
+  state.revealedKey=null;
 }
 function drawNext(){
   // Returning from "上一個" must revisit the existing history before drawing a new word.
@@ -378,6 +379,7 @@ function drawNext(){
     state.reviewPosition++;
     state.current=state.reviewHistory[state.reviewPosition];
     state.totalDrawn=state.reviewPosition+1;
+    state.revealedKey=null;
     renderCard();
     return;
   }
@@ -387,6 +389,7 @@ function drawNext(){
     resetReviewHistory();
   }
   state.current=state.queue.pop()||null;
+  state.revealedKey=null;
   state.lastDrawn=state.current?.key||null;
   if(state.current){
     state.reviewHistory.push(state.current);
@@ -401,6 +404,7 @@ function drawPrevious(){
   state.reviewPosition--;
   state.current=state.reviewHistory[state.reviewPosition];
   state.totalDrawn=state.reviewPosition+1;
+  state.revealedKey=null;
   renderCard();
 }
 function externalLookupTarget(){
@@ -426,6 +430,7 @@ function rememberLookupReturn(){
       reviewHistory:state.reviewHistory.map(item=>item.key),
       reviewPosition:state.reviewPosition,
       totalDrawn:state.totalDrawn,
+      revealedKey:state.revealedKey,
       libraryFilter:state.libraryFilter,
       search:$('search-word').value,
       detail:$('detail-dialog').open ? state.detailKey : null,
@@ -459,6 +464,7 @@ function restoreLookupReturn(saved){
   state.current = state.reviewHistory[state.reviewPosition] || words.get(saved.current) || null;
   state.lastDrawn = state.reviewHistory.at(-1)?.key || state.current?.key || null;
   state.totalDrawn = state.current ? state.reviewPosition+1 : 0;
+  state.revealedKey = saved.revealedKey === state.current?.key ? state.current.key : null;
   if (!state.current && state.queue.length) drawNext();
   view(saved.view);
   if (saved.view !== 'review') renderCard();
@@ -473,7 +479,14 @@ function renderCard(){
   $('card-word').textContent=item?.word||'這個範圍目前沒有單字';
   $('card-counter').textContent=item?`第 ${state.totalDrawn} 張`:'0 張';
   $('card-tag').textContent=item?'VOCABULARY':'EMPTY';
+  const translationVisible = Boolean(item && state.revealedKey === item.key);
+  const translation = $('card-translation');
+  translation.hidden = !translationVisible;
+  translation.textContent = translationVisible ? (dictionarySections(item).meaning || '目前沒有中文釋義') : '';
+  $('reveal-btn').textContent = translationVisible ? '隱藏中文' : '顯示中文';
+  $('reveal-btn').setAttribute('aria-pressed', String(translationVisible));
   $('reveal-btn').disabled=!item;
+  $('detail-btn').disabled=!item;
   $('next-btn').disabled=!item && !getWords().some(matches);
   setLookupLink('cambridge-btn',item,cambridge);
   $('copy-btn').disabled=!item;
@@ -742,7 +755,12 @@ function wire(){
     takeLookupReturn();
     drawNext();
   });
-  $('reveal-btn').addEventListener('click',()=>{if(state.current)openDetail(state.current);});
+  $('reveal-btn').addEventListener('click',()=>{
+    if (!state.current) return;
+    state.revealedKey = state.revealedKey === state.current.key ? null : state.current.key;
+    renderCard();
+  });
+  $('detail-btn').addEventListener('click',()=>{if(state.current)openDetail(state.current);});
   document.addEventListener('click',ev=>{
     const link = ev.target.closest('a.external-lookup');
     if (!link) return;

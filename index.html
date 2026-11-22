@@ -50,10 +50,16 @@
        <div class="flash-card" id="flash-card">
           <div class="flash-top"><span id="card-counter">—</span><span id="card-tag">WORD CARD</span></div>
           <h2 id="card-word">正在載入單字…</h2>
+          <p id="card-translation" class="card-translation" aria-live="polite" hidden></p>
           <div class="card-actions">
-            <button id="reveal-btn" class="secondary-btn">顯示答案</button>
-            <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
-            <button id="copy-btn" class="text-btn">複製單字</button>
+            <div class="card-answer-actions">
+              <button id="reveal-btn" class="secondary-btn" type="button" aria-pressed="false">顯示中文</button>
+              <button id="detail-btn" class="secondary-btn" type="button">詳細資訊</button>
+            </div>
+            <div class="card-utility-actions">
+              <a id="cambridge-btn" class="text-btn external-lookup" rel="noopener noreferrer" hidden>Cambridge字典<span aria-hidden="true">↗</span></a>
+              <button id="copy-btn" class="text-btn">複製單字</button>
+            </div>
           </div>
        </div>
        <div id="review-familiarity" class="review-familiarity" role="group" aria-label="抽背熟悉度"></div>
