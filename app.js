@@ -253,8 +253,8 @@ function renderDetailNote(item){
   const editor = detailNoteEditor?.key === item.key ? detailNoteEditor : null;
   const note = recordFor(item).note || '';
   const content = $('detail-note-content');
-  content.textContent = note || '尚無筆記。';
-  content.classList.toggle('muted', !note);
+  content.textContent = note;
+  content.classList.toggle('muted', false);
   content.hidden = Boolean(editor);
   const input = $('detail-note');
   input.hidden = !editor;

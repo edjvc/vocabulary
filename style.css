@@ -503,7 +503,7 @@
   height: 390px;
   min-height: 0;
 }
-.flash-card h2 { margin-top: 38px; margin-bottom: 11px; }
+.flash-card h2 { margin-top: 51px; margin-bottom: 35px; }
 .flash-card .card-translation {
   flex: 0 1 auto;
   min-height: 0;
@@ -519,21 +519,29 @@
 .flash-card .card-translation[hidden] { display: none; }
 @media (min-width: 700px) {
   .flash-card { height: 410px; min-height: 0; }
-  .flash-card h2 { margin-top: 46px; }
+  .flash-card h2 { margin-top: 59px; }
 }
 @media (max-width: 370px) {
   .flash-card { height: 385px; }
-  .flash-card h2 { margin-top: 28px; }
+  .flash-card h2 { margin-top: 36px; }
 }
 
 /* Notes are displayed as plain text until Edit is pressed; background remains white. */
-.detail-note-section { margin-top: 20px; }
+.detail-note-section {
+  margin: 20px 0 12px;
+  padding: 14px;
+  min-height: 112px;
+  background: #fffefd;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
 .detail-note-header { margin-bottom: 9px; }
 .detail-body .detail-note-header h3 { margin: 0; }
 .detail-note-content {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   line-height: 1.7;
+  min-height: 28px;
 }
 .detail-note-content[hidden],
 #detail-note[hidden] { display: none; }
@@ -554,8 +562,8 @@
     border-radius: 19px;
   }
   .flash-card h2 {
-    margin-top: 12px;
-    margin-bottom: 8px;
+    margin-top: 18px;
+    margin-bottom: 20px;
     font-size: clamp(28px, 8vw, 36px);
   }
   .flash-card .card-translation {
@@ -581,8 +589,8 @@
     padding: 12px 15px;
   }
   .flash-card h2 {
-    margin-top: 8px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 12px;
     font-size: clamp(23px, 7vw, 28px);
     line-height: 1.1;
   }
