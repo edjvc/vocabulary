@@ -1,26 +1,28 @@
+/* Forest green + stone grey. Minimal UI, unchanged familiarity scale. */
 :root {
   color-scheme: light;
-  --ink: #3d3731;
-  --muted: #77746e;
-  --bg: #f5f1e9;
-  --panel: #fffefc;
-  --panel-soft: #f6f2ea;
-  --root-panel: #e8eee6;
+  --ink: #273c32;
+  --muted: #686e69;
+  --bg: #efeeeb;
+  --panel: #fffefe;
+  --panel-soft: #f5f5f3;
+  --root-panel: #eef0ef;
+  --root-line: #d9ddda;
   --neutral-chip: #f3f3f1;
-  --line: #e1e1d8;
-  --control-line: #ccd6ca;
-  --accent: #7a4e3f;
-  --accent-fill: #995f4d;
+  --line: #dedfdb;
+  --control-line: #cbd1cc;
+  --accent: #356b57;
+  --accent-fill: #356b57;
   --accent-ink: #ffffff;
-  --accent-soft: #f0e5dc;
-  --accent-line: #d5ded2;
-  --brand-fill: #995f4d;
-  --progress-fill: #81977f;
-  --focus: #b07964;
-  --selected: #7a4e3f;
+  --accent-soft: #e3efe8;
+  --accent-line: #c6d8ce;
+  --brand-fill: #356b57;
+  --progress-fill: #8eaa97;
+  --focus: #668b78;
+  --selected: #3e5b4d;
   --warn: #913944;
   --warn-soft: #f8e9eb;
-  --shadow: 0 10px 28px rgba(61, 55, 49, .07);
+  --shadow: 0 10px 28px rgba(29, 42, 34, .06);
 }
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}button,input,textarea,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{opacity:.43;cursor:not-allowed}a{color:var(--accent)}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}.app-shell{max-width:760px;min-height:100svh;margin:0 auto;padding:0 22px 104px}.topbar{height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:8px;font-weight:750;font-family:Georgia,'Times New Roman',serif;font-size:17px;letter-spacing:-.5px}.brand-icon{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex:none;background:var(--brand-fill);color:var(--accent-ink);font:700 11px/1 system-ui,sans-serif;letter-spacing:.05em}.brand small{display:block;font:600 8px -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:1px;color:var(--muted);margin-top:2px}.saving{font-size:11px;color:var(--muted);text-align:right}.view{display:none;animation:fade .18s ease}.view.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:34px 0 25px}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.9px;color:var(--accent)}.page-header h1{font-size:31px;line-height:1.24;letter-spacing:-.9px;margin:5px 0 8px}.page-header p{margin:0;color:var(--muted);line-height:1.65;font-size:13px}.count-pill{white-space:nowrap;background:var(--accent-soft);color:var(--accent);padding:7px 10px;border-radius:99px;font-weight:700;font-size:12px;border:1px solid var(--accent-line)}.review-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 0}
@@ -41,7 +43,7 @@
   margin: 18px 0 24px;
   padding: 14px;
   background: var(--root-panel);
-  border: 1px solid var(--accent-line);
+  border: 1px solid var(--root-line);
   border-radius: 12px;
 }
 .root-note-markdown {
@@ -187,7 +189,7 @@
   padding: 9px 12px;
 }
 .word-row:hover {
-  background: #f3eee5;
+  background: #f3f4f1;
 }
 .word-row:focus-visible {
   outline-offset: -2px;
@@ -429,3 +431,6 @@
   max-width: min(49%, 144px);
 }
 .search-row { align-items: center; }
+
+/* A near-white word-detail dialog, distinct from the stone-grey page background. */
+.detail-dialog { background: #fffefd; }
