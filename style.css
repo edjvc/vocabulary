@@ -436,40 +436,43 @@
 .detail-dialog { background: #fffefd; }
 
 
-/* Two independent, equally styled review actions: inline Chinese and full details. */
+/* Compact, single-row review actions; four controls fit even on narrow iPhones. */
 .card-translation {
-  margin: 0 auto 18px;
-  max-width: 100%;
+  width: 100%;
+  margin: 0 0 18px;
   color: var(--ink);
   font-size: clamp(15px, 3.6vw, 18px);
-  font-weight: 550;
+  font-weight: 400;
   line-height: 1.65;
-  text-align: center;
+  text-align: left;
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
 .card-translation[hidden] { display: none; }
-.card-actions {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 6px;
-  width: 100%;
-}
-.card-answer-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-}
-.card-answer-actions .secondary-btn {
-  width: 100%;
-  min-width: 0;
-  min-height: 44px;
-  padding: 10px 8px;
-}
-.card-utility-actions {
+.flash-card .card-actions {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 10px;
+  flex-wrap: nowrap;
+  gap: 4px;
+  width: 100%;
+}
+.flash-card .card-actions > :is(button, a) {
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 7px;
+  font-size: 12px;
+  border-radius: 10px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.flash-card .card-actions > a[hidden] { display: none; }
+@media (max-width: 350px) {
+  .flash-card .card-actions { gap: 3px; }
+  .flash-card .card-actions > :is(button, a) { padding-inline: 5px; }
 }
